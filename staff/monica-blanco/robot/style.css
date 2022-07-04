@@ -1,0 +1,53 @@
+.head {
+    background-color: red;
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    border: 1px solid black;
+}
+.eye1 {
+    background-color: aliceblue;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 20px;
+    right: 60px;
+}
+
+.pupil1 {
+    background-color: brown;
+    width: 5px;
+    height: 5px;
+    position: absolute;
+}
+.eye2 {
+    background-color: aliceblue;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 20px;
+    left: 60px;
+}
+
+.pupil2 {
+    background-color: brown;
+    width: 5px;
+    height: 5px;
+    position: absolute;
+
+.nose {
+    background-color: blue;
+    width: 10px;
+    height: 20px;
+    position: absolute;
+    top:40px;
+    left: 45px;
+}
+.mouth{
+    background-color: aquamarine;
+    width: 50px;
+    height: 10px;
+    position: absolute;
+    top: 50px;
+
+}
