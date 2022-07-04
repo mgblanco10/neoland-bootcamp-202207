@@ -1,1 +1,1 @@
-My [GitHub](https://github.com/donyol/neoland-bootcamp-202207).
+My [GitHub](https://github.com/donyol).
