@@ -6,47 +6,52 @@ h1{
     color: black;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     text-align: center;
-    position:relative;
+    background: radial-gradient(circle, #fff,orange );
 }
 .myImagen{
     position:absolute;
-    top: 480px;
-    left: 165px;
+    top: 595px;
+    left: 210px;
 }
 .scene{
     width: 100%;
-    height: 900px;
+    height: 500px;
+    /*display: flex;
+    align-items: flex-start;
+    justify-content: center;*/
 }
 .robot{
     position:absolute;
-    top: 300px;
-    left: 50px;
+    top: 410px;
+    left: 70px;
     display:flex;
 }
 
 .hat--base{
     background-color: burlywood;
-    top: 240px;
-    left: 65px;
+    top: 350px;
+    left: 85px;
     width: 80px;
     height: 50px;
     position:absolute;
     border-radius: 10px;
+    border: 1px solid brown;
 }
 .hat--up{
     background-color: burlywood;
-    top: 275px;
-    left: 40px;
+    top: 385px;
+    left: 65px;
     width: 125px;
     height: 25px;
     position:absolute;
     border-radius: 15px;
+    border: 1px solid brown;
 }
 .hat--desing{
     background-color: black;
     position: absolute;
-    top: 270px;
-    left: 65px;
+    top: 385px;
+    left: 85px;
     width: 80px;
     height: 5px;
     border-radius: 5px;
@@ -84,6 +89,7 @@ h1{
     height: 20px;
     position: absolute;
     top: 20px;
+    border: 1px solid brown;
 }
 
 .eye--left {
@@ -123,6 +129,11 @@ h1{
     top: 70px;
     left: 30px;
     border-radius: 15px;
+   /* display: grid;
+    grid-row: 1px 1px;
+    grid-column: 1px 1px 1px 1px;
+    border: 1px solid black ;*/
+    
 }
 .slime{
     background-color: aqua;
@@ -131,7 +142,8 @@ h1{
     position: absolute;
     top: 0px;
     left: 40px;
-    border-radius: 10px; 
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px; 
 }
 .slime:hover{
     background-color: transparent;
@@ -156,6 +168,7 @@ h1{
     align-items: center;
     flex-direction: column;
     justify-content: space-evenly;
+    border: 1px dashed blue;
 }
 .arms {
     position:absolute;
@@ -180,6 +193,9 @@ h1{
     top: -50px;
     border-radius: 5px;
 }
+.arms--left--1:hover{
+    transform: skew(-30deg);
+}
 .arms--right--1{
     background-color:green;
     position: absolute;
@@ -189,22 +205,17 @@ h1{
     left: 30px;
     border-radius: 5px;
 }
-.hand--left{
+.hand{
     background-color: pink;
     position: absolute;
     width: 25px;
     height: 25px;
     border-radius:10px;
+}
+.hand--left{
     bottom: 50px;
-
-
 }
 .hand--right{
-    background-color: pink;
-    position: absolute;
-    width: 25px;
-    height: 25px;
-    border-radius:10px;
     top:45px;
 }
 .circle{
