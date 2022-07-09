@@ -2,9 +2,10 @@
 function countChars(text) {
     var charaters = 0
     for (var i = 0; i < text.length; i++){
-            charaters += 1 
+        if (text[i]=== " ")
+            charaters++
     }
-    return charaters + 1  
+    return text.length - charaters 
 }
 
 // como no cuento los ' ' ????
