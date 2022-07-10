@@ -3,8 +3,9 @@ function replaceChar(text, search, replace) {
     for ( var i = 0; i < text.length; i++){
         if (text[i]== search){
             resultado = resultado + replace
-        }else 
-         resultado = resultado + text [i]
+        }else{ 
+            resultado = resultado + text [i]
+        }
     }
     return resultado
  } 
