@@ -8,7 +8,6 @@ function countChars(text) {
     return text.length - charaters 
 }
 
-// como no cuento los ' ' ????
 
 
 console.log(countChars('hola mundo'))
@@ -18,4 +17,4 @@ console.log(countChars('hello world'))
 // 10
 
 console.log(countChars('1 2 3 4 5'))
-// 9
+// 5
