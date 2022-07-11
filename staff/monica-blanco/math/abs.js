@@ -3,8 +3,13 @@ function abs(value) {
         return value*-1
     }else 
         return value
-
  }
+
+ //otra forma
+ //operador ternario
+ // function abs(value){ 
+    //return value <0? value*-1:value
+ //}
 
 
 // tests

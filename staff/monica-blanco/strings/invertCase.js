@@ -2,10 +2,12 @@
 
 
 function invertCase(text) {
+    text[i] = ''
     for(var i=0; i< text.length; i++){
+        
         if(text[i]>='a' && text[i]<='z')
         {
-            text[i] = text[i] - ('a'-'A') 
+            text[i] = text[i] - ('A'-'a') 
         }else if(text[i]>= 'A' && text[i]<='Z')
         {
             text[i] = text[i] + ('a' - 'A')
@@ -13,7 +15,7 @@ function invertCase(text) {
     }
     return text;
 }
-console.log (text.length)
+
 // tests
 
 console.log(invertCase('Hello World'))
@@ -22,5 +24,5 @@ console.log(invertCase('Hello World'))
 console.log(invertCase('a B c D e F'))
 // A b C d E f
 
-console.log('i lOVe COdInG')
+console.log(invertCase('i lOVe COdInG'))
 // I LovE coDiNg
