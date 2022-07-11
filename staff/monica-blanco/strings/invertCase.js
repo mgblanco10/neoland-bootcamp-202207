@@ -1,4 +1,5 @@
-// invertir ASCII también se puede asignar -32 a 'A'que esla diferencia con la minuscula
+// invertir ASCII también se puede asignar -32 a 'A'que esla diferencia minúscula mayuscula
+
 
 function invertCase(text) {
     for(var i=0; i< text.length; i++){
@@ -12,7 +13,7 @@ function invertCase(text) {
     }
     return text;
 }
-
+console.log (text.length)
 // tests
 
 console.log(invertCase('Hello World'))
