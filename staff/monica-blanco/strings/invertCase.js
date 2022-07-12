@@ -2,6 +2,7 @@
 
 
 function invertCase(text) {
+    console.log (text.length)
     text[i] = ''
     for(var i=0; i< text.length; i++){
         
