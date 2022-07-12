@@ -11,11 +11,11 @@ function countWords(text) {
 
 // tests
 //OJO REVISAR QUE ESTO ESTA MALO 
-console.log(countWords('adiós mundo cruel'))
+//console.log(countWords('adiós mundo cruel'))
 // 3
 
-console.log(countWords('hello world'))
+//console.log(countWords('hello world'))
 // 2
 
-console.log(countWords('1 2 3 4 5'))
+//console.log(countWords('1 2 3 4 5'))
 // 5
