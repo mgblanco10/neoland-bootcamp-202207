@@ -6,18 +6,15 @@ function abs(value) {
 
  }
 
+// function calcNumbers(result){
+//     form.displayResult.value=form.displayResult.value+result;  
+//  }
 
-// tests
-function calcNumbers(result){
-    form.displayResult.value=form.displayResult.value+result;
-    
- }
-
-console.log(abs(2 - 7))
+//console.log(abs(2 - 7))
 // 5
 
-console.log(abs(2 * 10 * -9))
+//console.log(abs(2 * 10 * -9))
 // 180
 
-console.log(abs(1.2345 - 9.8765))
+//console.log(abs(1.2345 - 9.8765))
 // 8.642
