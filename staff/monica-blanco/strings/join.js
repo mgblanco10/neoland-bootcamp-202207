@@ -1,28 +1,27 @@
-function join (){
-    var result = []
-    for (var i=0; i < arguments.length; i++){
-        var argument = arguments[i]
-    
-    for (var j=0; j < argument.length; j++){
-        var element = argument[j]
-        
-        //result.push (element)
-        result[result.length]=element
-        }
+function join(array, separator = ',') {
+    let result = ''
+
+    for (let i = 0; i < array.length; i++) {
+        const element = array[i]
+
+        // result = result + element
+        result += element
+
+        if (i < array.length - 1)
+            result += separator
     }
+
     return result
 }
 
-// tests;
-
-console.log(join(['Fire', 'Air', 'Water'],' '));
+//console.log(join(['Fire', 'Air', 'Water'],' '));
 // Fire Air Water
 
-console.log(join(['Fire', 'Air', 'Water'],''));
+//console.log(join(['Fire', 'Air', 'Water'],''));
 // FireAirWater
 
-console.log(join(['Fire', 'Air', 'Water'],'-'));
+//console.log(join(['Fire', 'Air', 'Water'],'-'));
 // Fire-Air-Water
 
-console.log(join(['Fire', 'Air', 'Water']));
+//console.log(join(['Fire', 'Air', 'Water']));
 // Fire,Air,Water
