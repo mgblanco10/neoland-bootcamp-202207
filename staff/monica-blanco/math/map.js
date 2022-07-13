@@ -19,6 +19,7 @@ function map(array, callback) {
 
 console.log (map[1,5,10,15])
 
+/// SIGO SIN ENTENDER QUE HACE, LEER MÁS Y CONTINUAR
 
 // var numbers = [1, 5, 10, 15];
 // var doubles = numbers.map(function(x) {

@@ -19,7 +19,7 @@ function includes(string, searchString) {
     }
 }
 
-//console.log (includes('the cat is under the table','cat')) 
+console.log (includes('the cat is under the table','cat')) 
 // true    
 //console.log (includes('the cat is under the table','dog')) 
 //false

@@ -1,12 +1,14 @@
 function includes(array, element) {
     let result = ''
     for (let i = 0; i < array.length; i++) {
-        if (element === array[i]) {
-            return true;
+        if (array[i]=== element) {
+            result = true
+            break;
         }else {
-            return false;
+            result = false
         }
     }
+    return result
 }
 
 /// SIN TERMINAR, REVISAR
