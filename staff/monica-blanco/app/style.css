@@ -29,8 +29,8 @@ form{
     height: 25px;
 }
 .buttonLoguin{
-    width: 70px;
-    height: 20px;
+    width: 20%;
+    height: 15%;
     justify-content: center;
     align-items: center;
     font-size: 15px;
@@ -38,7 +38,7 @@ form{
 }
 .buttonLoguin:hover{
         background-color:rgb(221, 216, 216);
-        width: 75px;
+        width: ;
         height: 25px;
         border-radius: 5px;
 }
@@ -47,5 +47,8 @@ form{
     height: 90px;
     align-items: center;
 } 
+.register{
+    
+}
 
 
