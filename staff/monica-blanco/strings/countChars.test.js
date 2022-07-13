@@ -7,8 +7,7 @@ describe('Count Chars', function() {
     })
     test ('Count Chars', function(){
         check(countChars('1 2 3 4 5'), 5)
-    })
-   
+    }) 
 })  
 
 
