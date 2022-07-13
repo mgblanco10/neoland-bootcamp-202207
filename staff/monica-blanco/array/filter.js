@@ -1,1 +1,3 @@
-function filter(array, callbalt)
+function filter(array, callbalt){
+    
+}
