@@ -11,7 +11,6 @@ function includes(array, element) {
     return result
 }
 
-/// SIN TERMINAR, REVISAR
   
   console.log(includes([1, 2, 3, 4], 5))
 // false
