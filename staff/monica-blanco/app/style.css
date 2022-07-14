@@ -1,14 +1,14 @@
 html, body{
     margin: 0;
-    width:100%;
+    height: 100%;
     box-sizing: content-box;
 }
 body{
     display: flex;
-    background-color: #dfdbdb;
+    flex-direction: column;
+    background: radial-gradient(circle, #f3f2f2,#b7b5b5);
     justify-content: center;
     align-items: center;
-    margin-top: 210px;
 }
 .container{
     display:flex;
@@ -17,45 +17,54 @@ body{
     border: 1px solid black;
     background-color: #cbc5c5;
     border-radius: 10px; 
-    align-items: center;
-    height: 250px;
+    align-items: center; 
+    height: 270px;
     width:220px;
     top:300px;
     left: 39px;
+    gap: 12px;
 }
-.email{
+.entra{
+    gap: 30px;
+}
+input{
+    border-radius: 4px;  
+    font-size: 14px;
+    color: #7e7c7c;
+    width: 225px;
+    height: 35px;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    background-color:#cbc5c5;
+    margin: 8px 0 4px 0;
+}
+input::selection{
+    -webkit-background-clip: text;
+}
+
+
+/* .name{
     border-radius: 4px;  
     font-size: 12px;
     color: #aca8a8;
     width: 200px;
     height: 25px;
-}
-.password{
-    border-radius: 4px;  
-    font-size: 12px;
-    color: #aca8a8;
-    width: 200px;
-    height: 25px;
-}
-.name{
-    border-radius: 4px;  
-    font-size: 12px;
-    color: #aca8a8;
-    width: 200px;
-    height: 25px;
-}
+} */
 .buttonLoguin{
     width: 80px;
     height: 25px;
+    margin-top: 15px;
     justify-content: center;
     align-items: center;
     font-size: 12px;
-    color:dimgray;
+    color:dimgray;  
 }
 .buttonLoguin:hover{
         background-color:rgb(221, 216, 216);
         height: 25px;
-        border-bottom-right-radius: 10px;
+        border-radius: 5px;
+      
 }
 .img{
     width: 110px;
@@ -68,19 +77,17 @@ body{
     border-radius: 4px;  
     font-size: 12px;
     color: rgb(83, 81, 81);
-    width: 200px;
+    width: 80px;
     height: 25px;
+    margin-bottom: 30px;
 }
 .register{
     left: 30px;
     color:rgb(26, 24, 24);
-    font-size: 18px;
+    font-size: 16px;
     top: 515px;
-    width: 300px;
     height: 20px;
-    top: 515px;
-    left: 235px;
-    position: absolute;
+    text-decoration: none;
 }
 .header{
     background: radial-gradient(circle, #dfdbdb,#6b6969);
@@ -101,18 +108,20 @@ h1{
 }
 .burguer{
     width: 23px;
-    height: 15px;
-    background-color: black;
     display:flex;
     flex-direction: column;
     margin-right: 5%;
     justify-content: space-between;
+    gap: 5px;
 }
 .burguer2, .burguer1, .burguer3{
     top: 200px;
     left: 10px;
     display: flex;
     justify-content: space-between;
+    background-color: red;
+    width: 100%;
+    height: 5px;
 }
 
 
