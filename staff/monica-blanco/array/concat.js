@@ -1,4 +1,5 @@
 function concat(array){
+    debugger
     var result = []
     for (var i=0; i< array.length; i++){
         var argument = array[i]
@@ -12,7 +13,7 @@ function concat(array){
     return result
 }
 
-const arrayOfArrays = [[1, 2], [3, 4], [5, 6]]
+//const arrayOfArrays = [[1, 2], [3, 4], [5, 6]]
 // // tests
 
 // console.log('TEST concat')
