@@ -1,4 +1,4 @@
-const users = []
+let users = []
 
 users.push({
     name: 'Peter Pan',

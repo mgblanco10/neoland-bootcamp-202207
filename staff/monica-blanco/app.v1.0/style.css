@@ -37,7 +37,7 @@ input{
     border-top: 0;
     border-left: 0;
     border-right: 0;
-    background-color:transparent;
+    background-color: transparent;
     margin: 8px 0 4px 0;
     color: rgb(117, 114, 114);  
 }
@@ -46,10 +46,11 @@ input::placeholder{
 }
 input:focus {
     outline: none;
+    background-clip:inherit ;
 }
 input::selection{
-    -webkit-background-clip: text;
-    color:transparent;
+    background-clip: inherit;
+    background-color:transparent;
 }
 .buttonLogin{
     width: 80px;
