@@ -27,7 +27,7 @@ describe('Array.prototype.map', function () {
             {name: 'sugar', price: 40}
         ]
         const newProductsList = productsList.map(function(product){
-            return { name: product.name , price: product.price * 1,2}
+            return { name: product.name , price: (product.price * 1,2) }
         })
         check (productsList instanceof Array, true)
         check(productsList.length, 4)
@@ -55,7 +55,7 @@ describe('Array.prototype.map', function () {
             return person.name + ' '+ person.surname + '('+ person.age + ')'
       
         const strings = people.map (toString)
-        }) 
+        })
         check(strings.length, people.length)
         check(strings[0], 'Peter Pan (15)')
         check(strings[1], 'James Hook (40)')

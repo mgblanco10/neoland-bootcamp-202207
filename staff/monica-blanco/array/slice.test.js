@@ -1,7 +1,7 @@
 describe('slice', () => {
     test('slice starting from index', () => {
       const animals = ['ant', 'bison', 'camel', 'duck', 'elephant']
-  
+      
       const result = slice(animals, 2)
   
       check(result.length, 3)

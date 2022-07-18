@@ -54,8 +54,13 @@ registerForm.onsubmit = function(event){
         return person.email === email
 })
 
-if (person)
+if (person){
+
     alert ('user already exists')
+}
+    else if (name === ''){
+    alert ('invalid name')
+    }
 else{
     users.push({
         name: name,
