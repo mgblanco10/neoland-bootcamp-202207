@@ -15,6 +15,9 @@ body{
     justify-content: center;
     align-items: center;
 }
+main{
+    height: 100%;
+}
 .form{
     display:flex;
     padding: 10px;
@@ -96,7 +99,7 @@ body{
 .header{
     display: flex;
     background: #a9f0f4;
-    height: 60px;
+    height: 90px;
     width: 100%;
     border-radius: 10px;
     
@@ -135,6 +138,41 @@ h1{
 }
 .burguer3:hover{
     background-color: #6b6969;
+}
+.list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    padding: 0;
+    overflow: scroll;
+}
+
+.list__item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: yellow;
+    color: black;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 300px;
+    max-height: 300px;
+    font-size: 1.5rem;
+    padding: 10px;
+    overflow: scroll;
+}
+footer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.upNotes{
+    display: flex;
+    font-size: 30px;
+    justify-content: center;
+    align-items: center;
 }
 .off {
     display: none;
