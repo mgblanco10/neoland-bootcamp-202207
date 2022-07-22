@@ -1,3 +1,12 @@
+/**
+ * Checks user credentials against database
+ * 
+ * @param {string} email The user email
+ * @param {string} password The user password
+ * @param {function} callback The function expression that provides a result
+ * 
+ * @throws {Error | TypeError} On invalid inputs
+ */
 function authenticateUser(email, password, callback) {
     if (typeof email !== 'string') throw new TypeError('email is not a string')
     if (email.trim().length === 0) throw new Error('email is empty or blank')

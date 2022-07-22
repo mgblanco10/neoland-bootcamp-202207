@@ -14,6 +14,7 @@ function retrieveNotes(userId, callback) {
     const filtered = notes.filter(note => {
         return note.user === userId
     })
+    filtered.reverse();
 
     callback(null, filtered)
 }

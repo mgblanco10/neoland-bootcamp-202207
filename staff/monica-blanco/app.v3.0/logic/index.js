@@ -2,6 +2,7 @@ const loginPage = document.querySelector('.login-page')
 const registerPage = document.querySelector('.register-page')
 const homePage = document.querySelector('.home-page')
 
+let _user
 // temp (for ui design purposes)
 // loginPage.classList.add('off')
 // homePage.classList.remove('off')
@@ -44,35 +45,18 @@ loginForm.onsubmit = function (event) {
 
                         return
                     }
-                    try {
-                        retrieveNotes(user.id, function (error, notes) {
-                            if (error) {
-                                alert(error.message)
 
-                                return
-                            }
-                            loginPage.classList.add('off')
-                            
-                            const title = homePage.querySelector('.title')
-                            
-                            title.innerText = 'Hello, ' + user.name + '!'
-                            
-                            const list = homePage.querySelector('.list')
-                            list.innerHTML = ''
+                    _user = user
 
-                            notes.forEach(note => {
-                                const item = document.createElement('li')
-                                item.classList.add('list__item')
+                    loginPage.classList.add('off')
+                    
+                    const title = homePage.querySelector('.title')
 
-                                item.innerText = note.text
+                    title.innerText = 'Hello, ' + user.name + '!'
 
-                                list.append(item)
-                            })
-                            homePage.classList.remove('off')
-                        })
-                    } catch (error) {
-                        alert(error.message)
-                    }
+                    refreshList()
+
+                    homePage.classList.remove('off')
                 })
             } catch (error) {
                 alert(error.message)
@@ -98,7 +82,6 @@ registerForm.onsubmit = function (event) {
 
                 return
             }
-
             registerPage.classList.add('off')
             loginPage.classList.remove('off')
         })
@@ -106,3 +89,83 @@ registerForm.onsubmit = function (event) {
         alert(error.message)
     }
 }
+
+const plusButton = homePage.querySelector('.transparent-button')
+plusButton.onclick = function () {
+    try {
+        createNote(_user.id, error => {
+            if (error) {
+                alert(error.message)
+
+                return
+            }
+            refreshList()
+        })
+    } catch (error) {
+        alert(error.message)
+    }
+}
+
+function refreshList(){
+    try {
+        retrieveNotes(_user.id, function (error, notes) {
+            if (error) {
+                alert(error.message)
+
+                return
+            }
+            const list = homePage.querySelector('.list')
+            list.innerHTML= ''
+
+            notes.forEach(note =>{
+                const item = document.createElement('li')
+                item.classList.add('list__item')
+
+                const deleteButton = document.createElement('button')
+                deleteButton.classList.add('list__item-delete-button')
+                deleteButton.innerText = 'x'
+                deleteButton.onclick = function () {
+                    try{
+                        deleteNote(_user.id, note.id, error =>{
+                            if (error) {
+                                alert(error.message)
+
+                                return
+                            }
+
+                            refreshList()
+                        })
+                    } catch (error) {
+                        alert(error.message)
+                    }
+                }  
+                const text = document.createElement('textarea')
+                text.classList.add('list__item-text')
+                text.onkeyup = function () {
+                    text.style.height = '1px'
+                    text.style.height = text.scrollHeight + 'px'
+
+                    try {
+                        updateNote(_user.id, note.id, text.value, error => {
+                            if (error) {
+                                alert(error.message)
+
+                                return
+                            }
+                        })
+                    } catch (error) {
+                        alert(error.message)
+                    }
+                }
+                text.value = note.text
+
+                item.append(deleteButton, text)
+
+                list.append(item)
+            })
+        })
+    } catch (error) {
+        alert(error.message)
+    }
+}
+

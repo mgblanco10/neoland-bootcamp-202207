@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:800);
 
 *{
     font-family: Roboto;
@@ -15,8 +16,33 @@ body{
     justify-content: center;
     align-items: center;
 }
-main{
+.home-page{
+    width: 100%;
     height: 100%;
+    display: flex;
+    flex-direction: column;
+    /* margin-top: 70px; */
+    /* margin-bottom: 60px; */
+}
+.main{
+    display:flex;
+    text-align: center;
+    justify-content: center;
+    flex-grow: 1;
+    overflow: auto;
+    /* margin-top: 70px;
+    margin-bottom: 60px; */
+    /* max-height: 100%; */
+}
+.container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.container--spaced {
+    gap: 10px;
 }
 .form{
     display:flex;
@@ -32,6 +58,11 @@ main{
     text-align: center;
     gap:10px;
 }
+.form__field{
+    display:flex;
+    flex-direction: column;
+    gap:5px;
+}
 .input{
     border-radius: 4px;  
     font-size: 14px; 
@@ -46,6 +77,10 @@ main{
 }
 .input::placeholder{
     color: transparent;
+}
+.input:-webkit-autofill{
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: black;
 }
 .input:focus {
     outline: none;
@@ -96,13 +131,16 @@ main{
     height: 20px;
     text-decoration: none;
 }
+
 .header{
     display: flex;
     background: #a9f0f4;
-    height: 90px;
+    height: 60px;
     width: 100%;
     border-radius: 10px;
-    
+    margin-bottom: 10px;
+    justify-content: space-between; 
+    flex-shrink: 0;
 }
 h1{
     font-size: 18px;
@@ -142,11 +180,12 @@ h1{
 .list {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 50px;
+    justify-content: flex-start;
+    align-items: center; 
+    gap: 30px;
     padding: 0;
-    overflow: scroll;
+    height: fit-content;
+    /* overflow: scroll; */
 }
 
 .list__item {
@@ -155,25 +194,54 @@ h1{
     align-items: center;
     background-color: yellow;
     color: black;
-    flex-direction: row;
-    flex-wrap: wrap;
+    flex-direction: column;
     width: 300px;
-    max-height: 300px;
     font-size: 1.5rem;
     padding: 10px;
-    overflow: scroll;
+    min-height: 3rem;
 }
-footer{
+.list__item-text {
+    width: calc(100%-2rem);
+    height: auto;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    resize: none;
+    overflow: hidden;
+}
+.list__item-delete-button {
+    align-self: flex-end;
+    width: 1rem;
+    height: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 0;
+    background-color: transparent;
+    cursor: pointer;
+}
+.footer{
     display: flex;
     align-items: center;
     justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    width: 100%;
+    height: 50px;
 }
-.upNotes{
-    display: flex;
-    font-size: 30px;
+.transparent-button {
+    background-color: transparent;
+    border: none;
+    color: black;
+    font-size: 3rem;
+    cursor: pointer;
     justify-content: center;
     align-items: center;
+    height: 40px;
+    display: flex;
+    padding: 0;
 }
+
 .off {
     display: none;
 }

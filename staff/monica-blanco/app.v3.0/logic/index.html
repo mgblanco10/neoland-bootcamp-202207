@@ -11,15 +11,15 @@
 </head>
 
 <body>
-    <main class="login-page page">
+    <main class="login-page container container--spaced">
         <form class="form">
             <img class="img" src="https://q8reading.com/logo1.png">
-            <div class:"home">
+            <div class:"form__field">
                 <div class="email">
                     <label for="email">Email</label>
                     <input class='input'type="email" placeholder="Email" id="email">
                 </div>
-                <div class="password">
+                <div class="form__field">
                     <label for="password">Password</label>
                     <input class='input'type="password" placeholder="Password" id="password">
                 </div>
@@ -29,18 +29,18 @@
         <a class="anchor" href="#"> Register </a>
     </main>
 
-    <main class="register-page page off">
+    <main class="register-page container container--spaced off">
         <form class="form">
             <img class="imgRegister" src="https://cdn-icons-png.flaticon.com/512/61/61355.png">
-            <div>
+            <div class="form__field">
                 <label for="name">Name</label>
                 <input class='input'type="text" name="name" placeholder="name" id="name">
             </div>
-            <div>
+            <div class="form__field">
                 <label for="email">Email</label>
                 <input class="input" type="email" name="email" placeholder="email" id="email">
             </div>
-            <div>
+            <div class="form__field">
                 <label for="password">Password</label>
                 <input class='input'type="password" name="password" placeholder="password" id="password">
             </div>
@@ -49,7 +49,7 @@
         <a class="anchor" href="#"> Login </a>
     </main>
 
-    <main class="home-page page off">
+    <div class="home-page page off">
         <div class="header">
             <img class="imgHome" src="https://www.educativa.com/wp-content/uploads/2020/09/idea.png">
             <h1 class="title"> Hello, Pepito!! </h1>
@@ -59,19 +59,22 @@
                 <div class="burguer3"> </div>
             </div>
         </div>
-        <ul class="list">
-            <li class="list__item">Hello, Note!</li>
-            <li class="list__item">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores ab sunt tempora esse eaque, maiores similique ipsam deserunt eius soluta adipisci blanditiis nobis fugiat aut nesciunt rerum porro delectus distinctio?</li>
-            <li class="list__item">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores ab sunt tempora esse eaque, maiores similique ipsam deserunt eius soluta adipisci blanditiis nobis fugiat aut nesciunt rerum porro delectus distinctio?</li>
-            <li class="list__item">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores ab sunt tempora esse eaque, maiores similique ipsam deserunt eius soluta adipisci blanditiis nobis fugiat aut nesciunt rerum porro delectus distinctio?</li>
-            <li class="list__item">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores ab sunt tempora esse eaque, maiores similique ipsam deserunt eius soluta adipisci blanditiis nobis fugiat aut nesciunt rerum porro delectus distinctio?</li>
-            <li class="list__item">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores ab sunt tempora esse eaque, maiores similique ipsam deserunt eius soluta adipisci blanditiis nobis fugiat aut nesciunt rerum porro delectus distinctio?</li>
-            <li class="list__item">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores ab sunt tempora esse eaque, maiores similique ipsam deserunt eius soluta adipisci blanditiis nobis fugiat aut nesciunt rerum porro delectus distinctio?</li>
-        </ul>
-        <footer>
-            <button class="upNotes"> + </button>
-        </footer>
-    </main>
+        <main class="main">
+            <ul class="list">
+                <li class="list__item"><button class="list__item-delete-button">x</button><textarea class="list__item-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores ab sunt tempora esse eaque, maiores similique ipsam deserunt eius soluta adipisci blanditiis nobis fugiat aut nesciunt rerum porro delectus distinctio?</textarea></li>
+                <li class="list__item"><button class="list__item-delete-button">x</button><textarea class="list__item-text">Hello, Note!</textarea></li>
+                <li class="list__item"><button class="list__item-delete-button">x</button><textarea class="list__item-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores ab sunt tempora esse eaque, maiores similique ipsam deserunt eius soluta adipisci blanditiis nobis fugiat aut nesciunt rerum porro delectus distinctio?</textarea></li>
+                <li class="list__item"><button class="list__item-delete-button">x</button><textarea class="list__item-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores ab sunt tempora esse eaque, maiores similique ipsam deserunt eius soluta adipisci blanditiis nobis fugiat aut nesciunt rerum porro delectus distinctio?</textarea></li>
+                <li class="list__item"><button class="list__item-delete-button">x</button><textarea class="list__item-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores ab sunt tempora esse eaque, maiores similique ipsam deserunt eius soluta adipisci blanditiis nobis fugiat aut nesciunt rerum porro delectus distinctio?</textarea></li>
+                <li class="list__item"><button class="list__item-delete-button">x</button><textarea class="list__item-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores ab sunt tempora esse eaque, maiores similique ipsam deserunt eius soluta adipisci blanditiis nobis fugiat aut nesciunt rerum porro delectus distinctio?</textarea></li>
+                <li class="list__item"><button class="list__item-delete-button">x</button><textarea class="list__item-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores ab sunt tempora esse eaque, maiores similique ipsam deserunt eius soluta adipisci blanditiis nobis fugiat aut nesciunt rerum porro delectus distinctio?</textarea></li>
+            </ul>
+        </main>
+            <footer class="footer">
+                <button class="transparent-button"> + </button>
+            </footer>
+        </div>
+    </body>
     
    <!-- commons / utils -->
    <script src="constants.js"></script>
@@ -87,9 +90,11 @@
    <script src="registerUser.js"></script>
    <script src="retrieveNotes.js"></script>
    <script src="createNote.js"></script>
+   <script src="updateNote.js"></script>
+   <script src="deleteNote.js"></script>
+
 
    <!-- presentation layer  -->
  <script src="index.js"></script>
    
-
 </html>
