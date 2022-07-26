@@ -25,25 +25,18 @@ function deleteNote (userId, noteId, callback){
     })
 
     
-    // if (noteIndex === -1){
-    //     callback (new Error(`note with id ${noteId} not found`))
+    if (noteIndex === -1){
+        callback (new Error(`note with id ${noteId} not found`))
         
-    //     return
-    // }
-    const note = notes [noteIndex]
-
-    if (!note){
-        callback (new Error (`note with id ${noteId} does not belong to user with id ${userId}`))
-
         return
     }
+    const note = notes [noteIndex]
     
     if (note.user !== userId){
         callback (new Error (`note with id ${noteId} does not belong to user with id ${userId}`))
 
         return
     }
-    
     notes.splice(noteIndex,1)
 
     callback(null)

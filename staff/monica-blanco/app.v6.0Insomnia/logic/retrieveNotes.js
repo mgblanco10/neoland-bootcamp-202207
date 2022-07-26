@@ -1,8 +1,5 @@
 function retrieveNotes(userId, callback) {
-    if (typeof userId !== 'string') throw new TypeError('user id is not a string')
-    if (userId.trim().length === 0) throw new Error('user id is empty or blank')
-
-    if (typeof callback !== 'function') throw new TypeError('callback is not a function')
+    // TODO validate inputs
 
     const user = users.find(user => {
         return user.id === userId

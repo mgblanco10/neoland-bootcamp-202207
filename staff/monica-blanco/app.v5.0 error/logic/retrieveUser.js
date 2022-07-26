@@ -9,7 +9,7 @@ function retrieveUser(userId, callback) {
     })
 
     if (!user) {
-        callback(new Error('user with id ' + userId + ' not found'))
+        callback(new Error(`user with id ${userId} not found`))
 
         return
     }

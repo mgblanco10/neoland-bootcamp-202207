@@ -31,7 +31,8 @@ document.onkeydown = event => {
     }
 }
 
-var intervalId = setInterval(render, speed)
+let intervalId = setInterval(render, speed)
+let intervalId2
 
 function render() {
     console.clear()
@@ -62,19 +63,21 @@ function render() {
         if (score === 10) {
             console.clear()
             console.log('You won')
-            // clearInterval(intervalId)
+
+            clearInterval(intervalId2)
+
             break
         }
     }
     
-    if (score === 0){ 
-        clearInterval(intervalId)       
+    // if (score === 0){ 
+    //     clearInterval(intervalId)       
     
-    }
+    // }
     if (score == 4 && speed === 500){
         speed = 200
         clearInterval(intervalId)
-        var intervalId = setInterval(render, speed)
+        intervalId2 = setInterval(render, speed)
         
     }
 
@@ -91,11 +94,11 @@ function updateHeart() {
 }
 
 
-let timeout = 0
-setTimeout(function (){
-    clearInterval(intervalId)
-    console.log ('Game Over')
-}, 12000)
+// let timeout = 0
+// setTimeout(function (){
+//     clearInterval(intervalId)
+//     console.log ('Game Over')
+// }, 1200)
 
 // var myTimeout = setTimeout (myGreeting, 5000)    
 // let timeout
