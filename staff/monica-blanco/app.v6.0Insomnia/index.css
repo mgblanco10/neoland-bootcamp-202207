@@ -97,14 +97,9 @@ p{
     margin-top: 15px;
     justify-content: center;
     align-items: center;
-    font-size: 16px;
-    background-color: #a9f0f4;
-    color:#6b6969;  
-}
-.button:hover{
-    background-color:#bdf6f9;
-    height: 25px;
-    border-radius: 5px;     
+    font-size: 18px;
+    background-image: url(https://media.giphy.com/media/26BROrSHlmyzzHf3i/giphy.gif);
+    color:white;  
 }
 .home-page{
     width: 100%;
@@ -128,11 +123,12 @@ p{
     width: 110px;
     height: 110px;
     align-items: center;
+    border-radius: 30px;
 } 
 .imgRegister{
-    width: 60px;
-    height: 60px;
-    border-radius: 30px;
+    width: 70px;
+    height: 70px;
+    border-radius: 10px;
     gap:10px;
 }
 .imgHome{
@@ -148,7 +144,7 @@ p{
 }
 .header{
     display: flex;
-    background: #a9f0f4;
+    background: #f6f797;
     height: 80px;
     width: 100%;
     border-radius: 10px;

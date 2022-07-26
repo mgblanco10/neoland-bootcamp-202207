@@ -7,12 +7,13 @@ function retrieveUser(token, callback) {
         if(status >= 500)
             callback (new Error (`server error (${status})`))
         else if (status >= 400) {
-            debugger
-             callback (new Error (`client error (${status})`))
+            callback (new Error (`client error (${status})`))
         }
-            
-        else if (status === 200)
+        
+        else if (status === 200){
             callback(null)
+            console.log(xhr.responseText)
+        }
     }
 
     xhr.open ('GET', 'https://b00tc4mp.herokuapp.com/api/v2/users')

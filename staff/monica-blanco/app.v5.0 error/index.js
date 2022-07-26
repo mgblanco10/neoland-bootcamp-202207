@@ -31,7 +31,7 @@ loginForm.onsubmit = function (event) {
     const password = loginForm.password.value
 
     try {
-        authenticateUser(email, password, function (error, userId) {
+        authenticateUser(email, password, function (error) {
             if (error) {
                 alert(error.message)
 
@@ -143,7 +143,8 @@ function refreshList(){
                 text.contentEditable = true
                 text.classList.add('list__item-text')
                 text.onkeyup = function () {
-            
+                    text.style.height = '1px'
+                    text.style.height = text.scrollHeight + 'px'
 
                     try {
                         updateNote(_user.id, note.id, text.innerText, error => {
