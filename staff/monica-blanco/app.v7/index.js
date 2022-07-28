@@ -1,6 +1,8 @@
 const loginPage = document.querySelector('.login-page')
 const registerPage = document.querySelector('.register-page')
 const homePage = document.querySelector('.home-page')
+const list = homePage.querySelector('.list')
+
 
 // let _token
 // temp (for ui design purposes)
@@ -45,16 +47,16 @@ loginForm.onsubmit = function (event) {
 
             renderHome()
         })
-    }catch (error){
+    } catch (error) {
         alert(error.message)
     }
 }
 
 
 
-function renderHome(){
+function renderHome() {
     try {
-        retrieveUser(sessionStorage.token, function (error, user ) {
+        retrieveUser(sessionStorage.token, function (error, user) {
             if (error) {
                 alert(error.message)
 
@@ -62,7 +64,7 @@ function renderHome(){
             }
 
             loginPage.classList.add('off')
-                    
+
             const title = homePage.querySelector('.title')
 
             title.innerText = 'Hello, ' + user.name + '!'
@@ -117,15 +119,14 @@ plusButton.onclick = function () {
     }
 }
 
-function renderNotes(){
-    try{
-        retrieveNotes(sessionStorage.token, function(error, notes){
-            if (error){
-                alert (error.message)
+function renderNotes() {
+    try {
+        retrieveNotes(sessionStorage.token, function (error, notes) {
+            if (error) {
+                alert(error.message)
 
                 return
             }
-            const list = homePage.querySelector ('.list')
             list.innerHTML = ''
 
             notes.forEach(note => {
@@ -144,39 +145,39 @@ function renderNotes(){
                                 return
                             }
 
-                        renderNotes()
-                    })
-                } catch (error) {
-                    alert(error.message)
-            }
-        }
-        const text = document.createElement('p')
-        text.contentEditable = true
-        text.classList.add('list__item-text')
-        text.onkeyup = function () {
-            if (window.updateNoteTimeoutId)
-                clearTimeout(window.updateNoteTimeoutId)
-
-            window.updateNoteTimeoutId = setTimeout(() => {
-                try {
-                    updateNote(sessionStorage.token, note.id, text.innerText, error => {
-                        if (error) {
-                            alert(error.message)
-
-                            return
-                        }
-                    })
-                } catch (error) {
-                    alert(error.message)
+                            renderNotes()
+                        })
+                    } catch (error) {
+                        alert(error.message)
+                    }
                 }
-            }, 1000)
-        }
-        text.innerText = note.text
+                const text = document.createElement('p')
+                text.contentEditable = true
+                text.classList.add('list__item-text')
+                text.onkeyup = function () {
+                    if (window.updateNoteTimeoutId)
+                        clearTimeout(window.updateNoteTimeoutId)
 
-        item.append(deleteButton, text)
+                    window.updateNoteTimeoutId = setTimeout(() => {
+                        try {
+                            updateNote(sessionStorage.token, note.id, text.innerText, error => {
+                                if (error) {
+                                    alert(error.message)
 
-        list.append(item)
-             })
+                                    return
+                                }
+                            })
+                        } catch (error) {
+                            alert(error.message)
+                        }
+                    }, 1000)
+                }
+                text.innerText = note.text
+
+                item.append(deleteButton, text)
+
+                list.append(item)
+            })
         })
     } catch (error) {
         alert(error.message)
@@ -186,12 +187,36 @@ function renderNotes(){
 if (sessionStorage.token)
     renderHome()
 
-const logoutButton = document.querySelector('.logout-button')
-logoutButton.onclick = function() {
-    delete sessionStorage.token
     
-    homePage.classList.add('off')
-    loginPage.classList.remove('off')
-}
+    const burguerButton = homePage.querySelector('.burguer-button')
+    burguerButton.onclick = function () {
+        if (!returnButton.classList.contains('off'))
+        returnButton.classList.add('off')
+        else
+        returnButton.classList.remove('off')
+        logoutButton.classList.remove('off')
+        profileButton.classList.remove('off')
+    }
+    const logoutButton = document.querySelector('.logout-button')
+    logoutButton.onclick = function () {
+        delete sessionStorage.token
+        
+        homePage.classList.add('off')
+        loginPage.classList.remove('off')
+    }
+    
+    const profileButton = document.querySelector('.profile-button')
+    profileButton.onclick = function (){
 
 
+    }
+
+
+
+    const returnButton = document.querySelector('.return-button')
+    returnButton.onclick = function () {
+        homePage.classList.add('off')
+        list.classList.add ('off')
+        burguerButton.classList.remove('off')
+    
+    }
