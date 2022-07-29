@@ -114,9 +114,9 @@ body{
     border-radius: 30px;
 } 
 .imgRegister{
-    width: 170px;
+    width: 70px;
     height: 70px;
-    border-radius: 10px;
+    border-radius: 20px;
     gap:10px;
 }
 .imgHome{
