@@ -12,7 +12,7 @@ html, body{
 body{
     display: flex;
     flex-direction: column;
-    background: radial-gradient(circle, #f3f2f2,#bdf6f9);
+    background: radial-gradient(circle, #f3f7c6,#bdf6f9);
     justify-content: center;
     align-items: center;
 }
@@ -26,7 +26,6 @@ body{
 	letter-spacing: 1px;
 	line-height:2
 }
-
 .container {
     height: 100%;
     display: flex;
@@ -41,7 +40,7 @@ body{
     display:flex;
     padding: 10px;
     flex-direction: column;
-    border: 1px solid dodgerblue;
+    border: 1px solid rgb(166, 172, 177);
     background-color: #d0fbfd;
     border-radius: 10px; 
     align-items: center; 
@@ -90,16 +89,16 @@ body{
     justify-content: center;
     align-items: center;
     font-size: 18px;
-    background-image: url(https://media.giphy.com/media/26BROrSHlmyzzHf3i/giphy.gif);
-    color:white;  
+    border-radius: 10px;
+    background-color:#67798e;
+    color:black;  
+    border: none;
 }
 .home-page{
     width: 100%;
     height: 100%;
     display: flex;
     flex-direction: column;
-    /* margin-top: 70px; */
-    /* margin-bottom: 60px; */
 }
 .main{
     display:flex;
@@ -107,9 +106,6 @@ body{
     justify-content: center;
     flex-grow: 1;
     overflow: auto;
-    /* margin-top: 70px;
-    margin-bottom: 60px; */
-    /* max-height: 100%; */
 }
 .img{
     width: 110px;
@@ -118,14 +114,14 @@ body{
     border-radius: 30px;
 } 
 .imgRegister{
-    width: 70px;
+    width: 170px;
     height: 70px;
     border-radius: 10px;
     gap:10px;
 }
 .imgHome{
-    width: 60px;
-    height: 60px;
+    width: 90px;
+    height: 90px;
 }  
 .anchor{
     left: 20px;
@@ -155,100 +151,12 @@ body{
     text-transform: uppercase;
     top: 50%;
     width: 100%;
-    animation: move linear 2000ms infinite; 
+    color: lightseagreen; 
     font-size: 18px;   
     text-align: center;
     margin-left: 135px;
     margin-right: 135px;
     margin-top: 10px;
-}
-@keyframes move {
-    0% {
-      text-shadow:
-        4px -4px 0 dodgerblue, 
-        3px -3px 0 dodgerblue, 
-        2px -2px 0 dodgerblue, 
-        1px -1px 0 dodgerblue,
-        -4px 4px 0 yellow, 
-        -3px 3px 0 yellow, 
-        -2px 2px 0 yellow, 
-        -1px 1px 0 yellow
-      ;
-    }
-    25% {    
-      text-shadow:      
-        -4px -4px 0 dodgerblue, 
-        -3px -3px 0 dodgerblue, 
-        -2px -2px 0 dodgerblue, 
-        -1px -1px 0 dodgerblue,
-        4px 4px 0 yellow, 
-        3px 3px 0 yellow, 
-        2px 2px 0 yellow, 
-        1px 1px 0 yellow      
-      ;
-    }
-    50% {
-      text-shadow:
-        -4px 4px 0 dodgerblue, 
-        -3px 3px 0 dodgerblue, 
-        -2px 2px 0 dodgerblue, 
-        -1px 1px 0 dodgerblue,
-        4px -4px 0 yellow, 
-        3px -3px 0 yellow, 
-        2px -2px 0 yellow, 
-        1px -1px 0 yellow
-      ;
-    }
-    75% {
-      text-shadow:
-        4px 4px 0 dodgerblue, 
-        3px 3px 0 dodgerblue, 
-        2px 2px 0 dodgerblue, 
-        1px 1px 0 dodgerblue,
-        -4px -4px 0 yellow, 
-        -3px -3px 0 yellow, 
-        -2px -2px 0 yellow, 
-        -1px -1px 0 yellow      
-      ;
-    }
-    100% {
-      text-shadow:
-        4px -4px 0 dodgerblue, 
-        3px -3px 0 dodgerblue, 
-        2px -2px 0 dodgerblue, 
-        1px -1px 0 dodgerblue,
-        -4px 4px 0 yellow, 
-        -3px 3px 0 yellow, 
-        -2px 2px 0 yellow, 
-        -1px 1px 0 yellow
-      ;
-    }  
-  }
-.burguer{
-    width: 23px;
-    display:flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-end;
-    margin-right: 5px;
-    gap: 5px; 
-}
-.burguer2, .burguer1, .burguer3{
-    left: 14px;
-    display: flex;
-    justify-content: space-between;
-    background-color: rgb(106, 207, 241);
-    width: 100%;
-    height: 5px;
-}
-.burguer1:hover{
-    background-color: #6b6969;
-}
-.burguer2:hover{
-    background-color: #6b6969;
-}
-.burguer3:hover{
-    background-color: #6b6969;
 }
 p{
     width: 100%;
@@ -261,9 +169,7 @@ p{
     gap: 30px;
     padding: 0;
     height: fit-content;
-    /* overflow: scroll; */
 }
-
 .list__item {
     display: flex;
     justify-content: center;
@@ -316,16 +222,22 @@ p{
     height: 40px;
     display: flex;
     padding: 0;
+    width: 10%;
 }
-.oppenWindow{
+.logout-button{
     display: flex;
-    height: 200px;
-    width: 200px;
-    background-color: aqua;
+    margin-bottom: 10px;
+    margin-left: 20px;
+    justify-content: center;
 }
-
+.burguer-container{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    height: 180px;
+    width: 90px;
+}
 .off {
     display: none;
 }
-
-
