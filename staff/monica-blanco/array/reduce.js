@@ -28,11 +28,3 @@ function reduce (array, callback){
 }
 
 
-let accumulator = 0
-console.log([2,4,8].reduce(function(x){
-    console.log("Before accumulator:" + accumulator)
-    console.log("x: " + x)
-    accumulator += x
-    return accumulator
-}
-))

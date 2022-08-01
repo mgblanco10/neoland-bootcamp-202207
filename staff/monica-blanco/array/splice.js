@@ -10,7 +10,7 @@
 //     return result
 // }
 
-function splice (array, start, deleteCount, item1){
+Cachay.prototype.splice = function (array, start, deleteCount, item1){
     const result = []
 
     for (let i = start; i< start+deleteCount;i++){

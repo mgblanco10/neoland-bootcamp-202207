@@ -1,5 +1,5 @@
 // recorta un pedazo del array
-function slice (value, start, end){
+Cachay.prototype.slice = function (value, start, end){
     let myStart = start
     let myEnd = end
     const sliced = []

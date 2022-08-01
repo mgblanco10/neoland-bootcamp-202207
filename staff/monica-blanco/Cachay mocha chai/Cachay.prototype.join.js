@@ -1,4 +1,4 @@
-function join (values,separator){
+Cachay.prototype.join = function (values,separator){
     var result = ''
     if (!separator)
         separator = ','
