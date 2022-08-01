@@ -1,12 +1,13 @@
 // posicion del elemento dentro del array
 //si es negativo el elemento devuelto se encuentra contando de de atrás a adelante
 
-function at(array, element) {
-    var result =[]
-    for (let i = 0; i < array.length; i++) {
+function at(array, pos) {
 
-        result = array.length[i + element]
+    if (pos > 0 && pos < array.length) {
+        return array[pos]
     }
-    return result
+    else if (pos < 0 && -pos<array.length ){
+        return array[array.length + pos]
+    }
 }
-console.log (at([2,7,9,5], 2))
+console.log(at([2, 7, 9, 5], 2))

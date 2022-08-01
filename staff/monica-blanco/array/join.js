@@ -13,7 +13,7 @@ function join (array,separator){
 }
 // // tests;
 
-// console.log(join(['Fire', 'Air', 'Water'],' '));
+console.log(join(['Fire', 'Air', 'Water'],' '));
 // // Fire Air Water
 
 // console.log(join(['Fire', 'Air', 'Water'],''));

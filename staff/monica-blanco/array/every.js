@@ -1,13 +1,5 @@
-// function every(array,callback){
-//     let result = []
-//     for (let i=0; array.length; i++){
-//         const element = array[i]
-//         const result = callback
-
-//     }
-// }
-
-//// falta trabajo
+// determina si todos los elementos del array cumplen una condición
+//true si lo consigue y de lo contrario, false
 
 function every(array, element){
     let result = false

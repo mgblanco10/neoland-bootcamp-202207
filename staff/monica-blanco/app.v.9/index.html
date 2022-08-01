@@ -11,7 +11,7 @@
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
 </head>
-
+<!----------------------------LOGIN-------------------------------->
 <body>
     <main class="login-page container container--spaced">
         <form class="form">
@@ -31,7 +31,7 @@
         </form>
         <a class="anchor" href="#"> Register </a>
     </main>
-<!------------------------------------------------------------------------------>
+<!---------------REGISTER--------------------------------------------------------------->
     <main class="register-page container container--spaced off">
         <form class="form form-register">
             <img class="imgRegister"
@@ -52,23 +52,22 @@
         </form>
         <a class="anchor" href="#"> Login </a>
     </main>
-<!------------------------------------------------------------------------->
+<!----------------HOME--------------------------------------------------------->
     <div class="home-page page off">
-        <div class="header">
+        <header class="header">
             <img class="imgHome" src="https://media4.giphy.com/media/lnyLJ57x8jJ13ZDhTZ/giphy.gif?cid=a267dfa35mpqsy8edagjq1n6d14c20r903cyt2gneqzbgona&rid=giphy.gif&60490a1f0d4f710d77dfff46&1653264000136">
             <h1 class="title"> Hello, Pepito!! </h1>
-    
-                    <div class="burguer-container">
-                        <button class="burguer-button transparent-button"><span class="material-symbols-outlined"> Menu </span></button>
-                        <button class="profile-button button off">Profile</button>
-                        <button class="return-button button off">Return </button>
-                        <button class="settings-button button off">Settings </button>
-                        <button class="help-button button off"> Help </button>
-                    </div>           
-        </div>
-
-
+            <button class="menu-button transparent-button"><span class="material-symbols-outlined">menu</span></button>
+            <button class="close-button transparent-button off"><span class="material-symbols-outlined">close</span></button>
+        </header>          
         <main class="main">
+            <div class="menu-panel">
+                <ul>
+                    <li><button class="settings-button transparent-button"><span class="material-symbols-outlined">settings</span></button></li>
+                    <li><button class="logout-button transparent-button"><span class="material-symbols-outlined">logout</span></button></li>
+                </ul>
+            </div>
+
             <ul class="list">
                 <li class="list__item"><button class="list__item-delete-button">x</button>
                     <p contenteditable="true" class="list__item-text">Lorem electus distinctio?</p>
@@ -93,7 +92,7 @@
                     <p contenteditable="true" class="list__item-text">Lorem ipsuectustio?</p>
                 </li>
             </ul>
-            
+<!----------------NEW PASSWORD Y EMAIL------------------->            
             <form class="form-profile off">
                 <img class="img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3Ne6f06tRXhNZQl2jp5YjNepB8j5_hojl4LcOcyO-1s7TLzUHGuSIwblFSZ_ihI0BAlU&usqp=CAU">
                 <div class="form__field">
@@ -116,7 +115,7 @@
                 <button class="button" type="submit">Home</button>
             </form>
         </main>
-            
+<!-----------------FOOTER------------------>            
             <footer class="footer">
                 <button class="add-button transparent-button"> + </button>
         </footer>

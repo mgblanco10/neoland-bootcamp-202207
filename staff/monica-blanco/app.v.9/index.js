@@ -213,7 +213,13 @@ const profileButton = document.querySelector('.profile-button')
 profileButton.onclick = function (){
     listNotes.classList.add('off')
     plusButton.classList.add('off')
-    formProfile.classList.remove('off')  
+    returnButton.classList.add ('off')
+    profileButton.classList.add ('off')
+    settingsButton.classList.add('off')
+    helpButton.classList.add('off')
+    formProfile.classList.remove('off') 
+    burguerButton.classList.add ('off') 
+
 }
 
 const logoutButton = document.querySelector('.logout-button')
