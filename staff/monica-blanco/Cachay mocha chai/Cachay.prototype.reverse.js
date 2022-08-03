@@ -8,9 +8,9 @@ Cachay.prototype.reverse = function (values){
         const index = values.length -1 -i
 
         values[i]= values[index]
-        values[index]=temp
+        values[index] = temp
     }
     return values
 }
 
-//console.log (reverse([1.3,2.7,3,4,5,6,7]))
+//console.log (reverse([1,2,3,4,5,6,7]))
