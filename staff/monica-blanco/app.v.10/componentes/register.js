@@ -2,7 +2,7 @@ class Register {
     constructor (){
         const temp = document.createElement('temp')
 
-        temp.innerHTML = `<main class="register-page container container--spaced off">
+        temp.innerHTML = `<main class="register-page container container--spaced">
         <form class="form form-register">
             <img class="imgRegister"
                 src="https://cdn-icons-png.flaticon.com/512/5087/5087579.png">

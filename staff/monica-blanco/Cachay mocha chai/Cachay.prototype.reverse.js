@@ -1,16 +1,16 @@
 // invierte el orden de los elementos de un array
 
-function reverse (array){
+Cachay.prototype.reverse = function (values){
 // const limit = Math.floor (array.length/2)
 // for (let i=0; i<limit; i++) optimización
-    for (let i = 0; i< array.length/2; i++){
-        let temp = array[i]
-        const index = array.length -1 -i
+    for (let i = 0; i< values.length/2; i++){
+        let temp = [i]
+        const index = values.length -1 -i
 
-        array[i]= array[index]
-        array[index]=temp
+        values[i]= values[index]
+        values[index]=temp
     }
-    return array
+    return values
 }
 
 //console.log (reverse([1.3,2.7,3,4,5,6,7]))

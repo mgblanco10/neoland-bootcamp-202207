@@ -22,40 +22,14 @@ login.onFormSubmit(function(email, password) {
 
             document.body.removeChild(login.container)
 
-            try {
-                retrieveUser(sessionStorage.token, function (error, user) {
-                    if (error) {
-                        alert(error.message)
-        
-                        return
-                    }
-        
-                    home.setName(user.name)
-    
-                    try {
-                        retrieveNotes(sessionStorage.token, function (error, notes) {
-                            if (error) {
-                                alert(error.message)
-                
-                                return
-                            }
+            renderHome()
 
-                            home.renderList(notes)
-
-                            document.body.append(home.container)
-                        })
-                    } catch (error) {
-                        alert(error.message)
-                    }
-                })
-            } catch (error) {
-                alert(error.message)
-            }
         })
-    } catch (error) {
-        alert(error.message)
+    } catch (error){
+        alert (error.message)
     }
 })
+
 
 home.onDeleteNoteClick = function(noteId) { // method overriding
     try {
@@ -66,24 +40,13 @@ home.onDeleteNoteClick = function(noteId) { // method overriding
                 return
             }
 
-            try {
-                retrieveNotes(sessionStorage.token, function (error, notes) {
-                    if (error) {
-                        alert(error.message)
-        
-                        return
-                    }
-
-                    home.renderList(notes)
-                })
-            } catch (error) {
-                alert(error.message)
-            }
+            renderList()
         })
     } catch (error) {
         alert(error.message)
     }
 }
+
 
 home.onUpdateNote = function(noteId, text) {
     try {
@@ -96,6 +59,29 @@ home.onUpdateNote = function(noteId, text) {
         })
     } catch (error) {
         alert(error.message)
+    }
+}
+
+home.onLogout = function (){
+    delete sessionStorage.token
+
+    document.body.removeChild (home.container)
+    document.body.append (login.container)
+}
+
+home.onAddNote = function (){
+    try {
+        createNote (sessionStorage.token, error => {
+            if (error){
+                alert (error.message)
+
+                return
+            }
+
+            renderList()
+        })
+    }catch (error){
+        alert (error.message)
     }
 }
 
@@ -123,76 +109,101 @@ register.onFormSubmit(function(name, email, password) {
     }
 })
 
-document.body.append(login.container)
+function renderHome() {
+    try {
+        retrieveUser(sessionStorage.token, function (error, user) {
+            if (error) {
+                alert(error.message)
+
+                return
+            }
+
+            home.setName(user.name)
+
+            renderList(function() {
+                document.body.append(home.container)
+            })
+        })
+    } catch (error) {
+        alert(error.message)
+    }
+}
+
+function renderList(callback) {
+    try {
+        retrieveNotes(sessionStorage.token, function (error, notes) {
+            if (error) {
+                alert(error.message)
+
+                return
+            }
+
+            home.renderList(notes)
+
+            if (callback)
+                callback()
+        })
+    } catch (error) {
+        alert(error.message)
+    }
+}
+
+if (sessionStorage.token)
+    renderHome()
+else
+    document.body.append(login.container)
 
 
-const registerLink = loginPage.querySelector('.anchor')
-const loginLink = registerPage.querySelector('.anchor')
 
-const loginForm = loginPage.querySelector('.form')
-const registerForm = registerPage.querySelector('.form')
 
-const listPanel = document.querySelector('.list-panel')
-const menuPanel = document.querySelector('.menu-panel')
-const settingsPanel = document.querySelector('.settings-panel')
+// const registerLink = loginPage.querySelector('.anchor')
+// const loginLink = registerPage.querySelector('.anchor')
 
-const addButton = homePage.querySelector('.add-button')
-const logoutButton = document.querySelector('.logout-button')
-const menuButton = document.querySelector('.menu-button')
-const closeButton = document.querySelector('.close-button')
-const settingsButton = document.querySelector('.settings-button')
+// const loginForm = loginPage.querySelector('.form')
+// const registerForm = registerPage.querySelector('.form')
 
-// addButton.onclick = function () {
-//     try {
-//         createNote(sessionStorage.token, error => {
-//             if (error) {
-//                 alert(error.message)
+// const listPanel = document.querySelector('.list-panel')
+// const menuPanel = document.querySelector('.menu-panel')
+// const settingsPanel = document.querySelector('.settings-panel')
 
-//                 return
-//             }
-//             renderList()
-//         })
-//     } catch (error) {
-//         alert(error.message)
-//     }
-// }
-
-// if (sessionStorage.token)
-//     renderHome()
-
+// const addButton = homePage.querySelector('.add-button')
+// const logoutButton = document.querySelector('.logout-button')
+// const menuButton = document.querySelector('.menu-button')
+// const closeButton = document.querySelector('.close-button')
+// const settingsButton = document.querySelector('.settings-button')
 
 
     
-// logoutButton.onclick = function() {
-//     delete sessionStorage.token
-//     closeButton.click()
-//     settingsPanel.classList.add('off')
-//     listPanel.classList.remove('off')
-//     homePage.classList.add('off')
-//     loginPage.classList.remove('off')
+// // logoutButton.onclick = function() {
+// //     delete sessionStorage.token
+// //     closeButton.click()
+// //     settingsPanel.classList.add('off')
+// //     listPanel.classList.remove('off')
+// //     homePage.classList.add('off')
+// //     loginPage.classList.remove('off')
+// // }
+// // menuButton.addEventListener('click', function() {   
+// // })
+
+// menuButton.onclick = function() {
+//     menuButton.classList.add('off')
+//     closeButton.classList.remove('off')
+//     menu.classList.remove('off')
 // }
-// menuButton.addEventListener('click', function() {   
-// })
 
-menuButton.onclick = function() {
-    menuButton.classList.add('off')
-    closeButton.classList.remove('off')
-    menu.classList.remove('off')
-}
+// closeButton.onclick = function() {
+//     closeButton.classList.add('off')
+//     menuPanel.classList.add('off')
+//     menuButton.classList.remove('off')
+// }
 
-closeButton.onclick = function() {
-    closeButton.classList.add('off')
-    menuPanel.classList.add('off')
-    menuButton.classList.remove('off')
-}
+// settingsButton.onclick = function() {
+//     closeButton.click()
 
-settingsButton.onclick = function() {
-    closeButton.click()
-
-    listPanel.classList.add('off')
-    addButton.classList.add('off')
-    settingsPanel.classList.remove('off')
-}
+//     listPanel.classList.add('off')
+//     addButton.classList.add('off')
+//     settingsPanel.classList.remove('off')
+// }
 
 
 

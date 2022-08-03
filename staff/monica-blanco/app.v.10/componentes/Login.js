@@ -11,40 +11,40 @@ class Login {
                     <label for="email">Email</label>
                     <input class='input' type="email" placeholder="Email" id="email">
                 </div>
-                <div class="form__field">
-                    <label for="password">Password</label>
-                    <input class='input' type="password" placeholder="Password" id="password">
+                    <div class="form__field">
+                        <label for="password">Password</label>
+                        <input class='input' type="password" placeholder="Password" id="password">
+                    </div>
                 </div>
-            </div>
-            <button class="button" type="submit">Login</button>
-        </form>
-        <a class="anchor" href="#"> Register </a>
-    </main>`
-    this.container = temp.firstChild        
-}
-
-onLinkClick(callback) {
-    this.container.querySelector('.anchor').onclick = event => {
-        event.preventDefault()
-
-        callback()
+                <button class="button" type="submit">Login</button>
+            </form>
+            <a class="anchor" href="#"> Register </a>
+        </main>`
+        this.container = temp.firstChild        
     }
-}
 
-onFormSubmit(callback) {
-    const form = this.container.querySelector('form')
+    onLinkClick(callback) {
+        this.container.querySelector('.anchor').onclick = event => {
+            event.preventDefault()
 
-    form.onsubmit = function (event) {
-        event.preventDefault()
-    
-        const email = form.email.value
-        const password = form.password.value
-    
-        callback(email, password)
+            callback()
+        }
     }
-}
 
-reset() {
-    this.container.querySelector('form').reset()
-}
+    onFormSubmit(callback) {
+        const form = this.container.querySelector('form')
+
+        form.onsubmit = function (event) {
+            event.preventDefault()
+    
+            const email = form.email.value
+            const password = form.password.value
+    
+            callback(email, password)
+        }
+    }
+
+    reset() {
+        this.container.querySelector('form').reset()
+    }
 }
