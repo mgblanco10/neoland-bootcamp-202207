@@ -13,4 +13,4 @@ function reverse (array){
     return array
 }
 
-//console.log (reverse([1,2,3,4,5,6,7]))
+//console.log (reverse([1.3,2.7,3,4,5,6,7]))

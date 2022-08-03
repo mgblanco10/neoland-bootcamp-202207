@@ -1,5 +1,5 @@
-describe('Reverse', function () {
-    test('reverse odd bunch of numbers', function () {
+describe('Cachay prototype Reverse', function () {
+    it('reverse odd bunch of numbers', function () {
         const numbers = [1, 2, 3, 4, 5, 6, 7, 8]
         const result = reverse(numbers)
 
