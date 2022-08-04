@@ -1,4 +1,4 @@
-const  login = new Login 
+const login = new Login 
 const register = new Register
 const home = new Home 
 
@@ -31,7 +31,7 @@ login.onFormSubmit(function(email, password) {
 })
 
 
-home.onDeleteNoteClick = function(noteId) { // method overriding
+home.onDeleteNote = function(noteId) { // method overriding
     try {
         deleteNote(sessionStorage.token, noteId, error => {
             if (error) {
@@ -85,12 +85,28 @@ home.onAddNote = function (){
     }
 }
 
-register.onLinkClick(function() {
+home.onUpdatePassword = function(oldPassword, newPassword, newPasswordRepeat) {
+    try {
+        updateUserPassword(sessionStorage.token, oldPassword, newPassword, newPasswordRepeat, error => {
+            if (error) {
+                alert(error.message)
+                
+                return
+            }
+
+            alert('Password updated')
+        })
+    } catch(error) {
+        alert(error.message)
+    }
+}
+
+register.onLinkClick(function () {
     document.body.removeChild(register.container)
     document.body.append(login.container)
 })
 
-register.onFormSubmit(function(name, email, password) {
+register.onFormSubmit(function (name, email, password) {
     try {
         registerUser(name, email, password, function (error) {
             if (error) {
@@ -152,72 +168,3 @@ if (sessionStorage.token)
     renderHome()
 else
     document.body.append(login.container)
-
-
-//cambio Password
-
-//     try {
-//         updatePassword(sessionStorage.token, oldPass, newPass, newPass2, function (error) {
-//             if (error) {
-//                 alert(error.message)
-
-//                 return
-//             }
-
-//             updatePage.classList.add('off')
-//             notesPage.classList.remove('off')
-//             renderList()
-//         })
-
-
-// const registerLink = loginPage.querySelector('.anchor')
-// const loginLink = registerPage.querySelector('.anchor')
-
-// const loginForm = loginPage.querySelector('.form')
-// const registerForm = registerPage.querySelector('.form')
-
-// const listPanel = document.querySelector('.list-panel')
-// const menuPanel = document.querySelector('.menu-panel')
-// const settingsPanel = document.querySelector('.settings-panel')
-
-// const addButton = homePage.querySelector('.add-button')
-// const logoutButton = document.querySelector('.logout-button')
-// const menuButton = document.querySelector('.menu-button')
-// const closeButton = document.querySelector('.close-button')
-// const settingsButton = document.querySelector('.settings-button')
-
-
-    
-// // logoutButton.onclick = function() {
-// //     delete sessionStorage.token
-// //     closeButton.click()
-// //     settingsPanel.classList.add('off')
-// //     listPanel.classList.remove('off')
-// //     homePage.classList.add('off')
-// //     loginPage.classList.remove('off')
-// // }
-// // menuButton.addEventListener('click', function() {   
-// // })
-
-// menuButton.onclick = function() {
-//     menuButton.classList.add('off')
-//     closeButton.classList.remove('off')
-//     menu.classList.remove('off')
-// }
-
-// closeButton.onclick = function() {
-//     closeButton.classList.add('off')
-//     menuPanel.classList.add('off')
-//     menuButton.classList.remove('off')
-// }
-
-// settingsButton.onclick = function() {
-//     closeButton.click()
-
-//     listPanel.classList.add('off')
-//     addButton.classList.add('off')
-//     settingsPanel.classList.remove('off')
-// }
-
-
-
