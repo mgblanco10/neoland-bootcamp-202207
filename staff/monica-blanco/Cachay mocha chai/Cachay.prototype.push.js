@@ -1,8 +1,8 @@
-function push(array, ...elements){
-    for (let i=0; i <elements.length;i++){
-        const element = elements[i]
+Cachay.prototype.push = function (...values){
+    for (let i=0; i <values.length;i++){
+        const element = values[i]
     
-        array[array.length] = element
+        this[this.length++] = element
 }  
-    return array.length
+    return this.length
 }
