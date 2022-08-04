@@ -34,6 +34,10 @@ body{
 }
 .header-top{
     text-align: center;
+    flex-wrap: nowrap;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row-reverse;
 }
 .container--spaced {
     gap: 10px;
@@ -93,6 +97,11 @@ body{
     background-clip: inherit;
     background-color:transparent;
     -webkit-background-clip: text;
+}.menu-button{
+    display: block;
+    height: 70px;
+    align-items: flex-end;
+    
 }
 .button{
     width: 80px;
