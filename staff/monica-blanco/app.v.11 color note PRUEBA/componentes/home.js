@@ -13,6 +13,11 @@ class Home {
             <ul class="list-panel list">
                 <li class="list__item"><button class="list__item-delete-button">x</button>
                     <p contenteditable="true" class="list__item-text">Lorem electus distinctio?</p>
+                    <div class="noteColorContainer">
+                            <div class="changeNoteBlue"></div>
+                            <div class="changeNoteGreen"></div>
+                        </div> 
+                    
                 </li>
                 <li class="list__item"><button class="list__item-delete-button">x</button>
                     <p contenteditable="true" class="list__item-text">Hello, Note!</p>
@@ -165,11 +170,35 @@ class Home {
                         this.onUpdateNote(note.id, text.innerText)
                     }, 500)
                 }
+                const noteColorContainer = document.createElement('div')
+            noteColorContainer.classList.add('noteColorContainer')
+            const noteBlue = document.createElement('div')
+            noteBlue.classList.add('noteBlue')
+            noteBlue.onclick = () => {
+                this.onNoteColor(notes, note.id, 'blue')
+                container.style.backgroundColor = 'blue'
+                
+            }
+            const noteGreen = document.createElement('div')
+            noteGreen.classList.add('noteGreen')
+            noteGreen.onclick = () => {
+                this.onNoteColor(notes, note.id, 'green')
+                container.style.backgroundColor = 'green'
+            }
+   
+
+            noteColorContainer.append(noteBlue, noteGreen)
+
+
+
                 text.innerText = note.text
 
                 item.append(deleteButton, text)
 
                 list.append(item)
+
+                container.append (noteColorContainer)
+                
             })
         }
 
@@ -180,4 +209,6 @@ class Home {
         onLogout = null
 
         onAddNote = null
+
+        onChangeNoteColor = null
     }
