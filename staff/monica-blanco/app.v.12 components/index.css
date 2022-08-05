@@ -37,7 +37,7 @@ body{
     flex-wrap: nowrap;
     display: flex;
     align-items: flex-start;
-    flex-direction: row-reverse;
+    flex-direction: row;
 }
 .container--spaced {
     gap: 10px;
@@ -149,21 +149,17 @@ body{
     text-decoration: none;
 }
 .title{
-    /* font: normal 140px Varela Round, sans-serif; */
     height: 140px;
     left: 0;
     letter-spacing: 10px;
-    margin: 10px;
     text-align: center;
-    text-transform: uppercase;
     top: 50%;
     width: 100%;
     color: lightseagreen; 
-    font-size: 18px;   
-    /* margin-left: 135px; 
-    margin-right: 135px;
-    margin-top: 10px; */
+    font-size: 16px;   
+    margin-top: 20px;
 } 
+
 /* .menu{
     position: fixed;
     width: 100%;
