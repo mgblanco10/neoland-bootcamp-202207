@@ -6,7 +6,7 @@ class Home extends Component {
             <div class= "header-top container container--row container--distributed">
             <h1 class="title"> Hello, Pepito!! </h1>
             <button class="menu-button transparent-button"><span class="material-symbols-outlined">menu</span></button>
-                </div>   
+            </div>   
                 </header> 
 
         <main class="main">
