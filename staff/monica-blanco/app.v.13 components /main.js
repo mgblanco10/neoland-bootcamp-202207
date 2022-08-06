@@ -1,13 +1,13 @@
-const login = new Login 
-const register = new Register
-const home = new Home 
+const loginPage = new LoginPage 
+const registerPage = new RegisterPage
+const homePage = new HomePage  
 
-login.onLinkClick(function(){
-    document.body.removeChild (login.container)
-    document.body.append (register.container)
+loginPage.onLinkClick(function(){
+    document.body.removeChild (loginPage.container)
+    document.body.append (RegisterPage.container)
 })
 
-login.onFormSubmit(function(email, password) {
+loginPage.onFormSubmit(function(email, password) {
     try {
         authenticateUser(email, password, function (error, token) {
             if (error) {
@@ -16,11 +16,11 @@ login.onFormSubmit(function(email, password) {
                 return
             }
 
-            login.reset()
+            loginPage.reset()
 
             sessionStorage.token = token
 
-            document.body.removeChild(login.container)
+            document.body.removeChild(loginPage.container)
 
             renderHome()
 
@@ -31,7 +31,7 @@ login.onFormSubmit(function(email, password) {
 })
 
 
-home.onDeleteNote = function(noteId) { // method overriding
+homePage.onDeleteNote = function(noteId) { // method overriding
     try {
         deleteNote(sessionStorage.token, noteId, error => {
             if (error) {
@@ -48,7 +48,7 @@ home.onDeleteNote = function(noteId) { // method overriding
 }
 
 
-home.onUpdateNote = function(noteId, text) {
+homePage.onUpdateNote = function(noteId, text) {
     try {
         updateNote(sessionStorage.token, noteId, text, error => {
             if (error) {
@@ -62,14 +62,14 @@ home.onUpdateNote = function(noteId, text) {
     }
 }
 
-home.onLogout = function (){
+homePage.onLogoutButtonClick = function (){
     delete sessionStorage.token
 
-    document.body.removeChild (home.container)
-    document.body.append (login.container)
+    document.body.removeChild (homePage.container)
+    document.body.append (loginPage.container)
 }
 
-home.onAddNote = function (){
+homePage.onAddNote = function (){
     try {
         createNote (sessionStorage.token, error => {
             if (error){
@@ -85,7 +85,7 @@ home.onAddNote = function (){
     }
 }
 
-home.onUpdatePassword = function(oldPassword, newPassword, newPasswordRepeat) {
+homePage.onUpdatePassword = function(oldPassword, newPassword, newPasswordRepeat) {
     try {
         updateUserPassword(sessionStorage.token, oldPassword, newPassword, newPasswordRepeat, error => {
             if (error) {
@@ -101,12 +101,12 @@ home.onUpdatePassword = function(oldPassword, newPassword, newPasswordRepeat) {
     }
 }
 
-register.onLinkClick(function () {
-    document.body.removeChild(register.container)
-    document.body.append(login.container)
+registerPage.onLinkClick(function () {
+    document.body.removeChild(registerPage.container)
+    document.body.append(loginPage.container)
 })
 
-register.onFormSubmit(function (name, email, password) {
+registerPage.onFormSubmit(function (name, email, password) {
     try {
         registerUser(name, email, password, function (error) {
             if (error) {
@@ -117,8 +117,8 @@ register.onFormSubmit(function (name, email, password) {
 
             register.reset()
 
-            document.body.removeChild(register.container)
-            document.body.append(login.container)
+            document.body.removeChild(registerPage.container)
+            document.body.append(loginPage.container)
         })
     } catch (error) {
         alert(error.message)
@@ -134,10 +134,10 @@ function renderHome() {
                 return
             }
 
-            home.setName(user.name)
+            homePage.setName(user.name)
 
             renderList(function() {
-                document.body.append(home.container)
+                document.body.append(homePage.container)
             })
         })
     } catch (error) {
@@ -154,7 +154,7 @@ function renderList(callback) {
                 return
             }
 
-            home.renderList(notes)
+            homePage.renderList(notes)
 
             if (callback)
                 callback()
@@ -167,4 +167,4 @@ function renderList(callback) {
 if (sessionStorage.token)
     renderHome()
 else
-    document.body.append(login.container)
+    document.body.append(loginPage.container)

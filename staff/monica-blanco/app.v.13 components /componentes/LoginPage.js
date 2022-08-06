@@ -1,4 +1,4 @@
-class Login extends NavigableForm{
+class LoginPage extends NavigableForm{
     constructor(){
         super(`<main class="login-page container container--full container--spaced">
         <form class="form">

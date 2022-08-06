@@ -21,7 +21,6 @@ class SettingsPanel extends Component{
 
             <button class="button" type="submit">Update</button>
             </form>
-            <button class="close-settings-button transparent-button"><span class="material-symbols-outlined">home</span></button>
         </div>`)
 
 
@@ -36,12 +35,19 @@ class SettingsPanel extends Component{
             this.onUpdatePassword(oldPassword, newPassword, newPasswordRepeat)
         }
 
-        this.container.querySelector('.close-settings-button').onclick = () => {
+        const closeButton = new IconButton('house')
+        this.closeButton = closeButton
+        closeButton.onClick = () => {
             this.onClose()
         }
+        this.container.append(closeButton.container)
     }
 
     onUpdatePassword = null
 
     onClose = null
+
+    close(){
+        this.closeButton.click()
+    }
 }

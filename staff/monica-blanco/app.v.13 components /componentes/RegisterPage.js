@@ -1,4 +1,4 @@
-class Register extends NavigableForm {
+class RegisterPage extends NavigableForm {
     constructor (){
         super (`<main class="register-page container container--full container--spaced">
         <form class="form form-register">
@@ -25,6 +25,7 @@ class Register extends NavigableForm {
         <a class="anchor" href="#"> Login </a>
     </main>`)
     }
+    
     onFormSubmit(callback){ //override
         const form = this.container.querySelector('form')
         form.onsubmit = function (event) {
