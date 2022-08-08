@@ -59,7 +59,7 @@ homePage.onUpdateNote = function(noteId, text) {
 
 homePage.onChangeNoteColor = function (notes, noteId, color) {
     try {
-        changeNoteColor(sessionStorage.UserToken, notes, noteId, color, function (error) {
+        changeNoteColor(sessionStorage.token, notes, noteId, color, function (error) {
             if (error)
                 alert(error.message)
         })

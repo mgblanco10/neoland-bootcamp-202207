@@ -41,7 +41,7 @@ class HomePage extends Component {
 
         listPanel.onDeleteNote = noteId => this.onDeleteNote(noteId)
         listPanel.onUpdateNote = (noteId, text) => this.onUpdateNote(noteId, text)
-        listPanel.onChangeNoteColor = noteId => this.onChangeNoteColor(noteId)
+        listPanel.onChangeNoteColor = (notes, noteId, color)  => this.onChangeNoteColor(notes, noteId, color)
 
         headerPanel.onLogoutButtonClick = () => {
             if (main.contains(settingsPanel.container))

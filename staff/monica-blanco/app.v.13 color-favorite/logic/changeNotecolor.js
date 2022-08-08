@@ -1,4 +1,4 @@
-function NoteColor(token, userNotes, noteId, color, callback){
+function changeNoteColor(token, userNotes, noteId, color, callback){
     const xhr = new XMLHttpRequest
 
     xhr.onload = function() {
@@ -11,7 +11,7 @@ function NoteColor(token, userNotes, noteId, color, callback){
         else if (status === 204)
             callback(null)
     }
-    note = userNotes.find(note => note.id === noteId)
+    const note = userNotes.find(note => note.id === noteId)
     note.color = color
 
     const reverseNotes = userNotes.reverse()
