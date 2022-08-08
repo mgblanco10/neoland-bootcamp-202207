@@ -31,17 +31,39 @@ class App extends React.Component {
             // MODIFICO EL ESTADO
             this.setState({ wordShown: newWordShown.join('')})
 
-        } else {
+        } if (this.state.counter > 0) {
             const newCounter = this.state.counter - 1
+    
+            this.setState({ counter: newCounter}) 
+            return    
+        
+        } else{
 
-            this.setState({ counter: newCounter})
+            this.setState ({view:'gameOver'})
+
         }
+        
     }
+    // gameOver = event =>{
+
+        // if (this.state.counter<0){
+        //     this.setState({ result: wordSelected, view: 'gameOver', counter:0 })
+    
+//             if (this.state.counter < 0 ){
+//                 <h2> Game Over {this.wordSelected}</h2>
+//             }else{
+//                 <h2> You Win!!!</h2>
+//             }
+    
+//         }
+// }
 
 
     render() {
         return (
             <main>
+
+                {/* <h1>HANGMAN</h1> */}
 
                 {this.state.view === "select word" &&
                     <Form placeholder="enter a word" onSubmit={this.handleOnChooseWordFormSubmit} buttonText="START" />
@@ -54,6 +76,11 @@ class App extends React.Component {
                         <h2> counter: {this.state.counter} </h2>
                     </>
                 }
+                {this.state.view === "gameOver" &&
+                <>
+                    <h2>wordSelected: {this.state.wordSelected} Game Over</h2>
+                    <button>New Game</button>
+                </>}
 
             </main>
         )

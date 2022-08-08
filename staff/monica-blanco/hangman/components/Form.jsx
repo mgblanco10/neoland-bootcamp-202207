@@ -6,7 +6,7 @@ function Form(props) {
                 event.preventDefault()
                 props.onSubmit(event)
             }}>
-            <h1>GAME HANGMAN</h1>
+            <h1>HANGMAN</h1>
             <input placeholder={props.placeholder} name="input" />
             <button type="submit">{props.buttonText}</button>
         </form>
