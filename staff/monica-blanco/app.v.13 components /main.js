@@ -4,7 +4,7 @@ const homePage = new HomePage
 
 loginPage.onLinkClick(function(){
     document.body.removeChild (loginPage.container)
-    document.body.append (RegisterPage.container)
+    document.body.append (registerPage.container)
 })
 
 loginPage.onFormSubmit(function(email, password) {
