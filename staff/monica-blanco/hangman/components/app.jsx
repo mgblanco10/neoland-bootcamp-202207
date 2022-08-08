@@ -44,27 +44,13 @@ class App extends React.Component {
         }
         
     }
-    // gameOver = event =>{
-
-        // if (this.state.counter<0){
-        //     this.setState({ result: wordSelected, view: 'gameOver', counter:0 })
     
-//             if (this.state.counter < 0 ){
-//                 <h2> Game Over {this.wordSelected}</h2>
-//             }else{
-//                 <h2> You Win!!!</h2>
-//             }
     
-//         }
-// }
-
-
     render() {
         return (
             <main>
 
                 {/* <h1>HANGMAN</h1> */}
-
                 {this.state.view === "select word" &&
                     <Form placeholder="enter a word" onSubmit={this.handleOnChooseWordFormSubmit} buttonText="START" />
                 }
@@ -78,8 +64,10 @@ class App extends React.Component {
                 }
                 {this.state.view === "gameOver" &&
                 <>
-                    <h2>wordSelected: {this.state.wordSelected} Game Over</h2>
-                    <button>New Game</button>
+                    <h2> wordSelected: {this.state.result}</h2>
+                    <h2>gameOver</h2>
+                    <span> 0 tries left </span>
+                    <button type="submit">PLAY AGAIN</button>
                 </>}
 
             </main>
@@ -87,3 +75,16 @@ class App extends React.Component {
     }
 }
 
+            // gameOver = event =>{
+        
+                // if (this.state.counter<0){
+                //     this.setState({ result: wordSelected, view: 'gameOver', counter:0 })
+            
+        //             if (this.state.counter < 0 ){
+        //                 <h2> Game Over {this.wordSelected}</h2>
+        //             }else{
+        //                 <h2> You Win!!!</h2>
+        //             }
+            
+        //         }
+        // }
