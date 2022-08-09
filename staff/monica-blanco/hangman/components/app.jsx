@@ -2,7 +2,7 @@ class App extends React.Component {
     constructor(props) {
         super(props)
 
-        this.state = { view: 'select word', result: null, wordShown: null, counter: 10}
+        this.state = { view: 'select word', result: null, wordShown: null, counter: 1}
     }
 
     handleOnChooseWordFormSubmit = event => {
@@ -65,9 +65,10 @@ class App extends React.Component {
                 {this.state.view === "gameOver" &&
                 <>
                     <h2> wordSelected: {this.state.result}</h2>
-                    <h2>gameOver</h2>
+                    <h2>Game Over</h2>
                     <span> 0 tries left </span>
-                    <button type="submit">PLAY AGAIN</button>
+                    {/* <button>PLAY AGAIN</button> */}
+                    <Form  buttonText="PLAY AGAIN" onSubmit={this.handleOnChooseWordFormSubmit} />
                 </>}
 
             </main>
