@@ -2,7 +2,7 @@ class App extends React.Component {
     constructor(props) {
         super(props)
 
-        this.state = { view: 'select word', result: null, wordShown: null, counter: 1}
+        this.state = { view: 'select word', result: null, wordShown: null, counter: 10}
     }
 
     handleOnChooseWordFormSubmit = event => {
@@ -30,21 +30,29 @@ class App extends React.Component {
 
             // MODIFICO EL ESTADO
             this.setState({ wordShown: newWordShown.join('')})
+        
+        } if (this.state.wordShown !== '_'){
+            
+            this.setState ({view:'win'})
 
+            
         } if (this.state.counter > 0) {
             const newCounter = this.state.counter - 1
-    
+            
             this.setState({ counter: newCounter}) 
-            return    
-        
-        } else{
+            return     
 
+        } if (this.state.counter === 0){   
             this.setState ({view:'gameOver'})
 
+        }else{
+            this.setState ({view:'playing'})
         }
-        
     }
-    
+
+    handlePlayClick = () => {
+        this.setState({view: 'select word', result: null, wordShown: null, counter: 10})
+    }
     
     render() {
         return (
@@ -64,28 +72,37 @@ class App extends React.Component {
                 }
                 {this.state.view === "gameOver" &&
                 <>
-                    <h2> wordSelected: {this.state.result}</h2>
+                <h2> wordSelected: {this.state.result}</h2>
                     <h2>Game Over</h2>
                     <span> 0 tries left </span>
-                    {/* <button>PLAY AGAIN</button> */}
-                    <Form  buttonText="PLAY AGAIN" onSubmit={this.handleOnChooseWordFormSubmit} />
-                </>}
+                    <button onClick={this.handlePlayClick}>TRY AGAIN</button>
+                </>
+                }
+                {this.state.view === "win" &&
+                <>
+                <h2> wordSelected: {this.state.result}</h2> */
+                    <h2>ganaste</h2>
+                </>   
+                }
 
             </main>
         )
     }
 }
 
-            // gameOver = event =>{
+// gameOver = event =>{
+    
+    // if (this.state.counter<0){
+        //     this.setState({ result: wordSelected, view: 'gameOver', counter:0 })
         
-                // if (this.state.counter<0){
-                //     this.setState({ result: wordSelected, view: 'gameOver', counter:0 })
-            
         //             if (this.state.counter < 0 ){
-        //                 <h2> Game Over {this.wordSelected}</h2>
-        //             }else{
-        //                 <h2> You Win!!!</h2>
-        //             }
+            //                 <h2> Game Over {this.wordSelected}</h2>
+            //             }else{
+                //                 <h2> You Win!!!</h2>
+                //             }
+                
+                //         }
+                // }
+                
+                
             
-        //         }
-        // }
