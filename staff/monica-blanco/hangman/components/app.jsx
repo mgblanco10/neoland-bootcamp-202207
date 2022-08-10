@@ -14,9 +14,10 @@ class App extends React.Component {
     }
 
     handleOnCharacterForm = event => {
+        let wordShown = this.state.wordShown
         const charTried = event.target.input.value
-
         event.target.reset()
+
 
         // VERIFICO SI EL CARACTER ESTÁ EN EL RESULTADO
         if (this.state.result.includes(charTried)) {
@@ -30,13 +31,13 @@ class App extends React.Component {
 
             // MODIFICO EL ESTADO
             this.setState({ wordShown: newWordShown.join('')})
-        
-        } if (this.state.wordShown !== '_'){
             
-            this.setState ({view:'win'})
+            //!(wordSelected.includes('_') indexOf
+        // } If (wordShown.indexOf('_') === -1){
 
+        //     this.setState({view:'win'})
             
-        } if (this.state.counter > 0) {
+        } if (this.state.counter > 0 && wordShown.includes('_')) {
             const newCounter = this.state.counter - 1
             
             this.setState({ counter: newCounter}) 
@@ -46,7 +47,7 @@ class App extends React.Component {
             this.setState ({view:'gameOver'})
 
         }else{
-            this.setState ({view:'playing'})
+            this.setState ({view:'win'})
         }
     }
 
@@ -80,8 +81,8 @@ class App extends React.Component {
                 }
                 {this.state.view === "win" &&
                 <>
-                <h2> wordSelected: {this.state.result}</h2> */
-                    <h2>ganaste</h2>
+                    <h2>You Win</h2>
+                    <button onClick={this.handlePlayClick}>TRY AGAIN</button>
                 </>   
                 }
 
