@@ -32,10 +32,6 @@ class App extends React.Component {
             // MODIFICO EL ESTADO
             this.setState({ wordShown: newWordShown.join('')})
             
-            //!(wordSelected.includes('_') indexOf
-        // } If (wordShown.indexOf('_') === -1){
-
-        //     this.setState({view:'win'})
             
         } if (this.state.counter > 0 && wordShown.includes('_')) {
             const newCounter = this.state.counter - 1
@@ -59,7 +55,6 @@ class App extends React.Component {
         return (
             <main>
 
-                {/* <h1>HANGMAN</h1> */}
                 {this.state.view === "select word" &&
                     <Form placeholder="enter a word" onSubmit={this.handleOnChooseWordFormSubmit} buttonText="START" />
                 }
@@ -75,7 +70,7 @@ class App extends React.Component {
                 <>
                 <h2> wordSelected: {this.state.result}</h2>
                     <h2>Game Over</h2>
-                    <span> 0 tries left </span>
+                    <span> Tries left: 0 </span>
                     <button onClick={this.handlePlayClick}>TRY AGAIN</button>
                 </>
                 }
@@ -83,6 +78,7 @@ class App extends React.Component {
                 <>
                     <h2>You Win</h2>
                     <button onClick={this.handlePlayClick}>TRY AGAIN</button>
+                    <h2> Tries left: {this.state.counter} </h2>
                 </>   
                 }
 
@@ -91,19 +87,6 @@ class App extends React.Component {
     }
 }
 
-// gameOver = event =>{
-    
-    // if (this.state.counter<0){
-        //     this.setState({ result: wordSelected, view: 'gameOver', counter:0 })
-        
-        //             if (this.state.counter < 0 ){
-            //                 <h2> Game Over {this.wordSelected}</h2>
-            //             }else{
-                //                 <h2> You Win!!!</h2>
-                //             }
-                
-                //         }
-                // }
                 
                 
             
