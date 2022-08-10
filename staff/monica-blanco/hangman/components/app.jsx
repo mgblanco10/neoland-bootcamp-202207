@@ -14,7 +14,9 @@ class App extends React.Component {
     }
 
     handleOnCharacterForm = event => {
-        let wordShown = this.state.wordShown
+        const newWordShown = this.state.wordShown.split('')
+        let newCounter = this.state.counter
+
         const charTried = event.target.input.value
         event.target.reset()
 
@@ -22,7 +24,7 @@ class App extends React.Component {
         // VERIFICO SI EL CARACTER ESTÁ EN EL RESULTADO
         if (this.state.result.includes(charTried)) {
             // TRANSFORMO LA PALABRA MOSTRADA EN ARRAY
-            let newWordShown = this.state.wordShown.split('')
+            
 
             // LOCALIZO LOS ÍNDICES EN LOS QUE ESTÁ EL CARACTER Y MODIFICO LA PALABRA MOSTRADA EN ESOS ÍNDICES
             for (let i = 0; i < this.state.result.length; i++)
@@ -31,18 +33,18 @@ class App extends React.Component {
 
             // MODIFICO EL ESTADO
             this.setState({ wordShown: newWordShown.join('')})
+        } 
+        
+        if (newWordShown.includes('_')) {   
+            newCounter--
             
+            if (newCounter === 0)
+                this.setState ({view:'gameOver'})
+                
+            this.setState({ counter: newCounter }) 
             
-        } if (this.state.counter > 0 && wordShown.includes('_')) {
-            
-            const newCounter = this.state.counter - 1
-            this.setState({ counter: newCounter}) 
             return     
-
-        } if (this.state.counter === 0){   
-            this.setState ({view:'gameOver'})
-
-        }else{
+        } else {
             this.setState ({view:'win'})
         }
     }
