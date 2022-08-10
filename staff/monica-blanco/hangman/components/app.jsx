@@ -34,8 +34,8 @@ class App extends React.Component {
             
             
         } if (this.state.counter > 0 && wordShown.includes('_')) {
-            const newCounter = this.state.counter - 1
             
+            const newCounter = this.state.counter - 1
             this.setState({ counter: newCounter}) 
             return     
 
