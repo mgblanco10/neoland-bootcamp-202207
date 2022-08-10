@@ -33,8 +33,8 @@ class HomePage extends Component {
 
         return (<div className="home-page container container--full">
         <main className="main">
-            
         </main>          
+        <h1>Hello, {this.state.name}!</h1>
             <footer className="footer">
                 <button className="add-button transparent-button"> + </button>
             </footer>

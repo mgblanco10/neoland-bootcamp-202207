@@ -8,11 +8,43 @@ function RegisterPage(props) {
 
         props.onLinkClick()
     }
+    const handleFormSubmit = event => {
+        event.preventDefault()
+
+        const form = event.target
+
+        const nameImput = form.name
+        const emailInput = form.email
+        const passwordInput = form.password
+
+        const name = nameImput.value
+        const email = emailInput.value
+        const password = passwordInput.value
+
+        try {
+            registerUser(name, email, password, (error) => {
+                if (error) {
+                    alert(error.message)
+                    
+                    logger.warn(error.message)
+
+                    return
+                }
+                logger.debug('register reset')
+                register.reset()
+                props.onLogIn
+            })
+        } catch (error) {
+            alert(error.message)
+
+            logger.warn(error.message)
+        }
+    }
 
     logger.info('render')
 
     return (<main className="register-page container container--full container--spaced">
-        <form className="form form-register">
+        <form className="form form-register" onSubmit={handleFormSubmit}>
             <img class="imgRegister"
                 src="https://cdn-icons-png.flaticon.com/512/5087/5087579.png" />
 
