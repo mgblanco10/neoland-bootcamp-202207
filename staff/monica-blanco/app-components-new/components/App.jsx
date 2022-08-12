@@ -11,8 +11,6 @@ class App extends Component {
 
     handleNavigationToHome = () => this.setState({ view: 'home' })
 
-    // handleNavigationSettings = () => this.setState ({view: 'settings'})
-
     handleLogoutClick = () => {
         delete sessionStorage.token
 
@@ -28,8 +26,6 @@ class App extends Component {
             return <RegisterPage onLinkClick={this.handleNavigationToLogin} />
         else if (this.state.view === 'home')
             return <HomePage onLogoutClick={this.handleLogoutClick}/>
-        // else if (this.state.view === 'settings')
-        //     return (this.state.view === 'settings')
     }
 }
 

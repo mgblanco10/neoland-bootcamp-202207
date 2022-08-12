@@ -3,14 +3,12 @@ function Menu(props) {
 
     const handleLogoutClick = () => props.onLogoutClick()
 
-    const handleSettingsClick = () => props.onSettingsClick()
-
     logger.info('render')
 
     return <div className="menu-panel">
         <ul className="menu-panel__list">
             <li className="menu-panel__list-item-settings">
-                <IconButton text="settings" onClick={handleSettingsClick} />
+                <IconButton text="settings" />
             </li>
             <li className="menu-panel__list-item-favorite">
             <IconButton text="favorite" />
