@@ -2,7 +2,7 @@ class HomePage extends Component {
     constructor() {
         super()
 
-        this.state = { name: null }
+        this.state = { name: null, notes: null, view: 'list'}
     }
 
     componentDidMount = () => { // override
@@ -107,20 +107,39 @@ class HomePage extends Component {
             this.logger.warn (error.message)
         }
     }
+    handleSettingsClick = () => {
+        this.setState({ view: 'settings' })
+
+        this.loadNotes()
+    }
+
+    handleSettingsCloseClick = () => this.setState({ view: 'list' })
+
 
     render() {
         this.logger.info('render')
 
-        return this.state.name ?
+        const {
+            state: { name, view, notes },
+            props: { onLogoutClick },
+            handleSettingsClick,
+            handleUpdateNote,
+            handleDeleteNote,
+            handleSettingsCloseClick,
+            handleAddClick
+        } = this
+
+        return name ?
         <div className="home-page page container--full container--distributed">
-            <Header name={this.state.name} onLogoutClick={this.props.onLogoutClick} />
+            <Header name={name} onLogoutClick={onLogoutClick} onSettingsClick={handleSettingsClick} view={view} />
 
         <main className="main">
-            <NoteList notes={this.state.notes} onUpdateNote={this.handleUpdateNote} onDeleteNote={this.handleDeleteNote} />
+            {view === 'list' && <NoteList notes={notes} onUpdateNote={handleUpdateNote} onDeleteNote={handleDeleteNote} />}
+            {view === 'settings' && <Settings onCloseClick={handleSettingsCloseClick}/>}
         </main>
 
         <footer className="footer">
-            <button className="add-button transparent-button" onClick={this.handleAddClick}>+</button>
+            {view === 'list'&& <button className="add-button transparent-button" onClick={handleAddClick}>+</button>}
         </footer>
     </div>
     :
