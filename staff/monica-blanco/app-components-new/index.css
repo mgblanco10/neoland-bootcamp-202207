@@ -243,4 +243,14 @@ p{
 .menu-panel__list{
     list-style: none;
 }
+.settings-panel{
+    gap:30px;
+    padding:40px
+}
+.update-infoApp{
+    font-size: larger;
+    color: black;
+    background-color: red;
+    width: 100%;
+}
 

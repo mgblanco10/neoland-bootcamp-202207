@@ -1,13 +1,13 @@
 // function Menu(props) {
 //     const { view, onLogoutClick, onSettingsClick } = props
-function Menu({ view, onLogoutClick, onSettingsClick }) {
+function Menu({ view, onLogoutClick, onSettingsClick, onInfoClick }) {
     const logger = new Loggito('Menu')
 
     const handleLogoutClick = () => onLogoutClick()
 
     const handleSettingsClick = () => onSettingsClick()
 
-    const handleFavoriteClick = () => onFavoriteClick()
+    const handleInfoClick = () => onInfoClick()
 
     logger.info('render')
 
@@ -16,7 +16,7 @@ function Menu({ view, onLogoutClick, onSettingsClick }) {
             {view !== 'settings' && <li className="menu-panel__list-item-settings">
                 <IconButton text="settings" onClick={handleSettingsClick}/>
             </li>}
-            {view !== 'favorite' && <li className="menu-panel__list-item-favorite" onClick={handleFavoriteClick}>
+            {view !== 'favorite' && <li className="menu-panel__list-item-favorite" onClick={handleInfoClick}>
             <IconButton text="favorite" />
             </li>}
             <li className="menu-panel__list-item-logout">

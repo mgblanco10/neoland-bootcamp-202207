@@ -112,8 +112,14 @@ class HomePage extends Component {
 
         this.loadNotes()
     }
+    handleInfoCLick = () =>{
+        this.setState({view: 'info'})
+        this.loadNotes()
+        
+    }
 
     handleSettingsCloseClick = () => this.setState({ view: 'list' })
+    handleInfoCloseCLick = () => this.setState({view: 'list'})
 
 
     render() {
@@ -126,17 +132,20 @@ class HomePage extends Component {
             handleUpdateNote,
             handleDeleteNote,
             handleSettingsCloseClick,
-            handleAddClick
+            handleAddClick, 
+            handleInfoClick,
+            handleInfoCloseCLick
         } = this
 
         return name ?
         <div className="home-page page container--full container--distributed">
-            <Header name={name} onLogoutClick={onLogoutClick} onSettingsClick={handleSettingsClick} view={view} />
+            <Header name={name} onLogoutClick={onLogoutClick} onSettingsClick={handleSettingsClick} onInfoClick={handleInfoClick} view={view} />
 
         <main className="main">
             {view === 'list' && <NoteList notes={notes} onUpdateNote={handleUpdateNote} onDeleteNote={handleDeleteNote} />}
             {view === 'settings' && <Settings onCloseClick={handleSettingsCloseClick}/>}
-        </main>
+            {view === 'info' &&<Info onCloseClick={handleInfoCloseCLick}/>}
+        </main> 
 
         <footer className="footer">
             {view === 'list'&& <button className="add-button transparent-button" onClick={handleAddClick}>+</button>}

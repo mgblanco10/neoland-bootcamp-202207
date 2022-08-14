@@ -17,7 +17,7 @@ function Settings(props) {
                 }
     
                 alert('Password updated')
-                onReturn()
+                // props.onReturn()
                 
             })
         } catch(error) {
@@ -47,8 +47,9 @@ function Settings(props) {
                     <input className="input" type="password" name="newPasswordRepeat" placeholder="repeat new password" id="newPasswordRepeat" />
                 </div>
 
-                <button className="button" type="submit" onClick={props.onCloseClick}>Update</button>
+                <button className="button" type="submit">Update</button>
             </form>
             <IconButton text="home" onClick={props.onCloseClick} />
         </div>
     }
+
