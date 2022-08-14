@@ -43,7 +43,7 @@ class Header extends Component {
             { view === 'menu' && <IconButton text="close" onClick={handleCloseClick} />}
     </div>
 
-            { view === 'menu' && <Menu onLogoutClick={onLogoutClick} onSettingsClick={handleSettingsClick} onInfoClick={handleInfoClick} view={viewHome} />}
+            { view === 'menu' && <Menu onLogoutClick={onLogoutClick} onSettingsClick={handleSettingsClick}  onInfoClick={handleInfoClick} view={viewHome} />}
         </header>)
         
     }

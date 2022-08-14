@@ -250,7 +250,10 @@ p{
 .update-infoApp{
     font-size: 18px;
     color: black;
-    background: radial-gradient(circle, #f3f7c6,#bdf6f9);
+    background-color:#d0fbfd;
     width: 100%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
 

@@ -7,7 +7,7 @@ function Menu({ view, onLogoutClick, onSettingsClick, onInfoClick }) {
 
     const handleSettingsClick = () => onSettingsClick()
 
-    const handleInfoClick = () => onInfoClick()
+    // const handleInfoClick = () => onInfoClick()
 
     logger.info('render')
 
@@ -16,9 +16,9 @@ function Menu({ view, onLogoutClick, onSettingsClick, onInfoClick }) {
             {view !== 'settings' && <li className="menu-panel__list-item-settings">
                 <IconButton text="settings" onClick={handleSettingsClick}/>
             </li>}
-            {view !== 'favorite' && <li className="menu-panel__list-item-favorite" >
+            {/* {view !== 'favorite' && <li className="menu-panel__list-item-favorite" >
             <IconButton text="favorite" onClick={handleInfoClick} />
-            </li>}
+            </li>} */}
             <li className="menu-panel__list-item-logout">
                 <IconButton text="logout" onClick={handleLogoutClick} />
             </li>
