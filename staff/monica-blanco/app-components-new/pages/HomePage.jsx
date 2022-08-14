@@ -2,7 +2,7 @@ class HomePage extends Component {
     constructor() {
         super()
 
-        this.state = { name: null, notes: null, view: 'list'}
+        this.state = { name: null, notes: null, view: 'list', view: 'info'}
     }
 
     componentDidMount = () => { // override

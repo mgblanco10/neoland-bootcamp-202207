@@ -18,7 +18,7 @@ class Header extends Component {
     handleInfoClick = ()=>{
         this.setState ({view:null})
 
-        this.props.onInfoClick()
+        // this.props.onInfoClick()
     }
 
     render() {

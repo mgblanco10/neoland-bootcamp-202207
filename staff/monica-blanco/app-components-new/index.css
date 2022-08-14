@@ -248,9 +248,9 @@ p{
     padding:40px
 }
 .update-infoApp{
-    font-size: larger;
+    font-size: 18px;
     color: black;
-    background-color: red;
+    background: radial-gradient(circle, #f3f7c6,#bdf6f9);
     width: 100%;
 }
 
