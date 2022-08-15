@@ -1,6 +1,6 @@
 // function Menu(props) {
 //     const { view, onLogoutClick, onSettingsClick } = props
-function Menu({ view, onLogoutClick, onSettingsClick, onInfoClick }) {
+function Menu({ view, onLogoutClick, onSettingsClick }) {
     const logger = new Loggito('Menu')
 
     const handleLogoutClick = () => onLogoutClick()
