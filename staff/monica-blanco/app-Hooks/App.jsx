@@ -1,32 +1,34 @@
-class App extends Component {
-    constructor() {
-        super()
+const {useState} = React
 
-        this.state = { view: sessionStorage.token ? 'home' : 'login' }
+function App () {
+    const logger = new Loggito('App')
+
+    const [view, setView] = useState(sessionStorage.token ? 'home' : 'login')
+
+    const handleNavigationToRegister = () => {
+        setView('register')
+
+        logger.debug('setView', 'register')
     }
 
-    handleNavigationToRegister = () => this.setState({ view: 'register' })
+    const handleNavigationToLogin = () => {
+        setView('login')
+    
+        logger.debug('setView', 'login')
+    }
 
-    handleNavigationToLogin = () => this.setState({ view: 'login' })
+    const handleNavigationToHome = () => {
+        setView('home')
+    
+        logger.debug('setView', 'home')
+    }
 
-    handleNavigationToHome = () => this.setState({ view: 'home' })
-
-    handleLogoutClick = () => {
+    const handleLogoutClick = () => {
         delete sessionStorage.token
 
-        this.handleNavigationToLogin()
+        handleNavigationToLogin()
     }
-
-    render() {
-        this.logger.info('render')
-
-        const {
-            state: { view },
-            handleNavigationToRegister,
-            handleNavigationToHome,
-            handleNavigationToLogin,
-            handleLogoutClick
-        } = this
+    logger.info('render')
 
         if (view === 'login')
             return <LoginPage onLinkClick={handleNavigationToRegister} onLogIn={handleNavigationToHome} />
@@ -34,7 +36,6 @@ class App extends Component {
             return <RegisterPage onLinkClick={handleNavigationToLogin} />
         else if (view === 'home')
             return <HomePage onLogoutClick={handleLogoutClick}/>
-    }
 }
 
 

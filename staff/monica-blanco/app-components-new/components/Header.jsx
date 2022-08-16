@@ -30,8 +30,7 @@ class Header extends Component {
             props: { name, onLogoutClick, view: viewHome },
             handleMenuClick,
             handleCloseClick,
-            handleSettingsClick,
-            handleInfoClick
+            handleSettingsClick
         } = this
 
         return (<header className="header container">
@@ -43,7 +42,7 @@ class Header extends Component {
             { view === 'menu' && <IconButton text="close" onClick={handleCloseClick} />}
     </div>
 
-            { view === 'menu' && <Menu onLogoutClick={onLogoutClick} onSettingsClick={handleSettingsClick}  onInfoClick={handleInfoClick} view={viewHome} />}
+            { view === 'menu' && <Menu onLogoutClick={onLogoutClick} onSettingsClick={handleSettingsClick}  view={viewHome} />}
         </header>)
         
     }

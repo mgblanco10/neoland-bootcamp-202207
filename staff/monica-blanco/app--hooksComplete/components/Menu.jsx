@@ -1,5 +1,3 @@
-// function Menu(props) {
-//     const { view, onLogoutClick, onSettingsClick } = props
 function Menu({ view, onLogoutClick, onSettingsClick }) {
     const logger = new Loggito('Menu')
 
@@ -9,8 +7,8 @@ function Menu({ view, onLogoutClick, onSettingsClick }) {
 
     logger.info('render')
 
-    return <div className="menu-panel">
-        <ul className="menu-panel__list">
+    return <div className="Menu">
+        <ul className="Menu-panel">
             {view !== 'settings' && <li className="menu-panel__list-item-settings">
                 <IconButton text="settings" onClick={handleSettingsClick}/>
             </li>}

@@ -11,12 +11,12 @@ import React, {useState, useEffect} from "react";
 //     )
 // }
 
-//useEfect toma dependencias como 2do parametro
+// useEfect toma dependencias como 2do parametro
 // function App (){
 
 //   const [count, setCount]= useState(0)
 
-  //[]--> podemos poner el estado
+//   []--> podemos poner el estado
 // useEffect ( ()=>{
 //   setCount (count+1)
 // }, [])
@@ -32,7 +32,7 @@ import React, {useState, useEffect} from "react";
 
 // export default App;
 
-//useContext nos permite compartir datos sin necidad de pasar propiedades
+//useContext nos permite compartir datos sin necesidad de pasar propiedades
 
 const themes = {
   light:{

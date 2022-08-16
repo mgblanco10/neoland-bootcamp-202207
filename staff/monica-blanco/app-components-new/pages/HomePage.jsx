@@ -133,13 +133,12 @@ class HomePage extends Component {
             handleDeleteNote,
             handleSettingsCloseClick,
             handleAddClick, 
-            handleInfoClick,
             handleInfoCloseCLick
         } = this
 
         return name ?
         <div className="home-page page container--full container--distributed">
-            <Header name={name} onLogoutClick={onLogoutClick} onSettingsClick={handleSettingsClick} onInfoClick={handleInfoClick} view={view} />
+            <Header name={name} onLogoutClick={onLogoutClick} onSettingsClick={handleSettingsClick} view={view} />
 
         <main className="main">
             {view === 'list' && <NoteList notes={notes} onUpdateNote={handleUpdateNote} onDeleteNote={handleDeleteNote} />}
