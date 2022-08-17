@@ -25,7 +25,7 @@ function LoginPage({onLinkClick, onLogIn, onFeedback}) {
         try {
             authenticateUser(email, password, (error, token) => {
                 if (error) {
-                    onFeedback({ message: error.message, level: 'error'})
+                    onFeedback({ message: error.message, level: 'warning'})
 
                     logger.warn(error.message)
 

@@ -15,5 +15,4 @@ Press the button in the shape of a house to start </p>
         </div>
         <IconButton text="home" onClick={props.onCloseClick} />
     </div>
-
 }
