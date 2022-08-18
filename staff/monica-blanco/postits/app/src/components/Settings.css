@@ -1,0 +1,16 @@
+.Settings {
+    gap:20px;
+    padding:15px;  
+}
+.update-password-form{
+    background-color:  #d0fbfd;;
+    height: 500px;
+    width: 220px;
+
+}
+.Settings__img{
+    width: 110px;
+    height: 110px;
+    align-items: center;
+    border-radius: 30px;
+}
