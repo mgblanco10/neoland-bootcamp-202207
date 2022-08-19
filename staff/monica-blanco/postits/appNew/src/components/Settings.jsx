@@ -3,11 +3,12 @@ import IconButton from './IconButton'
 import Loggito from '../utils/Loggito'
 import updateUserPassword from '../logic/updateUserPassword'
 import updateUserEmail from '../logic/updateUserEmail'
+import withContext from '../utils/withContext'
 
-function Settings({onCloseClick, onFeedback}) {
+function Settings({onCloseClick, context: { handleFeedback }}) {
     const logger = new Loggito('Settings')
 
-    logger.info('render')
+    logger.info('return')
 
     const handleFormSubmitPassword = event => {
         event.preventDefault()
@@ -18,26 +19,25 @@ function Settings({onCloseClick, onFeedback}) {
         const {
             oldPassword: { value: oldPassword },
             newPassword: { value: newPassword },
-            newPasswordRepeat: { value: newPasswordRepeat }
-        
+            newPasswordRepeat: { value: newPasswordRepeat } 
         } = form
 
         try {
             updateUserPassword(sessionStorage.token, oldPassword, newPassword, newPasswordRepeat, error => {
                 if (error) {
-                    onFeedback({message:error.message, level: 'warning'})
+                    handleFeedback({message:error.message, level: 'warning'})
                     
                     logger.warn(error.message)
 
                     return
                 }
-                onFeedback({message:`Password update`, level: 'success'})
+                handleFeedback({message:`Password update`, level: 'success'})
                 form.reset()
                 onCloseClick()
                 
             })
         } catch(error) {
-            onFeedback({message:error.message, level: 'warning'})
+            handleFeedback({message:error.message, level: 'warning'})
 
             logger.warn(error.message)
         }
@@ -54,18 +54,18 @@ function Settings({onCloseClick, onFeedback}) {
         try {
             updateUserEmail(sessionStorage.token, oldEmail, newEmail, newEmailRepeat, error => {
                 if (error) {
-                    onFeedback({ message: error.message, level: 'warning' })
+                    handleFeedback({ message: error.message, level: 'warning' })
                     logger.warn(error.message)
     
                     return
                 }
     
-                onFeedback({message:`Email update`, level: 'success'})
+                handleFeedback({message:`Email update`, level: 'success'})
                 form.reset()
                 onCloseClick()
             })
         } catch(error) {
-            onFeedback({message:error.message, level: 'warning'})
+            handleFeedback({message:error.message, level: 'warning'})
 
             logger.warn(error.message)
         }
@@ -73,7 +73,7 @@ function Settings({onCloseClick, onFeedback}) {
 
     logger.info('return')
 
-        return <div className="Settings container">
+        return <div className="settings container">
 
             <form className="update-password-form form" onSubmit={handleFormSubmitPassword}>
             <img className="imgSettings"
@@ -119,4 +119,4 @@ function Settings({onCloseClick, onFeedback}) {
             <IconButton text="home" onClick={onCloseClick} />
         </div>
     }
-export default Settings
+export default withContext(Settings)
