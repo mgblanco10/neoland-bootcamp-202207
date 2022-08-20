@@ -1,11 +1,17 @@
-function createNote(token, callback) {
+function updateNote(token, noteId, text, callback){
     if (typeof token !== 'string') throw new TypeError('Token is not a string')
     if (token.trim().length === 0) throw new Error('Token is empty or blank')
+
+    if (typeof noteId !== 'string') throw new TypeError('Note id is not a string')
+    if (noteId.trim().length === 0) throw new Error('Note id is empty or blank')
+
+    if (typeof text !== 'string') throw new TypeError('Text is not a string')
 
     if (typeof callback !== 'function') throw new TypeError('Callback is not a function')
 
     const xhr = new XMLHttpRequest
-// response
+
+    // response
 
     xhr.onload = function () {
         const status = xhr.status
@@ -21,16 +27,19 @@ function createNote(token, callback) {
 
             const notes = data.notes ? data.notes : []
 
-            const note = {
-                id: `note-${Date.now()}`,
-                text: ''
+            const note = notes.find(note => note.id === noteId)
+
+            if (!note){
+                callback ( new Error (`note with id ${noteId} not found`))
+
+                return
             }
 
-            notes.push(note)
+            note.text = text
 
             const xhr2 = new XMLHttpRequest
+          
 
-// response
             xhr2.onload = function () {
                 const status = xhr2.status
 
@@ -41,7 +50,7 @@ function createNote(token, callback) {
                 else if (status === 204)
                     callback(null)
             }
-// request
+
 
             xhr2.open('PATCH', 'https://b00tc4mp.herokuapp.com/api/v2/users')
 
@@ -54,12 +63,11 @@ function createNote(token, callback) {
             xhr2.send(json2)
         }
     }
- // request
+
     xhr.open('GET', 'https://b00tc4mp.herokuapp.com/api/v2/users')
 
     xhr.setRequestHeader('Authorization', `Bearer ${token}`)
 
     xhr.send()
 }
-
-export default createNote
+export default updateNote

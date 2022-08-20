@@ -6,18 +6,17 @@ import createNote from '../logic/createNote'
 import updateNote from '../logic/updateNote'
 import deleteNote from '../logic/deleteNote'
 import Settings from '../components/Settings'
+import Info from '../components/Info'
 import NoteList from '../components/NoteList'
 import Header from '../components/Header'
 import withContext from '../utils/withContext'
-import { Routes, Route, useNavigate, useLocation } from 'react-router-dom'
 
 function HomePage({onLogoutClick, context: { handleFeedback }}){
     const logger = new Loggito('HomePage')
 
     const [name, setName] = useState(null)
     const [notes, setNotes] = useState(null)
-    const navigate = useNavigate()
-    const location = useLocation()
+    const [view, setView] = useState('info')
 
     useEffect(() => {
         logger.info('"componentDidMount"')
@@ -125,31 +124,41 @@ function HomePage({onLogoutClick, context: { handleFeedback }}){
     }
 
     const handleSettingsClick = () => {
-        navigate('settings')
-        logger.debug('navigate to settings')
+        setView('settings')
+        logger.debug('setView', 'settings')
         loadNotes()
     }
-    
+
+    const handleInfoClick = () =>{
+        setView('info')
+        logger.debug('setView', 'info')
+        loadNotes()  
+    }
+
     const handleSettingsCloseClick = () => {
-        navigate('/')
-        logger.debug ('navigate to list')
+        setView('list')
+        logger.debug ('setView', 'list')
+    }
+
+    const handleInfoCloseCLick = () => {
+        setView('list')
+        logger.debug('setView', 'list')
     }
 
     logger.info('return')
 
     return name ?
         <div className="home-page container--full container--distributed">
-            <Header name={name} onLogoutClick={onLogoutClick} onSettingsClick={handleSettingsClick}/>
+            <Header name={name} onLogoutClick={onLogoutClick} onSettingsClick={handleSettingsClick} onInfoClick={handleInfoClick} view={view} />
 
         <main className="main">
-            <Routes>
-                <Route path="/" element={<NoteList notes={notes} onUpdateNote={handleUpdateNote} onDeleteNote={handleDeleteNote} />}/>
-                <Route path="settings" element={<Settings onCloseClick={handleSettingsCloseClick} />}/>
-            </Routes>
+            {view === 'list' && <NoteList notes={notes} onUpdateNote={handleUpdateNote} onDeleteNote={handleDeleteNote} />}
+            {view === 'settings' && <Settings onCloseClick={handleSettingsCloseClick} />}
+            {view === 'info' &&<Info onCloseClick={handleInfoCloseCLick}/>}
         </main> 
 
         <footer className="footer">
-        {location.pathname === '/' && <button className="add-button transparent-button" onClick={handleAddClick}>+</button>}
+            {view === 'list'&& <button className="add-button transparent-button" onClick={handleAddClick}>+</button>}
         </footer>
     </div>
     :

@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 @import url(https://fonts.googleapis.com/css?family=Varela+Round);
 
-/* root change theme*/
+/* root */
 :root{
     --color: white;
     --back-color: linear-gradient(82deg, rgba(62,90,231,1) 13%, rgba(70,252,251,1) 94%);
@@ -20,8 +20,6 @@
 *{
     font-family: Roboto;
 }
-/* css común del doc*/
-
 html, body{
     height: 100%;
 }
@@ -30,6 +28,7 @@ body{
     display: flex;
     flex-direction: column;
     background:var(--back-color) ;
+    /* background: radial-gradient(circle, #f3f7c6,#bdf6f9); */
 }
 .container {
     height: 100%;
@@ -78,6 +77,7 @@ body{
     margin-top: 20px;
 }
 .form{
+    /* background-color: radial-gradient(circle, #f3f7c6,#bdf6f9); */
     background: linear-gradient(107deg, rgba(234,202,88,1) 0%, rgba(0,212,255,1) 100%);
     display:flex;
     padding: 10px;

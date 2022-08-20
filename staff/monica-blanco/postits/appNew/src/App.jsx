@@ -6,29 +6,37 @@ import Feedback from './components/Feedback'
 import Loggito from './utils/Loggito.js'
 import Context from './utils/Context'
 import './App.css'
+import { Routes, Route, useNavigate, Navigate } from 'react-router-dom'
+import InfoPage from './pages/InfoPage'
 
 function App () {
     const logger = new Loggito('App')
 
-    const [view, setView] = useState(sessionStorage.token ? 'home' : 'login')
     const [feedback, setFeedback] = useState({ message: null, level: null })
+    const navigate = useNavigate()
 
     const handleNavigationToRegister = () => {
-        setView('register')
+        navigate('register')
 
-        logger.debug('setView', 'register')
+        logger.debug('navigate to register')
     }
 
     const handleNavigationToLogin = () => {
-        setView('login')
+        navigate('login')
     
-        logger.debug('setView', 'login')
+        logger.debug('navigate to login')
+    }
+
+    const handleNavigationToInfo = () => {
+        navigate('info')
+    
+        logger.debug('navigate to info')
     }
 
     const handleNavigationToHome = () => {
-        setView('home')
+        navigate('/')
     
-        logger.debug('setView', 'home')
+        logger.debug('navigate to home')
     }
 
     const handleLogoutClick = () => {
@@ -50,23 +58,31 @@ function App () {
         logger.debug('setFeedback', feedback)
     }
     logger.info('return')
-    
+    //no se recomienda hacer así(cambio de tema)
     const toggleTheme = () => document.documentElement.classList.toggle('light')
 
-    // const context = { handleFeedback }
-
-    // return <Context.Provider value={context}>
     return <Context.Provider value={{ handleFeedback, toggleTheme }}>
     <div className="App App--dark container container--full">
-        {view === 'login'&& <LoginPage onLinkClick={handleNavigationToRegister} onLogIn={handleNavigationToHome} onFeedback={handleFeedback} />}
-        {view === 'register' && <RegisterPage onLinkClick={handleNavigationToLogin} onFeedback={handleFeedback} />}
-        {view === 'home'&& <HomePage onLogoutClick={handleLogoutClick} onFeedback={handleFeedback} />}
-
+        <Routes>
+            <Route path="login" element={sessionStorage.token ? <Navigate to="/" /> : <LoginPage onLinkClick={handleNavigationToRegister} onLogIn={handleNavigationToInfo} />} />
+            <Route path="register" element={ <RegisterPage onLinkClick={handleNavigationToLogin} />} />
+            <Route path="info" element={<InfoPage onLinkClick={handleNavigationToHome}/>} />
+            <Route path="/*" element={sessionStorage.token ? <HomePage onLogoutClick={handleLogoutClick} /> : <Navigate to="login" />} />
+        </Routes>
         {feedback.message && <Feedback level={feedback.level} message={feedback.message} onClick={handleAcceptFeedback} />}
     </div>
     </Context.Provider>
 }
 export default App
+
+
+{/* <Routes>
+<Route path="login" element={sessionStorage.token ? <Navigate to="info" /> : <LoginPage onLinkClick={handleNavigationToRegister} />} />
+<Route path="register" element={sessionStorage.token ? <Navigate to="login" /> : <RegisterPage onLinkClick={handleNavigationToLogin} />} />
+
+<Route path="info" element={sessionStorage.token ? <Navigate to="/"/> : <HomePage onLogoutClick={handleLogoutClick} />} />
+<Route path="/*" element={sessionStorage.token ? <HomePage onLogoutClick={handleLogoutClick} /> : <Navigate to="login" />} />
+</Routes> */}
 
 
 

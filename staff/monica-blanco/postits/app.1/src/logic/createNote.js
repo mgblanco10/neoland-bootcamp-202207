@@ -5,7 +5,7 @@ function createNote(token, callback) {
     if (typeof callback !== 'function') throw new TypeError('Callback is not a function')
 
     const xhr = new XMLHttpRequest
-// response
+
 
     xhr.onload = function () {
         const status = xhr.status
@@ -30,7 +30,7 @@ function createNote(token, callback) {
 
             const xhr2 = new XMLHttpRequest
 
-// response
+
             xhr2.onload = function () {
                 const status = xhr2.status
 
@@ -41,7 +41,6 @@ function createNote(token, callback) {
                 else if (status === 204)
                     callback(null)
             }
-// request
 
             xhr2.open('PATCH', 'https://b00tc4mp.herokuapp.com/api/v2/users')
 
@@ -54,7 +53,7 @@ function createNote(token, callback) {
             xhr2.send(json2)
         }
     }
- // request
+
     xhr.open('GET', 'https://b00tc4mp.herokuapp.com/api/v2/users')
 
     xhr.setRequestHeader('Authorization', `Bearer ${token}`)

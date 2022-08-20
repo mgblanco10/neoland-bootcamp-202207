@@ -5,6 +5,8 @@ import withContext from '../utils/withContext'
 function LoginPage({onLinkClick, onLogIn, context: { handleFeedback }}) {
     const logger = new Loggito(LoginPage.name)
 
+     // const context = useContext(Context)
+    // const handleFeedback = context.handleFeedback
 
     logger.info('constructor')
 
@@ -30,7 +32,7 @@ function LoginPage({onLinkClick, onLogIn, context: { handleFeedback }}) {
         try {
             authenticateUser(email, password, (error, token) => {
                 if (error) {
-                    handleFeedback({ message: error.message, level: 'error'})
+                    handleFeedback({ message: error.message, level: 'warning'})
 
                     logger.warn(error.message)
 
