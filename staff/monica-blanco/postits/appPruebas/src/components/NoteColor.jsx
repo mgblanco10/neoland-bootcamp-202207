@@ -1,8 +1,8 @@
 
-function ChangeNoteColor ({onChangeNoteColor, noteId}) {
+function NoteColor (token, notes, noteId,color,error, onChangeNoteColor) {
 
-    const handleChangeNoteColor = (color) => {
-        onChangeNoteColor(noteId, color)
+    const handleChangeNoteColor = (noteId, color, error) => {
+        onChangeNoteColor(notes, noteId, color)
     }
 
     return (
@@ -14,4 +14,4 @@ function ChangeNoteColor ({onChangeNoteColor, noteId}) {
 
 }
 
-export default ChangeNoteColor
+export default NoteColor

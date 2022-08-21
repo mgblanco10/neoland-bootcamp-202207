@@ -11,15 +11,16 @@ import Header from '../components/Header'
 import withContext from '../utils/withContext'
 import { Routes, Route, useNavigate, useLocation } from 'react-router-dom'
 import changeNoteColor from '../logic/changeNotecolor'
-import ChangeNoteColor from '../components/ChangeNoteColor'
+import NoteColor from '../components/NoteColor'
 
-function HomePage({onLogoutClick, context: { handleFeedback }}){
+function HomePage({onLogoutClick, onChangeNoteColor, context: { handleFeedback }}){
     const logger = new Loggito('HomePage')
 
     const [name, setName] = useState(null)
     const [notes, setNotes] = useState(null)
     const navigate = useNavigate()
     const location = useLocation()
+    let color = null
 
     useEffect(() => {
         logger.info('"componentDidMount"')
@@ -90,9 +91,11 @@ function HomePage({onLogoutClick, context: { handleFeedback }}){
     }
 
     // cambio de color
-        const handleChangeColor = () =>{
+    
+        const handleChangeColor = (notes, noteId, color, error) =>{
+            debugger
                 try {
-                    changeNoteColor(sessionStorage.token, notes,function (error) {
+                    NoteColor(sessionStorage.token, notes, noteId, color,error, function (noteId, color, error) { //noteId, color,
                         if (error)
                         handleFeedback({ message: error.message, level: 'error' })
                     })
@@ -173,7 +176,7 @@ function HomePage({onLogoutClick, context: { handleFeedback }}){
         <footer className="footer">
         {location.pathname === '/' && <button className="add-button transparent-button" onClick={handleAddClick}>+</button>}
         {location.pathname === '/' &&  <div class="changeNoteColorContainer">
-                <div class="changeNoteBlue" onClick={handleChangeColor}></div>
+                <div class="changeNoteBlue" onClick={handleChangeColor} ></div> 
                 <div class="changeNotePink" onClick={handleChangeColor}></div>
             </div>}
         </footer>
@@ -182,5 +185,7 @@ function HomePage({onLogoutClick, context: { handleFeedback }}){
     null
 }  
 export default withContext(HomePage)
+
+{/* onClick= {()=> onChangeNoteColor (note, note.id, color) */}
 
 
