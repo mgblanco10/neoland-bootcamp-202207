@@ -10,6 +10,8 @@ import NoteList from '../components/NoteList'
 import Header from '../components/Header'
 import withContext from '../utils/withContext'
 import { Routes, Route, useNavigate, useLocation } from 'react-router-dom'
+import changeNoteColor from '../logic/changeNotecolor'
+import ChangeNoteColor from '../components/ChangeNoteColor'
 
 function HomePage({onLogoutClick, context: { handleFeedback }}){
     const logger = new Loggito('HomePage')
@@ -21,7 +23,7 @@ function HomePage({onLogoutClick, context: { handleFeedback }}){
 
     useEffect(() => {
         logger.info('"componentDidMount"')
-
+// recuperar usuario
         try {
             retrieveUser(sessionStorage.token, (error, user) => {
                 if (error) {
@@ -47,6 +49,7 @@ function HomePage({onLogoutClick, context: { handleFeedback }}){
         loadNotes()
     }, [])
 
+    // carga de notas
     const loadNotes = () =>{
         try{
             retrieveNotes(sessionStorage.token, (error, notes)=>{
@@ -86,6 +89,19 @@ function HomePage({onLogoutClick, context: { handleFeedback }}){
         }
     }
 
+    // cambio de color
+        const handleChangeColor = () =>{
+                try {
+                    changeNoteColor(sessionStorage.token, notes,function (error) {
+                        if (error)
+                        handleFeedback({ message: error.message, level: 'error' })
+                    })
+                } catch (error) {
+                    handleFeedback({ message: error.message, level: 'error' })
+                }
+            }
+            
+
     const handleUpdateNote = (noteId, text)=>{
         try{
             updateNote (sessionStorage.token, noteId, text, error =>{
@@ -124,6 +140,8 @@ function HomePage({onLogoutClick, context: { handleFeedback }}){
         }
     }
 
+
+
     const handleSettingsClick = () => {
         navigate('settings')
         logger.debug('navigate to settings')
@@ -154,6 +172,10 @@ function HomePage({onLogoutClick, context: { handleFeedback }}){
 
         <footer className="footer">
         {location.pathname === '/' && <button className="add-button transparent-button" onClick={handleAddClick}>+</button>}
+        {location.pathname === '/' &&  <div class="changeNoteColorContainer">
+                <div class="changeNoteBlue" onClick={handleChangeColor}></div>
+                <div class="changeNotePink" onClick={handleChangeColor}></div>
+            </div>}
         </footer>
     </div>
     :

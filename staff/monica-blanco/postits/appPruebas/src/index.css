@@ -185,8 +185,31 @@ p{
     cursor: pointer;
     justify-content: center; 
     align-items: center; 
-    padding: 10px;
-    
+    padding: 10px;  
+}
+.changeNoteColorContainer{
+    display: flex;
+    justify-content: flex-end;
+    height:30px;
+    width: 100%;
+    margin-top: 5px;
+    gap: 10px;
+    margin-bottom: 5px;
+}
+.changeNoteBlue, .changeNotePink {
+    height: 100%;
+    width: 14%;
+    border: 1px solid black;
+    border-radius: 10px;
+
+}
+
+.changeNoteBlue{
+    background-color: #5ceef0;
+}
+
+.changeNotePink{
+    background-color: #e8a5dea1;
 }
 
 
