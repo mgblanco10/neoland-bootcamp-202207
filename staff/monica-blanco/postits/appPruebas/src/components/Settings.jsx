@@ -5,7 +5,7 @@ import updateUserPassword from '../logic/updateUserPassword'
 import updateUserEmail from '../logic/updateUserEmail'
 import withContext from '../utils/withContext'
 
-function Settings({onCloseClick, context: { handleFeedback }}) {
+function Settings({context: { handleFeedback }}) {
     const logger = new Loggito('Settings')
 
     logger.info('return')
@@ -74,7 +74,6 @@ function Settings({onCloseClick, context: { handleFeedback }}) {
     logger.info('return')
     
     return <div className="settings container">
-    <IconButton text="home" onClick={onCloseClick} />
 
             <form className="update-password-form form" onSubmit={handleFormSubmitPassword}>
             <img className="imgSettings"
