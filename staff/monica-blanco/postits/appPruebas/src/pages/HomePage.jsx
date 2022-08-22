@@ -17,6 +17,7 @@ function HomePage({onLogoutClick, onChangeNoteColor, context: { handleFeedback }
     const logger = new Loggito('HomePage')
 
     const [name, setName] = useState(null)
+    const [noteSelected, setNoteSelected] = useState(null)
     const [notes, setNotes] = useState(null)
     const navigate = useNavigate()
     const location = useLocation()
@@ -49,6 +50,10 @@ function HomePage({onLogoutClick, onChangeNoteColor, context: { handleFeedback }
 
         loadNotes()
     }, [])
+
+    const handleNoteClick = (noteId) {
+        setNoteSelected(noteId)
+    }
 
     // carga de notas
     const loadNotes = () =>{
@@ -162,12 +167,12 @@ function HomePage({onLogoutClick, onChangeNoteColor, context: { handleFeedback }
     logger.info('return')
 
     return name ?
-        <div className="home-page container--full container--distributed">
+        <div className="container container--full container--distributed">
             <Header name={name} onLogoutClick={onLogoutClick} onSettingsClick={handleSettingsClick} onHomeClick={handleHomeClick}/>
 
         <main className="main">
             <Routes>
-                <Route path="/" element={<NoteList notes={notes} onUpdateNote={handleUpdateNote} onDeleteNote={handleDeleteNote} />}/>
+                <Route path="/" element={<NoteList notes={notes} onUpdateNote={handleUpdateNote} onDeleteNote={handleDeleteNote} onNoteClick={handleNoteClick}/>}/>
                 <Route path="settings" element={<Settings onCloseClick={handleSettingsCloseClick} />}/>
             </Routes>
         </main> 

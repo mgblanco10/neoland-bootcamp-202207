@@ -1,5 +1,5 @@
 import './Settings.css'
-import IconButton from './IconButton'
+// import IconButton from './IconButton'
 import Loggito from '../utils/Loggito'
 import updateUserPassword from '../logic/updateUserPassword'
 import updateUserEmail from '../logic/updateUserEmail'

@@ -21,6 +21,11 @@
     padding: 10px
 }
 
+.NoteList__item--red {
+
+}
+
+
 .NoteList__item-text {
     width: calc(100% - 2rem);
     height: auto;

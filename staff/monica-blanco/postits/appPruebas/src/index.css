@@ -33,13 +33,16 @@ body{
 }
 .container {
     height: 100%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    overflow: hidden;
 } 
 .container--full {
     height: 100%;
+    width: 100%;
 }
 .img{
     width: 110px;
@@ -62,11 +65,7 @@ body{
 .container--distributed{
     justify-content: space-between;
 }
-.containerHeader{
-    display: flex;
-    justify-content: space-between;
-    flex-direction: row;
-} 
+
 .title{
     left: 0;
     letter-spacing: 10px;
@@ -140,8 +139,8 @@ body{
 
 .main{
     display:flex;
+    height: 70%;
     text-align: center;
-    justify-content: center;
     flex-grow: 1;
     overflow: auto;
     padding: 10px;

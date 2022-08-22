@@ -7,7 +7,7 @@ function NoteList({notes, onDeleteNote, onUpdateNote, onChangeNoteColor}) {
     logger.info('return')
 
     return <ul className="NoteList">
-        {notes && notes.map(note => <li className="NoteList__item" key={note.id}>
+    {notes && notes.map(note => <li className={`NoteList__item NoteList__item--${note.color}`} key={note.id}>
             <button className="NoteList__item-delete-button" onClick={() => onDeleteNote(note.id)}>x</button>
 
             <p suppressContentEditableWarning="true" contentEditable="true" className="NoteList__item-text" onKeyUp={event => {
