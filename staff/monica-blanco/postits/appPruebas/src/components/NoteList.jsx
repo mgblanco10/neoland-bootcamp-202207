@@ -36,7 +36,7 @@ function NoteList({notes, onDeleteNote, onUpdateNote, onChangeNoteColor}) {
             }
            
             changeColorContainer.append(changeBlue, changePink)
-            // onChangeNoteColor = null
+            onChangeNoteColor = null
             }}>{note.text}</p>
         </li>)}
     </ul>

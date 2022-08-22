@@ -92,10 +92,9 @@ function HomePage({onLogoutClick, onChangeNoteColor, context: { handleFeedback }
 
     // cambio de color
     
-        const handleChangeColor = (notes, noteId, color, error) =>{
-            debugger
+        const handleChangeColor = (noteId, color, error) =>{
                 try {
-                    NoteColor(sessionStorage.token, notes, noteId, color,error, function (noteId, color, error) { //noteId, color,
+                    changeNoteColor(sessionStorage.token, notes, noteId, color,error, function (notes, noteId, color) { //noteId, color,
                         if (error)
                         handleFeedback({ message: error.message, level: 'error' })
                     })

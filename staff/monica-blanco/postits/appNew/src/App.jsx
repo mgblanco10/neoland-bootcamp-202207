@@ -59,6 +59,7 @@ function App () {
     }
     logger.info('return')
     //no se recomienda hacer así(cambio de tema)
+    
     const toggleTheme = () => document.documentElement.classList.toggle('light')
 
     return <Context.Provider value={{ handleFeedback, toggleTheme }}>
