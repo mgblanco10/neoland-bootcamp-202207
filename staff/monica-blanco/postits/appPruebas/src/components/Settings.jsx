@@ -5,7 +5,7 @@ import updateUserPassword from '../logic/updateUserPassword'
 import updateUserEmail from '../logic/updateUserEmail'
 import withContext from '../utils/withContext'
 
-function Settings({context: { handleFeedback }}) {
+function Settings({onCloseClick, context: { handleFeedback }}) {
     const logger = new Loggito('Settings')
 
     logger.info('return')
