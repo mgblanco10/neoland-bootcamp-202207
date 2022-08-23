@@ -18,6 +18,14 @@ api.post('/api/users', jsonBodyParser, (req, res) => {
 
             return
         }
+        if (files.length ===0){
+            writeUser({name, email, password}, (error)=>{
+                if (error){
+                    res.status(500).json({error: error.message})
+                }
+                res.status(201).send()
+            })
+        }else{
 
         let index = 0
         let file = files[index];
@@ -47,33 +55,37 @@ api.post('/api/users', jsonBodyParser, (req, res) => {
 
                     return
                 }
-
-                const newUser = {
-                    id: `user-${Math.round(Math.random() * Date.now())}`,
-                    name,
-                    email,
-                    password
-                }
-
-                const newJson = JSON.stringify(newUser)
-
-                writeFile(`./data/users/${newUser.id}.json`, newJson, 'utf8', error => {
-                    if (error) {
-                        res.status(500).json({ error: error.message })
-
-                        return
+                writeUser({name,email, password}, (error) =>{
+                    if (error){
+                        res.status(500).json({error: error.message})
                     }
-
                     res.status(201).send()
                 })
             })
-        })() // iife
-    })
+        }) () //iife
+    }
 })
-
-api.post('/api/users/auth', jsonBodyParser, (req, res) => {
-    // TODO implement me
-    // send back the user id in a json { userId: user.id }
 })
+//// api.post('/api/users/auth', jsonBodyParser, (req, res) => {})
 
-api.listen(8080, () => console.log('api started'))
+api.listen(8080, () => console.log("api started"));
+
+function writeUser({ name, email, password }, callback) {
+  const newUser = {
+    id: `user-${Math.round(Math.random() * Date.now())}`,
+    name,
+    email,
+    password,
+  };
+
+  const newJson = JSON.stringify(newUser);
+
+  writeFile(`./data/users/${newUser.id}.json`, newJson, "utf8", (error) => {
+    if (error) {
+      callback(error);
+      return;
+    }
+
+    callback(null);
+  });
+}
