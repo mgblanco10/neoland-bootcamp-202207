@@ -1,4 +1,5 @@
-const { readdir, unlink, readFile } = require('fs')
+const { readdir, unlink, readFile, writeFile } = require('fs')
+const { SystemError, DuplicityError } = require('../errors')
 const registerUser = require('./registerUser')
 
 describe('registerUser', () => {
@@ -74,10 +75,37 @@ describe('registerUser', () => {
         const name = 'Pepito Grillo'
         const email = 'pepito@grillo.com'
         const password = '123123123'
-        // TODO create a user manually (using fs, json tools)
 
-        // TODO call registerUser with same data (it should fail)
-        // TODO check error exists and is a DuplicityError
-        // TODO check user is not re-created (twice) in db
+        const newUser = {
+            id: `user-${Math.round(Math.random() * Date.now())}`,
+            name,
+            email,
+            password
+        }
+        const newJson = JSON.stringify(newUser)
+
+        writeFile (`${folder}/${newUser.id}.json`, newJson, 'utf8', error =>{
+            if (error){
+                done (new SystemError(`cannot write file ${newUser.id}.json in folder ${folder}`))
+
+                return
+            }
+            registerUser(name, email, password, error => {
+                expect(error).toBeInstanceOf(DuplicityError)
+                expect(error.message).toBe('user with email pepito@grillo.com already exists')
+
+                readdir(folder, (error, files) => {
+                    if (error) {
+                        done(error)
+
+                        return
+                    }
+
+                    expect(files).toHaveLength(1)
+
+                    done()
+                })
+            })
+        })
     })
 })
