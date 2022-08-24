@@ -1,7 +1,8 @@
 const express = require('express')
 const { readdir, readFile } = require('fs')
 const registerUser = require('./logic/registerUser')
-const DuplicityError = require('./errors/DuplicityError')
+// const DuplicityError = require('./errors/DuplicityError')
+const { DuplicityError } = require('./errors')
 const authentificateUser = require('./logic/authentificateUser')
 const api = express()
 

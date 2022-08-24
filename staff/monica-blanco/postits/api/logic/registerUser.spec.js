@@ -89,6 +89,7 @@ describe('registerUser', () => {
                 done (new SystemError(`cannot write file ${newUser.id}.json in folder ${folder}`))
 
                 return
+                //if (error) return done(error)--> early return
             }
             registerUser(name, email, password, error => {
                 expect(error).toBeInstanceOf(DuplicityError)
