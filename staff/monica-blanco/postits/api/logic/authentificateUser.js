@@ -1,67 +1,70 @@
-const { writeFile, readdir, readFile } = require('fs')
-// const DuplicityError = require('../errors/DuplicityError')
-// const SystemError = require('../errors/SystemError')
-// const UnknownError = require('../errors/UnknownError')
+const { readdir, readFile } = require('fs')
+const { AuthError, SystemError, UnknownError } = require('../errors')
+const { validateEmail, validatePassword, validateCallback } = require('../validators')
 
 
 function authentificateUser(email, password, callback) {
-    const folder = './data/users/auth'
+    validateEmail(email)
+    validatePassword(password)
+    validateCallback(callback)
+    const folder = './data/users'
 
     readdir(folder, (error, files) => {
-        try {
-            if (error) {
-                // res.status(500).json({error: error.message})
-                callback(error, null)
 
-                return
-            }
+    if (error) return callback(new SystemError (`cannot list files from folder ${folder}`))
+        // {res.status(500).json({error: error.message})
+        //SystemError
+        //callback(error, null) --> Early return
+        // return}
+            
+        // esto es para poder dejar el archivo de . en la carpeta users
+        // esto lo repetiré infitito para cuando haga el forEach y borrado de usuarios no me borre tambien este archivo
+
+        files = files.filter(file => !file.startsWith('.')) 
+
             if (files.length) {
                 let index = 0
                 let file = files[index];
 
                 (function iterate() {
                     readFile(`${folder}/${file}`, 'utf8', (error, json) => {
-                        if (error) {
+                        if (error) return callback (new SystemError (`cannot read file ${file} in folder ${folder}`))
                             // res.status(500).json({ error: error.message })
-                            callback(error, null)
-
-                            return
-                        }
+                                             
 
                         const user = JSON.parse(json)
 
-                        if (user.email === email) {
-                            if (user.password === password) {
-                                // res.status(200).json({ userId: user.id })
-                                callback(null, user.id)
+                        if (user.email === email) 
+                            if (user.password === password) return callback (null, user.id)
 
-                                return
-                            } else {
+                                // res.status(200).json({ userId: user.id })
+                      
+                            else return callback (new AuthError('wrong credentials'))
 
                                 // res.status(401).json({ error: 'wrong credentials' })
-                                callback(error, null)
-                            }
-
+                                //AuthError --> error de autentificación
+           
                             index++
 
                             if (index < files.length) {
                                 file = files[index]
                                 iterate()
 
+                                return
+
                             }
+                            //AuthError --> error de autentificación
                             // res.status(401).json({ error: 'wrong credentials' })
-                            callback(error, null)
-                        }
+                            callback(new AuthError('wrong credentials'))
+                        })
                     })() //iife
                     return
 
-                })
-            }
-            }catch (error) {
-                callback(error, null)
-                // res.status(401).json({ error: 'wrongs credentials' })
-            }
-        })
+                }
+    
+            callback(new AuthError('wrong credentials'))
+            // res.status(500).json({ error: 'wrongs credentials' })
+    })
     }
 
 

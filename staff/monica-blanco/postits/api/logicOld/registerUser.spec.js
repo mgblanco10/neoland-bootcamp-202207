@@ -1,6 +1,9 @@
-const { readdir, unlink, readFile, writeFile } = require('fs')
-const { SystemError, DuplicityError } = require('../errors')
+const { readdir, readFile, writeFile, unlink} = require('fs')
 const registerUser = require('./registerUser')
+const DuplicityError = require('../errors/DuplicityError')
+const SystemError = require('../errors/SystemError')
+
+
 
 describe('registerUser', () => {
     const folder = './data/users'
@@ -32,7 +35,7 @@ describe('registerUser', () => {
         })
     })
 
-    xit('succeds registering a new user', done => { // happy path
+    it('succeds registering a new user', done => { // happy path
         const name = 'Pepito Grillo'
         const email = 'pepito@grillo.com'
         const password = '123123123'
@@ -46,6 +49,7 @@ describe('registerUser', () => {
     
                     return
                 }
+            
 
                 expect(files).toHaveLength(1)
 
@@ -71,11 +75,10 @@ describe('registerUser', () => {
         })
     })
 
-    xit('should fail when user already exists', done => { // unhappy path
+    it('should fail when user already exists', done => { // unhappy path
         const name = 'Pepito Grillo'
         const email = 'pepito@grillo.com'
         const password = '123123123'
-
         const newUser = {
             id: `user-${Math.round(Math.random() * Date.now())}`,
             name,
@@ -110,3 +113,4 @@ describe('registerUser', () => {
         })
     })
 })
+        
