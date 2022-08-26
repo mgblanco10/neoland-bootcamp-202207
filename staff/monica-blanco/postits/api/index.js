@@ -1,6 +1,6 @@
 const express = require('express')
 const { writeFile, readdir, readFile } = require('fs')
-const registerUser = require('./logicOld/registerUser')
+const registerUser = require('./logic/registerUser')
 
 const api = express()
 
