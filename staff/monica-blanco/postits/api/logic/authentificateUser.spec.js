@@ -1,73 +1,60 @@
-const { readdir, unlink, readFile, writeFile } = require('fs')
-const { SystemError, DuplicityError } = require('../errors')
-const authentificateUser = require('./authentificateUser')
-
-describe ('authentificateUser', () =>{
-    const folder = './data/users/auth'
-
-
-})
+const { writeFile } = require('fs')
+const authenticateUser = require('./authenticateUser')
+const { AuthError } = require('../errors')
+const { deleteFiles } = require('../utils')
 
 describe('authenticateUser', () => {
-    beforeEach(() => {
-        users.length = 0
-    })
+    const folder = './data/users'
 
-    xit('should succeed on correct credentials', () => { // happy path :)
-        const name = 'Pi Tufo'
-        const email = 'pi@tufo.com'
+    beforeEach(done => deleteFiles(folder, done))
+
+    it('succeds authenticating on existing user', done => { // happy path
+        const name = 'Pepito Grillo'
+        const email = 'pepito@grillo.com'
         const password = '123123123'
 
-        const piTufo = {
+        const user = { id: `user-${Math.round(Math.random() * Date.now())}`, name, email, password }
+
+        const json = JSON.stringify(user)
+
+        writeFile(`${folder}/${user.id}.json`, json, 'utf8', error => {
+            if (error) return done(error)
+
+            authenticateUser(email, password, (error, userId) => {
+                expect(error).toBeNull()
+                expect(userId).toEqual(user.id)
+
+                done()
+            })
+        })
+    })
+
+    it('should fail with wrong credentials', done => {
+        // escribo un usuario nuevo??
+        const id = 'user-123123123123'
+        const name = 'Monica'
+        const email = 'moni@ca.com'
+        const password = '123123123!'
+
+        const user = {
+            id,
             name,
             email,
             password
         }
 
-        users.push(piTufo)
-
-        authenticateUser(email, password, error => {
-            expect(error).toBeNull()
+        const json = JSON.stringify(user)
+        writeFile(`${usersFolder}/${newUser.id}.json`, newJSON,'utf8', error => {
+            if (error) return done(error)
+            // autentifico con password erroneo
+            authenticateUser(newUser.email, '123123124', (error, userId) => {
+                expect(error).toBeInstanceOf(CredentialsError)
+                expect(error.message).toBe('email or password incorrect')
+                done()
+            })
         })
     })
 
-    xit('should fail on incorrect password', () => { // unhappy path :(
-        const name = 'Ele Fante'
-        const email = 'ele@fante.com'
-        const password = '123123123'
-
-        const eleFante = {
-            name,
-            email,
-            password
-        }
-
-        users.push(eleFante)
-
-        authenticateUser(email, password + '-wrong', error => {
-            expect(error).toBeInstanceOf(Error)
-            expect(error.message).toBe('wrong credentials')
-        })
-    })
-    
-    xit('should fail on incorrect email', () => { // unhappy path :(
-        const name = 'Ele Fante'
-        const email = 'ele@fante.com'
-        const password = '123123123'
-
-        const eleFante = {
-            name,
-            email,
-            password
-        }
-
-        users.push(eleFante)
-
-        authenticateUser('ele@fante.us', password, error => {
-            expect(error).toBeInstanceOf(Error)
-            expect(error.message).toBe('wrong credentials')
-        })
-    })
+    // borro los archivos de nuevo
+    afterEach(done => testDeleteFiles(usersFolder, done))
 })
-
-
