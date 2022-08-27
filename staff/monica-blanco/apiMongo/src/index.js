@@ -17,6 +17,7 @@ connect('mongodb://localhost:27017/postits')
 
                 registerUser(name, email, password)
                     .then(() => res.status(201).send())
+                    //este .catch sería el asincrono
                     .catch(error => {
                         if (error instanceof DuplicityError)
                             res.status(409).json({ error: error.message })
@@ -26,12 +27,15 @@ connect('mongodb://localhost:27017/postits')
                         return
                     })
             } catch (error) {
+                //este catch sería el sincrono
                 if (error instanceof TypeError || error instanceof FormatError)
                     res.status(400).json({ error: error.message })
                 else
                     res.status(500).json({ error: error.message })
             }
         })
+        //en el caso de de usar async y await puedes capturar tanto 
+        //los errores síncronos como asíncronos con el mismo try catch
 
         api.listen(8080, () => console.log('api started'))
 
