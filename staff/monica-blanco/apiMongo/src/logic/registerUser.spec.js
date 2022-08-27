@@ -28,6 +28,7 @@ describe('registerUser', () => {
             })
             .then(users => {
                 expect(users).to.have.length(1)
+                //comprueba que hay uno solo en la bd
 
                 const [user] = users
 
@@ -51,6 +52,7 @@ describe('registerUser', () => {
     })
 // importante esto al terminar todos los test
     after(() => disconnect())
+    // afterAll(() => disconnect('mongodb://localhost:27017/test')) OJO CHACHI PIRULI
 })
 
 //nota: es asyncrono pero no usas el DOM
