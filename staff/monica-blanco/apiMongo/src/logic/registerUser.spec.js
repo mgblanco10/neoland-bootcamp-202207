@@ -12,7 +12,9 @@ describe('registerUser', () => {
 
     beforeEach(() => User.deleteMany())
 
-    it('succeeds on new user', () => {  // happy path
+    //No se usa el dom porque cuando tu haces una promesa aunque es asincrono, este se entera y se espera
+
+    it('succeeds on new user', () => {  // happy path exito registro
         const name = 'Pepito Grillo'
         const email = 'pepito@grillo.com'
         const password = '123123123'
@@ -22,6 +24,7 @@ describe('registerUser', () => {
                 expect(res).to.be.undefined
 
                 return User.find({ email })
+                //comprueba que se ha ingresado correctamente en la bd
             })
             .then(users => {
                 expect(users).to.have.length(1)
