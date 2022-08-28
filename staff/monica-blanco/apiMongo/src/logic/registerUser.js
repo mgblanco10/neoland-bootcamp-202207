@@ -11,6 +11,8 @@ function registerUser(name, email, password) {
         .then(user => {})
         // como yo quiero asegurarme que no devuelva nada hago esto, para conseguir undifined
         .catch(error => {
+            debugger
+            console.log(error)
             if (error.code === 11000)
                 throw new DuplicityError('user already exists')
 
