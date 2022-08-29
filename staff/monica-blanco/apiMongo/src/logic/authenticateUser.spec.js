@@ -20,8 +20,8 @@ describe('autenticateUser', () => {
 
         return autenticateUser(email, password)
             .then((userId) => {
-                expect(userId).to.equal(user.id)
-                return User.find({ email })
+                expect(userId).to.equal(null)
+                return User.findOne({ email })
                 //busca el email en base de datos y recoge el userId
             })
             .then(user => {
@@ -33,7 +33,7 @@ describe('autenticateUser', () => {
 
     })
 //VERIFICAR DONDE ESTA EL ERROR... PROBLEMAS DE LLAVES
-    xit('fails with wrong credentials', () => { // unhappy path
+    it('fails with wrong credentials', () => { // unhappy path
         // const id = 'user-123123123123'
         // const name = 'Pepito Grillo'
         const email = 'pepito@grillo.com'
@@ -42,7 +42,7 @@ describe('autenticateUser', () => {
         const user = { email, password }
 
         return autenticateUser(email, password)
-            .then(() => User.find({ email })
+            .then(() => User.find({ email }))
             .catch(error => {
                 expect(error).to.be.instanceOf(DuplicityError)
                 expect(error.menssage).to.equal('credentials wrong')
