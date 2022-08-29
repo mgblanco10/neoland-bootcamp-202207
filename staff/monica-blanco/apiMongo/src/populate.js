@@ -27,8 +27,8 @@ connect('mongodb://localhost:27017/postits')
 
         const wendy = new User({
             name: 'Wendy Darling',
-            email: 'wendy@darling.com',
-            // email: 'pepito@grillo.com',
+            // email: 'wendy@darling.com',
+            email: 'pepito@grillo.com',
             password: '12312123'
         })
 
