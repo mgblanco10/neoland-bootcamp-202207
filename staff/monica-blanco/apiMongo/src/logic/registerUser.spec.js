@@ -15,8 +15,8 @@ describe('registerUser', () => {
     //No se usa el dom porque cuando tu haces una promesa aunque es asincrono, este se entera y se espera
 
     it('succeeds on new user', () => {  // happy path exito registro
-        const name = 'Pepito Grillo'
-        const email = 'pepito@grillo.com'
+        const name = 'Pepi Grillo'
+        const email = 'pepi@grillo.com'
         const password = '123123123'
 
         return registerUser(name, email, password)
@@ -39,8 +39,8 @@ describe('registerUser', () => {
     })
 
     it('fails on existing user', () => {  // unhappy path
-        const name = 'Pepito Grillo'
-        const email = 'pepito@grillo.com'
+        const name = 'Pepi Grillo'
+        const email = 'pepi@grillo.com'
         const password = '123123123'
 
         return User.create({ name, email, password })
