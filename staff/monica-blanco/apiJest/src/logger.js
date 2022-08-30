@@ -32,6 +32,7 @@ module.exports = function (callingModule) {
         ],
     })
 }
+// preguntar respecto a este module.exports :s
 
 //Otra manera de hacerlo + SENCILLA Formato simple
 //Sacado de página oficial de logger OJO

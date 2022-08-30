@@ -1,10 +1,11 @@
 const { connect, disconnect } = require('mongoose')
 const express = require('express')
-const { DuplicityError, AuthError, FormatError } = require('./errors')
+const { DuplicityError, AuthError, NotFoundError, FormatError, SystemError } = require('./errors')
 const { registerUser, authenticateUser, retrieveUser } = require('./logic')
 const logger = require('./logger')(module)
+// (module) palabra reservada que se refiere al fichero del modulo exportado
 const { sign, verify, JsonWebTokenError, TokenExpiredError, NotBeforeError } = require('jsonwebtoken')
-
+// TOKEN se guarda la id usuario //descargas npm i jsonwebtoken
 
 connect('mongodb://localhost:27017/postits')
     .then(() => {
@@ -47,7 +48,8 @@ connect('mongodb://localhost:27017/postits')
                 authenticateUser(email, password)
                     .then(userId => {
                         const token = sign({ sub: userId }, 'Dan: copié el código de Mónica!', { expiresIn: '1h' })
-
+                        //tres partes tiene el token userId, secreto y expiración, aquí el secreto
+                        
                         res.json({ token })
                     })
                     .catch(error => {
