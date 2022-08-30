@@ -5,7 +5,7 @@ const { registerUser, authenticateUser, retrieveUser } = require('./logic')
 const logger = require('./logger')(module)
 // (module) palabra reservada que se refiere al fichero del modulo exportado
 const { sign, verify, JsonWebTokenError, TokenExpiredError, NotBeforeError } = require('jsonwebtoken')
-// TOKEN se guarda la id usuario //descargas npm i jsonwebtoken
+// TOKEN se guarda la id usuario //descargas npm i jsonwebtoken // librería de token// jwt.io-->página token
 
 connect('mongodb://localhost:27017/postits')
     .then(() => {
@@ -77,10 +77,14 @@ connect('mongodb://localhost:27017/postits')
                 const { headers: { authorization } } = req
 
                 const token = authorization.substring(7)
+                // espacios de palabra bearer+espacio-->esto siempre es fijo por eso el substring(7) seimpre será el mismo
+
 
                 const payload = verify(token, 'Dan: copié el código de Mónica!')
+                //el mismo secreto que se utilizó para crear el token
 
                 const { sub: userId } = payload
+                //esto me interesa porque con el sub recupero el usuario
 
                 retrieveUser(userId)
                     .then(user => res.json(user))
