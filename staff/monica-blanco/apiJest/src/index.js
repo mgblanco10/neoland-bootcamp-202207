@@ -102,6 +102,7 @@ connect('mongodb://localhost:27017/postits')
                 if (error instanceof TypeError || error instanceof FormatError)
                     res.status(400).json({ error: error.message })
                 else if(error instanceof JsonWebTokenError || error instanceof TokenExpiredError || error instanceof NotBeforeError)
+                //errores de token
                     res.status(401).json({ error: 'token not valid'})
                 else
                     res.status(500).json({ error: 'system error' })
