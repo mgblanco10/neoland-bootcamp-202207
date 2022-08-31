@@ -101,14 +101,14 @@ connect('mongodb://localhost:27017/postits')
                 logger.error(error)
             }
         })
-        api.post('/api/notes', (req, res) => {
+        api.post('/api/notes', jsonBodyParser, (req, res) => {
             try {
                 const userId = verifyToken(req)
-                createNote(userId)
-                    .then(user => res.json(user))
+                createNote(userId, text)
+                    .then(() => res.status(201).send())
                     .catch(error => {
-                        if (error instanceof NotFoundError || error instanceof AuthError)
-                            res.status(401).json({ error: 'wrong credentials' })
+                        if (error instanceof NotFoundError)
+                            res.status(404).json({ error: error.message })
                         else
                             res.status(500).json({ error: 'system error' })
 

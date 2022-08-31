@@ -1,7 +1,7 @@
 const {connect, disconnect, Types: {ObjectId}} = require('mongoose')
-const {User, Note} = require ('../models')
-const {NotFoundError} = require ('../errors')
-const {createNote} = require('.')
+const {User, Note} = require ('../../../models')
+const {NotFoundError} = require ('../../../errors')
+const createNote = require('.')
 
 describe ('createNote', ()=>{
     beforeAll(()=> connect ('mongodb://localhost:27017/postits-test'))
@@ -40,7 +40,7 @@ describe ('createNote', ()=>{
 
     it('fails on non-existing user', () => {  //   unhappy path
         const userId = new ObjectId().toString()
-//truco para forzar un error porque si no falla iría al then y asi podriamos saber si realmente falla el test
+//truco para forzar un error porque si no falla saltaria el then y asi podriamos saber si realmente falla el test
         // return createNote(userId)
         // .then(()=>{throw new Error ('should not reach this point')})
         // .catch(error => {

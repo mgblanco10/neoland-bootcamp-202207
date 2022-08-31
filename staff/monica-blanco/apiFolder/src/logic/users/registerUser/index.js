@@ -1,6 +1,6 @@
-const { User } = require('../models')
-const { DuplicityError, SystemError } = require('../errors')
-const { validateText, validateEmail, validatePassword } = require('../validators')
+const { User } = require('../../../models')
+const { DuplicityError, SystemError } = require('../../../errors')
+const { validateText, validateEmail, validatePassword } = require('../../../validators')
 
 /**
  * 
@@ -13,6 +13,7 @@ const { validateText, validateEmail, validatePassword } = require('../validators
  * @throws {DuplicityError} User alreadys exists.
  * @throws {SystemError} If an error happens in db.
  */
+
 function registerUser(name, email, password) {
     validateText(name, 'name')
     validateEmail(email)

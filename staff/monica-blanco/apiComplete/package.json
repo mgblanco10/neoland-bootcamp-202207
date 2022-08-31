@@ -1,11 +1,11 @@
 {
-  "name": "apiJest",
+  "name": "apiComplete",
   "version": "1.0.0",
   "description": "",
   "main": "src/index.js",
   "scripts": {
     "start": "node src",
-    "test": "npx jest --runInBand src/logic/*.spec.js",
+    "test": "npx jest --runInBand --setTimeout=60000 src/logic/*.spec.js",
     "test-inspect": "node --inspect ./node_modules/.bin/jest --runInBand --testTimeout=60000 src/logic/*.spec.js",
     "test-inspect-brk": "node --inspect-brk ./node_modules/.bin/jest --runInBand --testTimeout=60000 src/logic/*.spec.js",
     "test-inspect-cli": "node inspect ./node_modules/.bin/jest --runInBand --testTimeout=60000 src/logic/*.spec.js",

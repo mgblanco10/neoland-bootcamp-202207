@@ -1,6 +1,7 @@
-const { User, Note } = require('../models')
-const { NotFoundError, SystemError } = require('../errors')
-const { validateObjectId, validateString } = require('../validators')
+const { User, Note } = require('../../../models')
+const { NotFoundError, SystemError } = require('../../../errors')
+const { validateString } = require('../../../validators')
+const { verifyObjectId } = require('../../../utils')
 
 /**
  * Creates a note for a user
@@ -18,7 +19,7 @@ const { validateObjectId, validateString } = require('../validators')
  */
 
 function createNote(userId, text = '') {
-    validateObjectId(userId, 'user id')
+    verifyObjectId(userId, 'user id')
     validateString(text, 'text')
 
     return User.findById(userId).lean()

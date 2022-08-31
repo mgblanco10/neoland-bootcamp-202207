@@ -1,6 +1,6 @@
-const { User } = require('../models')
-const { NotFoundError, SystemError, AuthError } = require('../errors')
-const { validateEmail, validatePassword } = require('../validators')
+const { User } = require('../../../models')
+const { NotFoundError, SystemError, AuthError } = require('../../../errors')
+const { validateEmail, validatePassword } = require('../../../validators')
 /**
  * 
  * @param {string} email The user.
@@ -19,11 +19,10 @@ function authenticateUser(email, password) {
 
     return User.findOne({ email })
         .catch(error => {
-
             throw new SystemError(error.message)
         })
         .then(user => {
-            debugger
+         
             if (!user) throw new NotFoundError(`user with email ${email} not found`)
 
             if (user.password !== password) throw new AuthError('wrong password')
