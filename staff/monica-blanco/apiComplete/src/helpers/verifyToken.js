@@ -12,4 +12,6 @@ const payload = verify(token, 'Dan: copié el código de Mónica!')
 
 const { sub: userId } = payload
 //esto me interesa porque con el sub recupero el usuario
+
+return userId
 }

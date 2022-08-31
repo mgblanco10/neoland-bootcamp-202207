@@ -6,6 +6,7 @@ const logger = require('./logger')(module)
 // (module) palabra reservada que se refiere al fichero del modulo exportado
 const { sign, verify, JsonWebTokenError, TokenExpiredError, NotBeforeError } = require('jsonwebtoken')
 // TOKEN se guarda la id usuario //descargas npm i jsonwebtoken // librería de token// jwt.io-->página token
+const { verifyToken } = require('./helpers')
 
 connect('mongodb://localhost:27017/postits')
     .then(() => {
@@ -74,17 +75,7 @@ connect('mongodb://localhost:27017/postits')
 
         api.get('/api/users', (req, res) => {
             try {
-                const { headers: { authorization } } = req
-
-                const token = authorization.substring(7)
-                // espacios de palabra bearer+espacio-->esto siempre es fijo por eso el substring(7) seimpre será el mismo
-
-
-                const payload = verify(token, 'Dan: copié el código de Mónica!')
-                //el mismo secreto que se utilizó para crear el token
-
-                const { sub: userId } = payload
-                //esto me interesa porque con el sub recupero el usuario
+                const userId = verifyToken(req)
 
                 retrieveUser(userId)
                     .then(user => res.json(user))
@@ -112,18 +103,7 @@ connect('mongodb://localhost:27017/postits')
         })
         api.post('/api/notes', (req, res) => {
             try {
-                const { headers: { authorization } } = req
-
-                const token = authorization.substring(7)
-                // espacios de palabra bearer+espacio-->esto siempre es fijo por eso el substring(7) seimpre será el mismo
-
-
-                const payload = verify(token, 'Dan: copié el código de Mónica!')
-                //el mismo secreto que se utilizó para crear el token
-
-                const { sub: userId } = payload
-                //esto me interesa porque con el sub recupero el usuario
-
+                const userId = verifyToken(req)
                 createNote(userId)
                     .then(user => res.json(user))
                     .catch(error => {
@@ -148,6 +128,10 @@ connect('mongodb://localhost:27017/postits')
                 logger.error(error)
             }
         })
+          //updateNote
+          api.patch('/api/notes/:noteId', jsonBodyParser, (req, res) => {
+            const { params: { noteId }} = req
+        })
 
         api.listen(8080, () => logger.info('api started'))
 
@@ -168,4 +152,4 @@ connect('mongodb://localhost:27017/postits')
     })
     .catch(error => {
         logger.error(error)
-    })
+})
