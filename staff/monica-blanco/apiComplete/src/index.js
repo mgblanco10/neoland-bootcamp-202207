@@ -4,9 +4,9 @@ const { DuplicityError, AuthError, NotFoundError, FormatError, SystemError } = r
 const { registerUser, authenticateUser, retrieveUser, createNote } = require('./logic')
 const logger = require('./logger')(module)
 // (module) palabra reservada que se refiere al fichero del modulo exportado
-const { sign, verify, JsonWebTokenError, TokenExpiredError, NotBeforeError } = require('jsonwebtoken')
+const { sign, JsonWebTokenError, TokenExpiredError, NotBeforeError } = require('jsonwebtoken')
 // TOKEN se guarda la id usuario //descargas npm i jsonwebtoken // librería de token// jwt.io-->página token
-const { verifyToken } = require('./helpers')
+const { verifyToken } = require('./utils')
 
 connect('mongodb://localhost:27017/postits')
     .then(() => {

@@ -38,12 +38,13 @@ describe ('createNote', ()=>{
 
     it('fails on non-existing user', () => {  //   unhappy path
         const userId = new ObjectId().toString()
-
+//truco para forzar un error porque si no falla iría al then y asi podriamos saber si realmente falla el test
         return createNote(userId)
-            .catch(error => {
-                expect(error).toBeInstanceOf(NotFoundError)
-                expect(error.message).toEqual(`user with id ${userId} not found`)
-            })
+        .then(()=>{throw new Error ('should not reach this point')})
+        .catch(error => {
+            expect(error).toBeInstanceOf(NotFoundError)
+            expect(error.message).toEqual(`user with id ${userId} not found`)
+        })
     })
 
     afterAll(() => disconnect())
