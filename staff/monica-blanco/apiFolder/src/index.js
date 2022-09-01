@@ -37,7 +37,5 @@ connect('mongodb://localhost:27017/postits')
     logger.error(error)
 })
 
- //updateNote
-//  api.patch('/api/notes/:noteId', jsonBodyParser, (req, res) => {
-//     const { params: { noteId }} = req
+
 

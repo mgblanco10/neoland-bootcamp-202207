@@ -1,15 +1,12 @@
 const { runWithErrorHandling, createLogger, verifyToken } = require('../../utils')
-const { notes: { createNote } } = require('../../logic')
+const { notes: { retrieveNotes } } = require('../../logic')
 const logger = createLogger(module)
 
 module.exports = (req, res) => {
     runWithErrorHandling(() => {
         const userId = verifyToken(req)
 
-        const { body: { text } } = req
-
-        return createNote(userId, text)
-            .then(() => res.status(201).send())
+        return retrieveNotes(userId)
+            .then(notes => res.status(200).json(notes))
     }, res, logger)
 }
-//los errores nos los llevamos a runWithErrorHandling

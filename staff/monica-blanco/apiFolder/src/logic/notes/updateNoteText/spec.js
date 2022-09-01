@@ -26,7 +26,7 @@ describe('updateNoteText', () => {
                             expect(noteFounded.text).toEqual('new Text')
                             expect(noteFounded.user.toString()).toEqual(user.id)
                             expect(noteFounded.visibility).toEqual('private')
-                            expect(noteFounded.createAt).toBeInstanceOf(Date)
+                            expect(noteFounded.createdAt).toBeInstanceOf(Date)
                             expect(noteFounded.modifiedAt).toBeInstanceOf(Date)
                         })
 

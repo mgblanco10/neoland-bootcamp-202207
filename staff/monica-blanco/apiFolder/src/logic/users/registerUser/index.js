@@ -15,6 +15,7 @@ const { validateText, validateEmail, validatePassword } = require('../../../vali
  */
 
 function registerUser(name, email, password) {
+    //errores sincronos
     validateText(name, 'name')
     validateEmail(email)
     validatePassword(password)
