@@ -1,0 +1,20 @@
+.datePicker{
+    position: absolute;
+    top:45px;
+    left: 0px;
+    /* width: 150px;
+    height: 150px; */
+    /* z-index: 50; */
+    /* revisar cuando pruebe el calendario con el header*/
+}
+.navigatorSearch{
+    display: flex;
+    flex-direction: column; 
+    text-align: center;
+    justify-content: center;
+}
+.searchOffice{
+    font-family: 'Courier New', Courier, monospace;
+}
+ /* no logro disminuir tamaño */ 
+ /* darle una vuelta a ver que es lo que esta ocurriendo */
