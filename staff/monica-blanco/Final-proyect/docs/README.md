@@ -18,7 +18,7 @@ La página de alquiler de espacios de trabajo que hago espero poder reflejar la 
 Ahora en cuanto especificaciones técnicas está página es una aplicación firts mobile, pero donde la idea es trabajar con media queries que permita al usuario también verla en un destock , aquí la idea es tener dos front distintos y jugar un poco con los tamaños de dispositivos, tendrá una parte de calendario donde el usuario podrá seleccionar las fechas donde necesita espacio, tendrá una parte de filtrado por precio, quizás un range y por último tendrá una parte de loggin,register esto en una primera versión.
 En una siguiente versión me gustaría hacer la parte de pago, y ampliar a otras ciudades, incluso pensar en las rutas y poner medios de transporte disponibles,etc.
 
-Extra--------V2 ....:S espero llegar antes de dos semanas y no abrumarme, para poder hacer todo 
+Extra-Iteracion 1 --------V2 ....:S espero llegar antes de dos semanas y no abrumarme, para poder hacer todo 
 tendrá una parte de mapa para poder hacer la ubicación del espacio de trabajo,
 En una segunda versión, permitir que los usuarios puedan darle like a sus espacios favoritos, además poder agregar un map con geospatial queries mongodb, y quizás un apartado de noticias 
 
@@ -44,13 +44,13 @@ En una segunda versión, permitir que los usuarios puedan darle like a sus espac
 ### Data Model
 
  User
-- id: ObjectId --> por defecto de bd
+- id: ObjectId --> automático mongo
 - name
 - email
 - password
 
 Reservation
-- id: ObjectId --> por defecto de bd
+- id: ObjectId --> automático mongo
 - user: ObjectId ref: 'User'
 - workspace: ObjectId
 - date: Date
