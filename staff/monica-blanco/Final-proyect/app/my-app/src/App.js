@@ -19,16 +19,16 @@ import DatePicker from './components/DatePicker';
 function App() {
   return (
     <div>
-  <Home/>     
+<Search/> 
         </div>
   );
 }
 
 export default App;
 
-{/* <Search/> */}
-{/* <DatePicker/> */}
+{/* <Home/>      */}
 
+{/* <DatePicker/> */}
 
 //<Map/> 
 
