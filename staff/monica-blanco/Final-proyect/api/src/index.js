@@ -21,7 +21,7 @@ connect(MONGO_URL)
 
     api.get('/', (req, res) => res.send(`${name} v${version} ;)`))
 
-    api.use('/api', usersRouter, notesRouter)
+    api.use('/api', usersRouter)
 
     api.listen(PORT, () => logger.info(`${name} v${version} started and listening in port ${PORT}`))
 

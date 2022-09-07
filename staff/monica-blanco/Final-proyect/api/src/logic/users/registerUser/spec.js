@@ -1,7 +1,12 @@
+require('dotenv').config()
+
 const { connect, disconnect } = require('mongoose')
 const { User } = require('../../../models')
 const { DuplicityError } = require('errors')
 const registerUser = require('.')
+
+const { env: { MONGO_URL_TEST}} = process
+
 
 describe('registerUser', () => {
     beforeAll(() => connect(MONGO_URL_TEST))

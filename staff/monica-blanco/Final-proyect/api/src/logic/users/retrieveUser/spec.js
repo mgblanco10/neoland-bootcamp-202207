@@ -1,7 +1,11 @@
+require('dotenv').config()
+
 const { connect, disconnect, Types:{ObjectId} } = require('mongoose')
 const { User } = require('../../../models')
-const { NotFoundError} = require('../../../errors')
+const { NotFoundError} = require('errors')
 const retrieveUser = require('.')
+
+const { env: { MONGO_URL_TEST } } = process
 
 describe('retrieveUser', () => {
     beforeAll(() => connect(MONGO_URL_TEST))

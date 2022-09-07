@@ -1,4 +1,5 @@
-Name aplication: SpaceWork
+## Name aplication: 
+WorkSpaces
 
 https://giphy.com/gifs/newquest-coffee-hands-3oriO7A7bt1wsEP4cw
 
@@ -45,9 +46,9 @@ En una segunda versión, permitir que los usuarios puedan darle like a sus espac
 
  User
 - id: ObjectId --> automático mongo
-- name
-- email
-- password
+- name:string
+- email: string
+- password:string
 
 Reservation
 - id: ObjectId --> automático mongo
