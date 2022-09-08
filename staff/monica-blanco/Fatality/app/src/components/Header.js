@@ -1,6 +1,7 @@
 function Header(){
     return(
-        <nav className="flex justify-between items-center h16 bg-blue-500 text-white relative shadow-sm">
+        <div className="">
+        <nav className="flex justify-between items-center h16 bg-gray-100 text-blue-500 relative shadow-sm">
             Logo
 
             <div className="px-4 cursor-pointer md:hidden">
@@ -17,6 +18,7 @@ function Header(){
 
    
         </nav>
+        </div>
     )
 
 }

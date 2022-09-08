@@ -76,7 +76,7 @@ Workspace
 
 ## Roadmap
 
-Sprint
+Sprint 
 --ver que librerías necesito para mi proyecto y entender como utilizarlas (WIP)
 --Descarga de react (LISTOOO)
 --Limpieza de las carpetas para empezar mi app (LISTO)
@@ -92,8 +92,22 @@ Sprint
 --calendario
 --trabajar search 
 --favicon
-sprint
 -- trabajo api (WIP)
+--componente
+--header
+--login
+--register
+--logicas reservation
+--navigation api & app
+--tailwind
+--pagina map
+--imagenes
+--rutas api(listo)
+--responsive (WIP)
+--MODEL Y SCHEMAS(listo)
+--
+
+
 
 
 /* ver colores cuando este menos agotada y decidir que hacer.. revisar header, hacer algo con el botton del banner */

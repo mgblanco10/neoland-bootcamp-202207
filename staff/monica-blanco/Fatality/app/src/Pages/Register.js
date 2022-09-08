@@ -43,8 +43,8 @@ export default function Register({onLinkClick}) {
     }
     return (
         <div className='bg-white px-10 py-20 rounded-3xl border-2 border-gray-100'>
-            <h1 className='text-5xl font-semibold'> Welcome Back</h1>
-            <p className='font-medium text-lg text-gray-500 mt-4'> Welcome! please enter your information to register.</p>
+            <h1 className='text-5xl font-semibold'> Welcome !!! </h1>
+            <p className='font-medium text-lg text-gray-500 mt-4'> Please enter your information to register.</p>
             <div className='mt-8'>
                 <form metod="get" onSubmit={handleFormSubmit}>
                             <div>
@@ -78,7 +78,7 @@ export default function Register({onLinkClick}) {
                         />
                 </div>
                                 <div className='mt-8 flex flex-col gap-y-4'>
-                                    <button className='active:scale-[.98] active:duration-75 transition-all hoover:scale-[1.01] ease-in-out py-3 rounded-xl bg-blue-500 text-white text-lg font-bold' type="submit">Sing in</button>
+                                    <button className='active:scale-[.98] active:duration-75 transition-all hoover:scale-[1.01] ease-in-out py-3 rounded-xl bg-blue-500 text-white text-lg font-bold' type="submit">Sign in</button>
                                 </div>
                                     <a className="anchor" href="login.html" onClick={handleLinkClick}>Login</a>
                 </form>

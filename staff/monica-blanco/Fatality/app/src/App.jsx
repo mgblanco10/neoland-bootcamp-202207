@@ -2,8 +2,11 @@ import { useState } from 'react'
 import Login from './Pages/Login'
 import Register from './Pages/Register'
 import Home from './Pages/Home'
+import Header from './components/Header'
+import Search from './Pages/Search'
 import Loggito from './utils/Loggito'
-// import Search from './Pages/Search'
+
+import Feeckback from './components/Feeckback'
 
 
 import { Routes, Route, useNavigate, Navigate } from 'react-router-dom'
@@ -26,11 +29,11 @@ function App () {
         logger.debug('navigate to login')
     }
 
-    // const handleNavigationToSearch = () => {
-    //     navigate('search')
+    const handleNavigationToSearch = () => {
+        navigate('search')
     
-    //     logger.debug('navigate to info')
-    // }
+        logger.debug('navigate to info')
+    }
 
     const handleNavigationToHome = () => {
         navigate('/')
@@ -46,35 +49,32 @@ function App () {
 
     logger.info('return')
     
-    return (
-        
-        <div>
-        <Routes>
-          <Route path="login" element={sessionStorage.token ? <Navigate to="/" /> : <Login onLogin={handleNavigationToHome} />} />
-          <Route path='*/' element={sessionStorage.token ? <Home onLogoutClick={handleLogoutClick} /> : <Navigate to="login" />} />
-        </Routes>
-        
-                <div className="flex w-full h-screen">
-              <div className="w-full items-center justify-center lg:w-1/2">
-                <Login/>
-                <Register/>
-              </div>
-              <div className="hidden relative lg:flex h-full w-1/2 items-center justify-center h-full bg-gray-200">
-                <div className="w-60 h-60 bg-gradient-to-r from-green-400 to-blue-500 rounded-full animate-bounce" />
-                    <div className="w-full h-1/2 absolute bottom-0 bg-white/10 backdrop-blur-lg" />
-                  </div>
-                </div>
+    return (   
+
+<div>  
+
+        <Search/> 
+
+
+</div>
             
-            </div>
+            )
+        }
+        export default App
+
+
+        //<Route path="search" element={<Search onLinkClick={handleNavigationToHome}/>} />
+
         
-        )
-    }
-    export default App
-    //<Route path="search" element={<Search onLinkClick={handleNavigationToHome}/>} />
-    
-    
-    //<Search/> 
-    
+        // <div>
+        // <Routes>
+        //   <Route path="login" element={sessionStorage.token ? <Navigate to="/" /> : <Login onLogin={handleNavigationToHome} />} />
+        //   <Route path='*/' element={sessionStorage.token ? <Home onLogoutClick={handleLogoutClick} /> : <Navigate to="login" />} />
+        // </Routes>
+        //</div>
+
+        {/* <Header/> */}
+        
         // <div>
         // <Routes>
         //     <Route path="login" element={sessionStorage.token ? <Navigate to="/" /> : <Login onLinkClick={handleNavigationToRegister} onLogIn={handleNavigationToHome} />} />
@@ -84,8 +84,17 @@ function App () {
         // </div>
     
     
+    //     <div className="flex w-full h-screen">
+    //   <div className="w-full items-center justify-center lg:w-1/2">
+    //     <Login/>
+    //     <Register/>
+    //   </div>
+    //   <div className="hidden relative lg:flex h-full w-1/2 items-center justify-center h-full bg-gray-200">
+    //     <div className="w-60 h-60 bg-gradient-to-r from-green-400 to-blue-500 rounded-full animate-bounce" />
+    //         <div className="w-full h-1/2 absolute bottom-0 bg-white/10 backdrop-blur-lg" />
+    //       </div>
+    //     </div>
     
     
     // npm start
-{/* <Header/> */}
 {/* <PhotoGaleria/> */}
