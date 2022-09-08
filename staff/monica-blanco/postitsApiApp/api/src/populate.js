@@ -17,7 +17,9 @@ connect('mongodb://localhost:27017/postits')
     //         Note.deleteMany()
     //     ])
     // })
-    .then(() => Promise.all([User.deleteMany(), Note.deleteMany()]))
+    .then(() => {
+        return Promise.all([User.deleteMany(), Note.deleteMany()])}
+        )
     .then(() => {
         const pepito = new User({
             name: 'Pepito Grillo',

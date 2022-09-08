@@ -17,7 +17,6 @@ const reservation = new Schema({
 
     date:{
         type: Date,
-        required: true
     },
     createdAt: {
         type: Date,
