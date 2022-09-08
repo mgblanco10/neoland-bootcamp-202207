@@ -6,8 +6,11 @@ import Loggito from './utils/Loggito'
 import Search from './Pages/Search'
 import Header from './components/Header'
 import Menu from './components/Menu'
+import Colors from './components/Colors'
+
 
 import { Routes, Route, useNavigate, Navigate } from 'react-router-dom'
+import Feedback from './components/Colors'
 
 function App () {
     const logger = new Loggito('App')
@@ -48,7 +51,7 @@ function App () {
     
     return (
         <div>
-        <Menu/>
+        <Colors/>
             </div>
     )
 }
@@ -88,3 +91,4 @@ export default App
     //     </div>
     // npm start
 {/* <Header/> */}
+{/* <PhotoGaleria/> */}
