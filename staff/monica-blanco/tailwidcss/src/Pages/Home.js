@@ -17,3 +17,11 @@ function Home({onLinkClick}) {
         )
     }
     export default Home
+
+
+//     return (
+//       <h1 className="text-3xl font-bold underline">
+//         MARAVILLORO REGISTRO
+//       </h1>
+//     )
+//   }

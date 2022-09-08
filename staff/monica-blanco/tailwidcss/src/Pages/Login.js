@@ -94,4 +94,6 @@ return (
 )
     
 }
+
+//pruebas
 {/* <button className='flex py-3 item-center justify-center gap-2 active:scale-[.98] active:duration-75 transition-all'> Register </button> */ }
