@@ -15,6 +15,9 @@ usersRouter.patch('/users/email/',jsonBodyParser, updateUserEmailHandler)
 
 usersRouter.patch('/users/password/',jsonBodyParser, updateUserPasswordHandler)
 
+/*
+TODO workspacesRouter.patch('/workspaces/:workspaceId/reservations', jsonBodyParser, createReservationHandler)
+*/
 
 module.exports = {
     usersRouter
