@@ -4,26 +4,15 @@ import Loggito from '../utils/Loggito'
 import { useLocation } from 'react-router-dom'
 
 
-function Header({onLogoutClick, onSettingsClick , view: viewHome}){
+function Header({onLogoutClick, onSettingsClick , view: settings}){
   const logger = new Loggito ('Header')
+  const location = useLocation()
 
   const [view, setView] = useState(null) 
   const handleLogoutClick = () => onLogoutClick()
- 
-  const handleMenuClick = () => {
-    setView('menu')
-
-    logger.debug('setView', 'menu')
-}
-
-const handleCloseClick = () => {
-    setView(null)
-
-    logger.debug('setView', null)
-}
 
 const handleSettingsClick = () => {
-    setView(null)
+    setView('settings')
 
     logger.debug('setView', null)
 
@@ -61,11 +50,11 @@ logger.info('return')
           <div class="flex space-x-4">
 
 
-            <a class="text-gray-500 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Workspace</a>
+            <a class="text-gray-500 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Workspaces</a>
 
-            <a class="text-gray-500 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" onClick={handleSettingsClick} view={viewHome}>Settings</a>
+           <a class="text-gray-500 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" onClick={handleSettingsClick} view={settings}>Settings</a>
 
-            <a class="text-gray-500 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" onClick={handleLogoutClick} view={viewHome} >Logout</a>
+            <a class="text-gray-500 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" onClick={handleLogoutClick} >Logout</a>
 
 
             <a class="text-gray-500 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Calendar</a>

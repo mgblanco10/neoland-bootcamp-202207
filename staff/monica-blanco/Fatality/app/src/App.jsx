@@ -2,7 +2,7 @@ import { useState } from 'react'
 import Login from './Pages/Login'
 import Register from './Pages/Register'
 import Home from './Pages/Home'
-import Settings from './Pages/Search'
+import Settings from './Pages/Settings'
 import Loggito from './utils/Loggito'
 
 import Feeckback from './components/Feeckback'
@@ -26,12 +26,18 @@ function App () {
         logger.debug('navigate to login')
     }
 
+    const handleNavigationToSettings = () => {
+        navigate('settings')
+    
+        logger.debug('navigate to settings')
+    }
 
     const handleNavigationToHome = () => {
         navigate('/')
     
         logger.debug('navigate to home')
     }
+
 
     const handleLogoutClick = () => {
         delete sessionStorage.token
@@ -46,7 +52,8 @@ function App () {
         <Routes>
        <Route path="login" element={sessionStorage.token ? <Navigate to="/" /> : <Login onLinkClick={handleNavigationToRegister} onLogIn={handleNavigationToHome} />} />
         <Route path="register" element={sessionStorage.token ? <Navigate to="/" /> :  <Register onLinkClick={handleNavigationToLogin} />} />
-         <Route path="/*" element={sessionStorage.token ? <Home onLogoutClick={handleLogoutClick} /> : <Navigate to="login" />} />
+        <Route path="settings" element={<Settings onLinkClick={handleNavigationToHome}/>} />
+         <Route path="/*" element={sessionStorage.token ? <Home onLogoutClick={handleLogoutClick} onLinkClick={handleNavigationToSettings} /> : <Navigate to="login" />} />
         </Routes>      
          </div>
 

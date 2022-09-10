@@ -1,11 +1,17 @@
 import Loggito from '../utils/Loggito'
 import updateUserPassword from '../logic/updateUserPassword'
-import withContext from '../utils/withContext'
 
-function Settings({ onCloseClick }) {
+
+function Settings({ onLinkClick }) {
     const logger = new Loggito('Settings')
 
     logger.info('return')
+
+    const handleLinkClick = event => {
+        event.preventDefault()
+
+        onLinkClick()
+    }
 
     const handleFormSubmit = event => {
         event.preventDefault()
@@ -80,16 +86,16 @@ function Settings({ onCloseClick }) {
                                </div>
                            </form>
                        </div>
+                             <button className="anchor" onClick={handleLinkClick}>Home</button>
                    </div>   
                          </div>
                          <div className="hidden relative lg:flex h-full w-1/2 items-center justify-center h-full bg-gray-200">
                            <div className="w-60 h-60 bg-gradient-to-r from-green-400 to-blue-500 rounded-full animate-bounce" />
                                <div className="w-full h-1/2 absolute bottom-0 bg-white/10 backdrop-blur-lg" />
                              </div>
-                             <button className="anchor" href="login.html" onClick={onCloseClick}>Login</button>
                            </div>
  
    
    )    
    }
-   export default withContext(Settings)
+   export default Settings
