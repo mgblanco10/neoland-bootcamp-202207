@@ -4,7 +4,7 @@
 export default function Card() {
     return (
   
-      <div>
+      <div class="">
   
   </div>
     )

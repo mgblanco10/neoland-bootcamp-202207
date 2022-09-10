@@ -9,15 +9,14 @@ describe('retrieveReservation', () => {
 
     beforeEach(() => Promise.all([User.deleteMany(), Note.deleteMany()]))
 
-    it('succeeds on existing user and notes', () => {  // happy path
+    it('succeeds on existing user and reservation', () => {  // happy path
         const name = 'Pepito Grillo'
         const email = 'pepito@grillo.com'
         const password = '123123123'
 
-        const text1 = 'hola mundo'
-        const text2 = 'hello world'
-        const text3 = 'pryvit svit'
-
+        const Reservation1 = 'hola mundo'
+        const Reservation2 = 'hello world'
+       
         const user = new User({ name, email, password })
 
         return Promise.all([

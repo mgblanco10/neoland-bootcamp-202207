@@ -1,76 +1,90 @@
 import Header from '../components/Header'
+import Loggito from '../utils/Loggito'
 
-export default function Search() {
+export default function Search({onLinkClick}) {
+  const logger = new Loggito('search')
+
+  const handleLinkClick = event =>{
+    event.preventeDefault()
+    onLinkClick()
+  }
   return (
     <div>
 <Header/>
-<div class="grid grid-flow-col grid-rows-2 grid-cols-3 gap-8">
-  <div class="transform scale-110 -rotate-6">
-  <img
-                className="object-cover w-full border md:container md:mx-auto"
-                src="https://i.pinimg.com/736x/e8/cc/9f/e8cc9f1cfd4528f96951586bb8bb6fa5--the-office-jam.jpg"
-            />
+
+
+  <div class="w-16 md:w-32 lg:w-48">
+    <img class="rounded" src="https://i.pinimg.com/736x/e8/cc/9f/e8cc9f1cfd4528f96951586bb8bb6fa5--the-office-jam.jpg"/>
+    <div class="mt-2">
+      <div>
+        <div class="text-xs text-slate-600 uppercase font-bold tracking-wider"> Oficina super moderna </div>
+        <div class="font-bold text-slate-700 leading-snug">
+          <a class="hover:underline" onClick={handleLinkClick}> CLICKEAR AQUI</a>
+        </div>
+        <div class="mt-2 text-sm text-slate-600"> 666E</div>
+      </div>
+    </div>
   </div>
-  <div class="col-start-3 transform scale-75 rotate-6 translate-x-2 translate-y-15">
-  <img
-                className="object-cover w-full border"
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFZE2kdgDdtM5UMzw1DC9Ri0E-P4_FgbAw3w&usqp=CAU"
-            />
+
+  <div>
+    <img class="rounded" src="https://i.pinimg.com/736x/e8/cc/9f/e8cc9f1cfd4528f96951586bb8bb6fa5--the-office-jam.jpg"/>
+    <div class="mt-2">
+      <div>
+        <div class="text-xs text-slate-600 uppercase font-bold tracking-wider"> Oficina super moderna </div>
+        <div class="font-bold text-slate-700 leading-snug">
+          <a class="hover:underline"> Alquilar</a>
+        </div>
+        <div class="mt-2 text-sm text-slate-600"> 666E</div>
+      </div>
+    </div>
   </div>
-  <div class="col-start-3 transform scale-75 rotate-6 translate-x-2 translate-y-15">
-  <img
-                className="object-cover w-full border"
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFZE2kdgDdtM5UMzw1DC9Ri0E-P4_FgbAw3w&usqp=CAU"
-            />
+
+  <div>
+    <img class="rounded" src="https://ovacen.com/wp-content/uploads/2014/11/oficinas-con-arte.jpg"/>
+    <div class="mt-2">
+      <div>
+        <div class="text-xs text-slate-600 uppercase font-bold tracking-wider"> Oficina super moderna </div>
+        <div class="font-bold text-slate-700 leading-snug">
+          <a class="hover:underline"> Alquilar</a>
+        </div>
+        <div class="mt-2 text-sm text-slate-600"> 666E</div>
+      </div>
+    </div>
   </div>
-  <div class="col-start-3 transform scale-75 rotate-6 translate-x-2 translate-y-15">
-  <img
-                className="object-cover w-full border"
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFZE2kdgDdtM5UMzw1DC9Ri0E-P4_FgbAw3w&usqp=CAU"
-            />
+
+  <div>
+    <img class="rounded" src="https://i.pinimg.com/736x/e8/cc/9f/e8cc9f1cfd4528f96951586bb8bb6fa5--the-office-jam.jpg"/>
+    <div class="mt-2">
+      <div>
+        <div class="text-xs text-slate-600 uppercase font-bold tracking-wider"> Oficina super moderna </div>
+        <div class="font-bold text-slate-700 leading-snug">
+          <a class="hover:underline"> Alquilar</a>
+        </div>
+        <div class="mt-2 text-sm text-slate-600"> 666E</div>
+      </div>
+    </div>
   </div>
-  <div class="col-start-3 transform scale-75 rotate-6 translate-x-2 translate-y-15">
-  <img
-                className="object-cover w-full border"
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFZE2kdgDdtM5UMzw1DC9Ri0E-P4_FgbAw3w&usqp=CAU"
-            />
+
+
+  <div>
+    <img class="rounded" src="https://i.pinimg.com/736x/e8/cc/9f/e8cc9f1cfd4528f96951586bb8bb6fa5--the-office-jam.jpg"/>
+    <div class="mt-2">
+      <div>
+        <div class="text-xs text-slate-600 uppercase font-bold tracking-wider"> Oficina super moderna </div>
+        <div class="font-bold text-slate-700 leading-snug">
+          <a class="hover:underline"> Alquilar</a>
+        </div>
+        <div class="mt-2 text-sm text-slate-600"> 666E</div>
+      </div>
+    </div>
   </div>
-  <div class="col-start-3 transform scale-75 rotate-6 translate-x-2 translate-y-15">
-  <img
-                className="object-cover w-full border"
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFZE2kdgDdtM5UMzw1DC9Ri0E-P4_FgbAw3w&usqp=CAU"
-            />
-  </div>
-  
-  
-  <div class="transform scale-150 translate-y-11">
-  <img
-                className="object-cover w-full border"
-                src="https://ovacen.com/wp-content/uploads/2014/11/oficinas-con-arte.jpg"
-            />
-  </div>
-  
-  
-  <div class="transform translate-y-24">
-  <img
-                className="object-cover w-full border md:container md:mx-auto"
-                src="https://i.pinimg.com/736x/e8/cc/9f/e8cc9f1cfd4528f96951586bb8bb6fa5--the-office-jam.jpg"
-            />
-  </div>
-  
-  
-  
-  <div class="row-start-1 col-start-2 col-span-2 transform translate-x-20 translate-y-4">
-  <img
-                className="object-cover w-full border md:container md:mx-auto"
-                src="https://s3-eu-west-1.amazonaws.com/pa-digital-blog-pro/~paginaad/wp-content/uploads/2017/11/07174846/oficinas-mejores-mundo.jpg"
-            />
-  </div>
+
+
+
+
 </div>
-</div>
+
+
 
   )
 }
-    {/* <div>
-  
-</div> */}

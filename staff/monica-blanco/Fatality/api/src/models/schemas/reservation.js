@@ -1,27 +1,28 @@
 const { Schema, Types: { ObjectId } } = require('mongoose')
-const user = require ('./user')
-const workspace = require ('./workspace')
-
 const reservation = new Schema({
     user: {
         type: ObjectId,
         required: true,
         ref: 'User'
     },
-    workspace:{
+
+    workspace: {
         type: ObjectId,
         required: true,
         ref: 'Workspace'
-
     },
 
-    date:{
+    date: {
         type: Date,
+        required: true
     },
+
     createdAt: {
         type: Date,
         default: Date.now
+
     },
+
     modifiedAt: {
         type: Date
     }

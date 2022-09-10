@@ -1,5 +1,6 @@
-## Name aplication: 
-WorkSpaces
+## Name and short description aplication: 
+Bienvenidos a mi proyecto donde pongo en práctica todos los conocimientos que he adquirido durante el Bootcamp. Ha sido un viaje muy desafiante pero me siento muy orgullosa del trabajo realizado.
+Mi aplicación es una replica de una página de alquiler de espacios de trabajo coworking, la cual se llama WORKSPACES
 
 https://giphy.com/gifs/newquest-coffee-hands-3oriO7A7bt1wsEP4cw
 
