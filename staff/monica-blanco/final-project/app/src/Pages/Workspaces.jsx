@@ -1,92 +1,52 @@
 import Loggito from '../utils/Loggito'
 import Header from '../components/Header'
+import Card from '../components/Card'
 import withContext from '../utils/withContext'
 
-function Workspaces({onLinkClick, onClick,  context: { handleFeedback } }) {
+function Workspaces({ onLinkClick, onClick, context: { handleFeedback } }) {
   const logger = new Loggito('workspaces')
 
   const handleLinkClick = event => {
     event.preventDefault()
 
     onLinkClick()
-}
-logger.info('return')
+  }
+  logger.info('return')
 
-  return (  
+  return (
     <div>
-    <Header/>
+      <Header />
 
-    <button className="anchor" onClick={handleLinkClick} >Home</button>
+      <button className="anchor" onClick={handleLinkClick} >Home</button>
+      <div class="flex flex-row">
 
 
-  <div class="w-16 md:w-32 lg:w-48">
-    <img class="rounded" src="https://i.pinimg.com/736x/e8/cc/9f/e8cc9f1cfd4528f96951586bb8bb6fa5--the-office-jam.jpg"/>
-    <div class="mt-2">
-      <div>
-        <div class="text-xs text-slate-600 uppercase font-bold tracking-wider"> Oficina super moderna </div>
-        <div class="font-bold text-slate-700 leading-snug">
-          <a class="hover:underline"> CLICKEAR AQUI</a>
-        </div>
-        <div class="mt-2 text-sm text-slate-600"> 666E</div>
+        <div class="w-30 md:w-60 lg:w-80 mx-5 py-7">  <Card /> </div>
+        <div class="w-30 md:w-60 lg:w-80 mx-5 py-7">  <Card /> </div>
+        <div class="w-30 md:w-60 lg:w-80 mx-5 py-7">  <Card /> </div>
+        <div class="w-30 md:w-60 lg:w-80 mx-5 py-7">  <Card /> </div>
+
       </div>
-    </div>
-  </div>
+      <div class="flex flex-row">
 
-  <div>
-    <img class="rounded" src="https://i.pinimg.com/736x/e8/cc/9f/e8cc9f1cfd4528f96951586bb8bb6fa5--the-office-jam.jpg"/>
-    <div class="mt-2">
-      <div>
-        <div class="text-xs text-slate-600 uppercase font-bold tracking-wider"> Oficina super moderna </div>
-        <div class="font-bold text-slate-700 leading-snug">
-          <a class="hover:underline"> Alquilar</a>
-        </div>
-        <div class="mt-2 text-sm text-slate-600"> 666E</div>
-      </div>
-    </div>
-  </div>
+        <div class="w-30 md:w-60 lg:w-80 mx-5 py-7">  <Card /> </div>
+        <div class="w-30 md:w-60 lg:w-80 mx-5 py-7">  <Card /> </div>
+        <div class="w-30 md:w-60 lg:w-80 mx-5 py-7">  <Card /> </div>
+        <div class="w-30 md:w-60 lg:w-80 mx-5 py-7">  <Card /> </div>
 
-  <div>
-    <img class="rounded" src="https://ovacen.com/wp-content/uploads/2014/11/oficinas-con-arte.jpg"/>
-    <div class="mt-2">
-      <div>
-        <div class="text-xs text-slate-600 uppercase font-bold tracking-wider"> Oficina super moderna </div>
-        <div class="font-bold text-slate-700 leading-snug">
-          <a class="hover:underline"> Alquilar</a>
-        </div>
-        <div class="mt-2 text-sm text-slate-600"> 666E</div>
-      </div>
-    </div>
-  </div>
-
-  <div>
-    <img class="rounded" src="https://i.pinimg.com/736x/e8/cc/9f/e8cc9f1cfd4528f96951586bb8bb6fa5--the-office-jam.jpg"/>
-    <div class="mt-2">
-      <div>
-        <div class="text-xs text-slate-600 uppercase font-bold tracking-wider"> Oficina super moderna </div>
-        <div class="font-bold text-slate-700 leading-snug">
-          <a class="hover:underline"> Alquilar</a>
-        </div>
-        <div class="mt-2 text-sm text-slate-600"> 666E</div>
-      </div>
-    </div>
-  </div>
-
-
-  <div>
-    <img class="rounded" src="https://i.pinimg.com/736x/e8/cc/9f/e8cc9f1cfd4528f96951586bb8bb6fa5--the-office-jam.jpg"/>
-    <div class="mt-2">
-      <div>
-        <div class="text-xs text-slate-600 uppercase font-bold tracking-wider"> Oficina super moderna </div>
-        <div class="font-bold text-slate-700 leading-snug">
-          <a class="hover:underline"> Alquilar</a>
-        </div>
-        <div class="mt-2 text-sm text-slate-600"> 666E</div>
       </div>
 
-    </div>
-  </div>
+      <div class="flex flex-row">
 
-</div>
+        <div class="w-30 md:w-60 lg:w-80 mx-5 py-7">  <Card /> </div>
+        <div class="w-30 md:w-60 lg:w-80 mx-5 py-7">  <Card /> </div>
+        <div class="w-30 md:w-60 lg:w-80 mx-5 py-7">  <Card /> </div>
+        <div class="w-30 md:w-60 lg:w-80 mx-5 py-7">  <Card /> </div>
+
+      </div>
+
+
+    </div>
 
   )
 }

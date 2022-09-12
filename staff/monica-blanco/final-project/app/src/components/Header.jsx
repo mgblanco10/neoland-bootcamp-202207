@@ -55,7 +55,7 @@ logger.info('return')
         <div class="hidden sm:ml-6 sm:block">
           <div class="flex space-x-4">
 
-
+          <a class="text-gray-500 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Solutions</a>
             <a class="text-gray-500 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" onClick={handleWorkspacesClick} view={workspaces}>Workspaces</a>
 
            <a class="text-gray-500 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" onClick={handleSettingsClick}  view={settings} >Settings</a>
