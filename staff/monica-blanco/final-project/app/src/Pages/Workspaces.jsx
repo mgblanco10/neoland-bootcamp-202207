@@ -2,7 +2,7 @@ import Loggito from '../utils/Loggito'
 import Header from '../components/Header'
 import withContext from '../utils/withContext'
 
-export default function Workspaces({onLinkClick, onLink,  context: { handleFeedback } }) {
+function Workspaces({onLinkClick, onClick,  context: { handleFeedback } }) {
   const logger = new Loggito('workspaces')
 
   const handleLinkClick = event => {
@@ -15,6 +15,7 @@ logger.info('return')
   return (  
     <div>
     <Header/>
+
     <button className="anchor" onClick={handleLinkClick} >Home</button>
 
 
@@ -87,7 +88,6 @@ logger.info('return')
 
 </div>
 
-
-
   )
 }
+export default withContext(Workspaces)

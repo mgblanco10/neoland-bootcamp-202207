@@ -66,9 +66,12 @@ function App () {
     }
     logger.info('return')
 
-    
+const toggleTheme = () => {
+    document.documentElement.classList.toggle('dark')
+    }
+
     return (   
-        <Context.Provider value={{handleFeedback}}>
+        <Context.Provider value={{handleFeedback, toggleTheme}}>
         <div>
         <Routes>
        <Route path="login" element={sessionStorage.token ? <Navigate to="/" /> : <Login onLinkClick={handleNavigationToRegister} onLogIn={handleNavigationToHome} />} />

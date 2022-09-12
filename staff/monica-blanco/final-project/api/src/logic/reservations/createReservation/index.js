@@ -33,14 +33,16 @@ function createReservation (userId, workspaceId, date) {
             throw new SystemError(error.message)
         })
         .then(user => {
-            if (!user) throw new NotFoundError(`user with id ${userId} not found`)
+            if (!user) {
+                throw new NotFoundError(`user with id ${userId} not found`)
+            }
 
             return Workspace.findById(workspaceId).lean()
                 .catch(error =>{
                     throw new SystemError(error.message)
                 })
-                .then (workspace =>{
-                    if(!workspace) throw new NotFoundError(`workspace with id ${workspaceId} not found`)
+                .then (workspace => {
+                    if(!workspace) throw new NotFoundError(`workspace with id ${workspaceId} not found`+' '+workspace)
 
                     return Reservation.find({workspace: workspaceId, reservationDate:{
                         $gte: startOfDay(new Date(date)),

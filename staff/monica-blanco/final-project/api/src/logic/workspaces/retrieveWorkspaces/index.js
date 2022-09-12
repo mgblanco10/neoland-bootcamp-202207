@@ -1,36 +1,36 @@
-const { User, Reservation} = require('../../../models')
+const { User, Workspace} = require('../../../models')
 const { NotFoundError, SystemError } = require('errors')
 const { verifyObjectIdString } = require('../../../utils')
+const { building, workspace } = require('../../../models/schemas')
 
-function retrieveWorkspace(userId) {
-    verifyObjectIdString(userId, 'user id')
-    debugger
+function retrieveWorkspaces(buildingId) {
+    verifyObjectIdString(buildingId, 'building id')
 
-    return User.findById(userId).lean()
+
+    return User.findById(buildingId).lean()
         .catch(error => {
             throw new SystemError(error.message)
         })
         .then(user => {
-            if (!user) throw new NotFoundError(`user with id ${userId} not found`)
+            if (!building) throw new NotFoundError(`user with id ${buildingId} not found`)
 
-            return Reservation.find({ user: userId }, 'workspace reservationDate createdAt modifiedAt').lean()
+            return Workspace.find({ workspace: workspaceId }, 'building name price image description').lean()
                 .catch(error => {
                     throw new SystemError(error.message)
                 })
         })
-        .then(reservations => {
-            reservations.forEach(reservation => {
-                // sanitize
-                debugger
+        .then(workspaces => {
+            workspaces.forEach(workspace => {
+    
 
-                reservation.id = reservation._id.toString()
-                delete reservation._id
+                workspace.id = workspace._id.toString()
+                delete workspace._id
 
-                delete reservation.__v
+                delete workspace.__v
             })
 
-            return reservations
+            return workspaces
         })
 }
 
-module.exports = retrieveReservationForUser
+module.exports = retrieveWorkpaces

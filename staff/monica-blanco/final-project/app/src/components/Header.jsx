@@ -1,9 +1,10 @@
 import {useState} from 'react'
 import Loggito from '../utils/Loggito'
+import withContext from '../utils/withContext'
 import { useLocation } from 'react-router-dom'
 
 
-function Header({onLogoutClick, onSettingsClick ,onWorkspacesClick, view: settings, workspaces}){
+function Header({onLogoutClick, onSettingsClick ,onWorkspacesClick, view: settings, workspaces ,context: { toggleTheme }}){
   const logger = new Loggito ('Header')
   const location = useLocation()
 
@@ -20,6 +21,7 @@ const handleSettingsClick = () => {
 const handleWorkspacesClick = ()=>{
    setView('workspaces')
 
+   logger.debug('setView', null)
    onWorkspacesClick()
 }
 
@@ -66,7 +68,12 @@ logger.info('return')
         </div>
       </div>
       <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-        <button type="button" class="rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+        
+        <button 
+        type="button" 
+        className="rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+        onClick={toggleTheme}>
+
           <span class="sr-only">View notifications</span>
 
           <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
@@ -96,5 +103,5 @@ logger.info('return')
     )
 
 }
-export default Header
+export default withContext(Header)
 

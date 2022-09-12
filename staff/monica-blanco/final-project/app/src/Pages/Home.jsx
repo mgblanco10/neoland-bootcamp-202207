@@ -9,7 +9,7 @@ import { Routes, Route, useNavigate, useLocation } from 'react-router-dom'
 import PhotoGaleria from '../components/PhotoGaleria';
 
 
-function Home({ onLogoutClick, onLinkClick, context: { handleFeedback } }) {
+function Home({ onLogoutClick, onLinkClick, context: { handleFeedback, toggleTheme} }) {
     const logger = new Loggito('Home')
 
     const navigate = useNavigate()
@@ -58,8 +58,7 @@ function Home({ onLogoutClick, onLinkClick, context: { handleFeedback } }) {
 
     return (
         <div>
-            <Header onLogoutClick={onLogoutClick} onSettingsClick={handleSettingsClick} onWorkspacesClick={handleWorkspacesClick} />
-
+            <Header onLogoutClick={onLogoutClick} onSettingsClick={handleSettingsClick} onWorkspacesClick={handleWorkspacesClick}  />
             <Routes>
                 <Route path='/' element={<PhotoGaleria onClick={handleLinkClick} />} />
                 <Route path="settings" element={<Settings onClick={handleSettingsClick} />} />
