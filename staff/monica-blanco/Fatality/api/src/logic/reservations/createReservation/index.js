@@ -3,12 +3,17 @@ const { NotFoundError, SystemError } = require('errors')
 const { validateString } = require('validators')
 const { verifyObjectIdString } = require('../../../utils')
 const { workspace } = require('../../../models/schemas')
+const validateDate = require('validators/src/validateDate')
+import endOfDay from 'date-fns/endOfDay'
+import startOfDay from 'date-fns/startOfDay'
+const createReservation  = require ('.')
 
 /**
- * Creates a note for a user
+ * Creates a reservation for a user
  * 
  * @param {string} userId The user id.
  * @param {string} workspaces The space the work.
+ * @Date
  * 
  * @returns {Promise}
  * 
@@ -19,9 +24,10 @@ const { workspace } = require('../../../models/schemas')
  * @throws {SystemError} If an error happens in db.
  */
 
-function createReservation (userId, workspaceId) {
+function createReservation (userId, workspaceId, date) {
     verifyObjectIdString(userId, 'user id')
     verifyObjectIdString(workspaceId, 'workspace id')
+    validateDate(date)
 
     return User.findById(userId).lean()
         .catch(error => {
@@ -30,12 +36,50 @@ function createReservation (userId, workspaceId) {
         .then(user => {
             if (!user) throw new NotFoundError(`user with id ${userId} not found`)
 
-            return Reservation.create({ user: user._id, workspace: workspace._id })
-                .catch(error => {
+            return Workspace.findById(workspaceId).lean()
+                .catch(error =>{
                     throw new SystemError(error.message)
                 })
-        })
-        .then(workspace => { })
-}
+                .then (workspace =>{
+                    if(!workspace) throw new NotFoundError(`workspace with id ${workspaceId} not found`)
 
-module.exports = createReservation
+                    return Reservation.find({workspace: workspaceId, reservationDate:{
+                        $gte: startOfDay(new Date(date)),
+                        $lte: endOfDay(new Date(date))
+                    }})
+                    .then(workspace => { })
+                })  
+        })
+    }
+    module.exports = createReservation
+            
+            
+            //     .catch ()
+
+            
+            //     return Reservation.create({ user: user._id, workspace: workspace._id, date })
+            //     .catch(error => {
+            //     throw new SystemError(error.message)
+            // })
+            
+                    // TODO
+        
+                    // search workspace and check it exists
+        
+                    // const year = date.getFullYear()
+                    // const month = date.getMonth()
+                    // const day = date.getDate()
+        
+                    // const start = new Date(year, month, day)
+                    // const end = new Date(year, month, day + 1)
+        
+        
+                    // operadores que tiene moongose
+                    // const count = Reservation.find({ workspace: workspaceId, date: { $gte: start, $lt: end } }).count()
+        
+                    // if (count > workspace.limit) throw 
+        
+                    // return Reservation.create({ user: user._id, workspace: workspace._id, date })
+                    //     .catch(error => {
+                    //         throw new SystemError(error.message)
+                    //     

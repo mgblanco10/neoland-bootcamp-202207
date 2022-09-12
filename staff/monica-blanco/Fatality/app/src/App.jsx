@@ -3,15 +3,18 @@ import Login from './Pages/Login'
 import Register from './Pages/Register'
 import Home from './Pages/Home'
 import Settings from './Pages/Settings'
+import Feedback from './components/Feedback'
+import Workspaces from './Pages/Workspaces'
+import Context from './utils/Context'
 import Loggito from './utils/Loggito'
-
-import Feeckback from './components/Feeckback'
 import { Routes, Route, useNavigate, Navigate } from 'react-router-dom'
+
 
 
 function App () {
     const logger = new Loggito('App')
 
+    const [feedback, setFeedback] = useState({ message: null, level: null })
     const navigate = useNavigate()
 
     const handleNavigationToRegister = () => {
@@ -31,6 +34,11 @@ function App () {
     
         logger.debug('navigate to settings')
     }
+    const handleNavigationToWorkspaces = () => {
+        navigate('workspaces')
+    
+        logger.debug('navigate to workspaces')
+    }
 
     const handleNavigationToHome = () => {
         navigate('/')
@@ -44,19 +52,35 @@ function App () {
 
         handleNavigationToLogin()
     }
+    const handleAcceptFeedback = () => {
+        const feedback = { message: null, level: null }
 
+        setFeedback(feedback)
+        logger.debug('setFeedback', feedback)
+    }
+
+    const handleFeedback = feedback => {
+        setFeedback(feedback)
+
+        logger.debug('setFeedback', feedback)
+    }
     logger.info('return')
+
     
     return (   
+        <Context.Provider value={{handleFeedback}}>
         <div>
         <Routes>
        <Route path="login" element={sessionStorage.token ? <Navigate to="/" /> : <Login onLinkClick={handleNavigationToRegister} onLogIn={handleNavigationToHome} />} />
         <Route path="register" element={sessionStorage.token ? <Navigate to="/" /> :  <Register onLinkClick={handleNavigationToLogin} />} />
         <Route path="settings" element={<Settings onLinkClick={handleNavigationToHome}/>} />
-         <Route path="/*" element={sessionStorage.token ? <Home onLogoutClick={handleLogoutClick} onLinkClick={handleNavigationToSettings} /> : <Navigate to="login" />} />
-        </Routes>      
+        <Route path="workspaces" element={<Workspaces onLinkClick={handleNavigationToHome}/>} />
+         <Route path="/*" element={sessionStorage.token ? <Home onLogoutClick={handleLogoutClick} onLinkClick={handleNavigationToSettings} onLink={handleNavigationToWorkspaces} /> : <Navigate to="login" />} />
+        </Routes> 
+        {feedback.message && <Feedback level={feedback.level} message={feedback.message} onClick={handleAcceptFeedback} />}
          </div>
-
+         </Context.Provider>
+   
             )
         }
         export default App

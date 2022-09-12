@@ -1,10 +1,9 @@
 import {useState} from 'react'
-
 import Loggito from '../utils/Loggito'
 import { useLocation } from 'react-router-dom'
 
 
-function Header({onLogoutClick, onSettingsClick , view: settings}){
+function Header({onLogoutClick, onSettingsClick ,onWorkspacesClick, view: settings, workspaces}){
   const logger = new Loggito ('Header')
   const location = useLocation()
 
@@ -17,6 +16,11 @@ const handleSettingsClick = () => {
     logger.debug('setView', null)
 
     onSettingsClick()
+}
+const handleWorkspacesClick = ()=>{
+   setView('workspaces')
+
+   onWorkspacesClick()
 }
 
 
@@ -50,9 +54,9 @@ logger.info('return')
           <div class="flex space-x-4">
 
 
-            <a class="text-gray-500 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Workspaces</a>
+            <a class="text-gray-500 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" onClick={handleWorkspacesClick} view={workspaces}>Workspaces</a>
 
-           <a class="text-gray-500 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" onClick={handleSettingsClick} view={settings}>Settings</a>
+           <a class="text-gray-500 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" onClick={handleSettingsClick}  view={settings} >Settings</a>
 
             <a class="text-gray-500 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" onClick={handleLogoutClick} >Logout</a>
 

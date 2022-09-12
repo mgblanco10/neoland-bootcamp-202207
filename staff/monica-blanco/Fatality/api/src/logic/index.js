@@ -1,4 +1,4 @@
 module.exports = {
     users: require ('./users'),
-    //reservations: require ('./reservations')
+    reservations: require ('./reservations')
 }

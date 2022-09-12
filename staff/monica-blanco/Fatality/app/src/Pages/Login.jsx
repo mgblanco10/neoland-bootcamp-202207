@@ -1,9 +1,10 @@
 import * as React from 'react'
 import Loggito from '../utils/Loggito'
 import authenticateUser from '../logic/authenticateUser'
+import withContext from '../utils/withContext'
 import { AuthError, ClientError, ServerError } from 'errors'
 
-export default function Login({ onLinkClick, onLogIn }) {
+function Login({ onLinkClick, onLogIn, context: { handleFeedback }}) {
 
     const logger = new Loggito(Login.name)
     logger.info('constructor')
@@ -29,10 +30,11 @@ export default function Login({ onLinkClick, onLogIn }) {
             authenticateUser(email, password, (error, token) => {
                 if (error) {
                     if (error instanceof ServerError) {
-
+                        handleFeedback({ message: error.message, level: 'error' })
                         logger.error(error.message)
                     } else if (error instanceof ClientError || error instanceof AuthError) {
                         logger.warn(error.message)
+                        handleFeedback({ message: error.message, level: 'warning' })
                     }
                     return
 
@@ -44,7 +46,7 @@ export default function Login({ onLinkClick, onLogIn }) {
             onLogIn()
         })
     } catch (error) {
-
+        handleFeedback({ message: error.message, level: 'error' })
         logger.warn(error.message)
     }
 }
@@ -90,14 +92,6 @@ return (
                     </div>
                 </div>
             
-
-
-
-
-
-
-
-
                       </div>
                       <div className="hidden relative lg:flex h-full w-1/2 items-center justify-center h-full bg-gray-200">
                         <div className="w-60 h-60 bg-gradient-to-r from-green-400 to-blue-500 rounded-full animate-bounce" />
@@ -105,13 +99,9 @@ return (
                           </div>
                         </div>
 
-
-
-   
-
 )    
 }
-
+export default withContext(Login)
 
 
 

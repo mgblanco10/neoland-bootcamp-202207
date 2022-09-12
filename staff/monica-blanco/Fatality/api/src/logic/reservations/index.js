@@ -1,6 +1,5 @@
 module.exports = { 
     createReservation : require('./createReservation'),
-    modificateReservation : require('./modificateReservation'),
-    searchReservation : require('./searchReservation'),
-    deleteReservation : require('./deleteReservation')
+    deleteReservation : require('./deleteReservation'),
+    retrieveUserReservation : require('./retrieveUserReservation')
 }

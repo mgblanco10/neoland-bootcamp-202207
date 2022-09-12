@@ -1,16 +1,21 @@
-import Header from '../components/Header'
 import Loggito from '../utils/Loggito'
+import Header from '../components/Header'
+import withContext from '../utils/withContext'
 
-export default function Search({onLinkClick}) {
-  const logger = new Loggito('search')
+export default function Workspaces({onLinkClick, onLink,  context: { handleFeedback } }) {
+  const logger = new Loggito('workspaces')
 
-  const handleLinkClick = event =>{
-    event.preventeDefault()
+  const handleLinkClick = event => {
+    event.preventDefault()
+
     onLinkClick()
-  }
-  return (
+}
+logger.info('return')
+
+  return (  
     <div>
-<Header/>
+    <Header/>
+    <button className="anchor" onClick={handleLinkClick} >Home</button>
 
 
   <div class="w-16 md:w-32 lg:w-48">
@@ -19,7 +24,7 @@ export default function Search({onLinkClick}) {
       <div>
         <div class="text-xs text-slate-600 uppercase font-bold tracking-wider"> Oficina super moderna </div>
         <div class="font-bold text-slate-700 leading-snug">
-          <a class="hover:underline" onClick={handleLinkClick}> CLICKEAR AQUI</a>
+          <a class="hover:underline"> CLICKEAR AQUI</a>
         </div>
         <div class="mt-2 text-sm text-slate-600"> 666E</div>
       </div>
@@ -76,11 +81,9 @@ export default function Search({onLinkClick}) {
         </div>
         <div class="mt-2 text-sm text-slate-600"> 666E</div>
       </div>
+
     </div>
   </div>
-
-
-
 
 </div>
 

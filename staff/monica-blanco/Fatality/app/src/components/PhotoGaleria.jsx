@@ -3,37 +3,37 @@ export default function PhotoGaleria() {
         <div className="grid grid-cols-1 gap-4 lg:grid-cols-4 sm:grid-cols-2">
             <img
                 className="object-cover w-full border"
-                src="https://cdn.pixabay.com/photo/2018/05/08/14/34/lightweight-transporter-3383177__340.png"
+                src="https://cdn.pixabay.com/photo/2018/05/08/14/34/lightweight-transporter-3383177__340.png" alt="img"
             />
             <img
                 className="object-cover w-full border"
-                src="https://cdn.pixabay.com/photo/2018/05/08/14/34/lightweight-transporter-3383177__340.png"
+                src="https://cdn.pixabay.com/photo/2018/05/08/14/34/lightweight-transporter-3383177__340.png" alt="img"
             />
             <img
                 className="object-cover w-full border"
-                src="https://cdn.pixabay.com/photo/2018/05/08/14/34/lightweight-transporter-3383177__340.png"
+                src="https://cdn.pixabay.com/photo/2018/05/08/14/34/lightweight-transporter-3383177__340.png" alt="img"
             />
             <img
                 className="object-cover w-full border"
-                src="https://cdn.pixabay.com/photo/2018/05/08/14/34/lightweight-transporter-3383177__340.png"
+                src="https://cdn.pixabay.com/photo/2018/05/08/14/34/lightweight-transporter-3383177__340.png" alt="img"
             />
                  <img
                 className="object-cover w-full border md:container md:mx-auto"
-                src="http://arquitecturaideal.com/wp-content/uploads/2014/11/Las-12-oficinas-mas-chulas-del-mundo-Arquitectura-Ideal-Google-5.jpg"
+                src="http://arquitecturaideal.com/wp-content/uploads/2014/11/Las-12-oficinas-mas-chulas-del-mundo-Arquitectura-Ideal-Google-5.jpg" alt="img"
             />
           
           
              <img
                 className="object-cover w-full border md:container md:mx-auto"
-                src="http://arquitecturaideal.com/wp-content/uploads/2014/11/Las-12-oficinas-mas-chulas-del-mundo-Arquitectura-Ideal-Google-5.jpg"
+                src="http://arquitecturaideal.com/wp-content/uploads/2014/11/Las-12-oficinas-mas-chulas-del-mundo-Arquitectura-Ideal-Google-5.jpg" alt="img"
             />
             <img
                 className="object-cover w-full border md:container md:mx-auto"
-                src="https://i.pinimg.com/736x/e8/cc/9f/e8cc9f1cfd4528f96951586bb8bb6fa5--the-office-jam.jpg"
+                src="https://i.pinimg.com/736x/e8/cc/9f/e8cc9f1cfd4528f96951586bb8bb6fa5--the-office-jam.jpg" alt="img"
             />
             <img
                 className="object-cover w-full border md:container md:mx-auto"
-                src="https://s3-eu-west-1.amazonaws.com/pa-digital-blog-pro/~paginaad/wp-content/uploads/2017/11/07174846/oficinas-mejores-mundo.jpg"
+                src="https://s3-eu-west-1.amazonaws.com/pa-digital-blog-pro/~paginaad/wp-content/uploads/2017/11/07174846/oficinas-mejores-mundo.jpg" alt="img"
             />
         </div>
     );

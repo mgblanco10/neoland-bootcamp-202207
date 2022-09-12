@@ -1,8 +1,10 @@
+import '../index.css'
 import Loggito from '../utils/Loggito'
 import updateUserPassword from '../logic/updateUserPassword'
+import withContext from '../utils/withContext'
 
 
-function Settings({ onLinkClick }) {
+function Settings({ onLinkClick, onCloseClick, context: { handleFeedback } }) {
     const logger = new Loggito('Settings')
 
     logger.info('return')
@@ -13,30 +15,30 @@ function Settings({ onLinkClick }) {
         onLinkClick()
     }
 
-    const handleFormSubmit = event => {
+    const handleFormSubmitPassword = event => {
         event.preventDefault()
-
         const { target: form } = event
-
         const {
             oldPassword: { value: oldPassword },
             newPassword: { value: newPassword },
-            newPasswordRepeat: { value: newPasswordRepeat }
+            newPasswordRepeat: { value: newPasswordRepeat } 
         } = form
+    
 
         try {
             updateUserPassword(sessionStorage.token, oldPassword, newPassword, newPasswordRepeat, error => {
                 if (error) {
-
+                    handleFeedback({message:error.message, level: 'warning'})
                     logger.warn(error.message)
 
                     return
                 }
-
+                handleFeedback({message:`Password update`, level: 'success'})
                 form.reset()
+                onCloseClick()
             })
         } catch (error) {
-
+            handleFeedback({message:error.message, level: 'warning'})
             logger.warn(error.message)
         }
     }
@@ -48,7 +50,7 @@ function Settings({ onLinkClick }) {
                        <h1 className='text-5xl font-semibold'> Welcome Back</h1>
                        <p className='font-medium text-lg text-gray-500 mt-4'>Change Password</p>
                        <div className='mt-8'>
-                           <form onSubmit={handleFormSubmit}>
+                           <form onSubmit={handleFormSubmitPassword}>
                                <div>
                                    <label className='text-lg font-medium' htmlFor='oldPassword'>Current Password</label>
                                    <input
@@ -64,7 +66,7 @@ function Settings({ onLinkClick }) {
                                    <input
                                        className='w-full border-2 border-gray-100 rounded-xl p-4 mt-1 bg-transparent'
                                        placeholder='Enter your email'
-                                       type='NewPassword'
+                                       type='password'
                                        name="NewPassword"
                                        id="NewPassword"
                
@@ -94,8 +96,7 @@ function Settings({ onLinkClick }) {
                                <div className="w-full h-1/2 absolute bottom-0 bg-white/10 backdrop-blur-lg" />
                              </div>
                            </div>
- 
    
    )    
    }
-   export default Settings
+   export default withContext(Settings)

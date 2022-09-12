@@ -106,7 +106,9 @@ Sprint
 --rutas api(listo)
 --responsive (WIP)
 --MODEL Y SCHEMAS(listo)
---
+--homePage
+--WorkspacePage y resto de paginas
+Cacturar pecios y ver para que usuare seleccines
 
 
 

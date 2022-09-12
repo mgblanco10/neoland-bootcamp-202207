@@ -1,7 +1,8 @@
 import Loggito from '../utils/Loggito'
 import registerUser from '../logic/registerUser'
+import withContext from '../utils/withContext'
 
-export default function Register({onLinkClick}) {
+function Register({onLinkClick, context: { handleFeedback }}) {
     const logger = new Loggito(Register.name)
 
     logger.info('constructor')
@@ -27,17 +28,18 @@ export default function Register({onLinkClick}) {
         try {
             registerUser(name, email, password, (error) => {
                 if (error) {
-                    
+                    handleFeedback({ message: error.message, level: 'error'})
                     logger.warn(error.message)
 
                     return
                 }
                 logger.debug('register reset')
+                handleFeedback({message:`Password update`, level: 'success'})
                 form.reset()
                 onLinkClick()
             })
         } catch (error) {
-
+            handleFeedback({message:error.message, level: 'warning'})
             logger.warn(error.message)
         }
     }
@@ -100,5 +102,6 @@ export default function Register({onLinkClick}) {
     )
     
 }
+export default withContext(Register)
 
 

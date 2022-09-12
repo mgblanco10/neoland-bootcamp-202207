@@ -12,7 +12,7 @@ const reservation = new Schema({
         ref: 'Workspace'
     },
 
-    date: {
+    reservationDate: {
         type: Date,
         required: true
     },
@@ -29,6 +29,4 @@ const reservation = new Schema({
 })
 // db.reservation.createIndex({"date":1, "workspace":1},{unique:true})
 module.exports = reservation
-
-
 
