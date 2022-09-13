@@ -3,17 +3,15 @@ const { Router, json } = express
 const jsonBodyParser = json()
 const { registerUserHandler, authenticateUserHandler, retrieveUserHandler, updateUserEmailHandler, updateUserPasswordHandler } = require('./users')
 const { retrieveBuildingsHandler } = require('./buildings')
+//const {createReservationHandler, deleteReservationHandler, retrieveReservationForUserHandler} =require('./reservations')
+//const{retrieveWorkspacesOfBuildingHandler} = require ('./workspaces')
 
 const usersRouter = Router()
 
 usersRouter.post('/users', jsonBodyParser, registerUserHandler)
-
 usersRouter.post('/users/auth', jsonBodyParser, authenticateUserHandler)
-
 usersRouter.get('/users', retrieveUserHandler)
-
 usersRouter.patch('/users/email/',jsonBodyParser, updateUserEmailHandler)
-
 usersRouter.patch('/users/password/',jsonBodyParser, updateUserPasswordHandler)
 
 const buildingsRouter = Router ()
@@ -21,15 +19,20 @@ const buildingsRouter = Router ()
 buildingsRouter.get('/buildings', retrieveBuildingsHandler)
 
 
-// const workspacesRouter = Router()
+//const workspacesRouter = Router()
 
-// workspacesRouter.get('/notes', retrieveWorkspacesOfBuildingHandler)
+//workspacesRouter.get('/workspaces', retrieveWorkspacesOfBuildingHandler)
+
 //workspacesRouter.patch('/workspaces/:workspaceId/reservations', jsonBodyParser, createReservationHandler)
+//delete
+
+//reservationRouter
+//retrieveReservationsOfUser
 
 
 module.exports = {
     usersRouter,
-    buildingsRouter
-    // workspacesRouter
+    buildingsRouter,
+    //workspacesRouter
 }
 

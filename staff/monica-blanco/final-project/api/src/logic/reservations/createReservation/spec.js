@@ -77,6 +77,7 @@ describe( 'createReservation', () => {
         const password = '123123123'
         
         const date = new Date
+        const user = new User( { name, email, password } )
 
         const building = new Building( {
             name: 'diagonal',
@@ -98,7 +99,7 @@ describe( 'createReservation', () => {
             workspace.save()
         ] )
             .then( ( [user, workspace] ) => {
-debugger
+
                 return createReservation( user.id, workspace.id, date)
                     .then( () => { throw new Error( 'should not reach this point' ) } )
                     .catch( error => {

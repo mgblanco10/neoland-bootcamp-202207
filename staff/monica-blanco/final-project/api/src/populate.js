@@ -53,51 +53,51 @@ connect(MONGO_URL)
   })
   .then(([pepito, wendy, peter, james]) => {
     const pobleNou = new Building({
-      name: "pobleNou building",
+      name: "PobleNou Building",
       address: "Calle de Ramon Turró, 169, 08005",
       image:
-        "https://st.hzcdn.com/simgs/pictures/despachos/neoland-oficinas-meepstudio-img~951131e60ea96431_4-9543-1-639b8cf.jpg",
+        "https://334045-1026637-1-raikfcquaxqncofqfm.stackpathdns.com/wp-content/uploads/2019/10/talent-garden-campus-madrid-05-1280x800.jpg",
     });
 
     const diagonal = new Building({
-      name: "diagonal building",
+      name: "Diagonal Building",
       address: "Diagonal 444 Catalonia Barcelona, B 08037",
       image:
-        " https://www.neoland.es/wp-content/uploads/2021/11/neoland-remoto-bootcamps-1.jpg",
+        "https://territoriocoworking.com/wp-content/uploads/2021/07/TAG-Madrid-4-900x720-1.jpg",
     });
 
     return Promise.all([pobleNou.save(), diagonal.save()]).then(
       ([pobleNou, diagonal]) => {
         const office1 = new Workspace({
           building: pobleNou.id,
-          name: "Office private 1",
-          price: 100,
+          name: "Office Private 1",
+          price: 45,
           image:
-            "https://pcasistencia.com/wp-content/uploads/2018/07/513c1c6b5e6d006625511982fdb30d2c.jpg",
+            "http://cortinas-acusticas.com/wp-content/uploads/cortinas-ac%C3%BAsticas-para-separar-ambientes-en-centros-de-negocios.jpg",
           description: "Ideal for individuals and small teams.",
         });
 
         const office2 = new Workspace({
           building: pobleNou.id,
           name: "Suite",
-          price: 100,
+          price: 80,
           image:
-            "https://pcasistencia.com/wp-content/uploads/2018/07/513c1c6b5e6d006625511982fdb30d2c.jpg",
+            "https://oxygenworkspace.com/wp-content/uploads/2021/06/Despacho-04-1.jpg",
           description: "Capacity for a maximum of 20 people.",
         });
 
         const office3 = new Workspace({
           building: diagonal.id,
-          name: "community office",
-          price: 100,
+          name: "Community Office",
+          price: 75,
           image:
-            "https://pcasistencia.com/wp-content/uploads/2018/07/513c1c6b5e6d006625511982fdb30d2c.jpg",
+            "https://loom.es/wp-content/uploads/2022/04/Diseno-sin-titulo-2022-04-04T131947.438.png",
           description: "Enjoy shared services and meeting rooms.",
         });
 
         const office4 = new Workspace({
           building: diagonal.id,
-          name: "living room",
+          name: "Living Room Small",
           price: 100,
           image:
             "https://www.profesionalreview.com/wp-content/uploads/2020/06/Ordenador-en-el-suelo-o-en-la-mesa-03-scaled.jpg",
@@ -106,37 +106,69 @@ connect(MONGO_URL)
 
         const office5 = new Workspace({
           building: diagonal.id,
-          name: "desk",
-          price: 100,
+          name: "Desk",
+          price: 50,
           image:
-            "https://habitarehome.es/185-large_default/mesa-de-escritorio-en-angulo-roma.jpg",
+            "https://madrid.impacthub.net/wp-content/uploads/2022/05/historia_coworking_blog.jpg",
           description: "Enjoy shared services and meeting rooms.",
         });
 
         const office6 = new Workspace({
           building: diagonal.id,
-          name: "living room2",
+          name: "Living room",
           price: 100,
           image:
-            "https://www.profesionalreview.com/wp-content/uploads/2020/06/Ordenador-en-el-suelo-o-en-la-mesa-03-scaled.jpg",
+            "https://www.lexington.es/app/uploads/2021/05/que-es-un-coworking.jpg",
           description: "Fully equipped private office space.",
         });
 
         const office7 = new Workspace({
           building: diagonal.id,
-          name: "desk3",
+          name: "Desk small",
           price: 100,
           image:
-            "https://habitarehome.es/185-large_default/mesa-de-escritorio-en-angulo-roma.jpg",
+            "https://www.livinghomes.es/wp-content/uploads/coworking-living-1024x576.jpg",
           description: "Enjoy shared services and meeting rooms.",
         });
 
         const office8 = new Workspace({
           building: diagonal.id,
-          name: "desk3",
+          name: "Office Private",
           price: 100,
           image:
-            "https://habitarehome.es/185-large_default/mesa-de-escritorio-en-angulo-roma.jpg",
+            "https://actiucdn.net/uploads/images/actualidad/descripciones/consejos-poner-en-marcha-coworking-funcione-10_782_651.jpg",
+          description: "Enjoy shared services and meeting rooms.",
+        });
+        const office9 = new Workspace({
+          building: diagonal.id,
+          name: "Office Private Large",
+          price: 100,
+          image:
+            "https://actiucdn.net/uploads/images/actualidad/descripciones/consejos-poner-en-marcha-coworking-funcione-10_782_651.jpg",
+          description: "Enjoy shared services and meeting rooms.",
+        });
+        const office10 = new Workspace({
+          building: diagonal.id,
+          name: "Small Private Office",
+          price: 70,
+          image:
+            "https://www.happyworkinglab.com/wp-content/uploads/2018/06/SPACES-MX-2-1024x682-1024x682.jpg",
+          description: "Enjoy shared services and meeting rooms.",
+        });
+        const office11 = new Workspace({
+          building: pobleNou.id,
+          name: "Office Private",
+          price: 100,
+          image:
+            "https://actiucdn.net/uploads/images/actualidad/descripciones/consejos-poner-en-marcha-coworking-funcione-10_782_651.jpg",
+          description: "Enjoy shared services and meeting rooms.",
+        });
+        const office12 = new Workspace({
+          building: pobleNou.id,
+          name: "Office Private",
+          price: 100,
+          image:
+            "https://coworkinglafabrica.es/wp-content/uploads/2018/06/C5A5816.jpg",
           description: "Enjoy shared services and meeting rooms.",
         });
 
@@ -149,6 +181,10 @@ connect(MONGO_URL)
           office6.save(),
           office7.save(),
           office8.save(),
+          office9.save(),
+          office10.save(),
+          office11.save(),
+          office12.save()
         ]).then(
           ([office1, office2, office3, office4, office5, office6, office7]) => {
             const reservation1 = new Reservation({
