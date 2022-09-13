@@ -1,6 +1,7 @@
 import Loggito from '../utils/Loggito'
 import Header from '../components/Header'
 import Card from '../components/Card'
+//import retrieveWorkspacesOfBuilding from '../logic/retrieveWorkspacesOfBuilding'
 import withContext from '../utils/withContext'
 
 function Workspaces({ onLinkClick, onClick, context: { handleFeedback } }) {
@@ -11,6 +12,33 @@ function Workspaces({ onLinkClick, onClick, context: { handleFeedback } }) {
 
     onLinkClick()
   }
+
+  // useEffect(() => {
+  //   logger.info('"componentDidMount"')
+  //   try {
+  //     retrieveWorkspacesOfBuilding(sessionStorage.token, buildingId (error, workspaces) => {
+  //       if (error) {
+  //           logger.warn(error.message)
+
+  //                   return
+  //               }
+  //               setWorkspaces(workspaces)
+
+  //                   logger.debug('setWorkspaces', workspaces)
+
+  //                 })
+  //               } catch (error) {
+  //                   handleFeedback({ message: error.message, level: 'error' })
+        
+  //                   logger.warn(error.message)
+  //               }
+        
+  //               loadNotes()
+  //           }, [])
+
+
+
+
   logger.info('return')
 
   return (
