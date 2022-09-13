@@ -37,20 +37,20 @@ describe('retrieveUserReservation', () => {
         })
         
         const user = new User({ name, email, password })
-        const reservationDate = new Date
+        const date = new Date
 
         const reservation1 = new Reservation({
             user: user.id,
             building: building.id,
             workspace: workspace1.id,
-            reservationDate
+            date
         })
 
         const reservation2 = new Reservation({
             user: user.id,
             building: building.id,
             workspace: workspace2.id,
-            reservationDate
+            date
         })
 
         return Promise.all([
@@ -62,7 +62,7 @@ describe('retrieveUserReservation', () => {
             reservation2.save()
         ])
             .then(([user, , , , reservation1, reservation2]) => {
-                debugger
+ 
                 return retrieveUserReservation(user.id)
                     .then(reservations => {
                         expect(reservations).toHaveLength(2)

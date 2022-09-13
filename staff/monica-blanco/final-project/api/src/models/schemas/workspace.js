@@ -1,5 +1,4 @@
 const { Schema, Types: { ObjectId }  } = require('mongoose')
-const Building = require ('./building')
 
 const workspace = new Schema({
 
@@ -11,8 +10,8 @@ const workspace = new Schema({
 
     name: {
         type: String,
-        required: true,
-        unique:true
+        required: true
+        
     },
     price:{
         type: Number,

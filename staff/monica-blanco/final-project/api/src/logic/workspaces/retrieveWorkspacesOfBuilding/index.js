@@ -1,20 +1,21 @@
-const { User, Workspace} = require('../../../models')
+const { Building, Workspace} = require('../../../models')
 const { NotFoundError, SystemError } = require('errors')
 const { verifyObjectIdString } = require('../../../utils')
-const { building, workspace } = require('../../../models/schemas')
+const { building } = require('../../../models/schemas')
 
-function retrieveWorkspaces(buildingId) {
+
+function retrieveWorkspacesOfBuilding(buildingId) {
     verifyObjectIdString(buildingId, 'building id')
 
 
-    return User.findById(buildingId).lean()
+    return Building.findById(buildingId).lean()
         .catch(error => {
             throw new SystemError(error.message)
         })
-        .then(user => {
-            if (!building) throw new NotFoundError(`user with id ${buildingId} not found`)
+        .then(building => {
+            if (!building) throw new NotFoundError(`workspace with id ${buildingId} not found`)
 
-            return Workspace.find({ workspace: workspaceId }, 'building name price image description').lean()
+            return Workspace.find({ building: buildingId }, 'building name price image description').lean()
                 .catch(error => {
                     throw new SystemError(error.message)
                 })
@@ -33,4 +34,4 @@ function retrieveWorkspaces(buildingId) {
         })
 }
 
-module.exports = retrieveWorkpaces
+module.exports = retrieveWorkspacesOfBuilding

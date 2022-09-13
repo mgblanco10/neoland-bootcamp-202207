@@ -44,7 +44,7 @@ function createReservation (userId, workspaceId, date) {
                 .then (workspace => {
                     if(!workspace) throw new NotFoundError(`workspace with id ${workspaceId} not found`+' '+workspace)
 
-                    return Reservation.find({workspace: workspaceId, reservationDate:{
+                    return Reservation.find({workspace: workspaceId, date:{
                         $gte: startOfDay(new Date(date)),
                         $lte: endOfDay(new Date(date))
                     }})

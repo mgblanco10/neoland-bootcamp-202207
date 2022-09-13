@@ -2,6 +2,7 @@ const express = require('express')
 const { Router, json } = express
 const jsonBodyParser = json()
 const { registerUserHandler, authenticateUserHandler, retrieveUserHandler, updateUserEmailHandler, updateUserPasswordHandler } = require('./users')
+const { retrieveBuildingsHandler } = require('./buildings')
 
 const usersRouter = Router()
 
@@ -15,13 +16,20 @@ usersRouter.patch('/users/email/',jsonBodyParser, updateUserEmailHandler)
 
 usersRouter.patch('/users/password/',jsonBodyParser, updateUserPasswordHandler)
 
-/*
-TODO workspacesRouter.patch('/workspaces/:workspaceId/reservations', jsonBodyParser, createReservationHandler)
-*/
+const buildingsRouter = Router ()
 
+buildingsRouter.get('/buildings', retrieveBuildingsHandler)
+
+
+// const workspacesRouter = Router()
+
+// workspacesRouter.get('/notes', retrieveWorkspacesOfBuildingHandler)
+//workspacesRouter.patch('/workspaces/:workspaceId/reservations', jsonBodyParser, createReservationHandler)
 
 
 module.exports = {
-    usersRouter
+    usersRouter,
+    buildingsRouter
+    // workspacesRouter
 }
 

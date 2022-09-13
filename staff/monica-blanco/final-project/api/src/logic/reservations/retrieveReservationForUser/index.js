@@ -5,7 +5,6 @@ const {validateDate} = require ('validators')
 
 function retrieveReservationForUser(userId) {
     verifyObjectIdString(userId, 'user id')
-    debugger
 
     return User.findById(userId).lean()
         .catch(error => {
@@ -14,15 +13,13 @@ function retrieveReservationForUser(userId) {
         .then(user => {
             if (!user) throw new NotFoundError(`user with id ${userId} not found`)
 
-            return Reservation.find({ user: userId }, 'workspace reservationDate createdAt modifiedAt').lean()
+            return Reservation.find({ user: userId }, 'workspace date createdAt modifiedAt').lean()
                 .catch(error => {
                     throw new SystemError(error.message)
                 })
         })
         .then(reservations => {
             reservations.forEach(reservation => {
-                // sanitize
-                debugger
 
                 reservation.id = reservation._id.toString()
                 delete reservation._id

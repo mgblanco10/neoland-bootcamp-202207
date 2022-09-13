@@ -12,7 +12,7 @@ const reservation = new Schema({
         ref: 'Workspace'
     },
 
-    reservationDate: {
+    date: {
         type: Date,
         required: true
     },
