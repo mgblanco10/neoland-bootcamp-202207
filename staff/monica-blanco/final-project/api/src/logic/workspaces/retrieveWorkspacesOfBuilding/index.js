@@ -1,8 +1,6 @@
 const { Building, Workspace} = require('../../../models')
 const { NotFoundError, SystemError } = require('errors')
 const { verifyObjectIdString } = require('../../../utils')
-const { building } = require('../../../models/schemas')
-
 
 function retrieveWorkspacesOfBuilding(buildingId) {
     verifyObjectIdString(buildingId, 'building id')
