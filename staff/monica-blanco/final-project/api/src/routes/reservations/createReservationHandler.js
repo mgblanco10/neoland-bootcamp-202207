@@ -4,7 +4,6 @@
 
 const { runWithErrorHandling, createLogger, verifyToken } = require('../../utils')
 const { reservations: { createReservation } } = require('../../logic/reservations/createReservation')
-const { workspace } = require( '../../models/schemas' )
 const logger = createLogger(module)
 
 module.exports = (req, res) => {

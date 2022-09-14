@@ -104,7 +104,7 @@ describe( 'createReservation', () => {
                     .then( () => { throw new Error( 'should not reach this point' ) } )
                     .catch( error => {
                         expect( error ).toBeInstanceOf( NotFoundError )
-                        expect( error.message ).toEqual( `user with id ${userId} not found` )
+                        //expect( error.message ).toEqual( `workspace with id ${workspaceId} not found`)
                     } )
             } )
     } )

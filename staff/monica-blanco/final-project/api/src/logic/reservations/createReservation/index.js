@@ -1,8 +1,6 @@
 const { User, Reservation, Workspace } = require('../../../models')
 const { NotFoundError, SystemError } = require('errors')
-const { validateString } = require('validators')
 const { verifyObjectIdString } = require('../../../utils')
-const { workspace } = require('../../../models/schemas')
 const validateDate = require('validators/src/validateDate')
 const endOfDay = require ('date-fns/endOfDay')
 const startOfDay = require ('date-fns/startOfDay')
@@ -26,7 +24,7 @@ const startOfDay = require ('date-fns/startOfDay')
 function createReservation (userId, workspaceId, date) {
     verifyObjectIdString(userId, 'user id')
     verifyObjectIdString(workspaceId, 'workspace id')
-    validateDate(date)
+    // validateDate(date)
 
     return User.findById(userId).lean()
         .catch(error => {
@@ -42,7 +40,7 @@ function createReservation (userId, workspaceId, date) {
                     throw new SystemError(error.message)
                 })
                 .then (workspace => {
-                    if(!workspace) throw new NotFoundError(`workspace with id ${workspaceId} not found`+' '+workspace)
+                    if(!workspace) throw new NotFoundError(`workspace with id ${workspaceId} not found`)
 
                     return Reservation.find({workspace: workspaceId, date:{
                         $gte: startOfDay(new Date(date)),
