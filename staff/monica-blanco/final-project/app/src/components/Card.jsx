@@ -1,16 +1,11 @@
 import Loggito from "../utils/Loggito";
 
 
-export default function Card({workspaces, onLink}) {
+export default function Card({workspaces}) {
   const logger = new Loggito("List workspaces");
 
   logger.info("return")
 
-  const handleLinkClick = event => {
-    event.preventDefault()
-
-    onLinkClick()
-  }
 
 
     return (
@@ -26,10 +21,19 @@ export default function Card({workspaces, onLink}) {
       <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
         PRECIO
       </span>
-      <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2" onClick={handleLinkClick}>
+      <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2" >
         ALQUILAR
       </span>
     </div>
   </div>)
   );
-}
+    }
+
+
+    
+// {buildings && buildings.map(buildings => {
+//        return <li key={buildings._id}>
+//                <p>{buildings.name}</p>
+//                <p>{buildings.description}</p>
+//                </li> */
+// }

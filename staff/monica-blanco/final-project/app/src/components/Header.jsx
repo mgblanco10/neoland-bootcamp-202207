@@ -4,7 +4,7 @@ import withContext from '../utils/withContext'
 import { useLocation } from 'react-router-dom'
 
 
-function Header({onLogoutClick, onSettingsClick ,onWorkspacesClick, view: settings, workspaces ,context: { toggleTheme }}){
+function Header({onLogoutClick, onSettingsClick ,onWorkspacesClick, onYourReservationsClick,onSolutionsClick, view: settings, workspaces ,context: { toggleTheme }}){
   const logger = new Loggito ('Header')
   const location = useLocation()
 
@@ -25,6 +25,21 @@ const handleWorkspacesClick = ()=>{
    onWorkspacesClick()
 }
 
+const handleYourReservationsClick = ()=>{
+  setView('yourReservations')
+
+  logger.debug('setView', null)
+
+  onYourReservationsClick()
+}
+
+const handleSolutionsClick = ()=>{
+  setView('solutions')
+
+  logger.debug('setView', null)
+  
+  onSolutionsClick()
+}
 
 logger.info('return')
 
@@ -55,7 +70,8 @@ logger.info('return')
         <div className="hidden sm:ml-6 sm:block">
           <div className="flex space-x-4">
 
-          <a className="text-gray-500 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Solutions</a>
+            <a className="text-gray-500 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" onClick={handleSolutionsClick}> Solutions </a>
+          <a className="text-gray-500 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" onClick={handleYourReservationsClick}>Your Reservations</a>
             <a className="text-gray-500 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" onClick={handleWorkspacesClick} view={workspaces}>Workspaces</a>
 
            <a className="text-gray-500 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" onClick={handleSettingsClick}  view={settings} >Settings</a>
@@ -63,7 +79,6 @@ logger.info('return')
             <a className="text-gray-500 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" onClick={handleLogoutClick} >Logout</a>
 
 
-            <a className="text-gray-500 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Calendar</a>
           </div>
         </div>
       </div>
