@@ -1,7 +1,6 @@
 import Loggito from '../utils/Loggito'
 import Header from '../components/Header'
 import Card from '../components/Card'
-//import retrieveWorkspacesOfBuilding from '../logic/retrieveWorkspacesOfBuilding'
 import withContext from '../utils/withContext'
 
 function Workspaces({ onLinkClick, onClick, context: { handleFeedback } }) {

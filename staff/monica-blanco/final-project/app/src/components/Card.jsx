@@ -1,21 +1,35 @@
+import Loggito from "../utils/Loggito";
 
 
+export default function Card({workspaces, onLink}) {
+  const logger = new Loggito("List workspaces");
 
-export default function Card() {
-    return (
-      <div class="max-w-sm rounded overflow-hidden shadow-lg">
-      <img class="w-full" src="https://i.pinimg.com/736x/e8/cc/9f/e8cc9f1cfd4528f96951586bb8bb6fa5--the-office-jam.jpg" alt="office"/>
-      <div class="px-6 py-4">
-        <div class="font-bold text-xl mb-2">The Coldest Sunset</div>
-        <p class="text-gray-700 text-base">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.
-        </p>
-      </div>
-      <div class="px-6 pt-4 pb-2">
-  
-        <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">PRECIO</span>
-        <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">ALQUILAR</span>
-      </div>
-    </div>
-    )
+  logger.info("return")
+
+  const handleLinkClick = event => {
+    event.preventDefault()
+
+    onLinkClick()
   }
+
+
+    return (
+      workspaces.map(workspace => <div className="max-w-sm rounded overflow-hidden shadow-lg">
+    <img className="w-full" src={workspace.image} alt="Workspaces PobleNou" />
+    <div className="px-6 py-4">
+      <div className="font-bold text-xl mb-2">{workspace.name}</div>
+      <p className="text-gray-700 text-base">
+      {workspace.address}
+      </p>
+    </div>
+    <div className="px-6 pt-4 pb-2">
+      <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
+        PRECIO
+      </span>
+      <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2" onClick={handleLinkClick}>
+        ALQUILAR
+      </span>
+    </div>
+  </div>)
+  );
+}

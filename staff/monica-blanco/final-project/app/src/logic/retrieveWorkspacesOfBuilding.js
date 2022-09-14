@@ -1,33 +1,38 @@
-// const API_URL = process.env.REACT_APP_API_URL
+import { validateCallback, validateText } from "validators"
 
-// function retrieveWorkspacesOfBuilding(buildingId, token, callback) {
-//     verifyObjectIdString(buildingId, 'building id')
+const API_URL = process.env.REACT_APP_API_URL
 
-
-//     return Building.findById(buildingId).lean()
-//         .catch(error => {
-//             throw new SystemError(error.message)
-//         })
-//         .then(building => {
-//             if (!building) throw new NotFoundError(`workspace with id ${buildingId} not found`)
-
-//             return Workspace.find({ building: buildingId }, 'building name price image description').lean()
-//                 .catch(error => {
-//                     throw new SystemError(error.message)
-//                 })
-//         })
-//         .then(workspaces => {
-//             workspaces.forEach(workspace => {
+function retrieveWorkspacesOfBuilding( buildingId, callback) {
+    validateText(buildingId, 'buildingId')
+    validateCallback(callback)
     
+    const xhr = new XMLHttpRequest
 
-//                 workspace.id = workspace._id.toString()
-//                 delete workspace._id
+    xhr.onload = function() {
+        const status = xhr.status
 
-//                 delete workspace.__v
-//             })
+        const json = xhr.responseText
 
-//             return workspaces
-//         })
-// }
+        const buildings = JSON.parse(json)
 
-// module.exports = retrieveWorkspacesOfBuilding
+
+        if (status >= 500)
+            callback(new Error(`server error (${status})`))
+        else if (status >= 400)
+            callback(new Error(`client error (${status})`))
+        else if (status === 200) {
+
+
+
+            callback(null, buildings)
+        }
+    }
+
+    xhr.open('GET', `${API_URL}/buildings/:buildingId/workspaces`)
+
+    xhr.setRequestHeader('Authorization')
+
+    xhr.send()
+}
+
+export default retrieveWorkspacesOfBuilding
