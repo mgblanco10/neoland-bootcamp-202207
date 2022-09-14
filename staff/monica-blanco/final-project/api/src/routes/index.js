@@ -4,7 +4,7 @@ const jsonBodyParser = json()
 const { registerUserHandler, authenticateUserHandler, retrieveUserHandler, updateUserEmailHandler, updateUserPasswordHandler } = require('./users')
 const { retrieveBuildingsHandler } = require('./buildings')
 //const {createReservationHandler, deleteReservationHandler, retrieveReservationForUserHandler} =require('./reservations')
-//const{retrieveWorkspacesOfBuildingHandler} = require ('./workspaces')
+const{retrieveWorkspacesOfBuildingHandler} = require ('./workspaces')
 
 const usersRouter = Router()
 
@@ -16,12 +16,10 @@ usersRouter.patch('/users/password/',jsonBodyParser, updateUserPasswordHandler)
 
 const buildingsRouter = Router ()
 
+buildingsRouter.get('/buildings/:buildingId/workspaces', retrieveWorkspacesOfBuildingHandler)
 buildingsRouter.get('/buildings', retrieveBuildingsHandler)
 
-
 //const workspacesRouter = Router()
-
-//workspacesRouter.get('/workspaces', retrieveWorkspacesOfBuildingHandler)
 
 //workspacesRouter.patch('/workspaces/:workspaceId/reservations', jsonBodyParser, createReservationHandler)
 //delete
