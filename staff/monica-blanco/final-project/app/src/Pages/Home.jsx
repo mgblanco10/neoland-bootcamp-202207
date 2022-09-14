@@ -94,9 +94,9 @@ function Home({ onLogoutClick, onLinkClick, context: { toggleTheme} }) {
     )
 }
 export default withContext(Home)
+
 //             <p>{buildings[0].name}</p>
 // <img src={buildings[0].image}/> 
-
 
 
 
