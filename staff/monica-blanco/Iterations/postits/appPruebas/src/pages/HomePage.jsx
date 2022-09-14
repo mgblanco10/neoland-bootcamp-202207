@@ -179,9 +179,9 @@ function HomePage({onLogoutClick, onChangeNoteColor, context: { handleFeedback }
 
         <footer className="footer">
         {location.pathname === '/' && <button className="add-button transparent-button" onClick={handleAddClick}>+</button>}
-        {location.pathname === '/' &&  <div class="changeNoteColorContainer">
-                <div class="changeNoteBlue" onClick={handleChangeColor} ></div> 
-                <div class="changeNotePink" onClick={handleChangeColor}></div>
+        {location.pathname === '/' &&  <div className="changeNoteColorContainer">
+                <div className="changeNoteBlue" onClick={handleChangeColor} ></div> 
+                <div className="changeNotePink" onClick={handleChangeColor}></div>
             </div>}
         </footer>
     </div>

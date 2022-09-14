@@ -85,7 +85,7 @@ function Settings({onCloseClick, onFeedback}) {
 
                 <div className="form__field">
                     <label htmlFor="newPassword">New Password</label>
-                    <input class="input" type="password" name="newPassword" placeholder="new password" id="newPassword" />
+                    <input className="input" type="password" name="newPassword" placeholder="new password" id="newPassword" />
                 </div>
 
                 <div className="form__field">
@@ -105,7 +105,7 @@ function Settings({onCloseClick, onFeedback}) {
 
                 <div className="form__field">
                     <label htmlFor="newEmail">New Email</label>
-                    <input class="input" type="email" name="newEmail" placeholder="new email" id="newEmail" />
+                    <input className="input" type="email" name="newEmail" placeholder="new email" id="newEmail" />
                 </div>
 
                 <div className="form__field">

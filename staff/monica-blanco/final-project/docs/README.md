@@ -110,6 +110,16 @@ Sprint
 --WorkspacePage y resto de paginas
 Cacturar pecios y ver para que usuare seleccines
 
+==========Falta
+createReservation implementacion
+deleteReservation completa
+calendario
+pago
+
+
+V2---Mapa en página e Home con ubications
+
+
 
 
 
