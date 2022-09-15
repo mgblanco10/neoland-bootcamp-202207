@@ -2,10 +2,10 @@ const { Schema, Types: { ObjectId }  } = require('mongoose')
 
 const workspace = new Schema({
 
-    building: {
+    location: {
         type: ObjectId,
         required: true,
-        ref: 'Building'
+        ref: 'Location'
     },
 
     name: {

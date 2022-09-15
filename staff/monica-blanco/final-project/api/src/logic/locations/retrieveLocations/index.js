@@ -1,8 +1,8 @@
-const {Building, User} = require('../../../models')
+const {Location, User} = require('../../../models')
 const { NotFoundError, SystemError } = require('errors')
 const { verifyObjectIdString } = require('../../../utils')
 
-function retrieveBuildings(userId) {
+function retrieveLocations(userId) {
     verifyObjectIdString(userId, 'user id')
 
     return User.findById(userId).lean()
@@ -12,23 +12,23 @@ function retrieveBuildings(userId) {
         .then(user => {
             if (!user) throw new NotFoundError(`user with id ${userId} not found`)
 
-            return Building.find({user:userId}, 'name address image').lean()
+            return Location.find({user:userId}, 'name address image').lean()
                 .catch(error => {
                     throw new SystemError(error.message)
                 })
 })
-        .then(buildings => {
-            buildings.forEach(building => {
+        .then(locations => {
+            locations.forEach(location => {
               
 
-                building.id = building._id.toString()
-                delete building._id
+                location.id = location._id.toString()
+                delete location._id
 
-                delete building.__v
+                delete location.__v
             })
 
-            return buildings
+            return locations
         })
 }
 
-module.exports = retrieveBuildings
+module.exports = retrieveLocations
