@@ -1,16 +1,14 @@
 import Loggito from '../utils/Loggito'
 import Header from '../components/Header'
-import Card from '../components/Card'
-import withContext from '../utils/withContext'
+import {useParams} from 'react-router-dom'
 
-function Workspaces({ onLinkClick, onClick, context: { handleFeedback } }) {
+function Workspaces({ workspaces }) {
   const logger = new Loggito('workspaces')
 
-  const handleLinkClick = event => {
-    event.preventDefault()
+  const params = useParams()
 
-    onLinkClick()
-  }
+  logger.info('return')
+  
 
   // useEffect(() => {
   //   logger.info('"componentDidMount"')
@@ -43,38 +41,25 @@ function Workspaces({ onLinkClick, onClick, context: { handleFeedback } }) {
   return (
     <div>
       <Header />
-
-      <button className="anchor" onClick={handleLinkClick} >Home</button>
-      <div class="flex flex-row">
-
-
-        <div class="w-30 md:w-60 lg:w-80 mx-5 py-7">  <Card /> </div>
-        <div class="w-30 md:w-60 lg:w-80 mx-5 py-7">  <Card /> </div>
-        <div class="w-30 md:w-60 lg:w-80 mx-5 py-7">  <Card /> </div>
-        <div class="w-30 md:w-60 lg:w-80 mx-5 py-7">  <Card /> </div>
-
-      </div>
-      <div class="flex flex-row">
-
-        <div class="w-30 md:w-60 lg:w-80 mx-5 py-7">  <Card /> </div>
-        <div class="w-30 md:w-60 lg:w-80 mx-5 py-7">  <Card /> </div>
-        <div class="w-30 md:w-60 lg:w-80 mx-5 py-7">  <Card /> </div>
-        <div class="w-30 md:w-60 lg:w-80 mx-5 py-7">  <Card /> </div>
-
-      </div>
-
-      <div class="flex flex-row">
-
-        <div class="w-30 md:w-60 lg:w-80 mx-5 py-7">  <Card /> </div>
-        <div class="w-30 md:w-60 lg:w-80 mx-5 py-7">  <Card /> </div>
-        <div class="w-30 md:w-60 lg:w-80 mx-5 py-7">  <Card /> </div>
-        <div class="w-30 md:w-60 lg:w-80 mx-5 py-7">  <Card /> </div>
-
-      </div>
-
-
+      workspaces && workspaces.map(workspace => <div className="max-w-sm rounded overflow-hidden shadow-lg">
+    <img className="w-full" src={workspace.image} alt="Workspaces PobleNou" />
+    <div className="px-6 py-4">
+      <div className="font-bold text-xl mb-2">{workspace.name}</div>
+      <p className="text-gray-700 text-base">
+      {workspace.address}
+      </p>
     </div>
+    <div className="px-6 pt-4 pb-2">
+      <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
+        PRECIO
+      </span>
+      <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2" >
+        ALQUILAR
+      </span>
+    </div>
+  </div>)
+  </div>
 
   )
 }
-export default withContext(Workspaces)
+export default Workspaces

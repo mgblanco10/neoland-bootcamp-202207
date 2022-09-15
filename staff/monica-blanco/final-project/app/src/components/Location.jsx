@@ -1,19 +1,19 @@
 
 import Loggito from "../utils/Loggito";
 
-function Edifice({buildings}) {
+function Edifice({locations}) {
   const logger = new Loggito("List buildings");
 
   logger.info("return")
 
 
   return (
-    buildings.map(building => <div className="max-w-sm rounded overflow-hidden shadow-lg">
-    <img className="w-full" src={building.image} alt="Workspaces PobleNou" />
+    locations.map(location => <div className="max-w-sm rounded overflow-hidden shadow-lg">
+    <img className="w-full" src={location.image} alt="Workspaces PobleNou" />
     <div className="px-6 py-4">
-      <div className="font-bold text-xl mb-2">{building.name}</div>
+      <div className="font-bold text-xl mb-2">{location.name}</div>
       <p className="text-gray-700 text-base">
-      {building.address}
+      {location.address}
       </p>
     </div>
     <div className="px-6 pt-4 pb-2">

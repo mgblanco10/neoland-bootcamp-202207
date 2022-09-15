@@ -8,6 +8,6 @@ module.exports = ( req, res ) => {
         const { locationId } = req.params
 
         return retrieveWorkspaces(locationId)
-            .then( workspaces => res.status( 200 ).json( workspaces ) )
+            .then( locations => res.status( 200 ).json( locations ) )
     }, res, logger )
 }

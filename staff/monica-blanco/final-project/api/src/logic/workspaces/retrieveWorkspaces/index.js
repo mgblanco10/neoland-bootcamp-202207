@@ -1,6 +1,5 @@
 const { Location, Workspace} = require('../../../models')
 const { NotFoundError, SystemError } = require('errors')
-const validateString = require('validators')
 const { verifyObjectIdString } = require('../../../utils')
 
 

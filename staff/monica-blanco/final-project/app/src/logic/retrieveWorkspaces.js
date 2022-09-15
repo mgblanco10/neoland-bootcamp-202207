@@ -2,8 +2,8 @@ import { validateCallback, validateText } from "validators"
 
 const API_URL = process.env.REACT_APP_API_URL
 
-function retrieveWorkspacesOfBuilding( buildingId, callback) {
-    validateText(buildingId, 'buildingId')
+function retrieveWorkspaces( locationId, callback) {
+    validateText(locationId, 'buildingId')
     validateCallback(callback)
     
     const xhr = new XMLHttpRequest
@@ -13,7 +13,7 @@ function retrieveWorkspacesOfBuilding( buildingId, callback) {
 
         const json = xhr.responseText
 
-        const buildings = JSON.parse(json)
+        const locations = JSON.parse(json)
 
 
         if (status >= 500)
@@ -24,15 +24,15 @@ function retrieveWorkspacesOfBuilding( buildingId, callback) {
 
 
 
-            callback(null, buildings)
+            callback(null, locations)
         }
     }
 
-    xhr.open('GET', `${API_URL}/buildings/:buildingId/workspaces`)
+    xhr.open('GET', `${API_URL}/locations/:locationsId/workspaces`)
 
     xhr.setRequestHeader('Authorization')
 
     xhr.send()
 }
 
-export default retrieveWorkspacesOfBuilding
+export default retrieveWorkspaces

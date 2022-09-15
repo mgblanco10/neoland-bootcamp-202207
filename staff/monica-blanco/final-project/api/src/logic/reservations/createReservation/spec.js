@@ -36,7 +36,7 @@ describe( 'createReservation', () => {
         const reservation1 = new Reservation( {
             user: user.id,
             workspace: workspace1.id,
-            date: '2022-02-04',
+            date: new Date('2022-02-04')
 
         } )
 

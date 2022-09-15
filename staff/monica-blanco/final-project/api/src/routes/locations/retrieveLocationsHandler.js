@@ -7,7 +7,8 @@ module.exports = (req, res) => {
         const userId = verifyToken(req)
 
         return retrieveLocations(userId)
-            .then(locations => res.status(200).json(locations))
+        .then(locations => res.status(200).json(locations))
+
     }, res, logger)
 }
 

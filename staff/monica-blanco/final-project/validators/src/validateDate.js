@@ -1,5 +1,5 @@
 function validateDate(date) {
-    if  (isNaN(date.getTime())) throw new TypeError('date is not valid')
+    if  (!(date instanceof Date)) throw new TypeError('date is not valid')
 }
 module.exports = validateDate
 

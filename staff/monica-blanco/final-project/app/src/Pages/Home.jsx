@@ -3,8 +3,8 @@ import Header from "../components/Header";
 import Settings from "../Pages/Settings";
 import Loggito from "../utils/Loggito";
 import retrieveUser from "../logic/retrieveUser";
-import retrieveBuildings from "../logic/retrieveBuildings";
-import retrieveWorkspacesOfBuilding from "../logic/retrieveWorkspacesOfBuilding";
+import retrieveLocations from "../logic/retrieveLocations";
+import retrieveWorkspaces from "../logic/retrieveWorkspaces";
 import withContext from "../utils/withContext";
 import { Routes, Route, useNavigate, useLocation } from "react-router-dom";
 
@@ -12,12 +12,13 @@ import PhotoGaleria from "../components/PhotoGaleria";
 import Location from "../components/Location";
 import Card from "../components/Card";
 import Colors from "../components/Colors";
+import Workspaces from "./Workspaces";
 
 
 function Home({ onLogoutClick, context: { toggleTheme } }) {
   const logger = new Loggito("Home");
 
-  const [buildings, setBuildings] = useState();
+  const [locations, setLocations] = useState();
   const [workspaces, setWorkspaces] = useState();
   const navigate = useNavigate();
   const location = useLocation();
@@ -38,12 +39,12 @@ function Home({ onLogoutClick, context: { toggleTheme } }) {
       logger.warn(error.message);
     }
 
-    loadBuildings();
+    loadLocations();
   }, []);
 
-  const loadBuildings = () => {
+  const loadLocations = () => {
     try {
-      retrieveBuildings(sessionStorage.token, (error, buildings) => {
+      retrieveLocations(sessionStorage.token, (error, locations) => {
         if (error) {
           logger.warn(error.message);
 
@@ -52,9 +53,9 @@ function Home({ onLogoutClick, context: { toggleTheme } }) {
           return;
         }
 
-        setBuildings(buildings);
+        setLocations(locations);
 
-        logger.debug("setBuildings", buildings);
+        logger.debug("setLocations", locations);
       });
     } catch (error) {
       logger.warn(error.message);
@@ -63,7 +64,7 @@ function Home({ onLogoutClick, context: { toggleTheme } }) {
 
     const loadWorkspaces = () => {
     try {
-        retrieveWorkspacesOfBuilding(sessionStorage.token, buildings, (error, workspaces) => {
+        retrieveWorkspaces(sessionStorage.token, locations, (error, workspaces) => {
            if (error) {
               logger.warn(error.message)
   
@@ -107,6 +108,7 @@ function Home({ onLogoutClick, context: { toggleTheme } }) {
 
     logger.debug( "navigate to your reservations" );
 }
+const handleLocationClick = locationId => navigate(`locations/${locationId}/workspaces`)
 
 
 
@@ -114,8 +116,8 @@ function Home({ onLogoutClick, context: { toggleTheme } }) {
     <div>
       <Header onLogoutClick={onLogoutClick} onSettingsClick={handleSettingsClick} onWorkspacesClick={handleWorkspacesClick}  onYourReservationsClick={handleYourReservationsClick} onSolutionsClick={handleSolutionsClick}/>
       <Routes>
-        <Route path="/" element={ buildings ? ( <Location buildings={buildings} />) : (<></>)}/>
-        <Route path="workspaces" element={workspaces? (<Card workspaces={workspaces}  />):(<></>)} /> 
+        <Route path="/" element={ locations ? ( <Location locations={locations} onClick={handleLocationClick} />) : (<>hola</>)}/>
+        <Route path="/locations/:locationsId/workspaces" element={ <Workspaces />} /> 
         <Route path="settings" element={<Settings />} />
         <Route path="yourReservations" element={<PhotoGaleria />} />
         <Route path="solutions" element={<Colors/>} />

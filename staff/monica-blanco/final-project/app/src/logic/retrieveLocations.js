@@ -1,7 +1,7 @@
 import { validateText,validateCallback } from "validators"
 const API_URL = process.env.REACT_APP_API_URL
 
-function retrieveBuildings(token, callback) {
+function retrieveLocations(token, callback) {
     validateText(token, 'token')
     validateCallback(callback)
     
@@ -12,7 +12,7 @@ function retrieveBuildings(token, callback) {
 
         const json = xhr.responseText
 
-        const buildings = JSON.parse(json)
+        const locations = JSON.parse(json)
 
 
         if (status >= 500)
@@ -23,15 +23,15 @@ function retrieveBuildings(token, callback) {
 
 
 
-            callback(null, buildings)
+            callback(null, locations)
         }
     }
 
-    xhr.open('GET', `${API_URL}/buildings`)
+    xhr.open('GET', `${API_URL}/locations`)
 
     xhr.setRequestHeader('Authorization', `Bearer ${token}`)
 
     xhr.send()
 }
 
-export default retrieveBuildings
+export default retrieveLocations
