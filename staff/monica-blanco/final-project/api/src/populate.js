@@ -1,13 +1,23 @@
-require('dotenv').config()
-
-
-const { MONGO_URL } = process.env
+require("dotenv").config();
+const {
+  env: { MONGO_URL },
+} = process;
 const mongoose = require("mongoose");
 const { connect, disconnect } = mongoose
 
-const { User, Location, Workspace, Reservation } = require("./models");
+const { User, Location, Workspace, Reservation } = require("./models"); 
+
 
 connect(MONGO_URL)
+//   .then(() => {
+//     console.log(`db connected`);
+//     return Promise.all([
+//       User.deleteMany(),
+//       Location.deleteMany(),
+//       Reservation.deleteMany(),
+//       Workspace.deleteMany(),
+//     ]);
+//   })
   .then(() => mongoose.connection.db.dropDatabase())
   .then(() => {
     const pepito = new User({
@@ -43,14 +53,14 @@ connect(MONGO_URL)
     ]);
   })
   .then(([pepito, wendy, peter, james]) => {
-    const pobleNou = new Building({
+    const pobleNou = new Location({
       name: "PobleNou Building",
       address: "Calle de Ramon Turró, 169, 08005",
       image:
         "https://334045-1026637-1-raikfcquaxqncofqfm.stackpathdns.com/wp-content/uploads/2019/10/talent-garden-campus-madrid-05-1280x800.jpg",
     });
 
-    const diagonal = new Building({
+    const diagonal = new Location({
       name: "Diagonal Building",
       address: "Diagonal 444 Catalonia Barcelona, B 08037",
       image:
@@ -60,7 +70,7 @@ connect(MONGO_URL)
     return Promise.all([pobleNou.save(), diagonal.save()]).then(
       ([pobleNou, diagonal]) => {
         const office1 = new Workspace({
-          building: pobleNou.id,
+          location: pobleNou.id,
           name: "Office Private 1",
           price: 45,
           image:
@@ -69,7 +79,7 @@ connect(MONGO_URL)
         });
 
         const office2 = new Workspace({
-          building: pobleNou.id,
+          location: pobleNou.id,
           name: "Suite",
           price: 80,
           image:
@@ -78,7 +88,7 @@ connect(MONGO_URL)
         });
 
         const office3 = new Workspace({
-          building: diagonal.id,
+          location: diagonal.id,
           name: "Community Office",
           price: 75,
           image:
@@ -87,7 +97,7 @@ connect(MONGO_URL)
         });
 
         const office4 = new Workspace({
-          building: diagonal.id,
+          location: diagonal.id,
           name: "Living Room Small",
           price: 100,
           image:
@@ -96,7 +106,7 @@ connect(MONGO_URL)
         });
 
         const office5 = new Workspace({
-          building: diagonal.id,
+          location: diagonal.id,
           name: "Desk",
           price: 50,
           image:
@@ -105,7 +115,7 @@ connect(MONGO_URL)
         });
 
         const office6 = new Workspace({
-          building: diagonal.id,
+          location: diagonal.id,
           name: "Living room",
           price: 100,
           image:
@@ -114,7 +124,7 @@ connect(MONGO_URL)
         });
 
         const office7 = new Workspace({
-          building: diagonal.id,
+          location: diagonal.id,
           name: "Desk small",
           price: 100,
           image:
@@ -123,7 +133,7 @@ connect(MONGO_URL)
         });
 
         const office8 = new Workspace({
-          building: diagonal.id,
+          location: diagonal.id,
           name: "Office Private",
           price: 100,
           image:
@@ -131,7 +141,7 @@ connect(MONGO_URL)
           description: "Enjoy shared services and meeting rooms.",
         });
         const office9 = new Workspace({
-          building: diagonal.id,
+          location: diagonal.id,
           name: "Office Private Large",
           price: 100,
           image:
@@ -139,7 +149,7 @@ connect(MONGO_URL)
           description: "Enjoy shared services and meeting rooms.",
         });
         const office10 = new Workspace({
-          building: diagonal.id,
+          location: diagonal.id,
           name: "Small Private Office",
           price: 70,
           image:
@@ -147,7 +157,7 @@ connect(MONGO_URL)
           description: "Enjoy shared services and meeting rooms.",
         });
         const office11 = new Workspace({
-          building: pobleNou.id,
+          location: pobleNou.id,
           name: "Office Private",
           price: 100,
           image:
@@ -155,7 +165,7 @@ connect(MONGO_URL)
           description: "Enjoy shared services and meeting rooms.",
         });
         const office12 = new Workspace({
-          building: pobleNou.id,
+          location: pobleNou.id,
           name: "Office Private",
           price: 100,
           image:
@@ -240,20 +250,3 @@ connect(MONGO_URL)
   .then(() => disconnect());
 
 //npm run populate-inspect-cli
-// exec error
-
-//TODO
-
-// const reservation7 = new Reservation({
-//     _user: james.id,
-//     get user() {
-//         return this._user
-//     },
-//     set user(value) {
-//         this._user = value
-//     },
-//     workspace: office5.id,
-//     date: 10/10/2022,
-//     createdAt: 12/06/2021,
-// })
-//exec error.code
