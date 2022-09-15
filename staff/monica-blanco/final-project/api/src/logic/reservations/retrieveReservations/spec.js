@@ -1,28 +1,28 @@
 require('dotenv').config()
 const { connect, disconnect, Types: { ObjectId } } = require("mongoose")
-const { User, Reservation, Workspace, Building } = require('../../../models')
+const { User, Reservation, Workspace, Location} = require('../../../models')
 const { NotFoundError } = require('errors')
-const retrieveReservationsOfUser = require('.')
+const retrieveReservation = require('.')
 const { env: { MONGO_URL_TEST } } = process
 
-describe('retrieveReservationsOfUser', () => {
+describe('retrieveReservation', () => {
     beforeAll(() => connect(MONGO_URL_TEST))
 
-    beforeEach(() => Promise.all([User.deleteMany(), Reservation.deleteMany(), Workspace.deleteMany(), Building.deleteMany()]))
+    beforeEach(() => Promise.all([User.deleteMany(), Reservation.deleteMany(), Workspace.deleteMany(), Location.deleteMany()]))
 
     it('succeeds on existing user and reservation', () => {  // happy path
         const name = 'Pepito Grillo'
         const email = 'pepito@grillo.com'
         const password = '123123123'
 
-        const building = new Building({
+        const location = new Location({
             name:'diagonal',
             address:'Carrer de Santjoanistes',
             image: 'jpg'
         })
         
         const workspace1 = new Workspace({
-            building: building.id,
+            location: location.id,
             name:'office1',
             price: 50,
             image: 'jpg',
@@ -30,7 +30,7 @@ describe('retrieveReservationsOfUser', () => {
         })
         
         const workspace2 = new Workspace({
-            building: building.id,
+            location: location.id,
             name:'office2',
             price: 45,
             image: 'jpg'
@@ -41,21 +41,21 @@ describe('retrieveReservationsOfUser', () => {
 
         const reservation1 = new Reservation({
             user: user.id,
-            building: building.id,
+            location: location.id,
             workspace: workspace1.id,
             date
         })
 
         const reservation2 = new Reservation({
             user: user.id,
-            building: building.id,
+            location: location.id,
             workspace: workspace2.id,
             date
         })
 
         return Promise.all([
             user.save(),
-            building.save(),
+            location.save(),
             workspace1.save(),
             workspace2.save(),
             reservation1.save(),
@@ -63,7 +63,7 @@ describe('retrieveReservationsOfUser', () => {
         ])
             .then(([user, , , , reservation1, reservation2]) => {
  
-                return retrieveReservationsOfUser(user.id)
+                return retrieveReservation(user.id)
                     .then(reservations => {
                         expect(reservations).toHaveLength(2)
 
@@ -86,7 +86,7 @@ describe('retrieveReservationsOfUser', () => {
     it('fails on non-existing user', () => {  // unhappy path
         const userId = new ObjectId().toString()
 
-        return retrieveReservationsOfUser(userId)
+        return retrieveReservation(userId)
             .catch(error => {
                 expect(error).toBeInstanceOf(NotFoundError)
                 expect(error.message).toEqual(`user with id ${userId} not found`)

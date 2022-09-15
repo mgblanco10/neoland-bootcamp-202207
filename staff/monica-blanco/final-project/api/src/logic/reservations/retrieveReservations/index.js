@@ -3,7 +3,7 @@ const { NotFoundError, SystemError } = require('errors')
 const { verifyObjectIdString } = require('../../../utils')
 const {validateDate} = require ('validators')
 
-function retrieveReservationsOfUser(userId) {
+function retrieveReservations(userId) {
     verifyObjectIdString(userId, 'user id')
 
     return User.findById(userId).lean()
@@ -31,4 +31,4 @@ function retrieveReservationsOfUser(userId) {
         })
 }
 
-module.exports = retrieveReservationsOfUser
+module.exports = retrieveReservations

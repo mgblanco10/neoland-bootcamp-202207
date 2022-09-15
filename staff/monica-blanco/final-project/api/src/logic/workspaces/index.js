@@ -1,3 +1,3 @@
 module.exports = { 
-    retrieveWorkspacesOfBuilding: require ('./retrieveWorkspacesOfBuilding')
+    retrieveWorkspaces: require ('./retrieveWorkspaces')
 }

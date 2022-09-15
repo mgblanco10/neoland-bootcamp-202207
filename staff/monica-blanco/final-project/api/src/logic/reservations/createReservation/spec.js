@@ -1,10 +1,9 @@
 require( 'dotenv' ).config()
 
 const { connect, disconnect, Types: { ObjectId } } = require( 'mongoose' )
-const { User, Reservation, Workspace, Location, Location } = require( '../../../models' )
-const { NotFoundError } = require( 'errors' )
+const { User, Reservation, Workspace, Location } = require( '../../../models' )
+const { DuplicityError, NotFoundError } = require( 'errors' )
 const createReservation = require( '.' )
-const { location } = require( '../../../models/schemas' )
 
 const { env: { MONGO_URL_TEST } } = process
 
@@ -104,8 +103,8 @@ describe( 'createReservation', () => {
                 return createReservation( user.id, workspace.id, date)
                     .then( () => { throw new Error( 'should not reach this point' ) } )
                     .catch( error => {
-                        expect( error ).toBeInstanceOf( NotFoundError )
-                        //expect( error.message ).toEqual( `workspace with id ${workspaceId} not found`)
+                        expect( error ).toBeInstanceOf( NotFoundError)
+                        //expect( error.message ).toEqual( `workspace with id ${workspaceId} is busy on ${date}`)
                     } )
             } )
     } )
