@@ -3,8 +3,10 @@ const { Router, json } = express
 const jsonBodyParser = json()
 const { registerUserHandler, authenticateUserHandler, retrieveUserHandler, updateUserEmailHandler, updateUserPasswordHandler } = require('./users')
 const { retrieveBuildingsHandler } = require('./buildings')
-//const {createReservationHandler, deleteReservationHandler, retrieveReservationForUserHandler} =require('./reservations')
+const {createReservationHandler, deleteReservationHandler, retrieveReservationsOfUserHandler} =require('./reservations')
 const{retrieveWorkspacesOfBuildingHandler} = require ('./workspaces')
+const { workspace } = require( '../models/schemas' )
+const { workspaces } = require( '../logic' )
 
 const usersRouter = Router()
 
@@ -20,12 +22,10 @@ buildingsRouter.get('/buildings/:buildingId/workspaces', retrieveWorkspacesOfBui
 buildingsRouter.get('/buildings', retrieveBuildingsHandler)
 
 //const workspacesRouter = Router()
+//workspacesRouter.get('/workspaces/:userId/reservations', retrieveReservationsOfUserHandler)
+//workspacesRouter.patch('/workspaces/:workspaceId/reservation', jsonBodyParser, createReservationHandler)
+//deleteReservations
 
-//workspacesRouter.patch('/workspaces/:workspaceId/reservations', jsonBodyParser, createReservationHandler)
-//delete
-
-//reservationRouter
-//retrieveReservationsOfUser
 
 
 module.exports = {

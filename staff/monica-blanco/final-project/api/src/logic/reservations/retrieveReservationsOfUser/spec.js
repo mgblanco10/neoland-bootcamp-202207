@@ -2,10 +2,10 @@ require('dotenv').config()
 const { connect, disconnect, Types: { ObjectId } } = require("mongoose")
 const { User, Reservation, Workspace, Building } = require('../../../models')
 const { NotFoundError } = require('errors')
-const retrieveUserReservation = require('.')
+const retrieveReservationsOfUser = require('.')
 const { env: { MONGO_URL_TEST } } = process
 
-describe('retrieveUserReservation', () => {
+describe('retrieveReservationsOfUser', () => {
     beforeAll(() => connect(MONGO_URL_TEST))
 
     beforeEach(() => Promise.all([User.deleteMany(), Reservation.deleteMany(), Workspace.deleteMany(), Building.deleteMany()]))
@@ -63,7 +63,7 @@ describe('retrieveUserReservation', () => {
         ])
             .then(([user, , , , reservation1, reservation2]) => {
  
-                return retrieveUserReservation(user.id)
+                return retrieveReservationsOfUser(user.id)
                     .then(reservations => {
                         expect(reservations).toHaveLength(2)
 
@@ -86,7 +86,7 @@ describe('retrieveUserReservation', () => {
     it('fails on non-existing user', () => {  // unhappy path
         const userId = new ObjectId().toString()
 
-        return retrieveUserReservation(userId)
+        return retrieveReservationsOfUser(userId)
             .catch(error => {
                 expect(error).toBeInstanceOf(NotFoundError)
                 expect(error.message).toEqual(`user with id ${userId} not found`)

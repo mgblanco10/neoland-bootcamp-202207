@@ -27,6 +27,6 @@ const reservation = new Schema({
         type: Date
     }
 })
-// db.reservation.createIndex({"date":1, "workspace":1},{unique:true})
+
 module.exports = reservation
 

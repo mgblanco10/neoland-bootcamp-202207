@@ -1,5 +1,5 @@
 module.exports = {
-    createReservationHandler: require ('./retrieveUserReservationHandler'),
+    createReservationHandler: require ('./retrieveReservationsOfUserHandler'),
     deleteReservationHandler: require ('./deleteRerservationHandler'),
-    retrieveUserReservationHandler: require ('./retrieveUserReservationHandler')
+    retrieveReservationsOfUserHandler: require ('./retrieveReservationsOfUserHandler')
 }
