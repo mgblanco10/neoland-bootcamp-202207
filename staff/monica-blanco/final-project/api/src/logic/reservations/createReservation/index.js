@@ -1,7 +1,7 @@
 const { User, Reservation, Workspace } = require('../../../models')
 const { NotFoundError, SystemError } = require('errors')
 const { verifyObjectIdString } = require('../../../utils')
-const validateDate = require('validators/src/validateDate')
+const validateDate = require('validators')
 const endOfDay = require ('date-fns/endOfDay')
 const startOfDay = require ('date-fns/startOfDay')
 
@@ -24,7 +24,7 @@ const startOfDay = require ('date-fns/startOfDay')
 function createReservation (userId, workspaceId, date) {
     verifyObjectIdString(userId, 'user id')
     verifyObjectIdString(workspaceId, 'workspace id')
-    // validateDate(date)
+    validateDate(date)
 
     return User.findById(userId).lean()
         .catch(error => {
@@ -53,35 +53,4 @@ function createReservation (userId, workspaceId, date) {
     module.exports = createReservation
             
             
-            //     .catch ()
-
-            
-            //     return Reservation.create({ user: user._id, workspace: workspace._id, date })
-            //     .catch(error => {
-            //     throw new SystemError(error.message)
-            // })
-            
-                    // TODO
-        
-                    // search workspace and check it exists
-        
-                    // const year = date.getFullYear()
-                    // const month = date.getMonth()
-                    // const day = date.getDate()
-        
-                    // const start = new Date(year, month, day)
-                    // const end = new Date(year, month, day + 1)
-        
-        
-                    // operadores que tiene moongose
-                    // const count = Reservation.find({ workspace: workspaceId, date: { $gte: start, $lt: end } }).count()
-        
-                    // if (count > workspace.limit) throw 
-        
-                    // return Reservation.create({ user: user._id, workspace: workspace._id, date })
-                    //     .catch(error => {
-                    //         throw new SystemError(error.message)
-                    //     
-
-
                     
