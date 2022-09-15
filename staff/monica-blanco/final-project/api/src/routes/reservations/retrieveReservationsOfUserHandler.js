@@ -1,12 +1,12 @@
 const { runWithErrorHandling, createLogger, verifyToken } = require('../../utils')
-const { reservations: { retrieveReservationsOfUser } } = require('../../logic')
+const { reservations: { retrieveReservations } } = require('../../logic')
 const logger = createLogger(module)
 
 module.exports = (req, res) => {
     runWithErrorHandling(() => {
         const userId = verifyToken(req)
 
-        return retrieveReservationsOfUser(userId)
-            .then(reservartions => res.status(200).json(reservations))
+        return retrieveReservations(userId)
+            .then(reservations => res.status(200).json(reservations))
     }, res, logger)
 }

@@ -1,22 +1,13 @@
-require("dotenv").config();
-const {
-  env: { MONGO_URL },
-} = process;
+require('dotenv').config()
+
+
+const { MONGO_URL } = process.env
 const mongoose = require("mongoose");
 const { connect, disconnect } = mongoose
 
-const { User, Building, Workspace, Reservation } = require("./models");
+const { User, Location, Workspace, Reservation } = require("./models");
 
 connect(MONGO_URL)
-//   .then(() => {
-//     console.log(`db connected`);
-//     return Promise.all([
-//       User.deleteMany(),
-//       Building.deleteMany(),
-//       Reservation.deleteMany(),
-//       Workspace.deleteMany(),
-//     ]);
-//   })
   .then(() => mongoose.connection.db.dropDatabase())
   .then(() => {
     const pepito = new User({
