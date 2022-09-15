@@ -5,7 +5,7 @@ const workspace = new Schema({
     location: {
         type: ObjectId,
         required: true,
-        ref: 'location'
+        ref: 'Location'
     },
 
     name: {
