@@ -1,26 +1,26 @@
 require('dotenv').config()
 const { connect, disconnect, Types: { ObjectId } } = require('mongoose')
-const {Building, User} = require('../../../models')
+const {location, User} = require('../../../models')
 const { NotFoundError } = require('errors')
-const retrieveBuilding = require('.')
+const retrievelocation = require('.')
 const { MONGO_URL_TEST } = process.env
 
-describe('retrieveBuildings', () => {
+describe('retrievelocations', () => {
     beforeAll(() => connect(MONGO_URL_TEST))
 
-    beforeEach(() => Promise.all([User.deleteMany(), Building.deleteMany()]))
+    beforeEach(() => Promise.all([User.deleteMany(), location.deleteMany()]))
 
-    it('retrieve buildings', () => {  // happy path
+    it('retrieve locations', () => {  // happy path
         const name = 'Pepito Grillo'
         const email = 'pepito@grillo.com'
         const password = '123123123'
 
-        const building1 = new Building({
+        const location1 = new location({
             name:'diagonal',
             address:'Carrer de Santjoanistes',
             image: 'jpg'
         })
-        const building2 = new Building({
+        const location2 = new location({
             name:'pobleNou',
             address:'Carrer de Llacuna',
             image: 'jpg'
@@ -30,22 +30,22 @@ describe('retrieveBuildings', () => {
 
         return Promise.all([
             user.save(),
-            building1.save(),
-            building2.save()
+            location1.save(),
+            location2.save()
 
         ])
-            .then(([user, building1, building2]) =>
-                retrieveBuilding(user.id)
-                    .then(buildings => {
-                        expect(buildings).toHaveLength(2)
+            .then(([user, location1, location2]) =>
+                retrievelocation(user.id)
+                    .then(locations => {
+                        expect(locations).toHaveLength(2)
 
-                        const _building1 = buildings.find(building => building.id === building1.id)
-                        expect(_building1).toBeDefined()
-                        expect(_building1.user).toBeUndefined()
+                        const _location1 = locations.find(location => location.id === location1.id)
+                        expect(_location1).toBeDefined()
+                        expect(_location1.user).toBeUndefined()
    
-                        const _building2 = buildings.find(building => building.id === building2.id)
-                        expect(_building2).toBeDefined()
-                        expect(_building2.user).toBeUndefined()
+                        const _location2 = locations.find(location => location.id === location2.id)
+                        expect(_location2).toBeDefined()
+                        expect(_location2.user).toBeUndefined()
         
                     })
             )

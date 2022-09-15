@@ -7,6 +7,6 @@ module.exports = (req, res) => {
         const userId = verifyToken(req)
 
         return retrieveReservationsOfUser(userId)
-            .then(reservartions => res.status(200).json(reservations))
+            .then(reservations => res.status(200).json(reservations))
     }, res, logger)
 }

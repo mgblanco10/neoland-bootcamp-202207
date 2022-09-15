@@ -21,10 +21,6 @@ const reservation = new Schema({
         type: Date,
         default: Date.now
 
-    },
-
-    modifiedAt: {
-        type: Date
     }
 })
 

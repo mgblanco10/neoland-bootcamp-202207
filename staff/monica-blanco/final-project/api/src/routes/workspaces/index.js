@@ -1,3 +1,3 @@
 module.exports = {
-    retrieveWorkspacesOfBuildingHandler: require ('./retrieveWorkspacesOfBuildingHandler')
+    retrieveWorkspacesHandler: require ('./retrieveWorkspacesHandler')
 }

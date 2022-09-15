@@ -1,17 +1,16 @@
 require( 'dotenv' ).config()
 
 const { connect, disconnect, Types: { ObjectId } } = require( 'mongoose' )
-const { User, Reservation, Workspace, Building } = require( '../../../models' )
+const { User, Reservation, Workspace, location } = require( '../../../models' )
 const { NotFoundError } = require( 'errors' )
 const createReservation = require( '.' )
 
 const { env: { MONGO_URL_TEST } } = process
 
 describe( 'createReservation', () => {
-
     beforeAll( () => connect( MONGO_URL_TEST ) )
 
-    beforeEach( () => Promise.all( [User.deleteMany(), Reservation.deleteMany(), Workspace.deleteMany(), Building.deleteMany()] ) )
+    beforeEach( () => Promise.all( [User.deleteMany(), Reservation.deleteMany(), Workspace.deleteMany(), location.deleteMany()] ) )
 
     it( 'user manages to make a reservation of a space', () => { //happy path
         const name = 'Pepito Grillo'
@@ -21,14 +20,14 @@ describe( 'createReservation', () => {
         const user = new User( { name, email, password } )
         const date = new Date
 
-        const building = new Building( {
+        const location = new location( {
             name: 'diagonal',
             address: 'Carrer de Santjoanistes',
             image: 'jpg'
         } )
 
         const workspace1 = new Workspace( {
-            building: building.id,
+            location: location.id,
             name: 'office1',
             price: 50,
             image: 'jpg',
@@ -36,17 +35,17 @@ describe( 'createReservation', () => {
         const reservation1 = new Reservation( {
             user: user.id,
             workspace: workspace1.id,
-            date: '2022-02-04',
+            date: new Date('2022-02-04'),
 
         } )
 
         return Promise.all( [
             //user.save(),
-            building.save(),
+            location.save(),
             workspace1.save(),
             reservation1.save()
         ] )
-            .then( ( [building, workspace1, reservation1] ) => {
+            .then( ( [location, workspace1, reservation1] ) => {
 
                 return User.create( { name, email, password } )
                     .then( user =>
@@ -79,7 +78,7 @@ describe( 'createReservation', () => {
         const date = new Date
         const user = new User( { name, email, password } )
 
-        const building = new Building( {
+        const location = new location( {
             name: 'diagonal',
             address: 'Carrer de Santjoanistes',
             image: 'jpg'
@@ -87,15 +86,15 @@ describe( 'createReservation', () => {
 
 
         const workspace = new Workspace( {
-            building: building.id,
+            location: location.id,
             name: 'office1',
-            date: '2022-08-09',
+            date: new Date('2022-08-09'),
             price: 50,
             image: 'jpg',
         } )
 
         return Promise.all( [
-            building.save(),
+            location.save(),
             workspace.save()
         ] )
             .then( ( [user, workspace] ) => {
@@ -104,7 +103,6 @@ describe( 'createReservation', () => {
                     .then( () => { throw new Error( 'should not reach this point' ) } )
                     .catch( error => {
                         expect( error ).toBeInstanceOf( NotFoundError )
-                        //expect( error.message ).toEqual( `workspace with id ${workspaceId} not found`)
                     } )
             } )
     } )
