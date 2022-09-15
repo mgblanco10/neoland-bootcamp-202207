@@ -1,3 +1,3 @@
 module.exports = { 
-    retrievelocation: require ('./retrievelocation')
+    retrieveLocation: require ('./retrieveLocation')
 }

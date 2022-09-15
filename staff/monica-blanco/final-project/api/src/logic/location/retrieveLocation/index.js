@@ -2,7 +2,7 @@ const {location, User} = require('../../../models')
 const { NotFoundError, SystemError } = require('errors')
 const { verifyObjectIdString } = require('../../../utils')
 
-function retrievelocation(userId) {
+function retrieveLocation(userId) {
     verifyObjectIdString(userId, 'user id')
 
     return User.findById(userId).lean()
@@ -31,4 +31,4 @@ function retrievelocation(userId) {
         })
 }
 
-module.exports = retrievelocation
+module.exports = retrieveLocation
