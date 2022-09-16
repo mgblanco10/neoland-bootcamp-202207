@@ -3,7 +3,7 @@ import { validateCallback, validateText } from "validators"
 const API_URL = process.env.REACT_APP_API_URL
 
 function retrieveWorkspaces( locationId, callback) {
-    validateText(locationId, 'buildingId')
+    validateText(locationId, 'locationId')
     validateCallback(callback)
     
     const xhr = new XMLHttpRequest

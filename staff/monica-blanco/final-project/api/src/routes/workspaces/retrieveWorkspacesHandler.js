@@ -1,5 +1,5 @@
 const { runWithErrorHandling, createLogger,verifyToken} = require( '../../utils' )
-const { workspaces: { retrieveWorkspaces } } = require( '../../logic' )
+const { workspaces: { retrieveWorkspaces }, workspaces } = require( '../../logic' )
 const logger = createLogger( module )
 
 module.exports = ( req, res ) => {
@@ -8,6 +8,6 @@ module.exports = ( req, res ) => {
         const { locationId } = req.params
 
         return retrieveWorkspaces(locationId)
-            .then( locations => res.status( 200 ).json( locations ) )
+            .then( workspaces => res.status( 200 ).json( workspaces ) )
     }, res, logger )
 }

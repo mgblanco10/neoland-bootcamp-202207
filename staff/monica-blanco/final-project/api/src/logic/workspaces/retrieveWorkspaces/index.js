@@ -15,7 +15,7 @@ function retrieveWorkspaces(locationId) {
       
             if (!location) throw new NotFoundError(`workspace with id ${locationId} not found`)
 
-            return Workspace.find({ location: locationId }, 'location name price image description').lean()
+            return Workspace.find({ location: locationId }, 'name price image description').lean()
                 .catch(error => {
        
                     throw new SystemError(error.message)

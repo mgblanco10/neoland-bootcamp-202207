@@ -64,7 +64,7 @@ describe('retrieveWorkspaces', () => {
 
                         const _workspace1 = workspaces.find(workspace => workspace.id === workspace1.id)
                         expect(workspace1).toBeDefined()
-                        // expect(_workspace1.location).toBeUndefined()
+                        //expect(_workspace1.location).toBeUndefined()
 
                         const _workspace2 = workspaces.find(workspace => workspace.id === workspace2.id)
                         expect(workspace2).toBeDefined()

@@ -1,10 +1,23 @@
-
+import {useNavigate} from "react-router-dom"
 import Loggito from "../utils/Loggito";
 
-function Edifice({locations}) {
+function Location({locations, onLinkClick}) {
   const logger = new Loggito("List buildings");
-
+  const navigate = useNavigate();
   logger.info("return")
+
+  const handleLinkClick = event => {
+    event.preventDefault()
+
+    onLinkClick()
+}
+function handleLocationClick () {
+  navigate( "workspaces" );
+
+  logger.debug( "navigate to workspaces" );
+
+  // loadWorkspaces()
+}
 
 
   return (
@@ -20,12 +33,13 @@ function Edifice({locations}) {
       <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
         PRECIO
       </span>
-      <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
-        ALQUILAR
+      <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2" onClick={handleLinkClick}>
+        Rent
       </span>
+      <button onClick={handleLocationClick}>jojojo</button>
     </div>
   </div>)
   );
 }
 
-export default Edifice;
+export default Location;

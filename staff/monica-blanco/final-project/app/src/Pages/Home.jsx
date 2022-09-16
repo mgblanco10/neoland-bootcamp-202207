@@ -117,7 +117,7 @@ const handleLocationClick = locationId => navigate(`locations/${locationId}/work
       <Header onLogoutClick={onLogoutClick} onSettingsClick={handleSettingsClick} onWorkspacesClick={handleWorkspacesClick}  onYourReservationsClick={handleYourReservationsClick} onSolutionsClick={handleSolutionsClick}/>
       <Routes>
         <Route path="/" element={ locations ? ( <Location locations={locations} onClick={handleLocationClick} />) : (<>hola</>)}/>
-        <Route path="/locations/:locationsId/workspaces" element={ <Workspaces />} /> 
+        <Route path="/locations/:locationsId/workspaces" element={ <Workspaces onClick={handleLocationClick} />} /> 
         <Route path="settings" element={<Settings />} />
         <Route path="yourReservations" element={<PhotoGaleria />} />
         <Route path="solutions" element={<Colors/>} />
