@@ -26,6 +26,7 @@ function retrieveWorkspaces(locationId) {
                    
 
                 workspace.id = workspace._id.toString()
+                
                 delete workspace._id
 
                 delete workspace.__v

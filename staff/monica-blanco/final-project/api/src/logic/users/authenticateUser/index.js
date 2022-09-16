@@ -22,7 +22,7 @@ function authenticateUser(email, password) {
             throw new SystemError(error.message)
         })
         .then(user => {
-         
+      
             if (!user) throw new NotFoundError(`user with email ${email} not found`)
 
             if (user.password !== password) throw new AuthError('wrong password')

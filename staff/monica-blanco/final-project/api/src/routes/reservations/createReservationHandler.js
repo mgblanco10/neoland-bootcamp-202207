@@ -1,6 +1,6 @@
 
 const { runWithErrorHandling, createLogger, verifyToken } = require('../../utils')
-const { reservations: { createReservation } } = require('../../logic/reservations/createReservation')
+const { createReservation } = require('../../logic/reservations/createReservation')
 const logger = createLogger(module)
 
 module.exports = (req, res) => {

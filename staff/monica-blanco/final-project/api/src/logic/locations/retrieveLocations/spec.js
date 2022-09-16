@@ -3,7 +3,6 @@ const { connect, disconnect, Types: { ObjectId } } = require('mongoose')
 const {Location, User} = require('../../../models')
 const { NotFoundError } = require('errors')
 const retrieveLocation = require('.')
-const retrieveLocations = require( '.' )
 const { MONGO_URL_TEST } = process.env
 
 describe('retrieveLocations', () => {

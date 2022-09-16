@@ -3,7 +3,7 @@ const { Router, json } = express
 const jsonBodyParser = json()
 const { registerUserHandler, authenticateUserHandler, retrieveUserHandler, updateUserEmailHandler, updateUserPasswordHandler } = require('./users')
 const { retrieveLocationsHandler } = require('./locations')
-//const {createReservationHandler, deleteReservationHandler, retrieveReservationsHandler} =require('./reservations')
+const {createReservationHandler, deleteReservationHandler, retrieveReservationsHandler} =require('./reservations')
 const{retrieveWorkspacesHandler} = require ('./workspaces')
 
 
@@ -20,10 +20,10 @@ const locationsRouter = Router ()
 locationsRouter.get('/locations/:locationsId/workspaces', retrieveWorkspacesHandler)
 locationsRouter.get('/locations', retrieveLocationsHandler)
 
-////const workspacesRouter = Router()
+const workspacesRouter = Router()
 
-//workspacesRouter.get('/reservations', retrieveReservationsHandler)
-//workspacesRouter.post('/reservations', jsonBodyParser, createReservationHandler)
+workspacesRouter.get('/reservations', retrieveReservationsHandler)
+workspacesRouter.post('/reservations', jsonBodyParser, createReservationHandler)
 //deleteReservations
 
 
@@ -31,6 +31,6 @@ locationsRouter.get('/locations', retrieveLocationsHandler)
 module.exports = {
     usersRouter,
     locationsRouter,
-    //workspacesRouter
+    workspacesRouter
 }
 

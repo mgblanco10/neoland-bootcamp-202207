@@ -4,7 +4,7 @@ import authenticateUser from '../logic/authenticateUser'
 import withContext from '../utils/withContext'
 import { AuthError, ClientError, ServerError } from 'errors'
 
-function Login({ onLinkClick, onLogIn, context: { handleFeedback }}) {
+function Login({ onLinkClick, onLogIn }) {
 
     const logger = new Loggito(Login.name)
     logger.info('constructor')
@@ -30,11 +30,11 @@ function Login({ onLinkClick, onLogIn, context: { handleFeedback }}) {
             authenticateUser(email, password, (error, token) => {
                 if (error) {
                     if (error instanceof ServerError) {
-                        handleFeedback({ message: error.message, level: 'error' })
+                       
                         logger.error(error.message)
                     } else if (error instanceof ClientError || error instanceof AuthError) {
                         logger.warn(error.message)
-                        handleFeedback({ message: error.message, level: 'warning' })
+                      
                     }
                     return
 
@@ -46,7 +46,7 @@ function Login({ onLinkClick, onLogIn, context: { handleFeedback }}) {
             onLogIn()
         })
     } catch (error) {
-        handleFeedback({ message: error.message, level: 'error' })
+        
         logger.warn(error.message)
     }
 }

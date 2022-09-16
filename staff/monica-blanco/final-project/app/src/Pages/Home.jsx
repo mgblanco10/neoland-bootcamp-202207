@@ -14,7 +14,6 @@ import Card from "../components/Card";
 import Colors from "../components/Colors";
 import Workspaces from "./Workspaces";
 
-
 function Home({ onLogoutClick, context: { toggleTheme } }) {
   const logger = new Loggito("Home");
 
@@ -22,7 +21,6 @@ function Home({ onLogoutClick, context: { toggleTheme } }) {
   const [workspaces, setWorkspaces] = useState();
   const navigate = useNavigate();
   const location = useLocation();
-
 
   useEffect(() => {
     logger.info("componentDidMount");
@@ -48,7 +46,7 @@ function Home({ onLogoutClick, context: { toggleTheme } }) {
         if (error) {
           logger.warn(error.message);
 
-          onLogoutClick()
+          onLogoutClick();
 
           return;
         }
@@ -62,68 +60,84 @@ function Home({ onLogoutClick, context: { toggleTheme } }) {
     }
   };
 
-    const loadWorkspaces = () => {
+  const loadWorkspaces = (locationId) => {
+    debugger
     try {
-        retrieveWorkspaces(sessionStorage.token, locations, (error, workspaces) => {
-           if (error) {
-              logger.warn(error.message)
-  
-                    return
-            }
-             setWorkspaces(workspaces)
-  
-                 logger.debug('setWorkspaces', workspaces)
-  
-               })
-             } catch (error) {
-          
-               logger.warn(error.message)
-              }
-          
-             loadWorkspaces()
-          }
+      retrieveWorkspaces(locationId, (error, workspaces) => {
+        if (error) {
+          logger.warn(error.message);
 
-  function handleSettingsClick () {
-        navigate( "settings" );
+          return;
+        }
+        setWorkspaces(workspaces);
 
-        logger.debug( "navigate to settings" );
+        logger.debug("setWorkspaces", workspaces);
+      });
+    } catch (error) {
+      logger.warn(error.message);
     }
+  };
 
-  function handleWorkspacesClick () {
-        navigate( "workspaces" );
+  function handleSettingsClick() {
+    navigate("settings");
 
-        logger.debug( "navigate to workspaces" );
-
-        loadWorkspaces()
-    }
-
-
-    function handleYourReservationsClick () {
-      navigate( "yourReservations" );
-
-      logger.debug( "navigate to your reservations" );
+    logger.debug("navigate to settings");
   }
-  function handleSolutionsClick () {
-    navigate( "solutions" );
 
-    logger.debug( "navigate to your reservations" );
-}
-const handleLocationClick = locationId => navigate(`locations/${locationId}/workspaces`)
+  // function handleWorkspacesClick() {
+  //   navigate("workspaces");
 
+  //   logger.debug("navigate to workspaces");
 
+  //   loadWorkspaces();
+  // }
+
+  function handleYourReservationsClick() {
+    navigate("yourReservations");
+
+    logger.debug("navigate to your reservations");
+  }
+  function handleSolutionsClick() {
+    navigate("solutions");
+
+    logger.debug("navigate to your reservations");
+  }
+  const handleLocationClick = (locationId) => {
+    debugger
+    loadWorkspaces(locationId);
+    
+    navigate(`locations/${locationId}/workspaces`);
+  };
 
   return (
     <div>
-      <Header onLogoutClick={onLogoutClick} onSettingsClick={handleSettingsClick} onWorkspacesClick={handleWorkspacesClick}  onYourReservationsClick={handleYourReservationsClick} onSolutionsClick={handleSolutionsClick}/>
+      <Header
+        onLogoutClick={onLogoutClick}
+        onSettingsClick={handleSettingsClick}
+        // onWorkspacesClick={handleWorkspacesClick}
+        onYourReservationsClick={handleYourReservationsClick}
+        onSolutionsClick={handleSolutionsClick}
+      />
       <Routes>
-        <Route path="/" element={ locations ? ( <Location locations={locations} onClick={handleLocationClick} />) : (<>hola</>)}/>
-        <Route path="/locations/:locationsId/workspaces" element={ <Workspaces onClick={handleLocationClick} />} /> 
+        <Route
+          path="/"
+          element={
+            locations ? (
+              <Location locations={locations} onClick={handleLocationClick} />
+            ) : (
+              <>hola</>
+            )
+          }
+        />
+        <Route
+          path="/locations/:locationsId/workspaces"
+          element={workspaces ? <Workspaces workspaces={workspaces} /> : <>AQUI HAY WORKSPACES </>}
+        />
         <Route path="settings" element={<Settings />} />
         <Route path="yourReservations" element={<PhotoGaleria />} />
-        <Route path="solutions" element={<Colors/>} />
+        <Route path="solutions" element={<Colors />} />
       </Routes>
     </div>
   );
 }
 export default withContext(Home);
-
