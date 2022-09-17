@@ -1,0 +1,17 @@
+import Loggito from '../utils/Loggito'
+import createReservation from '../logic/createReservation'
+import withContext from '../utils/withContext'
+
+
+function NewReservation({ onLinkClick, onCloseClick, context: { handleFeedback } }) {
+    const logger = new Loggito('New Reservation')
+
+    logger.info('return')
+
+
+      
+    return (
+   <h1>hola reservation</h1>
+   )    
+   }
+   export default NewReservation
