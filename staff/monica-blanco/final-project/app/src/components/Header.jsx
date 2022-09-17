@@ -4,7 +4,7 @@ import withContext from '../utils/withContext'
 import { useLocation } from 'react-router-dom'
 
 
-function Header({onLogoutClick, onSettingsClick ,onWorkspacesClick, onYourReservationsClick,onSolutionsClick, view: settings, workspaces ,context: { toggleTheme }}){
+function Header({onLogoutClick, onSettingsClick ,onHomeClick, onYourReservationsClick,onSolutionsClick, view: settings, workspaces ,context: { toggleTheme }}){
   const logger = new Loggito ('Header')
   const location = useLocation()
 
@@ -18,28 +18,36 @@ const handleSettingsClick = () => {
 
     onSettingsClick()
 }
-const handleWorkspacesClick = ()=>{
-   setView('workspaces')
-
-   logger.debug('setView', null)
-   onWorkspacesClick()
-}
 
 const handleYourReservationsClick = ()=>{
   setView('yourReservations')
-
+  
   logger.debug('setView', null)
-
+  
   onYourReservationsClick()
 }
 
 const handleSolutionsClick = ()=>{
   setView('solutions')
-
+  
   logger.debug('setView', null)
   
   onSolutionsClick()
 }
+// const handleWorkspacesClick = ()=>{
+//    setView('workspaces')
+
+//    logger.debug('setView', null)
+//    onWorkspacesClick()
+// }
+
+const handleNavigationToHomeClick = ()=>{
+  setView('/')
+
+  logger.debug('setView', null)
+  onHomeClick()
+}
+
 
 logger.info('return')
 
@@ -72,7 +80,7 @@ logger.info('return')
 
             <a className="text-gray-500 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" onClick={handleSolutionsClick}> Solutions </a>
           <a className="text-gray-500 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" onClick={handleYourReservationsClick}>Your Reservations</a>
-            <a className="text-gray-500 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" onClick={handleWorkspacesClick} view={workspaces}>Workspaces</a>
+            <a className="text-gray-500 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" onClick={handleNavigationToHomeClick} >Home</a>
 
            <a className="text-gray-500 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" onClick={handleSettingsClick}  view={settings} >Settings</a>
 

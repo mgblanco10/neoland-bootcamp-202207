@@ -1,5 +1,5 @@
 import Loggito from '../utils/Loggito'
-import createReservation from '../logic/createReservation'
+import handleCreateReservation from '../logic/createReservation'
 import withContext from '../utils/withContext'
 
 
@@ -11,7 +11,7 @@ function NewReservation({ onLinkClick, onCloseClick, context: { handleFeedback }
 
       
     return (
-   <h1>hola reservation</h1>
+   <h1>hola</h1>
    )    
    }
    export default NewReservation

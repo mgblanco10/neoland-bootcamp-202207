@@ -10,6 +10,7 @@ import { Routes, Route, useNavigate, useLocation } from "react-router-dom";
 
 import PhotoGaleria from "../components/PhotoGaleria";
 import Location from "../components/Location";
+import Card from "../components/Card";
 import Colors from "../components/Colors";
 import Workspaces from "./Workspaces";
 
@@ -82,6 +83,13 @@ function Home({ onLogoutClick, context: { toggleTheme } }) {
     logger.debug("navigate to settings");
   }
 
+  // function handleWorkspacesClick() {
+  //   navigate("workspaces");
+
+  //   logger.debug("navigate to workspaces");
+
+  //   loadWorkspaces();
+  // }
 
   function handleYourReservationsClick() {
     navigate("yourReservations");
@@ -93,27 +101,25 @@ function Home({ onLogoutClick, context: { toggleTheme } }) {
 
     logger.debug("navigate to your reservations");
   }
-  
+
+  function handleNavigationToHomeClick () {
+    navigate('/')
+
+    logger.debug('navigate to home')
+}
   const handleLocationClick = (locationId) => {
-  
+    debugger
     loadWorkspaces(locationId);
     
     navigate(`locations/${locationId}/workspaces`);
   };
-
-  const handleCreateReservationClick = () => {
-    navigate('reservation')
-
-    logger.debug('navigate to New Auction')
-
-    logger.info('return')
-}
 
   return (
     <div>
       <Header
         onLogoutClick={onLogoutClick}
         onSettingsClick={handleSettingsClick}
+        onHomeClick={handleNavigationToHomeClick}
         onYourReservationsClick={handleYourReservationsClick}
         onSolutionsClick={handleSolutionsClick}
       />
@@ -124,13 +130,13 @@ function Home({ onLogoutClick, context: { toggleTheme } }) {
             locations ? (
               <Location locations={locations} onClick={handleLocationClick} />
             ) : (
-              <></>
+              <>hola</>
             )
           }
         />
         <Route
           path="/locations/:locationsId/workspaces"
-          element={workspaces ? <Workspaces workspaces={workspaces} /> : <> WORKSPACES </>}
+          element={workspaces ? <Workspaces workspaces={workspaces} /> : <>AQUI HAY WORKSPACES </>}
         />
         <Route path="settings" element={<Settings />} />
         <Route path="yourReservations" element={<PhotoGaleria />} />
