@@ -9,10 +9,9 @@ function Workspaces({ workspaces, onLinkClick }) {
   let mes;
   let anio = fecha.getFullYear();
   let dia = fecha.getDate();
-  let _mes = fecha.getMonth(); //viene con valores de 0 al 11
-  _mes = _mes + 1; //ahora lo tienes de 1 al 12
+  let _mes = fecha.getMonth(); 
+  _mes = _mes + 1; 
   if (_mes < 10) {
-    //ahora le agregas un 0 para el formato date
     mes = "0" + _mes;
   } else {
     mes = _mes.toString;
@@ -27,31 +26,6 @@ function Workspaces({ workspaces, onLinkClick }) {
 
   const locationId = params.locationId;
 
-  // useEffect(() => {
-  //   logger.info('workspaces the building')
-
-  //   try {
-
-  //     retrieveWorkspaces( (error, workspaces) => {
-  //       if (error) {
-  //           logger.warn(error.message)
-
-  //           return
-  //         }
-
-  //         setWorkspaces(workspaces)
-
-  //         logger.debug('setWorkspaces', workspaces)
-
-  //                 })
-  //               } catch (error) {
-
-  //                   logger.warn(error.message)
-  //               }
-
-  //               loadWorkspaces()
-
-  //           }, [])
 
   const handleLinkClick = (event) => {
     event.preventDefault();
@@ -59,23 +33,6 @@ function Workspaces({ workspaces, onLinkClick }) {
     onLinkClick();
   };
 
-  // const loadWorkspaces = () => {
-  //   debugger
-  //   try {
-  //     retrieveWorkspaces(locationId, (error, workspaces) => {
-  //       if (error) {
-  //         logger.warn(error.message);
-
-  //         return;
-  //       }
-  //       setWorkspaces(workspaces);
-
-  //       logger.debug("setWorkspaces", workspaces);
-  //     });
-  //   } catch (error) {
-  //     logger.warn(error.message);
-  //   }
-  // };
 
   logger.info("return");
 
@@ -85,9 +42,9 @@ function Workspaces({ workspaces, onLinkClick }) {
         workspaces.map((workspace) => {
           debugger;
           return (
-            <div className="max-w-sm rounded overflow-hidden shadow-lg">
+            <div className="max-w-sm rounded overflow-hidden shadow-lg flex-row float-left">
               <img
-                className="w-full"
+                className="w-full  h-56"
                 src={workspace.image}
                 alt="Workspaces PobleNou"
               />
@@ -96,13 +53,13 @@ function Workspaces({ workspaces, onLinkClick }) {
                 <p className="text-gray-700 text-base">{workspace.address}</p>
               </div>
               <div className="px-6 pt-4 pb-2">
+                <p>45€</p>
                 <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
-                  PRECIO
+                  Rent
                 </span>
                 <span
                   className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"
-                  onLinkClick={handleLinkClick}
-                >
+                  onLinkClick={handleLinkClick}>
                   <form>
                     <input
                       className="calendar"

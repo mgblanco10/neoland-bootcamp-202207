@@ -101,6 +101,14 @@ function Home({ onLogoutClick, context: { toggleTheme } }) {
     navigate(`locations/${locationId}/workspaces`);
   };
 
+  const handleCreateReservationClick = () => {
+    navigate('reservation')
+
+    logger.debug('navigate to New Auction')
+
+    logger.info('return')
+}
+
   return (
     <div>
       <Header
@@ -116,13 +124,13 @@ function Home({ onLogoutClick, context: { toggleTheme } }) {
             locations ? (
               <Location locations={locations} onClick={handleLocationClick} />
             ) : (
-              <>hola</>
+              <></>
             )
           }
         />
         <Route
           path="/locations/:locationsId/workspaces"
-          element={workspaces ? <Workspaces workspaces={workspaces} /> : <>AQUI HAY WORKSPACES </>}
+          element={workspaces ? <Workspaces workspaces={workspaces} /> : <> WORKSPACES </>}
         />
         <Route path="settings" element={<Settings />} />
         <Route path="yourReservations" element={<PhotoGaleria />} />
