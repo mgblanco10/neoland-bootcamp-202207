@@ -54,7 +54,7 @@ describe('retrieveLocations', () => {
     it('fails on non-existing user', () => {  // unhappy path
         const userId = new ObjectId().toString()
 
-        return retrieveLocations(userId)
+        return retrieveLocation(userId)
             .catch(error => {
                 expect(error).toBeInstanceOf(NotFoundError)
                 expect(error.message).toEqual(`user with id ${userId} not found`)

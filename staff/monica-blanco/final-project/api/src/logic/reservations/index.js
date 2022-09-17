@@ -1,5 +1,5 @@
 module.exports = { 
-    //createReservation : require('./createReservation'),
+    createReservation : require('./createReservation'),
     deleteReservation : require('./deleteReservation'),
     retrieveReservations : require('./retrieveReservations')
 }

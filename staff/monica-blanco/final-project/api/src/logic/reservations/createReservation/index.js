@@ -22,9 +22,9 @@ const startOfDay = require ('date-fns/startOfDay')
  */
 
 function createReservation (userId, workspaceId, date) {
-    verifyObjectIdString(userId, 'user id')
-    verifyObjectIdString(workspaceId, 'workspace id')
-    validateDate(date)
+    //verifyObjectIdString(userId, 'user id')
+    //verifyObjectIdString(workspaceId, 'workspace id')
+    //validateDate(date)
     
     return User.findById(userId).lean()
     .catch(error => {
@@ -46,7 +46,7 @@ function createReservation (userId, workspaceId, date) {
                     .then(reservation => { 
                         if(reservation) throw new DuplicityError(`workspace with id ${workspaceId} is busy on ${date}`)
 
-                        Reservation.create({ user: userId, workspace: workspaceId, date })
+                        return Reservation.create({ user: userId, workspace: workspaceId, date })
                     })
                 })
         })
@@ -56,6 +56,10 @@ function createReservation (userId, workspaceId, date) {
 	
 
   
-            
-   
-                    
+
+
+
+
+
+
+

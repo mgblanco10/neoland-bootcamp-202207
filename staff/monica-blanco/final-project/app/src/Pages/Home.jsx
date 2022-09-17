@@ -10,7 +10,6 @@ import { Routes, Route, useNavigate, useLocation } from "react-router-dom";
 
 import PhotoGaleria from "../components/PhotoGaleria";
 import Location from "../components/Location";
-import Card from "../components/Card";
 import Colors from "../components/Colors";
 import Workspaces from "./Workspaces";
 
@@ -61,7 +60,6 @@ function Home({ onLogoutClick, context: { toggleTheme } }) {
   };
 
   const loadWorkspaces = (locationId) => {
-    debugger
     try {
       retrieveWorkspaces(locationId, (error, workspaces) => {
         if (error) {
@@ -84,13 +82,6 @@ function Home({ onLogoutClick, context: { toggleTheme } }) {
     logger.debug("navigate to settings");
   }
 
-  // function handleWorkspacesClick() {
-  //   navigate("workspaces");
-
-  //   logger.debug("navigate to workspaces");
-
-  //   loadWorkspaces();
-  // }
 
   function handleYourReservationsClick() {
     navigate("yourReservations");
@@ -102,8 +93,9 @@ function Home({ onLogoutClick, context: { toggleTheme } }) {
 
     logger.debug("navigate to your reservations");
   }
+  
   const handleLocationClick = (locationId) => {
-    debugger
+  
     loadWorkspaces(locationId);
     
     navigate(`locations/${locationId}/workspaces`);
@@ -114,7 +106,6 @@ function Home({ onLogoutClick, context: { toggleTheme } }) {
       <Header
         onLogoutClick={onLogoutClick}
         onSettingsClick={handleSettingsClick}
-        // onWorkspacesClick={handleWorkspacesClick}
         onYourReservationsClick={handleYourReservationsClick}
         onSolutionsClick={handleSolutionsClick}
       />

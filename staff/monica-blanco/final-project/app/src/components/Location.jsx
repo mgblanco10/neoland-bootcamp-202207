@@ -5,24 +5,16 @@ function Location({ locations, onClick }) {
   const logger = new Loggito("List buildings");
   logger.info("return");
 
-  // const navigate = useNavigate();
-
   const handleLinkClick = (event) => {
     event.preventDefault();
 
     onClick();
   };
-  // function handleLocationClick () {
-  //   navigate( "/locations/:locationsId/workspaces" );
-
-  //   logger.debug( "navigate to workspaces" );
-
-  //   debugger
-  //   loadWorkspaces()
-  // }
+  
 
   return locations.map((location) => (
-    <div className="max-w-sm rounded overflow-hidden shadow-lg">
+<>
+    <div className="py-16 max-w-sm rounded overflow-hidden shadow-lg justify-items-center space-x-4">
       <img className="w-full" src={location.image} alt="Workspaces PobleNou" />
       <div className="px-6 py-4">
         <div className="font-bold text-xl mb-2">{location.name}</div>
@@ -47,6 +39,7 @@ function Location({ locations, onClick }) {
         </button>
       </div>
     </div>
+  </>
   ));
 }
 

@@ -103,7 +103,7 @@ describe( 'createReservation', () => {
                 return createReservation( user.id, workspace.id, date)
                     .then( () => { throw new Error( 'should not reach this point' ) } )
                     .catch( error => {
-                        expect( error ).toBeInstanceOf( NotFoundError)
+                        expect( error ).toBeInstanceOf( DuplicityError)
                         //expect( error.message ).toEqual( `workspace with id ${workspaceId} is busy on ${date}`)
                     } )
             } )
