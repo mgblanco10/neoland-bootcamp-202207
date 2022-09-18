@@ -1,7 +1,6 @@
-const { User, Reservation, Workspace} = require('../../../models')
+const { User, Reservation} = require('../../../models')
 const { NotFoundError, SystemError } = require('errors')
 const { verifyObjectIdString } = require('../../../utils')
-const {validateDate} = require ('validators')
 
 function retrieveReservations(userId) {
     verifyObjectIdString(userId, 'user id')

@@ -42,7 +42,7 @@ function Workspaces({ workspaces, onLinkClick }) {
         workspaces.map((workspace) => {
           debugger;
           return (
-            <div className="max-w-sm rounded overflow-hidden shadow-lg flex-row float-left">
+            <div className="max-w-sm rounded px-6 pr-5 p-6 overflow-hidden shadow-lg flex-row float-left">
               <img
                 className="w-full  h-56"
                 src={workspace.image}

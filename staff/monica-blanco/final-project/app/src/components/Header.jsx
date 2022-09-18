@@ -78,13 +78,13 @@ logger.info('return')
         <div className="hidden sm:ml-6 sm:block">
           <div className="flex space-x-4">
 
-            <a className="text-gray-500 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" onClick={handleSolutionsClick}> Solutions </a>
-          <a className="text-gray-500 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" onClick={handleYourReservationsClick}>Your Reservations</a>
-            <a className="text-gray-500 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" onClick={handleNavigationToHomeClick} >Home</a>
+            <a className="text-gray-500 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium cursor-pointer" onClick={handleSolutionsClick}> Solutions </a>
+          <a className="text-gray-500 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium cursor-pointer" onClick={handleYourReservationsClick}>Your Reservations</a>
+            <a className="text-gray-500 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium cursor-pointer" onClick={handleNavigationToHomeClick} >Home</a>
 
-           <a className="text-gray-500 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" onClick={handleSettingsClick}  view={settings} >Settings</a>
+           <a className="text-gray-500 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium cursor-pointer" onClick={handleSettingsClick}  view={settings} >Settings</a>
 
-            <a className="text-gray-500 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" onClick={handleLogoutClick} >Logout</a>
+            <a className="text-gray-500 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium cursor-pointer" onClick={handleLogoutClick} >Logout</a>
 
 
           </div>

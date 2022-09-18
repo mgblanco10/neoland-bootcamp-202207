@@ -55,19 +55,25 @@ connect(MONGO_URL)
   .then(([pepito, wendy, peter, james]) => {
     const pobleNou = new Location({
       name: "PobleNou Building",
-      address: "Calle de Ramon Turró, 169, 08005",
+      address: "Calle de Ramon Turró, 169, A, 08005 Barcelona",
       image:
-        "https://334045-1026637-1-raikfcquaxqncofqfm.stackpathdns.com/wp-content/uploads/2019/10/talent-garden-campus-madrid-05-1280x800.jpg",
+        "https://talentgarden.org/wp-content/uploads/2020/09/894D58E0-7E23-477C-A840-90309F24ACA3-scaled.jpg",
     });
 
     const diagonal = new Location({
       name: "Diagonal Building",
-      address: "Diagonal 444 Catalonia Barcelona, B 08037",
+      address: "Avinguda Diagonal, 444, ground floor, 08037 Barcelona",
       image:
-        "https://territoriocoworking.com/wp-content/uploads/2021/07/TAG-Madrid-4-900x720-1.jpg",
+        "https://www.distritooficina.com/wp-content/uploads/2019/07/WeWork-calle-Tanger_-Glories_1-685x1024.jpg",
+    });
+    const passeiGracia = new Location({
+      name: "Passeig de Gracia Building",
+      address: "Passeig de Gràcia, 92, 08008 Barcelona",
+      image:
+        "https://cdn2.civitatis.com/espana/barcelona/galeria/la-pedrera-barcelona-fachada.jpg",
     });
 
-    return Promise.all([pobleNou.save(), diagonal.save()]).then(
+    return Promise.all([pobleNou.save(), diagonal.save(), passeiGracia.save()]).then(
       ([pobleNou, diagonal]) => {
         const office1 = new Workspace({
           location: pobleNou.id,
@@ -99,7 +105,7 @@ connect(MONGO_URL)
         const office4 = new Workspace({
           location: diagonal.id,
           name: "Living Room Small",
-          price: 100,
+          price: 65,
           image:
             "https://www.profesionalreview.com/wp-content/uploads/2020/06/Ordenador-en-el-suelo-o-en-la-mesa-03-scaled.jpg",
           description: "Fully equipped private office space.",
@@ -117,7 +123,7 @@ connect(MONGO_URL)
         const office6 = new Workspace({
           location: diagonal.id,
           name: "Living room",
-          price: 100,
+          price: 85,
           image:
             "https://www.lexington.es/app/uploads/2021/05/que-es-un-coworking.jpg",
           description: "Fully equipped private office space.",
@@ -126,7 +132,7 @@ connect(MONGO_URL)
         const office7 = new Workspace({
           location: diagonal.id,
           name: "Desk small",
-          price: 100,
+          price: 45,
           image:
             "https://www.livinghomes.es/wp-content/uploads/coworking-living-1024x576.jpg",
           description: "Enjoy shared services and meeting rooms.",
@@ -151,7 +157,7 @@ connect(MONGO_URL)
         const office10 = new Workspace({
           location: diagonal.id,
           name: "Small Private Office",
-          price: 70,
+          price: 30,
           image:
             "https://www.happyworkinglab.com/wp-content/uploads/2018/06/SPACES-MX-2-1024x682-1024x682.jpg",
           description: "Enjoy shared services and meeting rooms.",
@@ -159,7 +165,7 @@ connect(MONGO_URL)
         const office11 = new Workspace({
           location: pobleNou.id,
           name: "Office Private",
-          price: 100,
+          price: 45,
           image:
             "https://actiucdn.net/uploads/images/actualidad/descripciones/consejos-poner-en-marcha-coworking-funcione-10_782_651.jpg",
           description: "Enjoy shared services and meeting rooms.",
@@ -167,10 +173,34 @@ connect(MONGO_URL)
         const office12 = new Workspace({
           location: pobleNou.id,
           name: "Office Private",
-          price: 100,
+          price: 30,
           image:
             "https://coworkinglafabrica.es/wp-content/uploads/2018/06/C5A5816.jpg",
           description: "Enjoy shared services and meeting rooms.",
+        });
+        const office13 = new Workspace({
+          location: passeiGracia.id,
+          name: "Shared office",
+          price: 50,
+          image:
+            "https://i.pinimg.com/originals/9a/e5/b3/9ae5b302e45ea5607079a561392f20c0.jpg",
+          description: "Your own desk in a shared office and full access to kujo facilities.",
+        });
+        const office14 = new Workspace({
+          location: passeiGracia.id,
+          name: "Office Private",
+          price: 100,
+          image:
+            "https://actiucdn.net/uploads/images/actualidad/descripciones/consejos-poner-en-marcha-coworking-funcione-10_782_651.jpg",
+          description: "Furnished office space with private services.",
+        });
+        const office15 = new Workspace({
+          location: passeiGracia.id,
+          name: "Office Luxury",
+          price: 100,
+          image:
+            "https://coworkinglafabrica.es/wp-content/uploads/2018/06/C5A5816.jpg",
+          description: "Luxury Office, a space configurable to your needs.",
         });
 
         return Promise.all([
@@ -185,7 +215,10 @@ connect(MONGO_URL)
           office9.save(),
           office10.save(),
           office11.save(),
-          office12.save()
+          office12.save(),
+          office13.save(),
+          office14.save(),
+          office15.save()
         ]).then(
           ([office1, office2, office3, office4, office5, office6, office7]) => {
             const reservation1 = new Reservation({

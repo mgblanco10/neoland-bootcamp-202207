@@ -3,7 +3,7 @@ const { Router, json } = express
 const jsonBodyParser = json()
 const { registerUserHandler, authenticateUserHandler, retrieveUserHandler, updateUserEmailHandler, updateUserPasswordHandler } = require('./users')
 const { retrieveLocationsHandler } = require('./locations')
-const {createReservationHandler, deleteReservationHandler, retrieveReservationsHandler} =require('./reservations')
+const {createReservationHandler, retrieveReservationsHandler} =require('./reservations')
 const{retrieveWorkspacesHandler} = require ('./workspaces')
 
 

@@ -18,7 +18,7 @@ describe( 'createReservation', () => {
         const email = 'pepito@grillo.com'
         const password = '123123123'
 
-        const user = new User( { name, email, password } )
+     const user = new User( { name, email, password } )
         const date = new Date
 
         const location = new Location( {
@@ -41,7 +41,7 @@ describe( 'createReservation', () => {
         } )
 
         return Promise.all( [
-            //user.save(),
+            user.save(),
             location.save(),
             workspace1.save(),
             reservation1.save()
@@ -58,7 +58,7 @@ describe( 'createReservation', () => {
 
                                 return Reservation.find()
                             } )
-                            .then( reservations => {
+                            .then(reservations => {
                                 expect( reservations ).toHaveLength( 1 )
 
                                 const [reservation] = reservations
@@ -71,23 +71,19 @@ describe( 'createReservation', () => {
     } )
 
     it( 'fails on non-existing user', () => {  //   unhappy path
-        
-        const name = 'Pepito Grillo'
-        const email = 'pepito@grillo.com'
-        const password = '123123123'
-        
+                
         const date = new Date
-        const user = new User( { name, email, password } )
+        
 
-        const location = new Location( {
+        const location1 = new Location( {
             name: 'diagonal',
             address: 'Carrer de Santjoanistes',
             image: 'jpg'
         } )
 
 
-        const workspace = new Workspace( {
-            location: location.id,
+        const workspace2 = new Workspace( {
+            location: location1.id,
             name: 'office1',
             date: '2022-08-09',
             price: 50,
@@ -95,15 +91,15 @@ describe( 'createReservation', () => {
         } )
 
         return Promise.all( [
-            location.save(),
-            workspace.save()
+            location1.save(),
+            workspace2.save()
         ] )
             .then( ( [user, workspace] ) => {
 
                 return createReservation( user.id, workspace.id, date)
                     .then( () => { throw new Error( 'should not reach this point' ) } )
                     .catch( error => {
-                        expect( error ).toBeInstanceOf( DuplicityError)
+                        expect( error ).toBeInstanceOf( Error)
                         //expect( error.message ).toEqual( `workspace with id ${workspaceId} is busy on ${date}`)
                     } )
             } )
