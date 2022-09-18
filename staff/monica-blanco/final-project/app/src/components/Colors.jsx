@@ -11,7 +11,6 @@ export default function Colors() {
       <img class="absolute inset-0 h-full w-full object-cover" src="https://images.unsplash.com/photo-1475855581690-80accde3ae2b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80" alt=""/>
     </div>
     <div class="p-4">
-      <span class="inline-block px-2 py-1 leading-none bg-orange-200 text-orange-800 rounded-full font-semibold uppercase tracking-wide text-xs">Highlight</span>
       <h2 class="mt-2 mb-2  font-bold">Nombre de la oficcina</h2>
       <p class="text-sm">Descripcion</p>
       <div class="mt-3 flex items-center">

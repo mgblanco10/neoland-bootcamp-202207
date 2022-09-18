@@ -34,12 +34,6 @@ const handleSolutionsClick = ()=>{
   
   onSolutionsClick()
 }
-// const handleWorkspacesClick = ()=>{
-//    setView('workspaces')
-
-//    logger.debug('setView', null)
-//    onWorkspacesClick()
-// }
 
 const handleNavigationToHomeClick = ()=>{
   setView('/')
@@ -78,9 +72,9 @@ logger.info('return')
         <div className="hidden sm:ml-6 sm:block">
           <div className="flex space-x-4">
 
-            <a className="text-gray-500 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium cursor-pointer" onClick={handleSolutionsClick}> Solutions </a>
-          <a className="text-gray-500 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium cursor-pointer" onClick={handleInfoClick}>Information</a>
             <a className="text-gray-500 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium cursor-pointer" onClick={handleNavigationToHomeClick} >Home</a>
+          <a className="text-gray-500 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium cursor-pointer" onClick={handleInfoClick}>Information</a>
+            <a className="text-gray-500 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium cursor-pointer" onClick={handleSolutionsClick}> Solutions </a>
 
            <a className="text-gray-500 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium cursor-pointer" onClick={handleSettingsClick}  view={settings} >Settings</a>
 
