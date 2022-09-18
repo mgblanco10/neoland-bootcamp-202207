@@ -36,7 +36,8 @@ function createReservation (userId, workspaceId, date) {
                 .then (workspaceFounded => {
 
                     if(!workspaceFounded) throw new NotFoundError(`workspace with id ${workspaceId} not found`)
-                    return Reservation.findOne({workspace: workspaceId, date:{
+                   
+                    return Reservation.findOne({workspaceId, date:{
 
                         $gte: startOfDay(date),
 
@@ -46,7 +47,7 @@ function createReservation (userId, workspaceId, date) {
                     .then(reservation => { 
                         if(reservation) throw new DuplicityError(`workspace with id ${workspaceId} is busy on ${date}`)
 
-                        return Reservation.create({ user: userId, workspace: workspaceId, date })
+                        return Reservation.create()
                     })
                 })
         })
@@ -55,9 +56,7 @@ function createReservation (userId, workspaceId, date) {
     module.exports = createReservation
 	
 
-  
-
-
+//sanitize 
 
 
 
