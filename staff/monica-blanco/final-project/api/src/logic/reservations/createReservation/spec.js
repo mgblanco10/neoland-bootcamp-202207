@@ -33,7 +33,7 @@ describe( 'createReservation', () => {
             price: 50,
             image: 'jpg',
         } )
-        const reservation1 = new Reservation( {
+        const reservation = new Reservation( {
             user: user.id,
             workspace: workspace1.id,
             date: new Date('2022-02-04')
@@ -41,17 +41,17 @@ describe( 'createReservation', () => {
         } )
 
         return Promise.all( [
-            user.save(),
+            //user.save(),
             location.save(),
             workspace1.save(),
-            reservation1.save()
+            reservation.save()
         ] )
-            .then( ( [location, workspace1, reservation1] ) => {
+            .then( ( [location, workspace1, reservation] ) => {
 
                 return User.create( { name, email, password } )
                     .then( user =>
 
-                        createReservation( user.id, workspace1.id, date )
+                        createReservation( {user, workspace1, date} )
                             .then( res => {
 
                                 expect( res ).toBeUndefined()

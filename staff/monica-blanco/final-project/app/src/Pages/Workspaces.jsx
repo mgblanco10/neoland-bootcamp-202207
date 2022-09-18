@@ -3,6 +3,7 @@ import Header from "../components/Header";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import retrieveWorkspaces from "../logic/retrieveWorkspaces";
+import createReservation from "../logic/createReservation";
 
 function Workspaces({ workspaces, onLinkClick }) {
   let fecha = new Date();
@@ -32,47 +33,122 @@ function Workspaces({ workspaces, onLinkClick }) {
 
     onLinkClick();
   };
+  // const handleCreateReservationClick = () => {
+  //   navigate('reservations')
+
+  //   logger.debug('navigate to reservation')
+
+  // }
+
+  const handleFormSubmitReservation = event => {
+    event.preventDefault()
+   const form = event.target
+   const dateInput = form.date
+   const date = dateInput.value
+
+      try {
+        createReservation(sessionStorage.token, date, error =>{
+          if (error){
+            logger.warn (error.message)
+            return
+          }
+          form.reset()
+        })
+      }catch (error){
+        logger.warn (error.message)
+      }
+}
 
 
   logger.info("return");
 
   return (
     <div>
-      {workspaces &&
-        workspaces.map((workspace) => {
-          debugger;
-          return (
-            <div className="max-w-sm rounded px-6 pr-5 p-6 overflow-hidden shadow-lg flex-row float-left">
-              <img
-                className="w-full  h-56"
-                src={workspace.image}
-                alt="Workspaces PobleNou"
-              />
-              <div className="px-6 py-4">
-                <div className="font-bold text-xl mb-2">{workspace.name}</div>
-                <p className="text-gray-700 text-base">{workspace.address}</p>
-              </div>
-              <div className="px-6 pt-4 pb-2">
-                <p>45€</p>
-                <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
-                  Rent
-                </span>
-                <span
-                  className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"
-                  onLinkClick={handleLinkClick}>
-                  <form>
-                    <input
-                      className="calendar"
-                      type="date"
-                      min={anio + "-" + mes + "-" + dia}
-                    />{" "}
-                  </form>
-                </span>
-              </div>
-            </div>
-          );
-        })}
+   {workspaces && workspaces.map((workspace) => {
+      return (  <div className="max-w-sm rounded px-4 pr-4 p-6 overflow-hidden flex-row float-left">
+    <a href="" class="c-card block bg-white rounded-lg overflow-hidden">
+    <div class="relative pb-2 overflow-hidden rounded-lg">
+      
+    <img
+             className="w-full  h-56"
+         src={workspace.image}
+          alt="Workspaces"          />
+
     </div>
-  );
+    <div class="p-4">
+  
+      <h2 class="mt-2 mb-2  font-bold"> {workspace.name}</h2>
+      <p className="text-gray-700 text-base">{workspace.address}</p>
+      <p class="text-sm">{workspace.description}</p>
+      <div class="mt-3 flex items-center">
+        <span class="text-sm font-semibold">{workspace.price}€</span>
+      </div>
+    </div>
+    <div class="p-4 border-t border-b text-xs text-gray-700">
+      <span class="flex items-center mb-1">
+      <form metod="get" onSubmit={handleFormSubmitReservation}>
+                
+                            <input className="calendar" type="date"  min={anio + "-" + mes + "-" + dia} />{" "}
+                                  
+                            <button className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"  type="submit">
+                               Rent
+                          </button>
+                
+                             </form>
+      </span>
+          
+    </div>
+  </a>
+  </div>  
+      );
+      })}
+     </div>
+
+  )
 }
-export default Workspaces;
+export default Workspaces
+
+
+
+// return (
+//   <div>
+//     {workspaces &&
+//       workspaces.map((workspace) => {
+//         return (
+//           <div className="max-w-sm rounded px-6 pr-5 p-6 overflow-hidden shadow-lg flex-row float-left">
+//             <img
+//               className="w-full  h-56"
+//               src={workspace.image}
+//               alt="Workspaces PobleNou"
+//             />
+//             <div className="px-6 py-4">
+//               <div className="font-bold text-xl mb-2">{workspace.name}</div>
+//               <p className="text-gray-700 text-base">{workspace.address}</p>
+//             </div>
+//             <div className="px-6 pt-4 pb-2">
+//               <p>45€</p>
+//               <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
+//                 Rent
+//               </span>
+//               <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
+               
+//                 <form metod="get" onSubmit={handleFormSubmitReservation}>
+                
+//                   <input className="calendar" type="date"  min={anio + "-" + mes + "-" + dia} />{" "}
+                  
+//                   <button className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"  type="submit">
+//                 Rent
+//               </button>
+
+//                 </form>
+//               </span>
+//             </div>
+//           </div>
+//         );
+//       })}
+//   </div>
+// );
+// }
+
+
+

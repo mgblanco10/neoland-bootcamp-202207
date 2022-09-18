@@ -13,6 +13,7 @@ import Location from "../components/Location";
 import Card from "../components/Card";
 import Colors from "../components/Colors";
 import Workspaces from "./Workspaces";
+import NewReservation from "../components/NewReservation"
 
 function Home({ onLogoutClick, context: { toggleTheme } }) {
   const logger = new Loggito("Home");
@@ -83,18 +84,10 @@ function Home({ onLogoutClick, context: { toggleTheme } }) {
     logger.debug("navigate to settings");
   }
 
-  // function handleWorkspacesClick() {
-  //   navigate("workspaces");
+  function handleInfoClick() {
+    navigate("info");
 
-  //   logger.debug("navigate to workspaces");
-
-  //   loadWorkspaces();
-  // }
-
-  function handleYourReservationsClick() {
-    navigate("yourReservations");
-
-    logger.debug("navigate to your reservations");
+    logger.debug("navigate to info");
   }
   function handleSolutionsClick() {
     navigate("solutions");
@@ -114,13 +107,21 @@ function Home({ onLogoutClick, context: { toggleTheme } }) {
     navigate(`locations/${locationId}/workspaces`);
   };
 
+  // const handleCreateReservationClick = () => {
+  //   navigate('reservations')
+
+  //   logger.debug('navigate to reservation')
+
+  // }
+  logger.info('return')
+
   return (
     <div>
       <Header
         onLogoutClick={onLogoutClick}
         onSettingsClick={handleSettingsClick}
         onHomeClick={handleNavigationToHomeClick}
-        onYourReservationsClick={handleYourReservationsClick}
+        onInfoClick={handleInfoClick}
         onSolutionsClick={handleSolutionsClick}
       />
       <Routes>
@@ -138,8 +139,9 @@ function Home({ onLogoutClick, context: { toggleTheme } }) {
           path="/locations/:locationsId/workspaces"
           element={workspaces ? <Workspaces workspaces={workspaces} /> : <>AQUI HAY WORKSPACES </>}
         />
+         <Route path="reservation" element={<NewReservation />} />
         <Route path="settings" element={<Settings />} />
-        <Route path="yourReservations" element={<PhotoGaleria />} />
+        <Route path="Info" element={<PhotoGaleria />} />
         <Route path="solutions" element={<Colors />} />
       </Routes>
     </div>

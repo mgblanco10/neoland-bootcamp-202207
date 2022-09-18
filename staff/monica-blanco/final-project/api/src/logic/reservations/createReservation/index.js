@@ -47,13 +47,15 @@ function createReservation (userId, workspaceId, date) {
                     .then(reservation => { 
                         if(reservation) throw new DuplicityError(`workspace with id ${workspaceId} is busy on ${date}`)
 
-                        Reservation.create({ user: userId, workspace: workspaceId, date })
+                        Reservation.create({ user:userId, workspace:workspaceId , date })
 
                         reservation.id = reservation._id.toString()
-                            delete reservation._id
+                            
+                        delete reservation._id
 
                             delete reservation.__v
                     })
+
                 return reservation
             })
                 

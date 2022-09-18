@@ -3,7 +3,7 @@ import handleCreateReservation from '../logic/createReservation'
 import withContext from '../utils/withContext'
 
 
-function NewReservation({ onLinkClick, onCloseClick, context: { handleFeedback } }) {
+function NewReservation({  context: { handleFeedback } }) {
     const logger = new Loggito('New Reservation')
 
     logger.info('return')

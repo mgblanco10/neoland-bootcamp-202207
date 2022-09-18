@@ -4,7 +4,7 @@ import withContext from '../utils/withContext'
 import { useLocation } from 'react-router-dom'
 
 
-function Header({onLogoutClick, onSettingsClick ,onHomeClick, onYourReservationsClick,onSolutionsClick, view: settings, workspaces ,context: { toggleTheme }}){
+function Header({onLogoutClick, onSettingsClick ,onHomeClick, onInfoClick,onSolutionsClick, view: settings, workspaces ,context: { toggleTheme }}){
   const logger = new Loggito ('Header')
   const location = useLocation()
 
@@ -19,12 +19,12 @@ const handleSettingsClick = () => {
     onSettingsClick()
 }
 
-const handleYourReservationsClick = ()=>{
-  setView('yourReservations')
+const handleInfoClick = ()=>{
+  setView('info')
   
   logger.debug('setView', null)
   
-  onYourReservationsClick()
+  onInfoClick()
 }
 
 const handleSolutionsClick = ()=>{
@@ -79,7 +79,7 @@ logger.info('return')
           <div className="flex space-x-4">
 
             <a className="text-gray-500 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium cursor-pointer" onClick={handleSolutionsClick}> Solutions </a>
-          <a className="text-gray-500 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium cursor-pointer" onClick={handleYourReservationsClick}>Your Reservations</a>
+          <a className="text-gray-500 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium cursor-pointer" onClick={handleInfoClick}>Information</a>
             <a className="text-gray-500 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium cursor-pointer" onClick={handleNavigationToHomeClick} >Home</a>
 
            <a className="text-gray-500 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium cursor-pointer" onClick={handleSettingsClick}  view={settings} >Settings</a>
