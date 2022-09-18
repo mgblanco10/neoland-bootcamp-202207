@@ -196,7 +196,7 @@ connect(MONGO_URL)
         });
         const office15 = new Workspace({
           location: passeiGracia.id,
-          name: "Office Luxury",
+          name: "Luxury Office",
           price: 100,
           image:
             "https://coworkinglafabrica.es/wp-content/uploads/2018/06/C5A5816.jpg",

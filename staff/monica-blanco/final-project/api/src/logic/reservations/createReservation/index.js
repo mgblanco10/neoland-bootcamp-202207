@@ -4,8 +4,6 @@ const { verifyObjectIdString } = require('../../../utils')
 const {validateDate} = require('validators')
 const endOfDay = require ('date-fns/endOfDay')
 const startOfDay = require ('date-fns/startOfDay')
-const { reservation } = require( '../../../models/schemas' )
-const reservations = require( '..' )
 
 /**
  * Create a reservation for a user
@@ -24,20 +22,21 @@ const reservations = require( '..' )
  */
 
 function createReservation (userId, workspaceId, date) {
-    verifyObjectIdString(userId, 'user id')
-    verifyObjectIdString(workspaceId, 'workspace id')
-    validateDate(date)
+    // verifyObjectIdString(userId, 'user id')
+    // verifyObjectIdString(workspaceId, 'workspace id')
+    // validateDate(date)
     
     return User.findById(userId).lean()
     .catch(error => {
         return Workspace.findById(workspaceId).lean()
                 .catch(error =>{
                     throw new SystemError(error.message)
-                })    
-                    .then (workspaceFounded => {
-                    if(!workspaceFounded) throw new NotFoundError(`workspace with id ${workspaceId} not found`+' '+workspace)
-                    
-                     Reservation.findOne({workspace: workspaceId, date:{
+                })
+
+                .then (workspaceFounded => {
+
+                    if(!workspaceFounded) throw new NotFoundError(`workspace with id ${workspaceId} not found`)
+                    return Reservation.findOne({workspace: workspaceId, date:{
 
                         $gte: startOfDay(date),
 
@@ -47,22 +46,19 @@ function createReservation (userId, workspaceId, date) {
                     .then(reservation => { 
                         if(reservation) throw new DuplicityError(`workspace with id ${workspaceId} is busy on ${date}`)
 
-                        Reservation.create({ user:userId, workspace:workspaceId , date })
-
-                        reservation.id = reservation._id.toString()
-                            
-                        delete reservation._id
-
-                            delete reservation.__v
+                        return Reservation.create({ user: userId, workspace: workspaceId, date })
                     })
-
-                return reservation
-            })
-                
+                })
         })
-    }
 
+    }
     module.exports = createReservation
+	
+
+  
+
+
+
 
 
 
