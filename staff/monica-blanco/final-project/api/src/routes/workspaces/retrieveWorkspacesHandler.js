@@ -4,7 +4,7 @@ const logger = createLogger( module )
 
 module.exports = (req,res ) => {
     runWithErrorHandling( () => {
-        // const {userId} = verifyToken()
+        //const {userId} = verifyToken()
         const { locationsId } = req.params
 
         return retrieveWorkspaces(locationsId)

@@ -2,16 +2,15 @@ import Loggito from "../utils/Loggito";
 import Header from "../components/Header";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import retrieveWorkspaces from "../logic/retrieveWorkspaces";
 import createReservation from "../logic/createReservation";
 
-function Workspaces({ workspaces, onLinkClick, onClick }) {
+function Workspaces({ workspaces, onClick }) {
   let fecha = new Date();
   let mes;
   let anio = fecha.getFullYear();
   let dia = fecha.getDate();
-  let _mes = fecha.getMonth(); 
-  _mes = _mes + 1; 
+  let _mes = fecha.getMonth();
+  _mes = _mes + 1;
   if (_mes < 10) {
     mes = "0" + _mes;
   } else {
@@ -26,89 +25,84 @@ function Workspaces({ workspaces, onLinkClick, onClick }) {
   logger.info("return");
 
   const locationId = params.locationId;
+  const workspaceId = params.WorkspaceId;
 
-
-  const handleLinkClick = (event) => {
+  const handleFormSubmitReservation = (event) => {
     event.preventDefault();
+    const {
+      target: form,
+      target: {
+        workspace: { value: workspaceId },
+        date: { value: date },
+      },
+    } = event;
 
-    onLinkClick();
+    try {
+      createReservation(sessionStorage.token, workspaceId, date, (error) => {
+        if (error) {
+          logger.warn(error.message);
+          return;
+        }
+        form.reset();
+      });
+    } catch (error) {
+      logger.warn(error.message);
+    }
   };
-  // const handleCreateReservationClick = () => {
-  //   navigate('reservations')
-
-  //   logger.debug('navigate to reservation')
-
-  // }
-
-  const handleFormSubmitReservation = event => {
-    event.preventDefault()
-   const form = event.target
-   const dateInput = form.date
-   const date = dateInput.value
-
-      try {
-        createReservation(sessionStorage.token, date, error =>{
-          if (error){
-            logger.warn (error.message)
-            return
-          }
-          form.reset()
-        })
-      }catch (error){
-        logger.warn (error.message)
-      }
-}
-
 
   logger.info("return");
 
   return (
     <div>
-   {workspaces && workspaces.map((workspace) => {
-      return (  <div className="max-w-sm rounded px-4 pr-4 p-6 overflow-hidden flex-row float-left">
-    <a href="" class="c-card block bg-white rounded-lg overflow-hidden">
-    <div class="relative pb-2 overflow-hidden rounded-lg">
-      
-    <img
-             className="w-full  h-56"
-         src={workspace.image}
-          alt="Workspaces"          />
-
+      {workspaces &&
+        workspaces.map((workspace) => {
+          return (
+            <div className="max-w-sm rounded px-4 pr-4 p-6 overflow-hidden flex-row float-left">
+              <a
+                href=""
+                class="c-card block bg-white rounded-lg overflow-hidden"
+              >
+                <div class="relative pb-2 overflow-hidden rounded-lg">
+                  <img
+                    className="w-full  h-56"
+                    src={workspace.image}
+                    alt="Workspaces"
+                  />
+                </div>
+                <div class="p-4">
+                  <h2 class="mt-2 mb-2  font-bold"> {workspace.name}</h2>
+                  <p className="text-gray-700 text-base">{workspace.address}</p>
+                  <p class="text-sm">{workspace.description}</p>
+                  <div class="mt-3 flex items-center">
+                    <span class="text-sm font-semibold">
+                      {workspace.price}€
+                    </span>
+                  </div>
+                </div>
+                <div class="p-4 border-t border-b text-xs text-gray-700">
+                  <span class="flex items-center mb-1">
+                    <form metod="get" onSubmit={handleFormSubmitReservation}>
+                      <input className="calendar" name="date"
+                        type="date" min={anio + "-" + mes + "-" + dia}/>{" "}
+                      <button className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"
+                        type="submit"
+                        onClick={() => {
+                          onClick(workspace.id);
+                        }}
+                      >
+                        Rent
+                      </button>
+                    </form>
+                  </span>
+                </div>
+              </a>
+            </div>
+          );
+        })}
     </div>
-    <div class="p-4">
-  
-      <h2 class="mt-2 mb-2  font-bold"> {workspace.name}</h2>
-      <p className="text-gray-700 text-base">{workspace.address}</p>
-      <p class="text-sm">{workspace.description}</p>
-      <div class="mt-3 flex items-center">
-        <span class="text-sm font-semibold">{workspace.price}€</span>
-      </div>
-    </div>
-    <div class="p-4 border-t border-b text-xs text-gray-700">
-      <span class="flex items-center mb-1">
-      <form metod="get" onSubmit={handleFormSubmitReservation}>
-                
-                            <input className="calendar" type="date"  min={anio + "-" + mes + "-" + dia} />{" "}
-                                  
-                            <button className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"  type="submit" onClick={() => {onClick(workspace.id)}}>
-                               Rent
-                          </button>
-                
-                             </form>
-      </span>
-          
-    </div>
-  </a>
-  </div>  
-      );
-      })}
-     </div>
-
-  )
+  );
 }
-export default Workspaces
-
-
+export default Workspaces;
 
 // return (
 //   <div>
@@ -131,11 +125,11 @@ export default Workspaces
 //                 Rent
 //               </span>
 //               <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
-               
+
 //                 <form metod="get" onSubmit={handleFormSubmitReservation}>
-                
+
 //                   <input className="calendar" type="date"  min={anio + "-" + mes + "-" + dia} />{" "}
-                  
+
 //                   <button className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"  type="submit">
 //                 Rent
 //               </button>
@@ -149,6 +143,3 @@ export default Workspaces
 //   </div>
 // );
 // }
-
-
-

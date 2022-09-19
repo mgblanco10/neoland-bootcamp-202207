@@ -22,7 +22,7 @@ function Home({ onLogoutClick, context: { toggleTheme } }) {
 
   const [locations, setLocations] = useState();
   const [workspaces, setWorkspaces] = useState();
-  const [reservation, setReservation] = useState();
+  const [reservation, setReservation] = useState(null);
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -149,7 +149,7 @@ function Home({ onLogoutClick, context: { toggleTheme } }) {
       <Routes>
         <Route path="/" element={locations ? ( <Location locations={locations} onClick={handleLocationClick} />) : ( <>hola</> ) }/>
         <Route path="/locations/:locationsId/workspaces" element={workspaces ? <Workspaces workspaces={workspaces}  onClick={handleReservationClick}/> : <>AQUI HAY WORKSPACES </>} />
-        <Route path="/workspaces/:workspaceId/reservations" element= {reservation ? <NewReservation reservation={reservation}/> : <> NO HAY RESERVAS</>} />
+        <Route path="/workspaces/:workspaceId/reservations" element= {reservation ? <NewReservation reservation={reservation}/> : <> NO HAY RESERVAS AQUI </>} />
          <Route path="/workspaces/reservations" element={<Colors />} />
         <Route path="settings" element={<Settings />} />
         <Route path="Info" element={<PhotoGaleria />} />

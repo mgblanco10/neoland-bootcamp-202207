@@ -1,10 +1,10 @@
-
+const {validateDate, validateString} = require('validators')
 
 const API_URL = process.env.REACT_APP_API_URL
 
 function createReservation(token, workspaceId, date, callback) {
     if (typeof token !== 'string') throw new TypeError('token is not a string')
-    verifyObjectIdString(workspaceId, 'workspace id')
+    validateString(workspaceId, 'workspace id')
     validateDate(date)
     if (token.trim().length === 0) throw new Error('token is empty or blank')
 
@@ -25,14 +25,15 @@ function createReservation(token, workspaceId, date, callback) {
     }
 
 
-    xhr.open('POST', `${API_URL}/worksapces/${workspaceId}/reservations`)
+    xhr.open('POST', `${API_URL}/workspaces/${workspaceId}/reservations`)
 
     xhr.setRequestHeader('Authorization', `Bearer ${token}`)
     xhr.setRequestHeader('Content-type', 'application/json')
 
     const data = { date }
-
     const json = JSON.stringify(data)
+    // const reservation = { workspaceId, data};
+    // const json = JSON.stringify(reservation)
 
     xhr.send(json)
 }

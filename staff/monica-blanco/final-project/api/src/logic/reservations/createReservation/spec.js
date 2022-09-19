@@ -14,13 +14,13 @@ describe( 'createReservation', () => {
     beforeEach( () => Promise.all( [User.deleteMany(), Reservation.deleteMany(), Workspace.deleteMany(), Location.deleteMany()] ) )
 
     it( 'user manages to make a reservation of a space', () => { //happy path
-        const name = 'Pepito Grillo',
-        const email = 'pepito@grillo.com'++
+        const name = 'Pepito Grillo'
+        const email = 'pepito@grillo.com'
         const password = '123123123'
 
-     //const user = new User( { name, email, password } )
+     const user = new User( { name, email, password } )
 
-     const user = User.create({ name, email, password })
+    //  const user = User.create({ name, email, password })
         const date = new Date
 
         const location = new Location( {
@@ -76,10 +76,10 @@ describe( 'createReservation', () => {
                 
         const date = new Date
 
-        const name = 'Pepito Grillo'
-        const email = 'pepito@grillo.com'
-        const password = '123123123'
-        const user = new User( { name, email, password } )
+        // const name = 'Pepito Grillo'
+        // const email = 'pepito@grillo.com'
+        // const password = '123123123'
+        // const user = new User( { name, email, password } )
         
 
         const location1 = new Location( {
@@ -98,17 +98,17 @@ describe( 'createReservation', () => {
         } )
 
         return Promise.all( [
-            user.save(),
+            // user.save(),
             location1.save(),
             workspace2.save()
         ] )
             .then( () => {
 
-                return createReservation(user.id, workspace2.id, date )
-                    .then( () => { throw new NotFoundError( `workspace with id ${workspace2.id} not found`) } )
+                return createReservation(workspaceId, date )
+                    .then( () => { throw new NotFoundError( `workspace with id ${workspaceId} not found`) } )
                     .catch( error => {
                         expect( error ).toBeInstanceOf( Error)
-                        expect( error.message ).toEqual(`workspace with id ${workspace2.id} not found`)
+                        expect( error.message ).toEqual(`workspace with id ${workspaceId} not found`)
                     } )
             } )
     } )
