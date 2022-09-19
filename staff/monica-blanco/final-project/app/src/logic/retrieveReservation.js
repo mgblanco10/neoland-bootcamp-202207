@@ -25,7 +25,7 @@ function retrieveReservation ( workspaceId, callback ) {
         }
     }
 
-    xhr.open( 'GET', `${API_URL}/workspaces/:workspaceId/reservations` )
+    xhr.open( 'GET', `${API_URL}/workspaces/reservations` )
 
     xhr.send()
 }

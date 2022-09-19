@@ -126,11 +126,11 @@ function Home({ onLogoutClick, context: { toggleTheme } }) {
     navigate(`locations/${locationId}/workspaces`);
   };
 
-  const handleReservationClick = (reservationId) => {
+  const handleReservationClick = (workspaceId) => {
 
-    loadReservation(reservationId)
+    loadReservation(workspaceId)
 
-    navigate('/workspaces/:workspaceId/reservations')
+    navigate(`/workspaces/${workspaceId}/reservations`)
 
     logger.debug('navigate to reservation')
   }
@@ -150,7 +150,7 @@ function Home({ onLogoutClick, context: { toggleTheme } }) {
         <Route path="/" element={locations ? ( <Location locations={locations} onClick={handleLocationClick} />) : ( <>hola</> ) }/>
         <Route path="/locations/:locationsId/workspaces" element={workspaces ? <Workspaces workspaces={workspaces}  onClick={handleReservationClick}/> : <>AQUI HAY WORKSPACES </>} />
         <Route path="/workspaces/:workspaceId/reservations" element= {reservation ? <NewReservation reservation={reservation}/> : <> NO HAY RESERVAS</>} />
-         <Route path="reservation" element={<NewReservation />} />
+         <Route path="/workspaces/reservations" element={<Colors />} />
         <Route path="settings" element={<Settings />} />
         <Route path="Info" element={<PhotoGaleria />} />
         <Route path="solutions" element={<Colors />} />
