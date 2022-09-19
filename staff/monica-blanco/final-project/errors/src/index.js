@@ -6,5 +6,6 @@ module.exports = {
     AuthError: require('./AuthError'),
     NotFoundError: require('./NotFoundError'),
     ClientError: require('./ClientError'),
-    ServerError: require('./ServerError')
+    ServerError: require('./ServerError'),
+    ConflictError: require('./ClientError')   
 }

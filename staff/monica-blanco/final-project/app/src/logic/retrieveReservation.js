@@ -2,9 +2,9 @@ import { validateCallback, validateText } from "validators"
 
 const API_URL = process.env.REACT_APP_API_URL
 
-function retrieveWorkspaces ( locationId, callback ) {
-    
-    validateText( locationId, 'locationId' )
+function retrieveReservation ( workspaceId, callback ) {
+  
+    validateText( workspaceId, 'workspaceId' )
     validateCallback( callback )
 
     const xhr = new XMLHttpRequest
@@ -14,20 +14,20 @@ function retrieveWorkspaces ( locationId, callback ) {
 
         const json = xhr.responseText
 
-        const locations = JSON.parse( json )
+        const workspaces = JSON.parse( json )
 
         if ( status >= 500 )
             callback( new Error( `server error (${status})` ) )
         else if ( status >= 400 )
             callback( new Error( `client error (${status})` ) )
         else if ( status === 200 ) {
-            callback( null, locations )
+            callback( null, workspaces )
         }
     }
 
-    xhr.open( 'GET', `${API_URL}/locations/${locationId}/workspaces` )
+    xhr.open( 'GET', `${API_URL}/workspaces/:workspaceId/reservations` )
 
     xhr.send()
 }
 
-export default retrieveWorkspaces
+export default retrieveReservation

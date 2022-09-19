@@ -4,6 +4,7 @@ const { verifyObjectIdString } = require('../../../utils')
 const {validateDate} = require('validators')
 const endOfDay = require ('date-fns/endOfDay')
 const startOfDay = require ('date-fns/startOfDay')
+const { workspace } = require( '../../../models/schemas' )
 
 /**
  * Create a reservation for a user
@@ -22,13 +23,19 @@ const startOfDay = require ('date-fns/startOfDay')
  */
 
 function createReservation (userId, workspaceId, date) {
-    // verifyObjectIdString(userId, 'user id')
-    // verifyObjectIdString(workspaceId, 'workspace id')
-    // validateDate(date)
+    verifyObjectIdString(userId, 'user id')
+    verifyObjectIdString(workspaceId, 'workspace id')
+    validateDate(date)
     
     return User.findById(userId).lean()
     .catch(error => {
+        throw new SystemError(error.message)
+    }) 
+    .then(user =>{
+        if (!user) throw new NotFoundError(`user with id ${userId} not found`)
+        
         return Workspace.findById(workspaceId).lean()
+        
                 .catch(error =>{
                     throw new SystemError(error.message)
                 })
@@ -37,17 +44,18 @@ function createReservation (userId, workspaceId, date) {
 
                     if(!workspaceFounded) throw new NotFoundError(`workspace with id ${workspaceId} not found`)
                    
-                    return Reservation.findOne({workspaceId, date:{
+                    const year = date.getFullYear()
+                    const month = date.getMonth()
+                    const day = date.getDate()
 
-                        $gte: startOfDay(date),
+                    const sanitizedDate = new Date(year, month, day) // yyyy-MM-dd 00:00:00
 
-                        $lte: endOfDay(date)
-
-                    }})
+                    return Reservation.findOne({workspace:workspaceId, date: sanitizedDate })
+                      
                     .then(reservation => { 
                         if(reservation) throw new DuplicityError(`workspace with id ${workspaceId} is busy on ${date}`)
 
-                        return Reservation.create()
+                        return Reservation.create({user: userId, workspace:workspaceId, date: sanitizedDate})
                     })
                 })
         })
@@ -55,10 +63,3 @@ function createReservation (userId, workspaceId, date) {
     }
     module.exports = createReservation
 	
-
-//sanitize 
-
-
-
-
-

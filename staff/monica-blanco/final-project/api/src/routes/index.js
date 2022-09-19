@@ -22,8 +22,8 @@ locationsRouter.get('/locations', retrieveLocationsHandler)
 
 const workspacesRouter = Router()
 
-workspacesRouter.get('/reservations', retrieveReservationsHandler)
-workspacesRouter.post('/reservations', jsonBodyParser, createReservationHandler)
+workspacesRouter.get('/workspaces/reservations', retrieveReservationsHandler)
+workspacesRouter.post('/workspaces/:workspaceId/reservations', jsonBodyParser, createReservationHandler)
 //deleteReservations
 
 

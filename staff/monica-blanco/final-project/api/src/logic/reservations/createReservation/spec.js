@@ -14,11 +14,13 @@ describe( 'createReservation', () => {
     beforeEach( () => Promise.all( [User.deleteMany(), Reservation.deleteMany(), Workspace.deleteMany(), Location.deleteMany()] ) )
 
     it( 'user manages to make a reservation of a space', () => { //happy path
-        const name = 'Pepito Grillo'
-        const email = 'pepito@grillo.com'
+        const name = 'Pepito Grillo',
+        const email = 'pepito@grillo.com'++
         const password = '123123123'
 
-     const user = new User( { name, email, password } )
+     //const user = new User( { name, email, password } )
+
+     const user = User.create({ name, email, password })
         const date = new Date
 
         const location = new Location( {
@@ -46,12 +48,12 @@ describe( 'createReservation', () => {
             workspace1.save(),
             reservation.save()
         ] )
-            .then( ( [location, workspace1, reservation] ) => {
+            .then( () => {
 
-                return User.create( { name, email, password } )
+                return User.create( user.name, user.email, user.password )
                     .then( user =>
 
-                        createReservation( {user, workspace1, date} )
+                        createReservation(user.id, workspace1.id, reservation.date)
                             .then( res => {
 
                                 expect( res ).toBeUndefined()
@@ -73,6 +75,11 @@ describe( 'createReservation', () => {
     it( 'fails on non-existing user', () => {  //   unhappy path
                 
         const date = new Date
+
+        const name = 'Pepito Grillo'
+        const email = 'pepito@grillo.com'
+        const password = '123123123'
+        const user = new User( { name, email, password } )
         
 
         const location1 = new Location( {
@@ -85,22 +92,23 @@ describe( 'createReservation', () => {
         const workspace2 = new Workspace( {
             location: location1.id,
             name: 'office1',
-            date: '2022-08-09',
+            date: new Date('2022-02-04'),
             price: 50,
             image: 'jpg',
         } )
 
         return Promise.all( [
+            user.save(),
             location1.save(),
             workspace2.save()
         ] )
-            .then( ( [user, workspace] ) => {
+            .then( () => {
 
-                return createReservation( user.id, workspace.id, date)
-                    .then( () => { throw new Error( 'should not reach this point' ) } )
+                return createReservation(user.id, workspace2.id, date )
+                    .then( () => { throw new NotFoundError( `workspace with id ${workspace2.id} not found`) } )
                     .catch( error => {
                         expect( error ).toBeInstanceOf( Error)
-                        //expect( error.message ).toEqual( `workspace with id ${workspaceId} is busy on ${date}`)
+                        expect( error.message ).toEqual(`workspace with id ${workspace2.id} not found`)
                     } )
             } )
     } )

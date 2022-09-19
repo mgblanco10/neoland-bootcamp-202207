@@ -5,6 +5,7 @@ import Loggito from "../utils/Loggito";
 import retrieveUser from "../logic/retrieveUser";
 import retrieveLocations from "../logic/retrieveLocations";
 import retrieveWorkspaces from "../logic/retrieveWorkspaces";
+import retrieveReservation from "../logic/retrieveReservation";
 import withContext from "../utils/withContext";
 import { Routes, Route, useNavigate, useLocation } from "react-router-dom";
 
@@ -15,11 +16,13 @@ import Colors from "../components/Colors";
 import Workspaces from "./Workspaces";
 import NewReservation from "../components/NewReservation"
 
+
 function Home({ onLogoutClick, context: { toggleTheme } }) {
   const logger = new Loggito("Home");
 
   const [locations, setLocations] = useState();
   const [workspaces, setWorkspaces] = useState();
+  const [reservation, setReservation] = useState();
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -77,6 +80,22 @@ function Home({ onLogoutClick, context: { toggleTheme } }) {
       logger.warn(error.message);
     }
   };
+  const loadReservation = (workspaceId) => {
+    try {
+      retrieveReservation(workspaceId, (error, reservation) => {
+        if (error) {
+          logger.warn(error.message);
+
+          return;
+        }
+        setReservation(reservation);
+
+        logger.debug("setReservation", reservation);
+      });
+    } catch (error) {
+      logger.warn(error.message);
+    }
+  };
 
   function handleSettingsClick() {
     navigate("settings");
@@ -101,18 +120,21 @@ function Home({ onLogoutClick, context: { toggleTheme } }) {
     logger.debug('navigate to home')
 }
   const handleLocationClick = (locationId) => {
-    debugger
+    
     loadWorkspaces(locationId);
     
     navigate(`locations/${locationId}/workspaces`);
   };
 
-  // const handleCreateReservationClick = () => {
-  //   navigate('reservations')
+  const handleReservationClick = (reservationId) => {
 
-  //   logger.debug('navigate to reservation')
+    loadReservation(reservationId)
 
-  // }
+    navigate('/workspaces/:workspaceId/reservations')
+
+    logger.debug('navigate to reservation')
+  }
+
   logger.info('return')
 
   return (
@@ -125,20 +147,9 @@ function Home({ onLogoutClick, context: { toggleTheme } }) {
         onSolutionsClick={handleSolutionsClick}
       />
       <Routes>
-        <Route
-          path="/"
-          element={
-            locations ? (
-              <Location locations={locations} onClick={handleLocationClick} />
-            ) : (
-              <>hola</>
-            )
-          }
-        />
-        <Route
-          path="/locations/:locationsId/workspaces"
-          element={workspaces ? <Workspaces workspaces={workspaces} /> : <>AQUI HAY WORKSPACES </>}
-        />
+        <Route path="/" element={locations ? ( <Location locations={locations} onClick={handleLocationClick} />) : ( <>hola</> ) }/>
+        <Route path="/locations/:locationsId/workspaces" element={workspaces ? <Workspaces workspaces={workspaces}  onClick={handleReservationClick}/> : <>AQUI HAY WORKSPACES </>} />
+        <Route path="/workspaces/:workspaceId/reservations" element= {reservation ? <NewReservation reservation={reservation}/> : <> NO HAY RESERVAS</>} />
          <Route path="reservation" element={<NewReservation />} />
         <Route path="settings" element={<Settings />} />
         <Route path="Info" element={<PhotoGaleria />} />

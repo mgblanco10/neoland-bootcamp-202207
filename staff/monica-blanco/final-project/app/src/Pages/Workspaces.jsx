@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 import retrieveWorkspaces from "../logic/retrieveWorkspaces";
 import createReservation from "../logic/createReservation";
 
-function Workspaces({ workspaces, onLinkClick }) {
+function Workspaces({ workspaces, onLinkClick, onClick }) {
   let fecha = new Date();
   let mes;
   let anio = fecha.getFullYear();
@@ -90,7 +90,7 @@ function Workspaces({ workspaces, onLinkClick }) {
                 
                             <input className="calendar" type="date"  min={anio + "-" + mes + "-" + dia} />{" "}
                                   
-                            <button className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"  type="submit">
+                            <button className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"  type="submit" onClick={() => {onClick(workspace.id)}}>
                                Rent
                           </button>
                 
