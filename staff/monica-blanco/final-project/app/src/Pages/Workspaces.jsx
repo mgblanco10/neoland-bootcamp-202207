@@ -27,12 +27,12 @@ function Workspaces({ workspaces, onClick }) {
   const locationId = params.locationId;
   const workspaceId = params.WorkspaceId;
 
-  const handleFormSubmitReservation = (event) => {
+  const handleFormSubmitReservation = (event, workspaceId) => {
     event.preventDefault();
+    
     const {
       target: form,
       target: {
-        workspace: { value: workspaceId },
         date: { value: date },
       },
     } = event;
@@ -44,6 +44,8 @@ function Workspaces({ workspaces, onClick }) {
           return;
         }
         form.reset();
+
+        onClick(workspaceId)
       });
     } catch (error) {
       logger.warn(error.message);
@@ -81,14 +83,16 @@ function Workspaces({ workspaces, onClick }) {
                 </div>
                 <div className="p-4 border-t border-b text-xs text-gray-700">
                   <span className="flex items-center mb-1">
-                    <form metod="get" onSubmit={handleFormSubmitReservation}>
+                    <form onSubmit={(event) => {
+                      handleFormSubmitReservation(event, workspace.id)
+                    }}>
                       <input className="calendar" name="date"
                         type="date" min={anio + "-" + mes + "-" + dia}/>{" "}
                       <button className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"
                         type="submit"
-                        onClick={() => {
-                          onClick(workspace.id);
-                        }}
+                        // onClick={() => {
+                        //   onClick(workspace.id);
+                        // }}
                       >
                         Rent
                       </button>

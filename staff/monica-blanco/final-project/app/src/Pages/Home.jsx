@@ -79,9 +79,10 @@ function Home({ onLogoutClick, context: { toggleTheme } }) {
       logger.warn(error.message);
     }
   };
-  const loadReservation = (workspaceId) => {
+  const loadReservation = (/*workspaceId*/) => {
     try {
-      retrieveReservation(sessionStorage.token, workspaceId, (error, reservation) => {
+      retrieveReservation(sessionStorage.token, /*workspaceId,*/ (error, reservation) => {
+
         if (error) {
           logger.warn(error.message);
 

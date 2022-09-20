@@ -9,7 +9,7 @@ module.exports = (req, res) => {
 
         const { body: { date}, params: { workspaceId } } = req
 
-        return createReservation(userId, workspaceId, new Date (date))
+        return createReservation(userId, workspaceId, new Date(date))
         .then(() => res.status(201).send())
     },res,logger);
 };
