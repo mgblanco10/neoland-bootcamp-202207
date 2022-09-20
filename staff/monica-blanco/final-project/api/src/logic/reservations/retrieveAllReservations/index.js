@@ -2,7 +2,21 @@ const { User, Reservation} = require('../../../models')
 const { NotFoundError, SystemError } = require('errors')
 const { verifyObjectIdString } = require('../../../utils')
 
-function retrieveReservations(userId) {
+
+/**
+ * retrieve All Reservations
+ * 
+ * @param {string} userId The user id.
+ * @param {string} reservation  
+ * @Date
+ * 
+ * @returns {Promise}
+ * 
+ * @throws {NotFoundError} If the user is not found.
+ * @throws {SystemError} If an error happens in db.
+ */
+
+function retrieveAllReservations(userId) {
     verifyObjectIdString(userId, 'user id')
 
     return User.findById(userId).lean()
@@ -30,4 +44,4 @@ function retrieveReservations(userId) {
         })
 }
 
-module.exports = retrieveReservations
+module.exports = retrieveAllReservations

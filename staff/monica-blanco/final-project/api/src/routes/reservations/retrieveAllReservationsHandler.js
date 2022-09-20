@@ -1,5 +1,5 @@
 const { runWithErrorHandling, createLogger, verifyToken } = require('../../utils')
-const { reservations: { retrieveReservations } } = require('../../logic')
+const { reservations: { retrieveAllReservations } } = require('../../logic')
 const logger = createLogger(module)
 
 module.exports = (req, res) => {
@@ -7,8 +7,8 @@ module.exports = (req, res) => {
         const userId = verifyToken(req)
         
 z
-        return retrieveReservations(userId).then ((reservation)=>
-            res.status(200).json(reservation))
+        return retrieveAllReservations(userId).then ((reservations)=>
+            res.status(200).json(reservations))
     }, res, logger)
 }
 

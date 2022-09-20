@@ -6,6 +6,7 @@ import retrieveUser from "../logic/retrieveUser";
 import retrieveLocations from "../logic/retrieveLocations";
 import retrieveWorkspaces from "../logic/retrieveWorkspaces";
 import retrieveReservation from "../logic/retrieveReservation";
+//import retrieveAllReservations from "../logic/retrieveAllReservation";
 import withContext from "../utils/withContext";
 import { Routes, Route, useNavigate, useLocation } from "react-router-dom";
 
@@ -22,6 +23,7 @@ function Home({ onLogoutClick, context: { toggleTheme } }) {
   const [locations, setLocations] = useState();
   const [workspaces, setWorkspaces] = useState();
   const [reservation, setReservation] = useState();
+  const[reservations, setReservations] = useState();
   const navigate = useNavigate();
   const location = useLocation();
 

@@ -1,10 +1,11 @@
 import Loggito from "../utils/Loggito";
-import Header from "../components/Header";
+import Modal from '../components/Modal'
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import createReservation from "../logic/createReservation";
 
 function Workspaces({ workspaces, onClick }) {
+  const [estadoModal, cambiarEstadoModal]= useState(false)
   let fecha = new Date();
   let mes;
   let anio = fecha.getFullYear();
@@ -19,7 +20,7 @@ function Workspaces({ workspaces, onClick }) {
 
   const logger = new Loggito("workspaces");
 
-  //const [workspaces, setWorkspaces] = useState();
+
   const params = useParams();
 
   logger.info("return");
@@ -56,6 +57,13 @@ function Workspaces({ workspaces, onClick }) {
 
   return (
     <div>
+      <button onClick={()=>cambiarEstadoModal(!estadoModal)}>BottonRENT</button>
+       <Modal
+        estado={estadoModal}
+        cambiarEstado={cambiarEstadoModal}
+        >
+        <h1> Ventana Modal desde Workspaces </h1></Modal>
+
       {workspaces &&
         workspaces.map((workspace) => {
           return (

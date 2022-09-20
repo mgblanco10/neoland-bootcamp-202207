@@ -1,4 +1,6 @@
+
 module.exports = {
     createReservationHandler: require ('./createReservationHandler'),
-    retrieveReservationsHandler: require ('./retrieveReservationsHandler')
+    retrieveAllReservationsHandler: require('./retrieveAllReservationsHandler'),
+    retrieveReservationHandler: require ('./retrieveReservationHandler')
 }

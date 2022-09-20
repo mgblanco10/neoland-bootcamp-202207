@@ -57,6 +57,9 @@ function createReservation (userId, workspaceId, date) {
 
                         return Reservation.create({user: userId, workspace:workspaceId, date: sanitizedDate})
                     })
+                    .then(reservation => {
+                        return reservation._id.toString()
+                    })
                 })
         })
 

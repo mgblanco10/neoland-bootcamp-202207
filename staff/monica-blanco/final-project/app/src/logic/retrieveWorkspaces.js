@@ -23,6 +23,8 @@ function retrieveWorkspaces ( locationId, callback ) {
         else if ( status === 200 ) {
             callback( null, locations )
         }
+
+        //porque aquí no estan los workspaces
     }
 
     xhr.open( 'GET', `${API_URL}/locations/${locationId}/workspaces` )
