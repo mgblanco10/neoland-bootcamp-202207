@@ -20,9 +20,8 @@ La página de alquiler de espacios de trabajo que hago espero poder reflejar la 
 Ahora en cuanto especificaciones técnicas está página es una aplicación firts mobile, pero donde la idea es trabajar con media queries que permita al usuario también verla en un destock , aquí la idea es tener dos front distintos y jugar un poco con los tamaños de dispositivos, tendrá una parte de calendario donde el usuario podrá seleccionar las fechas donde necesita espacio, tendrá una parte de filtrado por precio, quizás un range y por último tendrá una parte de loggin,register esto en una primera versión.
 En una siguiente versión me gustaría hacer la parte de pago, y ampliar a otras ciudades, incluso pensar en las rutas y poner medios de transporte disponibles,etc.
 
-Extra-Iteracion 1 --------V2 ....:S espero llegar antes de dos semanas y no abrumarme, para poder hacer todo 
-tendrá una parte de mapa para poder hacer la ubicación del espacio de trabajo,
-En una segunda versión, permitir que los usuarios puedan darle like a sus espacios favoritos, además poder agregar un map con geospatial queries mongodb, y quizás un apartado de noticias 
+Extra-Iteracion 1 --------V2 ....:S  para poder hacer todo tendrá una parte de mapa para poder hacer la ubicación del espacio de trabajo esto en V2,
+En una segunda versión, permitir que los usuarios puedan darle like a sus espacios favoritos, además poder agregar un map con geospatial queries mongodb, y quizás un apartado de noticias, videos de  
 
 
 ## Functional Description
@@ -85,12 +84,18 @@ Sprint
 --leer e intalar redux 
 --componente Header (ya que se repite en todas las páginas empezaré por él)
 --componente Office ó espacios, 1 solo porque la idea es luego hacer base de datos de lugares y que cojan ese mismo diseño
---pagina Home hacer asi sea un h1 :S
---Enruta de home a seach con react router-dom (LISTO)
+--aprender e implementar tailwind de 0
+--pagina Home hacer asi sea un h1 y hacer conexiones de las direcciones entre las páginas con las rutas:S
+--Enruta de home a seach con react router-dom 
+--trabajo en api de logic de Locations
+--trabajo de logic y rutas de workspaces
+-- pruebas en insomnia
+-- trabajo de logic de retrieve reservation and create reservation
+-- implementar la api en la app
 -- trabajar home cargar carrusel 
---ver si puedo montar baner
+--ver si puedo montar baner informativo de los workspaces
 --galeria fotos quizas componetizar
---calendario
+--calendario, al final realizado con un input 
 --trabajar search 
 --favicon
 -- trabajo api (WIP)
@@ -109,11 +114,12 @@ Sprint
 --homePage
 --WorkspacePage y resto de paginas
 Cacturar pecios y ver para que usuare seleccines
+calendario
 
 ==========Falta
 createReservation implementacion
 deleteReservation completa
-calendario
+
 pago
 
 

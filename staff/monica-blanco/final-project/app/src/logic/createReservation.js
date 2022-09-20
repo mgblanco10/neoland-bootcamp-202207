@@ -37,6 +37,3 @@ function createReservation(token, workspaceId, date, callback) {
 
     xhr.send(json)
 }
-
-
-export default createReservation

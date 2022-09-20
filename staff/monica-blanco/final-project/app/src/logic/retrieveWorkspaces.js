@@ -27,6 +27,7 @@ function retrieveWorkspaces ( locationId, callback ) {
 
     xhr.open( 'GET', `${API_URL}/locations/${locationId}/workspaces` )
 
+    //xhr.setRequestHeader('Authorization', `Bearer ${token}`)
     xhr.send()
 }
 

@@ -1,32 +1,38 @@
-import { validateCallback, validateText } from "validators"
+import { validateCallback, validateString, validateDate } from "validators"
 
 const API_URL = process.env.REACT_APP_API_URL
 
-function retrieveReservation ( token, workspaces, callback ) {
-  
-    // validateText( workspaceId, 'workspaceId' )
-    //validateCallback( callback )
+function retrieveReservation (token, workspaceId,date, callback ) {
+    if (typeof token !== 'string') throw new TypeError('Token is not a string')
+    if (token.trim().length === 0) throw new Error('Token is empty or blank')
+    validateString( workspaceId, 'workspaceId' )
+    validateCallback( callback )
+    validateDate (date)
 
     const xhr = new XMLHttpRequest
 
     xhr.onload = function () {
         const status = xhr.status
 
-        const json = xhr.responseText
-
-        const workspaces = JSON.parse( json )
-
+        
         if ( status >= 500 )
-            callback( new Error( `server error (${status})` ) )
+        callback( new Error( `server error (${status})` ) )
         else if ( status >= 400 )
-            callback( new Error( `client error (${status})` ) )
+        callback( new Error( `client error (${status})` ) )
         else if ( status === 200 ) {
-            callback( null, workspaces )
+            const json = xhr.responseText
+
+            const reservation = JSON.parse( json )
+
+            callback( null, reservation )
         }
     }
 
     xhr.open( 'GET', `${API_URL}/workspaces/reservations` )
 
+
+    xhr.setRequestHeader('Authorization', `Bearer ${token}`)
+    //xhr.setRequestHeader('Content-type', 'application/json')
     xhr.send()
 }
 

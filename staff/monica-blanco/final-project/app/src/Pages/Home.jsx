@@ -21,7 +21,7 @@ function Home({ onLogoutClick, context: { toggleTheme } }) {
 
   const [locations, setLocations] = useState();
   const [workspaces, setWorkspaces] = useState();
-  const [reservation, setReservation] = useState(null);
+  const [reservation, setReservation] = useState();
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -81,7 +81,7 @@ function Home({ onLogoutClick, context: { toggleTheme } }) {
   };
   const loadReservation = (workspaceId) => {
     try {
-      retrieveReservation(workspaceId, (error, reservation) => {
+      retrieveReservation(sessionStorage.token, workspaceId, (error, reservation) => {
         if (error) {
           logger.warn(error.message);
 
@@ -125,7 +125,7 @@ function Home({ onLogoutClick, context: { toggleTheme } }) {
     navigate(`locations/${locationId}/workspaces`);
   };
 
-  const handleReservationClick = (workspaceId) => {
+  const handleCreateReservationClick = (workspaceId) => {
 
     loadReservation(workspaceId)
 
@@ -147,8 +147,8 @@ function Home({ onLogoutClick, context: { toggleTheme } }) {
       />
       <Routes>
         <Route path="/" element={locations ? ( <Location locations={locations} onClick={handleLocationClick} />) : ( <>hola</> ) }/>
-        <Route path="/locations/:locationsId/workspaces" element={workspaces ? <Workspaces workspaces={workspaces}  onClick={handleReservationClick}/> : <>AQUI HAY WORKSPACES </>} />
-        <Route path="/workspaces/:workspaceId/reservations" element= {reservation ? <NewReservation reservation={reservation}/> : <> NO HAY RESERVAS AQUI </>} />
+        <Route path="/locations/:locationsId/workspaces" element={workspaces ? <Workspaces workspaces={workspaces}  onClick={handleCreateReservationClick}/> : <>AQUI HAY WORKSPACES </>} />
+        <Route path="/workspaces/:workspaceId/reservations" element= {reservation ? <NewReservation/> : <> NO HAY RESERVAS  </>} />
          <Route path="/workspaces/reservations" element={<Colors />} />
         <Route path="settings" element={<Settings />} />
         <Route path="Info" element={<PhotoGaleria />} />
