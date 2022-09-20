@@ -57,12 +57,11 @@ function Workspaces({ workspaces, onClick }) {
 
   return (
     <div>
-      <button onClick={()=>cambiarEstadoModal(!estadoModal)}>BottonRENT</button>
-       <Modal
-        estado={estadoModal}
-        cambiarEstado={cambiarEstadoModal}
-        >
-        <h1> Ventana Modal desde Workspaces </h1></Modal>
+
+
+      <button onClick={()=>cambiarEstadoModal(!estadoModal)}>Modal</button>
+       <Modal estado={estadoModal} cambiarEstado={cambiarEstadoModal} > </Modal>
+
 
       {workspaces &&
         workspaces.map((workspace) => {
@@ -115,43 +114,3 @@ function Workspaces({ workspaces, onClick }) {
   );
 }
 export default Workspaces;
-
-// return (
-//   <div>
-//     {workspaces &&
-//       workspaces.map((workspace) => {
-//         return (
-//           <div className="max-w-sm rounded px-6 pr-5 p-6 overflow-hidden shadow-lg flex-row float-left">
-//             <img
-//               className="w-full  h-56"
-//               src={workspace.image}
-//               alt="Workspaces PobleNou"
-//             />
-//             <div className="px-6 py-4">
-//               <div className="font-bold text-xl mb-2">{workspace.name}</div>
-//               <p className="text-gray-700 text-base">{workspace.address}</p>
-//             </div>
-//             <div className="px-6 pt-4 pb-2">
-//               <p>45€</p>
-//               <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
-//                 Rent
-//               </span>
-//               <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
-
-//                 <form metod="get" onSubmit={handleFormSubmitReservation}>
-
-//                   <input className="calendar" type="date"  min={anio + "-" + mes + "-" + dia} />{" "}
-
-//                   <button className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"  type="submit">
-//                 Rent
-//               </button>
-
-//                 </form>
-//               </span>
-//             </div>
-//           </div>
-//         );
-//       })}
-//   </div>
-// );
-// }

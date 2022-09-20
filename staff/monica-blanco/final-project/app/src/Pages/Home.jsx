@@ -6,7 +6,7 @@ import retrieveUser from "../logic/retrieveUser";
 import retrieveLocations from "../logic/retrieveLocations";
 import retrieveWorkspaces from "../logic/retrieveWorkspaces";
 import retrieveReservation from "../logic/retrieveReservation";
-//import retrieveAllReservations from "../logic/retrieveAllReservation";
+import retrieveAllReservations from "../logic/retrieveAllReservation";
 import withContext from "../utils/withContext";
 import { Routes, Route, useNavigate, useLocation } from "react-router-dom";
 
@@ -15,6 +15,7 @@ import Location from "../components/Location";
 import Colors from "../components/Colors";
 import Workspaces from "./Workspaces";
 import NewReservation from "../components/NewReservation"
+
 
 
 function Home({ onLogoutClick, context: { toggleTheme } }) {
@@ -81,16 +82,16 @@ function Home({ onLogoutClick, context: { toggleTheme } }) {
       logger.warn(error.message);
     }
   };
-  const loadReservation = (/*workspaceId*/) => {
+  const loadReservation = (reservationId) => {
     try {
-      retrieveReservation(sessionStorage.token, /*workspaceId,*/ (error, reservation) => {
+      retrieveReservation(sessionStorage.token, reservationId, (error, user) => {
 
         if (error) {
           logger.warn(error.message);
 
           return;
         }
-        setReservation(reservation);
+        setReservation(reservationId);
 
         logger.debug("setReservation", reservation);
       });
@@ -98,29 +99,56 @@ function Home({ onLogoutClick, context: { toggleTheme } }) {
       logger.warn(error.message);
     }
   };
+//===Y AHORA CON ESTO???
+  const loadReservations = () => {
+    try {
+      retrieveAllReservations(sessionStorage.token,reservations, (error, user) => {
 
+        if (error) {
+          logger.warn(error.message);
+
+          return;
+        }
+        setReservations(reservations);
+
+        logger.debug("setReservations", reservations);
+      });
+    } catch (error) {
+      logger.warn(error.message);
+    }
+  };
+
+
+//===SettingsHEADER
   function handleSettingsClick() {
     navigate("settings");
 
     logger.debug("navigate to settings");
   }
 
+//====Information HEADER
   function handleInfoClick() {
     navigate("info");
 
     logger.debug("navigate to info");
   }
+
+//====Solution HEADER
   function handleSolutionsClick() {
     navigate("solutions");
 
     logger.debug("navigate to your reservations");
   }
 
+//===Home Header BUILDINGS
   function handleNavigationToHomeClick () {
     navigate('/')
 
     logger.debug('navigate to home')
+
 }
+
+//boton de BUILDINGS Y NAVEGA A WORKSPACES
   const handleLocationClick = (locationId) => {
     
     loadWorkspaces(locationId);
@@ -128,6 +156,8 @@ function Home({ onLogoutClick, context: { toggleTheme } }) {
     navigate(`locations/${locationId}/workspaces`);
   };
 
+
+//Boton Input de CreateReservation AHORA COMO UTILIZO ESTO?
   const handleCreateReservationClick = (workspaceId) => {
 
     loadReservation(workspaceId)
@@ -136,6 +166,10 @@ function Home({ onLogoutClick, context: { toggleTheme } }) {
 
     logger.debug('navigate to reservation')
   }
+
+
+
+
 
   logger.info('return')
 
@@ -149,10 +183,22 @@ function Home({ onLogoutClick, context: { toggleTheme } }) {
         onSolutionsClick={handleSolutionsClick}
       />
       <Routes>
+
+        {/* BUILDING */}
         <Route path="/" element={locations ? ( <Location locations={locations} onClick={handleLocationClick} />) : ( <>hola</> ) }/>
+
+
+        {/* LOS WORKSPACES Y MODAL ---> VER LO DE LA RUTA */}
         <Route path="/locations/:locationsId/workspaces" element={workspaces ? <Workspaces workspaces={workspaces}  onClick={handleCreateReservationClick}/> : <>AQUI HAY WORKSPACES </>} />
-        <Route path="/workspaces/:workspaceId/reservations" element= {reservation ? <NewReservation/> : <> NO HAY RESERVAS  </>} />
-         <Route path="/workspaces/reservations" element={<Colors />} />
+        
+        {/* AHORA CON MODAL COMO UTILIZO ESTA Ruta */}
+        <Route path="/workspaces/:workspaceId/reservations" element= { <NewReservation/> } />
+         
+        {/* TODAS LAS RESERVAS --> quizás llevar a otra página */}
+         <Route path="/workspaces/reservations" element={<Colors />} /> 
+
+        
+        
         <Route path="settings" element={<Settings />} />
         <Route path="Info" element={<PhotoGaleria />} />
         <Route path="solutions" element={<Colors />} />

@@ -1,4 +1,4 @@
-import { validateCallback, validateString, validateDate } from "validators"
+import { validateCallback, validateString } from "validators"
 
 
 const API_URL = process.env.REACT_APP_API_URL
