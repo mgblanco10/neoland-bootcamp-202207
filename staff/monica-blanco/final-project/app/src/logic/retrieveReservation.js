@@ -2,10 +2,10 @@ import { validateCallback, validateText } from "validators"
 
 const API_URL = process.env.REACT_APP_API_URL
 
-function retrieveReservation ( workspaceId, callback ) {
+function retrieveReservation ( token, workspaces, callback ) {
   
-    validateText( workspaceId, 'workspaceId' )
-    validateCallback( callback )
+    // validateText( workspaceId, 'workspaceId' )
+    //validateCallback( callback )
 
     const xhr = new XMLHttpRequest
 

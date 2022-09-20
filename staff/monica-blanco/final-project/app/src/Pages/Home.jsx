@@ -11,7 +11,6 @@ import { Routes, Route, useNavigate, useLocation } from "react-router-dom";
 
 import PhotoGaleria from "../components/PhotoGaleria";
 import Location from "../components/Location";
-import Card from "../components/Card";
 import Colors from "../components/Colors";
 import Workspaces from "./Workspaces";
 import NewReservation from "../components/NewReservation"

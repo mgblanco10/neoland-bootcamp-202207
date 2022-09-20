@@ -1,6 +1,4 @@
 import Loggito from "../utils/Loggito";
-import Header from "../components/Header";
-import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import createReservation from "../logic/createReservation";
 
@@ -18,26 +16,23 @@ function Workspaces({ workspaces, onClick }) {
   }
 
   const logger = new Loggito("workspaces");
-
-  // const [workspaces, setWorkspaces] = useState();
+ 
   const params = useParams();
 
   logger.info("return");
 
-  const locationId = params.locationId;
-  const workspaceId = params.WorkspaceId;
-
+  
   const handleFormSubmitReservation = (event) => {
     event.preventDefault();
     const {
       target: form,
       target: {
-        workspace: { value: workspaceId },
         date: { value: date },
       },
     } = event;
-
+    
     try {
+      const workspaceId = params.workspaceId;
       createReservation(sessionStorage.token, workspaceId, date, (error) => {
         if (error) {
           logger.warn(error.message);
@@ -81,9 +76,12 @@ function Workspaces({ workspaces, onClick }) {
                 </div>
                 <div class="p-4 border-t border-b text-xs text-gray-700">
                   <span class="flex items-center mb-1">
+
+
+
                     <form metod="get" onSubmit={handleFormSubmitReservation}>
-                      <input className="calendar" name="date"
-                        type="date" min={anio + "-" + mes + "-" + dia}/>{" "}
+                      <input className="calendar" name="date" id="date"
+                        type="date" min={anio + "-" + mes + "-" + dia} />{" "}
                       <button className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"
                         type="submit"
                         onClick={() => {
@@ -93,6 +91,9 @@ function Workspaces({ workspaces, onClick }) {
                         Rent
                       </button>
                     </form>
+
+
+
                   </span>
                 </div>
               </a>
