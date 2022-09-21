@@ -1,7 +1,7 @@
 import React from 'react'
 
 
-function Modal({children, estado, cambiarEstado}) {
+function Modal({children, estado, cambiarEstado, reservation, workspace}) {
     return (
     <>{ estado&&
        <div className="flex h-32 w-52 p-4 text-sm text-gray-500 bg-cyan-100 rounded-lg" role="alert">

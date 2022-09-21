@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import Loggito from "../utils/Loggito";
+import Footer from "../components/Footer";
 
 function Location({ locations, onClick }) {
   const logger = new Loggito("List buildings");
@@ -29,3 +30,5 @@ function Location({ locations, onClick }) {
 }
 
 export default Location;
+
+{/* <Footer/> -->ver como hacer con el map */}

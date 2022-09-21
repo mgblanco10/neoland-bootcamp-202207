@@ -98,6 +98,7 @@ return (
                             <div className="w-full h-1/2 absolute bottom-0 bg-white/10 backdrop-blur-lg" />
                           </div>
                         </div>
+                        
 
 )    
 }

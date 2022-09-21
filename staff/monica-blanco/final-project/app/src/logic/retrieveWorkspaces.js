@@ -3,7 +3,6 @@ import { validateCallback, validateText } from "validators"
 const API_URL = process.env.REACT_APP_API_URL
 
 function retrieveWorkspaces ( locationId, callback ) {
-    
     validateText( locationId, 'locationId' )
     validateCallback( callback )
 
@@ -24,12 +23,12 @@ function retrieveWorkspaces ( locationId, callback ) {
             callback( null, locations )
         }
 
-        //porque aquí no estan los workspaces
     }
 
     xhr.open( 'GET', `${API_URL}/locations/${locationId}/workspaces` )
 
     //xhr.setRequestHeader('Authorization', `Bearer ${token}`)
+    
     xhr.send()
 }
 

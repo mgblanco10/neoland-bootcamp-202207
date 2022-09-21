@@ -15,24 +15,28 @@ function retrieveReservation (token, reservationId, callback) {
     xhr.onload = function () {
         const status = xhr.status
 
-        
+        const json = xhr.responseText
+
+        const reservationId = JSON.parse(json)
+
         if ( status >= 500 )
         callback( new Error( `server error (${status})` ) )
         else if ( status >= 400 )
         callback( new Error( `client error (${status})` ) )
-        else if ( status === 200 ) {
-            const json = xhr.responseText
+        else if ( status === 200 ) { 
+            // TODO correct this
+            callback( null, reservationId)
 
-            const reservation = JSON.parse( json )
+            // const json = xhr.responseText
 
-            callback( null, reservation )
+            // const reservationId = JSON.stringify( json )
         }
     }
 
     xhr.open( 'GET', `${API_URL}/workspaces/${reservationId}` )
 
     xhr.setRequestHeader('Authorization', `Bearer ${token}`)
-    //xhr.setRequestHeader('Content-type', 'application/json')
+ 
     xhr.send()
 }
 

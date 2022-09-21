@@ -16,12 +16,16 @@ function createReservation(token, workspaceId, date, callback) {
     xhr.onload = function () {
         const status = xhr.status
 
+        const json = xhr.responseText
+
+        const reservationId = JSON.parse(json)
+
         if (status >= 500)
             callback(new Error(`server error (${status})`))
         else if (status >= 400)
             callback(new Error(`client error (${status})`))
         else if (status === 201)
-            callback(null)
+            callback(null, reservationId)
     }
 
 
@@ -32,8 +36,6 @@ function createReservation(token, workspaceId, date, callback) {
 
     const data = { date }
     const json = JSON.stringify(data)
-    // const reservation = { workspaceId, data};
-    // const json = JSON.stringify(reservation)
 
     xhr.send(json)
 }

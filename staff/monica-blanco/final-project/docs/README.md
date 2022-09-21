@@ -1,6 +1,6 @@
 ## Name and short description aplication: 
-Bienvenidos a mi proyecto donde pongo en práctica todos los conocimientos que he adquirido durante el Bootcamp. Ha sido un viaje muy desafiante pero me siento muy orgullosa del trabajo realizado.
-Mi aplicación es una replica de una página de alquiler de espacios de trabajo coworking, la cual se llama WORKSPACES
+Project where I put into practice all the knowledge I have acquired during the Bootcamp.
+The application that I have made is a replica of a page for renting workspaces.
 
 https://giphy.com/gifs/newquest-coffee-hands-3oriO7A7bt1wsEP4cw
 
@@ -9,18 +9,17 @@ my giphy
 
 # Description 
 
-Una de las cosas más difíciles es aprender lo que no sabes. Y una de las maneras más rápidas de aprender esto es interactuar con personas de diferentes orígenes y disciplinas. El coworking te permite dejar tu burbuja y trabajar con otros que saben lo que tu no sabes, y de esta forma puedes abrir tu mente encontrando capacidades que jamás pensantes que tenías y eso fue justamente lo que me paso a mi en un coworking y por eso decidí que mi primer proyecto como developer fuera sobre el sitio donde he estado formandome y aprendiendo los últimos meses y donde he conocido gente increible con la que he vivido la experiencia de un Bootcamp, que además va a toda velocidad.
-Porque hay mil y una maneras de trabajar,pero aquí hemos logrado encontrar soluciones realmente espaciales y especiales para trabajar en equipo. Definitivamente lo mejor ha sido los compañeros y profesores, son realmente increibles, dispuestos a dar todo para que realmente aprendas y consigas superar tús límites, y este es justamente un homenaje a cada uno de ellos, porque estos meses he conocido y compartido con personas increibles.
-Y es que ya sabía que un coworking es un espacio donde nacen emprendedores y permite que profesionales de distintos sectores se relacionen y hacer networking, pero no pense que formaría parte de uno de ellos.
+One of the hardest things is learning what you don't know. And one of the fastest ways to learn this is to interact with people from different backgrounds and disciplines. Coworking allows you to leave your bubble and work with others who know what you don't know, and in this way you can open your mind finding capabilities that you never thought you had and that was exactly what happened to me in a coworking and that's why I decided that my first project as a developer would be about the site where I have been training and learning for the last few months.
+Because there are a thousand and one ways of working, but here we have managed to find solutions to different problems, working as a team. Definitely the best thing has been the classmates and teachers, they are really incredible, willing to give everything so that you really learn and overcome your limits.
 
 ## Technical Description
 
-La página de alquiler de espacios de trabajo que hago espero poder reflejar la existencia de varios espacios de trabajo flexibles para cada gusto, donde encontraras espacios compartidos hasta oficinas privadas; lugares abiertos y colaborativos, con características y diseños modernos donde tendrás a tu disposición todo lo que puedas necesitar. Capaz de reflejar con un diseño limpio que se puede romper la monotonía cotidiana de la configuración corporativa ó de la casa
+The page is for the rental of workspaces, I seek to reflect the existence of several flexible workspaces for each taste, where you will find shared spaces to private offices; open and collaborative places, with modern features and designs where you will have everything you need at your disposal. Able to reflect with a clean design that can break the daily monotony of corporate or home settings.
 
-Ahora en cuanto especificaciones técnicas está página es una aplicación firts mobile, pero donde la idea es trabajar con media queries que permita al usuario también verla en un destock , aquí la idea es tener dos front distintos y jugar un poco con los tamaños de dispositivos, tendrá una parte de calendario donde el usuario podrá seleccionar las fechas donde necesita espacio, tendrá una parte de filtrado por precio, quizás un range y por último tendrá una parte de loggin,register esto en una primera versión.
-En una siguiente versión me gustaría hacer la parte de pago, y ampliar a otras ciudades, incluso pensar en las rutas y poner medios de transporte disponibles,etc.
+Now in terms of technical specifications, this page is a first mobile application made with javascript, react and tailwind, it plays with the sizes of the devices, making the application navigable both on desktop and mobile, it has a calendar where the user can select the dates where you need space and finally you have a loggin, register and password change.
 
-Extra-Iteracion 1 --------V2 ....:S  para poder hacer todo tendrá una parte de mapa para poder hacer la ubicación del espacio de trabajo esto en V2,
+EXTRA
+Extra-Iteracion 1 --------V2 :S  para poder hacer todo tendrá una parte de mapa para poder hacer la ubicación del espacio de trabajo esto en V2,
 En una segunda versión, permitir que los usuarios puedan darle like a sus espacios favoritos, además poder agregar un map con geospatial queries mongodb, y quizás un apartado de noticias, videos de  
 
 
@@ -51,7 +50,7 @@ En una segunda versión, permitir que los usuarios puedan darle like a sus espac
 - password:string
 
 Reservation
-- id: ObjectId --> automático mongo
+- id: ObjectId 
 - user: ObjectId ref: 'User'
 - workspace: ObjectId
 - date: Date
@@ -72,61 +71,30 @@ Workspace
 
 
 
-
-
 ## Roadmap
 
-Sprint 
---ver que librerías necesito para mi proyecto y entender como utilizarlas (WIP)
---Descarga de react (LISTOOO)
---Limpieza de las carpetas para empezar mi app (LISTO)
---leer e instlar mui (WIP Ahora New librería)
---leer e intalar redux 
---componente Header (ya que se repite en todas las páginas empezaré por él)
---componente Office ó espacios, 1 solo porque la idea es luego hacer base de datos de lugares y que cojan ese mismo diseño
---aprender e implementar tailwind de 0
---pagina Home hacer asi sea un h1 y hacer conexiones de las direcciones entre las páginas con las rutas:S
---Enruta de home a seach con react router-dom 
---trabajo en api de logic de Locations
---trabajo de logic y rutas de workspaces
--- pruebas en insomnia
--- trabajo de logic de retrieve reservation and create reservation
--- implementar la api en la app
--- trabajar home cargar carrusel 
---ver si puedo montar baner informativo de los workspaces
---galeria fotos quizas componetizar
---calendario, al final realizado con un input 
---trabajar search 
---favicon
--- trabajo api (WIP)
---componente
---header
---login
---register
---logicas reservation
---navigation api & app
---tailwind
---pagina map
---imagenes
---rutas api(listo)
---responsive (WIP)
---MODEL Y SCHEMAS(listo)
---homePage
---WorkspacePage y resto de paginas
-Cacturar pecios y ver para que usuare seleccines
-calendario
+Version 0
+-- Figma
+-- Data model & schemas
+--Data model to mongoose
+--Implement tailwind
+--Implement user logic
+--implement routes
+--implement the pages 
+--implement the components
+--test insomnia
+--navigate api & app
+--responsive app
 
-==========Falta
-createReservation implementacion
-deleteReservation completa
-
-pago
-
-
-V2---Mapa en página e Home con ubications
+V1---
+--payment 
+-- map ubication geospatial 
+-- calendar not input
+-- menu the version mobile
+-- theme color, application
+--favorite the ubication
+--range price filter
+-- shearch the ubication
 
 
 
-
-
-/* ver colores cuando este menos agotada y decidir que hacer.. revisar header, hacer algo con el botton del banner */

@@ -4,7 +4,6 @@ const { verifyObjectIdString } = require('../../../utils')
 const {validateDate} = require('validators')
 const endOfDay = require ('date-fns/endOfDay')
 const startOfDay = require ('date-fns/startOfDay')
-const { workspace } = require( '../../../models/schemas' )
 
 /**
  * Create a reservation for a user

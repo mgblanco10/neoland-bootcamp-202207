@@ -39,13 +39,13 @@ function Workspaces({ workspaces, onClick }) {
     } = event;
 
     try {
-      createReservation(sessionStorage.token, workspaceId, date, (error) => {
+      createReservation(sessionStorage.token, workspaceId, date, (error, reservationId) => {
         if (error) {
           logger.warn(error.message);
           return;
         }
         form.reset();
-
+        cambiarEstadoModal(!estadoModal)
         onClick(workspaceId)
       });
     } catch (error) {

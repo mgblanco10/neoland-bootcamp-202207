@@ -189,9 +189,9 @@ function Home({ onLogoutClick, context: { toggleTheme } }) {
 
 
         {/* LOS WORKSPACES Y MODAL ---> VER LO DE LA RUTA */}
-        <Route path="/locations/:locationsId/workspaces" element={workspaces ? <Workspaces workspaces={workspaces}  onClick={handleCreateReservationClick}/> : <>AQUI HAY WORKSPACES </>} />
+        <Route path="/locations/:locationsId/workspaces" element={workspaces ? <Workspaces workspaces={workspaces} /*onClick={handleCreateReservationClick}*//> : <>AQUI HAY WORKSPACES </>} />
         
-        {/* AHORA CON MODAL COMO UTILIZO ESTA Ruta */}
+        {/* AHORA CON MODAL NO UTILIZO ESTA Ruta */}
         <Route path="/workspaces/:workspaceId/reservations" element= { <NewReservation/> } />
          
         {/* TODAS LAS RESERVAS --> quizás llevar a otra página */}
