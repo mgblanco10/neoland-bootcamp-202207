@@ -18,14 +18,14 @@ function createReservation(token, workspaceId, date, callback) {
 
         const json = xhr.responseText
 
-        const reservationId = JSON.parse(json)
+        const data = JSON.parse(json)
 
         if (status >= 500)
             callback(new Error(`server error (${status})`))
         else if (status >= 400)
             callback(new Error(`client error (${status})`))
         else if (status === 201)
-            callback(null, reservationId)
+            callback(null, data.reservationId)
     }
 
 

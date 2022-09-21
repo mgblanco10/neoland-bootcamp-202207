@@ -21,8 +21,6 @@ function retrieveLocations(token, callback) {
             callback(new Error(`client error (${status})`))
         else if (status === 200) {
 
-
-
             callback(null, locations)
         }
     }

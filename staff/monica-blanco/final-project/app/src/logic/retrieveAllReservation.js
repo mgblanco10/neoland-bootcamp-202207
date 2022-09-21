@@ -33,7 +33,7 @@ function retrieveAllReservations (token, workspaceId, callback ) {
     xhr.open( 'GET', `${API_URL}/workspaces/reservations` )
 
     xhr.setRequestHeader('Authorization', `Bearer ${token}`)
-    //xhr.setRequestHeader('Content-type', 'application/json')
+
     xhr.send()
 }
 

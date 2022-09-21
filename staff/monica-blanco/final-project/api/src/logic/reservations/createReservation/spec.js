@@ -19,8 +19,6 @@ describe( 'createReservation', () => {
         const password = '123123123'
 
      const user = new User( { name, email, password } )
-
-    //  const user = User.create({ name, email, password })
         const date = new Date
 
         const location = new Location( {
@@ -43,7 +41,7 @@ describe( 'createReservation', () => {
         } )
 
         return Promise.all( [
-            //user.save(),
+            user.save(),
             location.save(),
             workspace1.save(),
             reservation.save()
@@ -76,10 +74,10 @@ describe( 'createReservation', () => {
                 
         const date = new Date
 
-        // const name = 'Pepito Grillo'
-        // const email = 'pepito@grillo.com'
-        // const password = '123123123'
-        // const user = new User( { name, email, password } )
+        const name = 'Pepito Grillo'
+        const email = 'pepito@grillo.com'
+        const password = '123123123'
+        const user = new User( { name, email, password } )
         
 
         const location1 = new Location( {
@@ -98,17 +96,17 @@ describe( 'createReservation', () => {
         } )
 
         return Promise.all( [
-            // user.save(),
+            user.save(),
             location1.save(),
             workspace2.save()
         ] )
             .then( () => {
 
-                return createReservation(workspaceId, date )
-                    .then( () => { throw new NotFoundError( `workspace with id ${workspaceId} not found`) } )
+                return createReservation(user.id, workspace2.id, date )
+                    .then( () => { throw new NotFoundError( `workspace with id ${workspace2.id} not found`) } )
                     .catch( error => {
                         expect( error ).toBeInstanceOf( Error)
-                        expect( error.message ).toEqual(`workspace with id ${workspaceId} not found`)
+                        expect( error.message ).toEqual(`workspace with id ${workspace2.id} not found`)
                     } )
             } )
     } )

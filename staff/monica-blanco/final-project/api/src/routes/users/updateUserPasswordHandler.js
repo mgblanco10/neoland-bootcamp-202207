@@ -8,8 +8,8 @@ module.exports = (req, res) => {
         const userId = verifyToken(req)
 
         const { body: { oldPassword, newPassword, newPasswordRepeat} } = req
-
-        return updateUserPassword(oldPassword, newPassword, newPasswordRepeat, userId)
+        
+        return updateUserPassword(userId, oldPassword, newPassword, newPasswordRepeat )
             .then(()=> res.status(204).send())
     }, res, logger)
 }

@@ -17,7 +17,7 @@ function retrieveReservation (token, reservationId, callback) {
 
         const json = xhr.responseText
 
-        const reservationId = JSON.parse(json)
+        const reservation = JSON.parse(json)
 
         if ( status >= 500 )
         callback( new Error( `server error (${status})` ) )
@@ -25,7 +25,7 @@ function retrieveReservation (token, reservationId, callback) {
         callback( new Error( `client error (${status})` ) )
         else if ( status === 200 ) { 
             // TODO correct this
-            callback( null, reservationId)
+            callback( null, reservation)
 
             // const json = xhr.responseText
 

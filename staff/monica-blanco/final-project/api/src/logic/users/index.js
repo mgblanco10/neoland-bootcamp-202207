@@ -3,5 +3,5 @@ module.exports = {
     registerUser : require('./registerUser'),
     retrieveUser : require('./retrieveUser'),
     updateUserPassword : require('./updateUserPassword'),
-    updateUserEmail : require('./updateUserEmail'),
+    updateUserEmail : require('./updateUserEmail')
 }

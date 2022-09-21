@@ -3,9 +3,11 @@ import Modal from '../components/Modal'
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import createReservation from "../logic/createReservation";
+import retrieveReservation from "../logic/retrieveReservation";
 
 function Workspaces({ workspaces, onClick }) {
-  const [estadoModal, cambiarEstadoModal]= useState(false)
+  const [modalState, setModalState]= useState(false)
+
   let fecha = new Date();
   let mes;
   let anio = fecha.getFullYear();
@@ -28,6 +30,8 @@ function Workspaces({ workspaces, onClick }) {
   const locationId = params.locationId;
   const workspaceId = params.WorkspaceId;
 
+  const handleCloseModal = () => setModalState(null)
+
   const handleFormSubmitReservation = (event, workspaceId) => {
     event.preventDefault();
     
@@ -39,14 +43,24 @@ function Workspaces({ workspaces, onClick }) {
     } = event;
 
     try {
-      createReservation(sessionStorage.token, workspaceId, date, (error, reservationId) => {
+      createReservation(sessionStorage.token, workspaceId, date, (error, reservationId) => {        
         if (error) {
           logger.warn(error.message);
           return;
         }
         form.reset();
-        cambiarEstadoModal(!estadoModal)
-        onClick(workspaceId)
+
+        retrieveReservation(sessionStorage.token, reservationId, (error, reservation) => {
+          if(error) {
+            setModalState({errorMessage: error.message})
+  
+            return
+          }
+
+          setModalState(reservation)
+        })
+
+        // onClick(workspaceId)
       });
     } catch (error) {
       logger.warn(error.message);
@@ -59,14 +73,13 @@ function Workspaces({ workspaces, onClick }) {
     <div>
 
 
-      <button onClick={()=>cambiarEstadoModal(!estadoModal)}>Modal</button>
-       <Modal estado={estadoModal} cambiarEstado={cambiarEstadoModal} > </Modal>
+       {modalState && <Modal reservationOrError={modalState} onClose={handleCloseModal} /> }
 
 
       {workspaces &&
         workspaces.map((workspace) => {
           return (
-            <div className="max-w-sm rounded px-4 pr-4 p-6 overflow-hidden flex-row float-left">
+            <div className="max-w-sm rounded px-4 pr-4 p-6 overflow-hidden flex-row float-left" key={workspace.id}>
               <a
                 href=""
                 className="c-card block bg-white rounded-lg overflow-hidden"

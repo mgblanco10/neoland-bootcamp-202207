@@ -9,7 +9,7 @@ import retrieveReservation from "../logic/retrieveReservation";
 import retrieveAllReservations from "../logic/retrieveAllReservation";
 import withContext from "../utils/withContext";
 import { Routes, Route, useNavigate, useLocation } from "react-router-dom";
-
+import Footer from "../components/Footer";
 import PhotoGaleria from "../components/PhotoGaleria";
 import Location from "../components/Location";
 import Colors from "../components/Colors";
@@ -157,7 +157,7 @@ function Home({ onLogoutClick, context: { toggleTheme } }) {
   };
 
 
-//Boton Input de CreateReservation AHORA COMO UTILIZO ESTO?
+//Boton Input de CreateReservation AHORA NO UTILIZO ESTO
   const handleCreateReservationClick = (workspaceId) => {
 
     loadReservation(workspaceId)
@@ -203,6 +203,7 @@ function Home({ onLogoutClick, context: { toggleTheme } }) {
         <Route path="Info" element={<PhotoGaleria />} />
         <Route path="solutions" element={<Colors />} />
       </Routes>
+      <Footer/>
     </div>
   );
 }

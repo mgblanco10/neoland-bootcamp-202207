@@ -1,12 +1,17 @@
+
 export default function Footer() {
+  
     return (
-<footer class="p-4 bg-white rounded-lg shadow md:px-6 md:py-8 dark:bg-gray-900">
-
-    
-    <span class="block text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2022 <a href="https://flowbite.com/" class="hover:underline">MgBlanco™</a>. All Rights Reserved.
+<footer class=" bg-gray-100 mb-2 rounded-lg shadow md:flex md:items-center md:justify-between md:p-4 dark:bg-gray-100 absolute bottom-0 left-0">
+    <span class="text-sm text-gray-700 sm:text-center dark:text-gray-400">© 2022 <a class="hover:underline"> MGBlancoCalviño™ </a>
     </span>
-</footer>
-        
-
-  )
-}
+    <ul class="flex space-x-4 items-center text-sm text-gray-700 dark:text-gray-400 sm:mt-0">
+        <li>
+            <a href="#" class="hover:underline m-4">Contact</a>
+        </li>
+    </ul>
+</footer>  
+  
+      );
+  }
+  

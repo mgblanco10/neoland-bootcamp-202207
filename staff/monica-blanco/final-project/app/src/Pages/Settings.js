@@ -47,8 +47,7 @@ function Settings({ onLinkClick, onCloseClick, context: { handleFeedback } }) {
                          <div className="w-full items-center justify-center lg:w-1/2">
                        
                        <div className='bg-white px-10 py-20 rounded-3xl border-2 border-gray-100'>
-                       <h1 className='text-5xl font-semibold'> Welcome Back</h1>
-                       <p className='font-medium text-lg text-gray-500 mt-4'>Change Password</p>
+                       <h1 className='text-5xl font-semibold'> Change Password</h1>
                        <div className='mt-8'>
                            <form onSubmit={handleFormSubmitPassword}>
                                <div>
@@ -88,7 +87,7 @@ function Settings({ onLinkClick, onCloseClick, context: { handleFeedback } }) {
                                </div>
                            </form>
                        </div>
-                             <button className="anchor" onClick={handleLinkClick}>Home</button>
+                       <img src="https://www.kindpng.com/picc/m/436-4369832_homepage-icon-png-png-download-transparent-black-home.png" className='h-8 w-8 cursor-pointer' onClick={handleLinkClick}/>
                    </div>   
                          </div>
                          <div className="hidden relative lg:flex h-full w-1/2 items-center justify-center h-full bg-gray-200">

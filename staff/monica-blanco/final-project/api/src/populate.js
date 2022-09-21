@@ -77,10 +77,10 @@ connect(MONGO_URL)
       ([pobleNou, diagonal]) => {
         const office1 = new Workspace({
           location: pobleNou.id,
-          name: "Office Private 1",
+          name: "Private Office 1",
           price: 45,
           image:
-            "http://cortinas-acusticas.com/wp-content/uploads/cortinas-ac%C3%BAsticas-para-separar-ambientes-en-centros-de-negocios.jpg",
+            "https://i.pinimg.com/736x/8f/44/dc/8f44dc0113218416c65025998db5c0af.jpg",
           description: "Ideal for individuals and small teams.",
         });
 
@@ -104,10 +104,10 @@ connect(MONGO_URL)
 
         const office4 = new Workspace({
           location: diagonal.id,
-          name: "Living Room Small",
+          name: "Small Living Room",
           price: 65,
           image:
-            "https://www.profesionalreview.com/wp-content/uploads/2020/06/Ordenador-en-el-suelo-o-en-la-mesa-03-scaled.jpg",
+            "https://theprofessionalcentre.com/media/TPC-comfort-zone-800x480.jpg",
           description: "Fully equipped private office space.",
         });
 
@@ -131,7 +131,7 @@ connect(MONGO_URL)
 
         const office7 = new Workspace({
           location: diagonal.id,
-          name: "Desk small",
+          name: "Small Desk",
           price: 45,
           image:
             "https://www.livinghomes.es/wp-content/uploads/coworking-living-1024x576.jpg",
@@ -140,7 +140,7 @@ connect(MONGO_URL)
 
         const office8 = new Workspace({
           location: diagonal.id,
-          name: "Office Private",
+          name: "Private Office",
           price: 100,
           image:
             "https://actiucdn.net/uploads/images/actualidad/descripciones/consejos-poner-en-marcha-coworking-funcione-10_782_651.jpg",
@@ -148,7 +148,7 @@ connect(MONGO_URL)
         });
         const office9 = new Workspace({
           location: diagonal.id,
-          name: "Office Private Large",
+          name: "Large Private Office",
           price: 100,
           image:
             "https://actiucdn.net/uploads/images/actualidad/descripciones/consejos-poner-en-marcha-coworking-funcione-10_782_651.jpg",
@@ -164,7 +164,7 @@ connect(MONGO_URL)
         });
         const office11 = new Workspace({
           location: pobleNou.id,
-          name: "Office Private",
+          name: "Private Office",
           price: 45,
           image:
             "https://actiucdn.net/uploads/images/actualidad/descripciones/consejos-poner-en-marcha-coworking-funcione-10_782_651.jpg",
@@ -172,7 +172,7 @@ connect(MONGO_URL)
         });
         const office12 = new Workspace({
           location: pobleNou.id,
-          name: "Office Private",
+          name: "Private Office",
           price: 30,
           image:
             "https://coworkinglafabrica.es/wp-content/uploads/2018/06/C5A5816.jpg",
@@ -180,7 +180,7 @@ connect(MONGO_URL)
         });
         const office13 = new Workspace({
           location: passeiGracia.id,
-          name: "Shared office",
+          name: "Shared Office",
           price: 50,
           image:
             "https://i.pinimg.com/originals/9a/e5/b3/9ae5b302e45ea5607079a561392f20c0.jpg",
@@ -188,7 +188,7 @@ connect(MONGO_URL)
         });
         const office14 = new Workspace({
           location: passeiGracia.id,
-          name: "Office Private",
+          name: "Private Office",
           price: 100,
           image:
             "https://actiucdn.net/uploads/images/actualidad/descripciones/consejos-poner-en-marcha-coworking-funcione-10_782_651.jpg",
@@ -199,7 +199,7 @@ connect(MONGO_URL)
           name: "Luxury Office",
           price: 100,
           image:
-            "https://coworkinglafabrica.es/wp-content/uploads/2018/06/C5A5816.jpg",
+            "https://static.dezeen.com/uploads/2019/01/fosbury-sons-boitsfort-going-east-interiors-offices-belgium-brussels_dezeen_sq-1.jpg",
           description: "Luxury Office, a space configurable to your needs.",
         });
 
@@ -224,53 +224,20 @@ connect(MONGO_URL)
             const reservation1 = new Reservation({
               user: pepito.id,
               workspace: office1.id,
-              date: new Date("09/02/2022"),
+              date: new Date("09/02/2023"),
             });
 
             const reservation2 = new Reservation({
               user: wendy.id,
               workspace: office3.id,
-              date: new Date("08/09/2022"),
+              date: new Date("08/09/2023"),
             });
 
-            const reservation3 = new Reservation({
-              user: peter.id,
-              workspace: office2.id,
-              date: new Date("10/10/2022"),
-            });
-
-            const reservation4 = new Reservation({
-              user: james.id,
-              workspace: office2,
-              date: new Date("12/05/2022"),
-            });
-
-            const reservation5 = new Reservation({
-              user: peter.id,
-              workspace: office3,
-              date: new Date("09/15/2022"),
-            });
-
-            const reservation6 = new Reservation({
-              user: wendy.id,
-              workspace: office4.id,
-              date: new Date("11/23/2022"),
-            });
-
-            const reservation7 = new Reservation({
-              user: pepito._id,
-              workspace: office6._id,
-              date: new Date("10/25/2022"),
-            });
 
             return Promise.all([
               reservation1.save(),
-              reservation2.save(),
-              reservation3.save(),
-              reservation4.save(),
-              reservation5.save(),
-              reservation6.save(),
-              reservation7.save(),
+              reservation2.save()
+          
             ]);
           }
         );
