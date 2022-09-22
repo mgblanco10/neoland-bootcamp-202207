@@ -4,9 +4,9 @@ const logger = createLogger(module)
 
 module.exports = (req, res) => {
     runWithErrorHandling(() => {
+        debugger
         const userId = verifyToken(req)
         
-z
         return retrieveAllReservations(userId).then ((reservations)=>
             res.status(200).json(reservations))
     }, res, logger)

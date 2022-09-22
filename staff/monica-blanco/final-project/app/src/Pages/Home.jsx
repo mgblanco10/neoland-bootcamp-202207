@@ -6,7 +6,7 @@ import retrieveUser from "../logic/retrieveUser";
 import retrieveLocations from "../logic/retrieveLocations";
 import retrieveWorkspaces from "../logic/retrieveWorkspaces";
 import retrieveReservation from "../logic/retrieveReservation";
-import retrieveAllReservations from "../logic/retrieveAllReservation";
+import retrieveAllReservations from "../logic/retrieveAllReservations";
 import withContext from "../utils/withContext";
 import { Routes, Route, useNavigate, useLocation } from "react-router-dom";
 import Footer from "../components/Footer";
@@ -24,7 +24,7 @@ function Home({ onLogoutClick, context: { toggleTheme } }) {
   const [locations, setLocations] = useState();
   const [workspaces, setWorkspaces] = useState();
   const [reservation, setReservation] = useState();
-  const[reservations, setReservations] = useState();
+  // const[reservations, setReservations] = useState();
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -45,6 +45,15 @@ function Home({ onLogoutClick, context: { toggleTheme } }) {
 
     loadLocations();
   }, []);
+
+  useEffect(() => {
+    loadWorkspaces()
+  }, [])
+
+  useEffect(() => {
+
+    console.log(workspaces)
+  }, [workspaces])
 
   const loadLocations = () => {
     try {
@@ -75,6 +84,7 @@ function Home({ onLogoutClick, context: { toggleTheme } }) {
           return;
         }
         setWorkspaces(workspaces);
+       
 
         logger.debug("setWorkspaces", workspaces);
       });
@@ -82,6 +92,7 @@ function Home({ onLogoutClick, context: { toggleTheme } }) {
       logger.warn(error.message);
     }
   };
+
   const loadReservation = (reservationId) => {
     try {
       retrieveReservation(sessionStorage.token, reservationId, (error, user) => {
@@ -100,9 +111,9 @@ function Home({ onLogoutClick, context: { toggleTheme } }) {
     }
   };
 
-  const loadReservations = () => {
+  /* const loadReservations = () => {
     try {
-      retrieveAllReservations(sessionStorage.token,reservations, (error, user) => {
+      retrieveAllReservations(sessionStorage.token, (error, reservations) => {
 
         if (error) {
           logger.warn(error.message);
@@ -116,7 +127,7 @@ function Home({ onLogoutClick, context: { toggleTheme } }) {
     } catch (error) {
       logger.warn(error.message);
     }
-  };
+  }; */
 
   function handleSettingsClick() {
     navigate("settings");
@@ -151,9 +162,10 @@ function Home({ onLogoutClick, context: { toggleTheme } }) {
   };
 
   const handleAllReservationClick =(reservationId)=>{
-    loadReservations(reservationId)
+    // loadReservations(reservationId)
 
     logger.debug('navigate to reservations')
+
     navigate('/workspaces/reservations')
   }
 
@@ -172,11 +184,18 @@ function Home({ onLogoutClick, context: { toggleTheme } }) {
 
         <Route path="/" element={locations ? ( <Location locations={locations} onClick={handleLocationClick} />) : ( <> BUILDINGS </> ) }/>
         <Route path="/locations/:locationsId/workspaces" element={workspaces ? <Workspaces workspaces={workspaces} /> : <> WORKSPACES </>} />
+
+
         <Route path="/workspaces/:workspaceId/reservations" element= { <NewReservation/> } />
-         <Route path="/workspaces/reservations" element={ <Colors reservations={reservations} workspaces={workspaces} locations={locations} onClick={handleAllReservationClick} /> } />         
+
+
+         <Route path="/workspaces/reservations" element={ <Colors 
+        //  reservations={reservations} 
+         workspaces={workspaces} locations={locations} onClick={handleAllReservationClick} /> } />         
+        
         <Route path="settings" element={<Settings />} />
         <Route path="Info" element={<PhotoGaleria />} />
-        <Route path="solutions" element={<Colors />} />
+        <Route path="solutions" element={<Colors workspaces={workspaces}/>} />
       </Routes>
       <Footer/>
     </div>

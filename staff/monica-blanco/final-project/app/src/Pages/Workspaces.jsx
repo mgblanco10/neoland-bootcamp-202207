@@ -28,7 +28,7 @@ function Workspaces({ workspaces }) {
   logger.info("return");
 
   const locationId = params.locationId;
-  const workspaceId = params.WorkspaceId;
+  const workspaceId = params.workspaceId;
 
   const handleCloseModal = () => setModalState(null)
 

@@ -23,16 +23,18 @@ This page is a responsible application made with javascript, react and tailwind,
 ## Functional Description
 
 ### Use Cases
--- Search building
--- Wiew workspaces the buildings
--- Search workspace
--- Wiew workspace
--- Wiew prices
--- Explore workspace
-- Reservation workspace
--- Adjust settings(name, email,password,...)
+
+- Search Locations
+- Wiew Workspaces the Locations
+- Search Workspace
+- Wiew Workspace
+- Wiew Prices
+- Explore Workspace
+- Reservation Workspace
+- Adjust Settings(name, email,password,...)
 
 ### UI design
+-Responsive: Tailwind
 
 ### Technical Description
 - Blocks
@@ -91,23 +93,23 @@ Workspace
 Spint 0
 
 Version 0
--- Figma
--- Data model & schemas
---Data model to mongoose
---Implement tailwind
---Populate data into db(populate.js)
---Implement user logic
---Implement locations, workspaces & reservation
---Implement API specs
---implement routes
---implement the pages app
---implement the components app
---test insomnia
---navigate api & app
---responsive app
---Test coverage
-- Input validations API
-- Input validations APP
+- Figma
+- Data model & schemas
+-Data model to mongoose
+-Implement tailwind
+-Populate data into db(populate.js)
+-Implement user logic
+-Implement locations, workspaces & reservation
+-Implement API specs
+-implement routes
+-implement the pages app
+-implement the components app
+-test insomnia
+-navigate api & app
+-responsive app
+-Test coverage
+-Input validations API
+-Input validations APP
 
 Sprint 1
 
@@ -121,9 +123,10 @@ Version 1
 --range price filter
 -- shearch the ubication
 
--
+### Test coverage
 
+![](./images/coverage.png)
 
-Extra-Iteracion V0 --V1   para poder hacer todo tendrá una parte de mapa para poder hacer la ubicación del espacio de trabajo esto en V1,
+To be continue... V0 --V1   para poder hacer todo tendrá una parte de mapa para poder hacer la ubicación del espacio de trabajo esto en V1,
 En una segunda versión, permitir que los usuarios puedan darle like a sus espacios favoritos, además poder agregar un map con geospatial queries mongodb, un apartado de noticias, videos informativos, pasarela de pago
 

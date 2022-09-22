@@ -18,16 +18,18 @@ const { verifyObjectIdString } = require('../../../utils')
 
 function retrieveAllReservations(userId) {
     verifyObjectIdString(userId, 'user id')
-
+debugger
     return User.findById(userId).lean()
         .catch(error => {
+            debugger
             throw new SystemError(error.message)
         })
         .then(user => {
             if (!user) throw new NotFoundError(`user with id ${userId} not found`)
 
-            return Reservation.find({ user: userId }, 'workspace date createdAt modifiedAt').lean()
+            return Reservation.find({ user: userId }, 'workspace date').populate({path: 'workspace', select: 'image name'}).lean()
                 .catch(error => {
+                    debugger
                     throw new SystemError(error.message)
                 })
         })
