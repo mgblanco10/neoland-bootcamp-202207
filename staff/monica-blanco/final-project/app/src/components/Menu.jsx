@@ -12,5 +12,4 @@ function Menu (onLogoutClick){
 }
 
 export default Menu
-            // <div className="pr-8 hidden md:block">
-            // </div>
+         

@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 import createReservation from "../logic/createReservation";
 import retrieveReservation from "../logic/retrieveReservation";
 
-function Workspaces({ workspaces, onClick }) {
+function Workspaces({ workspaces }) {
   const [modalState, setModalState]= useState(false)
 
   let fecha = new Date();
@@ -60,7 +60,6 @@ function Workspaces({ workspaces, onClick }) {
           setModalState(reservation)
         })
 
-        // onClick(workspaceId)
       });
     } catch (error) {
       logger.warn(error.message);
@@ -110,9 +109,6 @@ function Workspaces({ workspaces, onClick }) {
                         type="date" min={anio + "-" + mes + "-" + dia}/>{" "}
                       <button className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"
                         type="submit"
-                        // onClick={() => {
-                        //   onClick(workspace.id);
-                        // }}
                       >
                         Rent
                       </button>

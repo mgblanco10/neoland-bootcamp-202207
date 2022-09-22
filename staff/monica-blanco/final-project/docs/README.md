@@ -1,49 +1,63 @@
-## Name and short description aplication: 
-Project where I put into practice all the knowledge I have acquired during the Bootcamp.
-The application that I have made is a replica of a page for renting workspaces.
-
-https://giphy.com/gifs/newquest-coffee-hands-3oriO7A7bt1wsEP4cw
-
-https://giphy.com/gifs/lCbSAbRrFEfkY
+# Name and Short Description Aplication: 
+The application that I have made is a replica of a workspace rental page.
 
 
-my giphy
+![](./images/giphy.gif)
 
-# Description 
 
-One of the hardest things is learning what you don't know. And one of the fastest ways to learn this is to interact with people from different backgrounds and disciplines. Coworking allows you to leave your bubble and work with others who know what you don't know, and in this way you can open your mind finding capabilities that you never thought you had and that was exactly what happened to me in a coworking and that's why I decided that my first project as a developer would be about the site where I have been training and learning for the last few months.
-Because there are a thousand and one ways of working, but here we have managed to find solutions to different problems, working as a team. Definitely the best thing has been the classmates and teachers, they are really incredible, willing to give everything so that you really learn and overcome your limits.
+## Description English
+
+One of the hardest things is learning what you don't know. And one of the fastest ways to learn this is to interact with people from different backgrounds and disciplines. Coworking allows you to get out of your bubble and work with others who know what you don't know, and in this way you can open your mind finding capabilities that you never thought you had and that's why I decided that my first project as a developer would be about a coworking.
+Because there are a thousand and one ways of working, but as a team it is always easier.
+
+## Description Spanish
+
+Una de las cosas más difíciles es aprender lo que no sabes. Y una de las formas más rápidas de aprender esto es interactuar con personas de diferentes orígenes y disciplinas. El coworking te permite salir de tu burbuja y trabajar con otros que saben lo que tú no sabes, y de esta manera puedes abrir tu mente encontrando capacidades que nunca pensaste que tenías y es por eso que decidí que mi primer proyecto como desarrollador sería sobre un coworking.
+Porque hay mil y una formas de trabajar, pero en equipo siempre es más fácil.
 
 ## Technical Description
+This page is a responsible application made with javascript, react and tailwind, it plays with the sizes of the devices, making the application navigable both on desktop and mobile, it has a calendar where the user can select the dates in which they need space and has a login, registration and password change.
 
-The page is for the rental of workspaces, I seek to reflect the existence of several flexible workspaces for each taste, where you will find shared spaces to private offices; open and collaborative places, with modern features and designs where you will have everything you need at your disposal. Able to reflect with a clean design that can break the daily monotony of corporate or home settings.
-
-Now in terms of technical specifications, this page is a first mobile application made with javascript, react and tailwind, it plays with the sizes of the devices, making the application navigable both on desktop and mobile, it has a calendar where the user can select the dates where you need space and finally you have a loggin, register and password change.
-
-EXTRA
-Extra-Iteracion 1 --------V2 :S  para poder hacer todo tendrá una parte de mapa para poder hacer la ubicación del espacio de trabajo esto en V2,
-En una segunda versión, permitir que los usuarios puedan darle like a sus espacios favoritos, además poder agregar un map con geospatial queries mongodb, y quizás un apartado de noticias, videos de  
 
 
 ## Functional Description
 
-##Use Cases
--search building
--search workspace
--wiew workspace
--wiew prices
--explore workspace
--reservation workspace
--adjust settings(name, email,password,...)
+### Use Cases
+-- Search building
+-- Wiew workspaces the buildings
+-- Search workspace
+-- Wiew workspace
+-- Wiew prices
+-- Explore workspace
+- Reservation workspace
+-- Adjust settings(name, email,password,...)
 
-## Technical Description
+### UI design
+
+### Technical Description
 - Blocks
 - Sequence
 - Components
 - Code Coverage (Testing)
 - Technologies
 
+![](./images/model.jpg)
+
+### Technologies
+Html
+Css 
+JavaScript
+NodeJs 
+Express.js
+Mongoose from  MongoDb
+Tailwind
+React
+Jest (Testing) 
+Winston
+
 ### Data Model
+
+![](./images/dataModel.jpg)
 
  User
 - id: ObjectId --> automático mongo
@@ -72,23 +86,32 @@ Workspace
 - description: string
 
 
-
 ## Roadmap
+
+Spint 0
 
 Version 0
 -- Figma
 -- Data model & schemas
 --Data model to mongoose
 --Implement tailwind
+--Populate data into db(populate.js)
 --Implement user logic
+--Implement locations, workspaces & reservation
+--Implement API specs
 --implement routes
---implement the pages 
---implement the components
+--implement the pages app
+--implement the components app
 --test insomnia
 --navigate api & app
 --responsive app
+--Test coverage
+- Input validations API
+- Input validations APP
 
-V1---
+Sprint 1
+
+Version 1
 --payment 
 -- map ubication geospatial 
 -- calendar not input
@@ -98,5 +121,9 @@ V1---
 --range price filter
 -- shearch the ubication
 
+-
 
+
+Extra-Iteracion V0 --V1   para poder hacer todo tendrá una parte de mapa para poder hacer la ubicación del espacio de trabajo esto en V1,
+En una segunda versión, permitir que los usuarios puedan darle like a sus espacios favoritos, además poder agregar un map con geospatial queries mongodb, un apartado de noticias, videos informativos, pasarela de pago
 

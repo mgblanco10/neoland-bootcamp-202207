@@ -30,10 +30,3 @@ export default function Card({workspaces}) {
     }
 
 
-    
-// {buildings && buildings.map(buildings => {
-//        return <li key={buildings._id}>
-//                <p>{buildings.name}</p>
-//                <p>{buildings.description}</p>
-//                </li> */
-// }

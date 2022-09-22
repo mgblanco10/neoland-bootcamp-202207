@@ -99,7 +99,7 @@ function Home({ onLogoutClick, context: { toggleTheme } }) {
       logger.warn(error.message);
     }
   };
-//===Y AHORA CON ESTO???
+
   const loadReservations = () => {
     try {
       retrieveAllReservations(sessionStorage.token,reservations, (error, user) => {
@@ -118,29 +118,24 @@ function Home({ onLogoutClick, context: { toggleTheme } }) {
     }
   };
 
-
-//===SettingsHEADER
   function handleSettingsClick() {
     navigate("settings");
 
     logger.debug("navigate to settings");
   }
 
-//====Information HEADER
   function handleInfoClick() {
     navigate("info");
 
     logger.debug("navigate to info");
   }
 
-//====Solution HEADER
   function handleSolutionsClick() {
     navigate("solutions");
 
     logger.debug("navigate to your reservations");
   }
 
-//===Home Header BUILDINGS
   function handleNavigationToHomeClick () {
     navigate('/')
 
@@ -148,7 +143,6 @@ function Home({ onLogoutClick, context: { toggleTheme } }) {
 
 }
 
-//boton de BUILDINGS Y NAVEGA A WORKSPACES
   const handleLocationClick = (locationId) => {
     
     loadWorkspaces(locationId);
@@ -156,20 +150,12 @@ function Home({ onLogoutClick, context: { toggleTheme } }) {
     navigate(`locations/${locationId}/workspaces`);
   };
 
+  const handleAllReservationClick =(reservationId)=>{
+    loadReservations(reservationId)
 
-//Boton Input de CreateReservation AHORA NO UTILIZO ESTO
-  const handleCreateReservationClick = (workspaceId) => {
-
-    loadReservation(workspaceId)
-
-    navigate(`/workspaces/${workspaceId}/reservations`)
-
-    logger.debug('navigate to reservation')
+    logger.debug('navigate to reservations')
+    navigate('/workspaces/reservations')
   }
-
-
-
-
 
   logger.info('return')
 
@@ -184,21 +170,10 @@ function Home({ onLogoutClick, context: { toggleTheme } }) {
       />
       <Routes>
 
-        {/* BUILDING */}
-        <Route path="/" element={locations ? ( <Location locations={locations} onClick={handleLocationClick} />) : ( <>hola</> ) }/>
-
-
-        {/* LOS WORKSPACES Y MODAL ---> VER LO DE LA RUTA */}
-        <Route path="/locations/:locationsId/workspaces" element={workspaces ? <Workspaces workspaces={workspaces} /*onClick={handleCreateReservationClick}*//> : <>AQUI HAY WORKSPACES </>} />
-        
-        {/* AHORA CON MODAL NO UTILIZO ESTA Ruta */}
+        <Route path="/" element={locations ? ( <Location locations={locations} onClick={handleLocationClick} />) : ( <> BUILDINGS </> ) }/>
+        <Route path="/locations/:locationsId/workspaces" element={workspaces ? <Workspaces workspaces={workspaces} /> : <> WORKSPACES </>} />
         <Route path="/workspaces/:workspaceId/reservations" element= { <NewReservation/> } />
-         
-        {/* TODAS LAS RESERVAS --> quizás llevar a otra página */}
-         <Route path="/workspaces/reservations" element={<Colors />} /> 
-
-        
-        
+         <Route path="/workspaces/reservations" element={ <Colors reservations={reservations} workspaces={workspaces} locations={locations} onClick={handleAllReservationClick} /> } />         
         <Route path="settings" element={<Settings />} />
         <Route path="Info" element={<PhotoGaleria />} />
         <Route path="solutions" element={<Colors />} />

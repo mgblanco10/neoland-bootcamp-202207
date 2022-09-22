@@ -7,7 +7,7 @@ export default function Footer() {
     </span>
     <ul class="flex space-x-4 items-center text-sm text-gray-700 dark:text-gray-400 sm:mt-0">
         <li>
-            <a href="#" class="hover:underline m-4">Contact</a>
+            <a href="https://github.com/mgblanco10" class="hover:underline m-4">Contact</a>
         </li>
     </ul>
 </footer>  

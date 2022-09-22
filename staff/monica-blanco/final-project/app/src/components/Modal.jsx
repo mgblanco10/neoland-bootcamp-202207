@@ -23,6 +23,7 @@ function Modal({children, reservationOrError, onClose, workspaces}) {
 
     {reservationOrError && reservationOrError.errorMessage && <p className='bg-cyan-100 text-gray-500'>There was an error: {reservationOrError.errorMessage}</p>}
     <button className="ease-in duration-300 text-lg" onClick={()=> onClose()}>Close</button>
+    
   </div>
 </div>
 </div>
