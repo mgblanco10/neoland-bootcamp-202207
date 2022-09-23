@@ -1,7 +1,17 @@
+const API_URL = process.env.REACT_APP_API_URL;
+
 import {  validateText, validateCallback } from 'validators'
 import {  ClientError, ServerError } from 'errors'
 
-const API_URL = process.env.REACT_APP_API_URL
+/**
+ * Deletes a question from database
+ *
+ * @param {string} token The user session token
+ * @param {string} questionId The question identifier
+ * @param {function} callback The function expression that provides a result
+ *
+ * @throws {TypeError} On invalid inputs
+ */
 
 function deleteReservation(token, reservationId, callback) {
     validateText(token)
@@ -31,6 +41,5 @@ function deleteReservation(token, reservationId, callback) {
 
     xhr.send()
 }
-
 
 export default deleteReservation

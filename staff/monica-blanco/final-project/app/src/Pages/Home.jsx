@@ -6,10 +6,11 @@ import retrieveUser from "../logic/retrieveUser";
 import retrieveLocations from "../logic/retrieveLocations";
 import retrieveWorkspaces from "../logic/retrieveWorkspaces";
 import retrieveReservation from "../logic/retrieveReservation";
+import Payment from "../components/Payment";
 import retrieveAllReservations from "../logic/retrieveAllReservations";
 import withContext from "../utils/withContext";
 import { Routes, Route, useNavigate, useLocation } from "react-router-dom";
-import Footer from "../components/Footer";
+import deleteReservation from '../logic/deleteReservation'
 import PhotoGaleria from "../components/PhotoGaleria";
 import Location from "../components/Location";
 import Colors from "../components/Colors";
@@ -110,24 +111,24 @@ function Home({ onLogoutClick, context: { toggleTheme } }) {
       logger.warn(error.message);
     }
   };
-
-  /* const loadReservations = () => {
+  const handleDeleteReservation = reservationId => {
     try {
-      retrieveAllReservations(sessionStorage.token, (error, reservations) => {
+        deleteReservation(sessionStorage.token, reservationId, error => {
+            if (error) {
 
-        if (error) {
-          logger.warn(error.message);
+                logger.warn(error.message)
 
-          return;
-        }
-        setReservations(reservations);
+                return
+            }
 
-        logger.debug("setReservations", reservations);
-      });
+            loadReservation()
+        })
     } catch (error) {
-      logger.warn(error.message);
+
+        logger.warn(error.message)
     }
-  }; */
+}
+
 
   function handleSettingsClick() {
     navigate("settings");
@@ -139,6 +140,12 @@ function Home({ onLogoutClick, context: { toggleTheme } }) {
     navigate("info");
 
     logger.debug("navigate to info");
+  }
+
+  function handlePaymentClick() {
+    navigate("payment");
+
+    logger.debug("navigate to payment");
   }
 
   function handleSolutionsClick() {
@@ -162,7 +169,6 @@ function Home({ onLogoutClick, context: { toggleTheme } }) {
   };
 
   const handleAllReservationClick =(reservationId)=>{
-    // loadReservations(reservationId)
 
     logger.debug('navigate to reservations')
 
@@ -179,6 +185,7 @@ function Home({ onLogoutClick, context: { toggleTheme } }) {
         onHomeClick={handleNavigationToHomeClick}
         onInfoClick={handleInfoClick}
         onSolutionsClick={handleSolutionsClick}
+        onPaymentClick={handlePaymentClick}
       />
       <Routes>
 
@@ -187,17 +194,16 @@ function Home({ onLogoutClick, context: { toggleTheme } }) {
 
 
         <Route path="/workspaces/:workspaceId/reservations" element= { <NewReservation/> } />
-
-
-         <Route path="/workspaces/reservations" element={ <Colors 
-        //  reservations={reservations} 
-         workspaces={workspaces} locations={locations} onClick={handleAllReservationClick} /> } />         
         
         <Route path="settings" element={<Settings />} />
         <Route path="Info" element={<PhotoGaleria />} />
-        <Route path="solutions" element={<Colors workspaces={workspaces}/>} />
+
+        <Route path="payment" element={<Payment/>}/>
+        
+        <Route path="solutions" element={<Colors workspaces={workspaces} onDeleteReservation={handleDeleteReservation} onClick={handleAllReservationClick}/>} />
+      
+      
       </Routes>
-      <Footer/>
     </div>
   );
 }

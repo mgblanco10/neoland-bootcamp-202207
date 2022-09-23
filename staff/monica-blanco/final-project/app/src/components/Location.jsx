@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import Footer from "../components/Footer";
 import Loggito from "../utils/Loggito";
 
 function Location({ locations, onClick }) {
@@ -25,6 +26,7 @@ function Location({ locations, onClick }) {
       </div>
     </div>
     </div>
+<Footer/>
   </>
   ));
 }

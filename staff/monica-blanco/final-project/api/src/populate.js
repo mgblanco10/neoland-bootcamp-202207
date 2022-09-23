@@ -143,7 +143,7 @@ connect(MONGO_URL)
           name: "Private Office",
           price: 100,
           image:
-            "https://actiucdn.net/uploads/images/actualidad/descripciones/consejos-poner-en-marcha-coworking-funcione-10_782_651.jpg",
+            "https://st4.depositphotos.com/2605379/26000/i/450/depositphotos_260009834-stock-photo-contemporary-concrete-coworking-office-interior.jpg",
           description: "Enjoy shared services and meeting rooms.",
         });
         const office9 = new Workspace({
@@ -175,7 +175,7 @@ connect(MONGO_URL)
           name: "Private Office",
           price: 30,
           image:
-            "https://coworkinglafabrica.es/wp-content/uploads/2018/06/C5A5816.jpg",
+            "https://st4.depositphotos.com/2605379/26000/i/450/depositphotos_260009834-stock-photo-contemporary-concrete-coworking-office-interior.jpg",
           description: "Enjoy shared services and meeting rooms.",
         });
         const office13 = new Workspace({

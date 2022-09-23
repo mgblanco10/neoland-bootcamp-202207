@@ -1,10 +1,9 @@
 import retrieveAllReservations from "../logic/retrieveAllReservations";
 import Loggito from "../utils/Loggito";
 import { useEffect, useState } from "react";
-// import retrieveWorkspaces from "../../../api/src/logic/workspaces/retrieveWorkspaces";
-// import { workspace } from "../../../api/src/models/schemas";
 
-export default function Colors({ workspaces }) {
+
+export default function Colors({ workspaces, onDeleteReservation }) {
   const logger = new Loggito("allReservations");
 
   const [reservations, setReservations] = useState([]);
@@ -86,21 +85,24 @@ export default function Colors({ workspaces }) {
     }
   };
 
+
+
   logger.info("return");
   return (
-    <div>
+    <div className= "c-card block shadow-md rounded-lg hover:shadow-xl rounded-lg rounded overflow-hidden flex pb-20 overflow-hidden">
       {workspacesIds.map(workspaceId => {
         return <div>
-            <h2>{reservations[workspaceId][0].workspace.name}</h2>
-            <img src={reservations[workspaceId][0].workspace.image} className="py-10 8px h-60 w-58 pr-5 p-6 md:break-inside-avoid-column rounded  justify-items-center float-left"/>
+            <h2 className="flex content-around font-medium text-gray-500 rounded justify-center">{reservations[workspaceId][0].workspace.name}</h2>
+            <img src={reservations[workspaceId][0].workspace.image} className="8px h-60 w-58 p-4 md:break-inside-avoid-column rounded justify-items-center float-left"/>
 
-            <h3>Reservations of this workspace</h3>
+            <h3 className="p-2  border-b text-gray-700 font-medium">Reservations of this Workspace</h3>
             {reservations[workspaceId].map(reservation => {
         return (
-          <div>
-            <p>Date:</p>
-            <p className="p-4 border-t border-b text-xs text-gray-700">
+          <div className="p-4 items-center text-xs text-gray-700" key={reservation.id}>
+            <p className="flex content-around text-lg">Date:</p>
+            <p className="p-4 text-xs text-gray-700 text-lg">
               {reservation.date}
+            <button onClick={() => onDeleteReservation(reservation.id)} className="m-6 cursor w-50 h-10 grab bg-gray-600 text-white font-bold py-2 px-4 rounded-full"> X </button>
             </p>
           </div>
         )

@@ -19,31 +19,31 @@ const { verifyObjectIdString } = require('../../../utils')
  * @throws {SystemError} If an error happens in db.
  */
 
-function deleteReservation (userId, reservationId) {
-    verifyObjectIdString(userId, 'user id')
+function deleteReservation (reservationId) {
+    // verifyObjectIdString(userId, 'user id')
     verifyObjectIdString(reservationId, 'reservation id')
-    
-    return User.findById(userId)
-        .catch(error => {
-            throw new SystemError(error.message)
-        })
-        .then(user => {
-            if (!user) throw new NotFoundError(`user with id ${userId} not found`)
-            return Reservation.findById(reservationId)
-                .catch(error => {
+    // debugger
+    // return User.findById(userId)
+    //     .catch(error => {
+    //         throw new SystemError(error.message)
+    //     })
+    //     .then(user => {
+    //         if (!user) throw new NotFoundError(`user with id ${userId} not found`)
+            
+            return Reservation.findById(reservationId).lean()
+                .catch((error) => {
                     throw new SystemError(error.message)
-                })
         })
-
-        .then(reservation => {
+        .then((reservation) => {
+            debugger
             if (!reservation) throw new NotFoundError(`reservation with id ${reservationId} not found`)
-
-            if (reservation.creator.toString() !== userId) throw new AuthError(`reservation with id ${reservationId} does not belong to user with id ${userId}`)
-
-            return Reservation.deleteOne({ _id: reservationId })
+debugger
+            return Reservation.deleteOne({ _id: reservationId }).catch ((error)=>{
+                throw new SystemError (error.message)
+            })
         })
 
-        .then(() => { })
+        .then((reservation) => { })
 }
     module.exports = deleteReservation
 

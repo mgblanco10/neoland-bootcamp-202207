@@ -4,7 +4,7 @@ import withContext from '../utils/withContext'
 import { useLocation } from 'react-router-dom'
 
 
-function Header({onLogoutClick, onSettingsClick ,onHomeClick, onInfoClick,onSolutionsClick, view: settings, workspaces ,context: { toggleTheme }}){
+function Header({onLogoutClick, onSettingsClick ,onHomeClick, onInfoClick,onSolutionsClick, onPaymentClick, view: settings, workspaces ,context: { toggleTheme }}){
   const logger = new Loggito ('Header')
   const location = useLocation()
 
@@ -35,12 +35,22 @@ const handleSolutionsClick = ()=>{
   onSolutionsClick()
 }
 
+const handlePaymentClick = ()=>{
+  setView('payment')
+  
+  logger.debug('setView', null)
+  
+  onPaymentClick()
+}
+
 const handleNavigationToHomeClick = ()=>{
   setView('/')
 
   logger.debug('setView', null)
   onHomeClick()
 }
+
+
 
 
 logger.info('return')
@@ -74,9 +84,12 @@ logger.info('return')
 
             <a className="text-gray-500 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium cursor-pointer" onClick={handleNavigationToHomeClick} >Home</a>
           <a className="text-gray-500 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium cursor-pointer" onClick={handleInfoClick}>Information</a>
-            <a className="text-gray-500 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium cursor-pointer" onClick={handleSolutionsClick}> Solutions </a>
+
+            <a className="text-gray-500 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium cursor-pointer" onClick={handleSolutionsClick}> Reservations </a>
 
            <a className="text-gray-500 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium cursor-pointer" onClick={handleSettingsClick}  view={settings} >Settings</a>
+
+           <a className="text-gray-500 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium cursor-pointer" onClick={handlePaymentClick} > Payment </a>
 
             <a className="text-gray-500 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium cursor-pointer" onClick={handleLogoutClick} >Logout</a>
 
@@ -86,7 +99,7 @@ logger.info('return')
       </div>
       <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
         
-        <button 
+        {/* <button 
         type="button" 
         className="rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
         onClick={toggleTheme}>
@@ -96,7 +109,8 @@ logger.info('return')
           <svg className="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0" />
           </svg>
-        </button>
+        </button> */}
+        <img src="https://cdn-icons-png.flaticon.com/128/1177/1177568.png" className='w-8 h-8 rounded-lg'/>
 
         <div className="relative ml-3">
           <div>
