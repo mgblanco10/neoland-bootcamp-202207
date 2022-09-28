@@ -12,7 +12,7 @@ Because there are a thousand and one ways of working, but as a team it is always
 
 ## Description Spanish
 
-Una de las cosas más difíciles es aprender lo que no sabes. Y una de las formas más rápidas de aprender esto es interactuar con personas de diferentes orígenes y disciplinas. El coworking te permite salir de tu burbuja y trabajar con otros que saben lo que tú no sabes, y de esta manera puedes abrir tu mente encontrando capacidades que nunca pensaste que tenías y es por eso que decidí que mi primer proyecto como desarrollador sería sobre un coworking.
+Una de las formas más rápidas de aprender es interactuar con personas de diferentes orígenes y disciplinas. El coworking te permite salir de tu burbuja y trabajar con otros que saben lo que tú no sabes, y de esta manera puedes abrir tu mente encontrando capacidades que nunca pensaste que tenías y es por eso que decidí que mi primer proyecto como desarrollador sería sobre un coworking.
 Porque hay mil y una formas de trabajar, pero en equipo siempre es más fácil.
 
 ## Technical Description
@@ -34,7 +34,8 @@ This page is a responsible application made with javascript, react and tailwind,
 - Adjust Settings(name, email,password,...)
 
 ### UI design
--Responsive: Tailwind
+![](./images/Figma.jpg)
+
 
 ### Technical Description
 - Blocks
@@ -125,8 +126,7 @@ Version 1
 
 ### Test coverage
 
-![](./images/coverage.png)
+![](./images/coverageTest.jpg)
 
-To be continue... V0 --V1   para poder hacer todo tendrá una parte de mapa para poder hacer la ubicación del espacio de trabajo esto en V1,
-En una segunda versión, permitir que los usuarios puedan darle like a sus espacios favoritos, además poder agregar un map con geospatial queries mongodb, un apartado de noticias, videos informativos, pasarela de pago
+To be continue... V0 --V1   para poder hacer todo tendrá una parte de mapa para poder hacer la ubicación del espacio de trabajo, permitir que los usuarios puedan darle like a sus espacios favoritos, además poder agregar un map con geospatial queries mongodb, un apartado de noticias, videos informativos, pasarela de pago, noticias, videos.
 

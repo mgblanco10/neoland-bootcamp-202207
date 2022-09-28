@@ -1,4 +1,4 @@
-import retrieveAllReservations from "../logic/retrieveAllReservations";
+ import retrieveAllReservations from "../logic/retrieveAllReservations";
 import Loggito from "../utils/Loggito";
 import { useEffect, useState } from "react";
 
@@ -6,87 +6,87 @@ import { useEffect, useState } from "react";
 export default function Colors({ workspaces, onDeleteReservation }) {
   const logger = new Loggito("allReservations");
 
-  const [reservations, setReservations] = useState([]);
+  const [reservations, setReservations] = useState();
   const [workspacesIds, setWorkspacesIds] = useState([])
   const [workspacesWithRes, setWorkspacesWithRes] = useState([]);
-  const [workspacesWithResComplete, setWorkspacesWithResComplete] = useState(
-    []
-  );
+  const [workspacesWithResComplete, setWorkspacesWithResComplete] = useState([] );
 
 
-  useEffect(() => {
-    loadReservations();
-  }, []);
-
+  
   // useEffect(() => {
-  //   const workspacesWithReservationsComplete = [];
+  //     const workspacesWithReservationsComplete = [];
+    
+  //     if (workspaces) {
+  //         for (let i = 0; i < workspacesWithRes.length; i++) {
+  //           const newArray = workspaces.filter((["id", workspacesWithRes[i]]))
+  //           workspacesWithReservationsComplete[workspacesWithReservationsComplete.length] = newArray[0]
+  //           }
+  //           setWorkspacesWithResComplete(workspacesWithReservationsComplete)
+  //           console.log(workspacesWithReservationsComplete)
+  //       }}, [workspacesWithRes])
 
-  //   if (workspaces) {
-  //     for (let i = 0; i < workspacesWithRes.length; i++) {
-  //     const newArray = workspaces.filter((["id", workspacesWithRes[i]]))
-  //     workspacesWithReservationsComplete[workspacesWithReservationsComplete.length] = newArray[0]
-  //     }
-  //     setWorkspacesWithResComplete(workspacesWithReservationsComplete)
-  //     console.log(workspacesWithReservationsComplete)
-  // }}, [workspacesWithRes])
-
-  const loadReservations = () => {
-    try {
-      retrieveAllReservations(
-        sessionStorage.token,
-        (error, reservationsFromApi) => {
-          debugger;
-          if (error) {
-            logger.warn(error.message);
-
-            return;
-          }
-
-          const groupBy = (items, key, key2) =>
-            items.reduce(
-              (result, item) => ({
-                ...result,
-                [item[key][key2]]: [...(result[item[key][key2]] || []), item],
-              }),
-              {}
-            );
-
-            const groupedReservations = groupBy(reservationsFromApi, 'workspace', '_id')
-
-              console.log(groupedReservations)
-
-              setReservations(groupedReservations)
-
-              setWorkspacesIds(Object.keys(groupedReservations))
-
-          // setReservations(reservations);
-
-          // logger.debug("setReservations", reservations);
-
-          // const workspacesWithReservations = [];
-
-          // if (reservations) {
-          //   workspacesWithReservations[0] = reservations[0].workspace;
-          //   for (let i = 1; i < reservations.length; i++) {
-          //     const element = reservations[i].workspace;
-          //     if (reservations.includes(element) === false)
-          //       workspacesWithReservations[workspacesWithReservations.length] =
-          //         reservations[i].workspace;
-          //   }
-
-          //   setWorkspacesWithRes(workspacesWithReservations);
-          // }
-
-          // console.log(workspacesWithReservations);
-        }
-      );
-    } catch (error) {
-      logger.warn(error.message);
-    }
-  };
-
-
-
+        useEffect(() => {
+          loadReservations();
+        }, []);
+        
+        const loadReservations = () => {
+          try {
+            retrieveAllReservations(
+              sessionStorage.token,
+              (error, reservationsFromApi) => {
+             
+                if (error) {
+                  logger.warn(error.message);
+                  
+                  return;
+                }
+                
+                const groupBy = (items, key, key2) =>
+                items.reduce(
+                  (result, item) => ({
+                    ...result,
+                    [item[key][key2]]: [...(result[item[key][key2]] || []), item],
+                  }),
+                  {}
+                  );
+                  
+                  const groupedReservations = groupBy(reservationsFromApi, 'workspace', '_id')
+                  
+                  console.log(groupedReservations)
+                  
+                  setReservations(groupedReservations)
+                  
+                  setWorkspacesIds(Object.keys(groupedReservations))
+                  
+                 //setReservations(reservations);
+                  
+                  // logger.debug("setReservations", reservations);
+                  
+                  // const workspacesWithReservations = [];
+                  
+                  // if (reservations) {
+                    //   workspacesWithReservations[0] = reservations[0].workspace;
+                    //   for (let i = 1; i < reservations.length; i++) {
+                      //     const element = reservations[i].workspace;
+                      //     if (reservations.includes(element) === false)
+                      //       workspacesWithReservations[workspacesWithReservations.length] =
+                      //         reservations[i].workspace;
+                      //   }
+                      
+                      //   setWorkspacesWithRes(workspacesWithReservations);
+                      // }
+                      
+                      // console.log(workspacesWithReservations);
+                      loadReservations()
+                    }
+                    );
+                  } catch (error) {
+                    logger.warn(error.message);
+                  }
+                };
+                
+                
+                
   logger.info("return");
   return (
     <div className= "c-card block shadow-md rounded-lg hover:shadow-xl rounded-lg rounded overflow-hidden flex pb-20 overflow-hidden">
@@ -101,7 +101,7 @@ export default function Colors({ workspaces, onDeleteReservation }) {
           <div className="p-4 items-center text-xs text-gray-700" key={reservation.id}>
             <p className="flex content-around text-lg">Date:</p>
             <p className="p-4 text-xs text-gray-700 text-lg">
-              {reservation.date}
+              {new Date(reservation.date).toISOString().substring(0, 10)}
             <button onClick={() => onDeleteReservation(reservation.id)} className="m-6 cursor w-50 h-10 grab bg-gray-600 text-white font-bold py-2 px-4 rounded-full"> X </button>
             </p>
           </div>

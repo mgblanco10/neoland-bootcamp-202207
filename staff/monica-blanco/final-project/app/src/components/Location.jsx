@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import Footer from "../components/Footer";
 import Loggito from "../utils/Loggito";
 
+
 function Location({ locations, onClick }) {
   const logger = new Loggito("List buildings");
   logger.info("return");

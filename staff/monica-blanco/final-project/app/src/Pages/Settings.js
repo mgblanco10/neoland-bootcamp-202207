@@ -83,7 +83,7 @@ function Settings({ onLinkClick, onCloseClick, context: { handleFeedback } }) {
                                    />
                                </div>
                                <div className='mt-8 flex flex-col gap-y-4'>
-                                   <button className='active:scale-[.98] active:duration-75 transition-all hoover:scale-[1.01] ease-in-out py-3 rounded-xl bg-blue-500 text-white text-lg font-bold' type="submit">Sing in</button>
+                                   <button className='active:scale-[.98] active:duration-75 transition-all hoover:scale-[1.01] ease-in-out py-3 rounded-xl bg-blue-500 text-white text-lg font-bold' type="submit">Update Password</button>
                                </div>
                            </form>
                        </div>
