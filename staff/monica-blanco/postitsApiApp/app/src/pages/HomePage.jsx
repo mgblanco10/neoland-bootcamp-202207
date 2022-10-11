@@ -140,7 +140,7 @@ function HomePage({onLogoutClick, context: { handleFeedback }}){
 
     return name ?
         <div className="home-page container--full container--distributed">
-            <Header onLogoutClick={onLogoutClick} onSettingsClick={handleSettingsClick}/>
+            <Header name={name} onLogoutClick={onLogoutClick} onSettingsClick={handleSettingsClick}/>
 
         <main className="main">
             <Routes>
