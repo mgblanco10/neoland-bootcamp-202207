@@ -18,14 +18,14 @@ describe('retrieveUser', () => {
         const password = '123123123'
 
         return User.create({ name, email, password })
-            .then(user =>
-                retrieveUser(user.id)
-                    .then(user =>{
-                        expect(user).toBeDefined()
-                        expect (user.name).toEqual(name)
-                        expect (user.email).toEqual(email)
-
-                        expect(user.password).toBeUndefined()
+        .then(user =>
+            retrieveUser(user.id)
+            .then(user =>{
+                debugger
+                expect(user).toBeDefined()
+                expect (user.name).toEqual(name)
+                expect (user.email).toEqual(email)
+                expect(user.password).toBeUndefined()
                 })
             )
     })

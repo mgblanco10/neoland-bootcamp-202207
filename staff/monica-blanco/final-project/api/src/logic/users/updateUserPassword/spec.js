@@ -2,7 +2,7 @@ require('dotenv').config()
 
 const { connect, disconnect } = require('mongoose')
 const { User } = require('../../../models')
-const { DuplicityError,FormatError, AuthError, SystemError } = require('errors')
+const { AuthError,FormatError, ServerError } = require('errors')
 const updateUserPassword = require( '.' )
 const { authenticateUser, updatePassword } = require('.')
 
