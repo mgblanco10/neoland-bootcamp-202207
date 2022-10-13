@@ -1,7 +1,7 @@
+import { validateText, validateCallback } from 'validators'
+import { ClientError, ServerError } from 'errors'
 const API_URL = process.env.REACT_APP_API_URL;
 
-import {  validateText, validateCallback } from 'validators'
-import {  ClientError, ServerError } from 'errors'
 
 /**
  * Deletes a question from database

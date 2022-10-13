@@ -64,7 +64,7 @@ const API_URL = process.env.REACT_APP_API_URL
 
     xhr.setRequestHeader('Content-type', 'application/json')
 
-    xhr.send(`{ "email": "${email}", "password": "${password}" }`)
+    xhr.send(`{ "email": ${email}, "password": ${password} }`)
 }
 
 export default authenticateUser
